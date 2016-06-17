@@ -1,0 +1,27 @@
+
+FONTLOG for <Slim>
+–––––––––––––––––––––––––––––––––––––––––
+This file provides detailed information on the <Slim> Font Software. 
+This information should be distributed along with the <Slim> fonts and any derivative works.
+
+
+Basic Font Information
+–––––––––––––––––––––––––––––––––––––––––
+<Slim> – <title and big sizes>, designed by <Chen Ran>.
+
+
+ChangeLog
+–––––––––––––––––––––––––––––––––––––––––
+(This should list both major and minor changes, most recent first.)
+
+30 October 2012 (<Chen Ran>) <Slim> Version 1.0
+- Initial release of the font <Slim> under the SIL OFL 1.1
+
+Acknowledgements
+–––––––––––––––––––––––––––––––––––––––––
+(Here is where contributors can be acknowledged. If you make modifications be sure to add your name (N), email (E), web-address (W) and description (D). This list is sorted by last name in alphabetical order.)
+
+N: <Chen Ran>
+E: <amychen66066@gmail.com>
+W: <URL>
+D: Designer 
