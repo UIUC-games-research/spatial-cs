@@ -7,7 +7,10 @@ public class Reference : MonoBehaviour {
 	public GameObject blade;
 	public GameObject FPS;
 	public Text middle;
-	
+
+	// Player
+	public UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController player;
+
 	public Texture2D itemDisplayBackdrop;
 	public Texture2D yellowCubeIcon;
 	public Texture2D redCubeIcon;

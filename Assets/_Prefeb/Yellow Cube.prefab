@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c2d183f2dac7d4198260ee8bdfdd6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupName: YellowCube
+  pickupDesc: It's a yellow cube.
   respawn: 1
   respawnTime: 5
   itemTypeName: YellowCube
@@ -108,7 +110,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: pickupName
+      value: YellowCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pickupDesc
+      value: It's a yellow cube.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150642}
