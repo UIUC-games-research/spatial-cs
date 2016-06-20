@@ -1,27 +1,11 @@
-﻿using UnityEngine;
-using System.Collections;
+using JetBrains.Annotations;
+using UnityEngine;
 
 public class WorldBox : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
+	[UsedImplicitly] public void OnTriggerEnter (Collider other) {
+		if (other.gameObject.CompareTag("Player")) {
+			UIController.DisplayWarning("I Can Not' Enter Toxic Land");
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            UIController.DisplayWarning("I Can Not' Enter Toxic Land");
-        }
-    }
-
-    void OnTriggerExit(Collider other) {
-        UIController.DisplayWarning("");
-    }
+	[UsedImplicitly] public void OnTriggerExit (Collider other) {UIController.DisplayWarning("");}
 }

@@ -1,15 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
 public class UIController : MonoBehaviour {
-
-
-    public static void DisplayWarning(string msg)
-    {
-        Reference.Instance().middle.text = msg;
-    }
-    public static void DisplayInfo(string msg) {
-
-        Reference.Instance().topLeft.text = msg;
-    }
+	public static void DisplayWarning (string msg) {Reference.Instance().middle.text = msg;}
 }
