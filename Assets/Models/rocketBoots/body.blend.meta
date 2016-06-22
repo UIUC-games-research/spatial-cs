@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: 95e8c216146750442843e14f1893d16d
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Body
+    100002: //RootNode
+    100004: Body_Bottom_Attach
+    100006: Body_Side_Attach
+    100008: Body_Top_Attach
+    100010: left_panel_1_attach
+    100012: left_panel_2_attach
+    100014: left_panel_3_attach
+    100016: left_panel_4_attach
+    100018: left_panel_5_attach
+    100020: right_panel_1_attach
+    100022: right_panel_2_attach
+    100024: right_panel_3_attach
+    100026: right_panel_4_attach
+    100028: right_panel_5_attach
+    100030: top_panel_1_attach
+    100032: top_panel_2_attach
+    400000: Body
+    400002: //RootNode
+    400004: Body_Bottom_Attach
+    400006: Body_Side_Attach
+    400008: Body_Top_Attach
+    400010: left_panel_1_attach
+    400012: left_panel_2_attach
+    400014: left_panel_3_attach
+    400016: left_panel_4_attach
+    400018: left_panel_5_attach
+    400020: right_panel_1_attach
+    400022: right_panel_2_attach
+    400024: right_panel_3_attach
+    400026: right_panel_4_attach
+    400028: right_panel_5_attach
+    400030: top_panel_1_attach
+    400032: top_panel_2_attach
+    2300000: Body
+    2300002: Body_Bottom_Attach
+    2300004: Body_Side_Attach
+    2300006: Body_Top_Attach
+    2300008: left_panel_1_attach
+    2300010: left_panel_2_attach
+    2300012: left_panel_3_attach
+    2300014: left_panel_4_attach
+    2300016: left_panel_5_attach
+    2300018: right_panel_1_attach
+    2300020: right_panel_2_attach
+    2300022: right_panel_3_attach
+    2300024: right_panel_4_attach
+    2300026: right_panel_5_attach
+    2300028: top_panel_1_attach
+    2300030: top_panel_2_attach
+    3300000: Body
+    3300002: Body_Bottom_Attach
+    3300004: Body_Side_Attach
+    3300006: Body_Top_Attach
+    3300008: left_panel_1_attach
+    3300010: left_panel_2_attach
+    3300012: left_panel_3_attach
+    3300014: left_panel_4_attach
+    3300016: left_panel_5_attach
+    3300018: right_panel_1_attach
+    3300020: right_panel_2_attach
+    3300022: right_panel_3_attach
+    3300024: right_panel_4_attach
+    3300026: right_panel_5_attach
+    3300028: top_panel_1_attach
+    3300030: top_panel_2_attach
+    4300000: right_panel_1_attach
+    4300002: right_panel_2_attach
+    4300004: right_panel_3_attach
+    4300006: right_panel_4_attach
+    4300008: right_panel_5_attach
+    4300010: left_panel_5_attach
+    4300012: left_panel_4_attach
+    4300014: left_panel_3_attach
+    4300016: left_panel_2_attach
+    4300018: left_panel_1_attach
+    4300020: Body_Bottom_Attach
+    4300022: Body_Side_Attach
+    4300024: Body_Top_Attach
+    4300026: top_panel_1_attach
+    4300028: top_panel_2_attach
+    4300030: Body
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

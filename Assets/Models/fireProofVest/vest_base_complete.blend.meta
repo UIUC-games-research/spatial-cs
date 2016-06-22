@@ -1,0 +1,109 @@
+fileFormatVersion: 2
+guid: 971720081cd1f474e82d39119dec2f37
+timeCreated: 1442419518
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: right_strap
+    100002: right_strap_back_strap_attach
+    100004: vest_base
+    100006: //RootNode
+    100008: vest_base_left_strap_bottom_attach
+    100010: vest_base_left_strap_top_attach
+    100012: vest_base_right_strap_bottom_attach_
+    100014: vest_base_right_strap_top_attach
+    100016: vest_base_vest_diamond_attach
+    400000: right_strap
+    400002: right_strap_back_strap_attach
+    400004: vest_base
+    400006: //RootNode
+    400008: vest_base_left_strap_bottom_attach
+    400010: vest_base_left_strap_top_attach
+    400012: vest_base_right_strap_bottom_attach_
+    400014: vest_base_right_strap_top_attach
+    400016: vest_base_vest_diamond_attach
+    2300000: right_strap
+    2300002: right_strap_back_strap_attach
+    2300004: vest_base
+    2300006: vest_base_left_strap_bottom_attach
+    2300008: vest_base_left_strap_top_attach
+    2300010: vest_base_right_strap_bottom_attach_
+    2300012: vest_base_right_strap_top_attach
+    2300014: vest_base_vest_diamond_attach
+    3300000: right_strap
+    3300002: right_strap_back_strap_attach
+    3300004: vest_base
+    3300006: vest_base_left_strap_bottom_attach
+    3300008: vest_base_left_strap_top_attach
+    3300010: vest_base_right_strap_bottom_attach_
+    3300012: vest_base_right_strap_top_attach
+    3300014: vest_base_vest_diamond_attach
+    4300000: right_strap_back_strap_attach
+    4300002: vest_base_left_strap_bottom_attach
+    4300004: vest_base_left_strap_top_attach
+    4300006: vest_base_right_strap_bottom_attach_
+    4300008: vest_base_right_strap_top_attach
+    4300010: vest_base_vest_diamond_attach
+    4300012: right_strap
+    4300014: vest_base
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

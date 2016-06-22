@@ -1,0 +1,138 @@
+fileFormatVersion: 2
+guid: 63a5c51fba1c5b4478452e37bdbc7217
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Plane
+    100002: //RootNode
+    100004: Sole_Heel
+    100006: sole_toe
+    100008: left_engine_1_attach
+    100010: left_engine_2_attach
+    100012: left_engine_3_attach
+    100014: left_engine_4_attach
+    100016: left_engine_5_attach
+    100018: right_engine_1_attach
+    100020: right_engine_2_attach
+    100022: right_engine_3_attach
+    100024: right_engine_4_attach
+    100026: right_engine_5_attach
+    100028: Sole_Heel_Side_Attach
+    100030: Sole_Heel_Top_Attach
+    400000: Plane
+    400002: //RootNode
+    400004: Sole_Heel
+    400006: sole_toe
+    400008: left_engine_1_attach
+    400010: left_engine_2_attach
+    400012: left_engine_3_attach
+    400014: left_engine_4_attach
+    400016: left_engine_5_attach
+    400018: right_engine_1_attach
+    400020: right_engine_2_attach
+    400022: right_engine_3_attach
+    400024: right_engine_4_attach
+    400026: right_engine_5_attach
+    400028: Sole_Heel_Side_Attach
+    400030: Sole_Heel_Top_Attach
+    2300000: Plane
+    2300002: Sole_Heel
+    2300004: sole_toe
+    2300006: left_engine_1_attach
+    2300008: left_engine_2_attach
+    2300010: left_engine_3_attach
+    2300012: left_engine_4_attach
+    2300014: left_engine_5_attach
+    2300016: right_engine_1_attach
+    2300018: right_engine_2_attach
+    2300020: right_engine_3_attach
+    2300022: right_engine_4_attach
+    2300024: right_engine_5_attach
+    2300026: Sole_Heel_Side_Attach
+    2300028: Sole_Heel_Top_Attach
+    3300000: Plane
+    3300002: Sole_Heel
+    3300004: sole_toe
+    3300006: left_engine_1_attach
+    3300008: left_engine_2_attach
+    3300010: left_engine_3_attach
+    3300012: left_engine_4_attach
+    3300014: left_engine_5_attach
+    3300016: right_engine_1_attach
+    3300018: right_engine_2_attach
+    3300020: right_engine_3_attach
+    3300022: right_engine_4_attach
+    3300024: right_engine_5_attach
+    3300026: Sole_Heel_Side_Attach
+    3300028: Sole_Heel_Top_Attach
+    4300000: Plane
+    4300002: sole_toe
+    4300004: Sole_Heel
+    4300006: Sole_Heel_Side_Attach
+    4300008: Sole_Heel_Top_Attach
+    4300010: left_engine_2_attach
+    4300012: left_engine_1_attach
+    4300014: left_engine_3_attach
+    4300016: left_engine_4_attach
+    4300018: left_engine_5_attach
+    4300020: right_engine_5_attach
+    4300022: right_engine_4_attach
+    4300024: right_engine_3_attach
+    4300026: right_engine_1_attach
+    4300028: right_engine_2_attach
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

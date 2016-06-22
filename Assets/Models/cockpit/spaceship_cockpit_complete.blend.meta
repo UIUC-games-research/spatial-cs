@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: 0839e609bf0be3843ac726f88312f338
+timeCreated: 1444236884
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: cockpit_chair
+    100002: cockpit_chair_cockpit_left_attach
+    100004: cockpit_chair_cockpit_right_attach
+    100006: cockpit_dashboard
+    100008: cockpit_dashboard_cockpit_left_attach
+    100010: cockpit_dashboard_cockpit_right_attach
+    100012: cockpit_left
+    100014: cockpit_left_cockpit_chair_attach
+    100016: cockpit_left_cockpit_dashboard_attach
+    100018: cockpit_left_cockpit_lever_attach
+    100020: cockpit_left_cockpit_right_attach
+    100022: cockpit_left_cockpit_window_attach
+    100024: cockpit_lever
+    100026: cockpit_lever_cockpit_left_attach
+    100028: cockpit_right
+    100030: cockpit_right_cockpit_chair_attach
+    100032: cockpit_right_cockpit_dashboard_attach
+    100034: cockpit_right_cockpit_left_attach
+    100036: cockpit_right_cockpit_window_attach
+    100038: cockpit_window
+    100040: cockpit_window_cockpit_left_attach
+    100042: cockpit_window_cockpit_right_attach
+    100044: //RootNode
+    400000: cockpit_chair
+    400002: cockpit_chair_cockpit_left_attach
+    400004: cockpit_chair_cockpit_right_attach
+    400006: cockpit_dashboard
+    400008: cockpit_dashboard_cockpit_left_attach
+    400010: cockpit_dashboard_cockpit_right_attach
+    400012: cockpit_left
+    400014: cockpit_left_cockpit_chair_attach
+    400016: cockpit_left_cockpit_dashboard_attach
+    400018: cockpit_left_cockpit_lever_attach
+    400020: cockpit_left_cockpit_right_attach
+    400022: cockpit_left_cockpit_window_attach
+    400024: cockpit_lever
+    400026: cockpit_lever_cockpit_left_attach
+    400028: cockpit_right
+    400030: cockpit_right_cockpit_chair_attach
+    400032: cockpit_right_cockpit_dashboard_attach
+    400034: cockpit_right_cockpit_left_attach
+    400036: cockpit_right_cockpit_window_attach
+    400038: cockpit_window
+    400040: cockpit_window_cockpit_left_attach
+    400042: cockpit_window_cockpit_right_attach
+    400044: //RootNode
+    2300000: cockpit_chair
+    2300002: cockpit_chair_cockpit_left_attach
+    2300004: cockpit_chair_cockpit_right_attach
+    2300006: cockpit_dashboard
+    2300008: cockpit_dashboard_cockpit_left_attach
+    2300010: cockpit_dashboard_cockpit_right_attach
+    2300012: cockpit_left
+    2300014: cockpit_left_cockpit_chair_attach
+    2300016: cockpit_left_cockpit_dashboard_attach
+    2300018: cockpit_left_cockpit_lever_attach
+    2300020: cockpit_left_cockpit_right_attach
+    2300022: cockpit_left_cockpit_window_attach
+    2300024: cockpit_lever
+    2300026: cockpit_lever_cockpit_left_attach
+    2300028: cockpit_right
+    2300030: cockpit_right_cockpit_chair_attach
+    2300032: cockpit_right_cockpit_dashboard_attach
+    2300034: cockpit_right_cockpit_left_attach
+    2300036: cockpit_right_cockpit_window_attach
+    2300038: cockpit_window
+    2300040: cockpit_window_cockpit_left_attach
+    2300042: cockpit_window_cockpit_right_attach
+    3300000: cockpit_chair
+    3300002: cockpit_chair_cockpit_left_attach
+    3300004: cockpit_chair_cockpit_right_attach
+    3300006: cockpit_dashboard
+    3300008: cockpit_dashboard_cockpit_left_attach
+    3300010: cockpit_dashboard_cockpit_right_attach
+    3300012: cockpit_left
+    3300014: cockpit_left_cockpit_chair_attach
+    3300016: cockpit_left_cockpit_dashboard_attach
+    3300018: cockpit_left_cockpit_lever_attach
+    3300020: cockpit_left_cockpit_right_attach
+    3300022: cockpit_left_cockpit_window_attach
+    3300024: cockpit_lever
+    3300026: cockpit_lever_cockpit_left_attach
+    3300028: cockpit_right
+    3300030: cockpit_right_cockpit_chair_attach
+    3300032: cockpit_right_cockpit_dashboard_attach
+    3300034: cockpit_right_cockpit_left_attach
+    3300036: cockpit_right_cockpit_window_attach
+    3300038: cockpit_window
+    3300040: cockpit_window_cockpit_left_attach
+    3300042: cockpit_window_cockpit_right_attach
+    4300000: cockpit_window_cockpit_left_attach
+    4300002: cockpit_chair_cockpit_right_attach
+    4300004: cockpit_left_cockpit_dashboard_attach
+    4300006: cockpit_left_cockpit_lever_attach
+    4300008: cockpit_left_cockpit_right_attach
+    4300010: cockpit_window
+    4300012: cockpit_lever
+    4300014: cockpit_chair
+    4300016: cockpit_dashboard
+    4300018: cockpit_left
+    4300020: cockpit_right
+    4300022: cockpit_right_cockpit_left_attach
+    4300024: cockpit_lever_cockpit_left_attach
+    4300026: cockpit_dashboard_cockpit_left_attach
+    4300028: cockpit_right_cockpit_dashboard_attach
+    4300030: cockpit_dashboard_cockpit_right_attach
+    4300032: cockpit_right_cockpit_chair_attach
+    4300034: cockpit_chair_cockpit_left_attach
+    4300036: cockpit_left_cockpit_chair_attach
+    4300038: cockpit_left_cockpit_window_attach
+    4300040: cockpit_window_cockpit_right_attach
+    4300042: cockpit_right_cockpit_window_attach
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

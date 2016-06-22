@@ -1,0 +1,85 @@
+fileFormatVersion: 2
+guid: 2be7dafc24c97b748b345f48da4ef830
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Plane
+    100002: Toe
+    100004: //RootNode
+    100006: Toe_Bottom_Attach
+    100008: Toe_Side_Attach
+    400000: Plane
+    400002: Toe
+    400004: //RootNode
+    400006: Toe_Bottom_Attach
+    400008: Toe_Side_Attach
+    2300000: Plane
+    2300002: Toe
+    2300004: //RootNode
+    2300006: Toe_Bottom_Attach
+    2300008: Toe_Side_Attach
+    3300000: Plane
+    3300002: Toe
+    3300004: //RootNode
+    3300006: Toe_Bottom_Attach
+    3300008: Toe_Side_Attach
+    4300000: Plane
+    4300002: Toe
+    4300004: Toe_Bottom_Attach
+    4300006: Toe_Side_Attach
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 2
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: f40a6369da5a87f44a447d517a6b2294
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Body
+    100002: Calf
+    100004: right_engine_1
+    100006: right_engine_2
+    100008: right_engine_3
+    100010: right_engine_4
+    100012: right_engine_5
+    100014: right_panel_1_attach
+    100016: right_panel_2_attach
+    100018: right_panel_3_attach
+    100020: right_panel_4_attach
+    100022: right_panel_5_attach
+    100024: //RootNode
+    100026: Sole_Heel
+    100028: sole_toe
+    100030: Toe
+    100032: top_panel_1
+    100034: top_panel_2
+    100036: Top_Trim
+    400000: Body
+    400002: Calf
+    400004: right_engine_1
+    400006: right_engine_2
+    400008: right_engine_3
+    400010: right_engine_4
+    400012: right_engine_5
+    400014: right_panel_1_attach
+    400016: right_panel_2_attach
+    400018: right_panel_3_attach
+    400020: right_panel_4_attach
+    400022: right_panel_5_attach
+    400024: //RootNode
+    400026: Sole_Heel
+    400028: sole_toe
+    400030: Toe
+    400032: top_panel_1
+    400034: top_panel_2
+    400036: Top_Trim
+    2300000: Body
+    2300002: Calf
+    2300004: right_engine_1
+    2300006: right_engine_2
+    2300008: right_engine_3
+    2300010: right_engine_4
+    2300012: right_engine_5
+    2300014: right_panel_1_attach
+    2300016: right_panel_2_attach
+    2300018: right_panel_3_attach
+    2300020: right_panel_4_attach
+    2300022: right_panel_5_attach
+    2300024: Sole_Heel
+    2300026: sole_toe
+    2300028: Toe
+    2300030: top_panel_1
+    2300032: top_panel_2
+    2300034: Top_Trim
+    3300000: Body
+    3300002: Calf
+    3300004: right_engine_1
+    3300006: right_engine_2
+    3300008: right_engine_3
+    3300010: right_engine_4
+    3300012: right_engine_5
+    3300014: right_panel_1_attach
+    3300016: right_panel_2_attach
+    3300018: right_panel_3_attach
+    3300020: right_panel_4_attach
+    3300022: right_panel_5_attach
+    3300024: Sole_Heel
+    3300026: sole_toe
+    3300028: Toe
+    3300030: top_panel_1
+    3300032: top_panel_2
+    3300034: Top_Trim
+    4300000: right_panel_1_attach
+    4300002: right_panel_2_attach
+    4300004: right_panel_3_attach
+    4300006: right_panel_4_attach
+    4300008: right_panel_5_attach
+    4300010: right_engine_2
+    4300012: right_engine_1
+    4300014: right_engine_3
+    4300016: right_engine_4
+    4300018: right_engine_5
+    4300020: top_panel_2
+    4300022: top_panel_1
+    4300024: Top_Trim
+    4300026: Calf
+    4300028: sole_toe
+    4300030: Sole_Heel
+    4300032: Toe
+    4300034: Body
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

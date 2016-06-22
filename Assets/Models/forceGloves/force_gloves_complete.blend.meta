@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: e3f42348ac5893d40afdae06f36740e4
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: arm
+    100002: arm_arm_dec_attach
+    100004: arm_dec
+    100006: arm_dec_arm_attach
+    100008: arm_dec_top
+    100010: arm_palm_attach
+    100012: fingers
+    100014: fingers_palm_attach
+    100016: //RootNode
+    100018: palm
+    100020: palm_arm_attach
+    100022: palm_dec
+    100024: palm_dec_palm_attach
+    100026: palm_dec_top
+    100028: palm_fingers_attach
+    100030: palm_palm_dec_attach
+    100032: palm_thumb_attach
+    100034: thumb
+    100036: thumb_palm_attach
+    400000: arm
+    400002: arm_arm_dec_attach
+    400004: arm_dec
+    400006: arm_dec_arm_attach
+    400008: arm_dec_top
+    400010: arm_palm_attach
+    400012: fingers
+    400014: fingers_palm_attach
+    400016: //RootNode
+    400018: palm
+    400020: palm_arm_attach
+    400022: palm_dec
+    400024: palm_dec_palm_attach
+    400026: palm_dec_top
+    400028: palm_fingers_attach
+    400030: palm_palm_dec_attach
+    400032: palm_thumb_attach
+    400034: thumb
+    400036: thumb_palm_attach
+    2300000: arm
+    2300002: arm_arm_dec_attach
+    2300004: arm_dec
+    2300006: arm_dec_arm_attach
+    2300008: arm_dec_top
+    2300010: arm_palm_attach
+    2300012: fingers
+    2300014: fingers_palm_attach
+    2300016: palm
+    2300018: palm_arm_attach
+    2300020: palm_dec
+    2300022: palm_dec_palm_attach
+    2300024: palm_dec_top
+    2300026: palm_fingers_attach
+    2300028: palm_palm_dec_attach
+    2300030: palm_thumb_attach
+    2300032: thumb
+    2300034: thumb_palm_attach
+    3300000: arm
+    3300002: arm_arm_dec_attach
+    3300004: arm_dec
+    3300006: arm_dec_arm_attach
+    3300008: arm_dec_top
+    3300010: arm_palm_attach
+    3300012: fingers
+    3300014: fingers_palm_attach
+    3300016: palm
+    3300018: palm_arm_attach
+    3300020: palm_dec
+    3300022: palm_dec_palm_attach
+    3300024: palm_dec_top
+    3300026: palm_fingers_attach
+    3300028: palm_palm_dec_attach
+    3300030: palm_thumb_attach
+    3300032: thumb
+    3300034: thumb_palm_attach
+    4300000: arm_dec_top
+    4300002: palm_dec_top
+    4300004: arm_arm_dec_attach
+    4300006: arm_dec_arm_attach
+    4300008: arm_palm_attach
+    4300010: palm_arm_attach
+    4300012: palm_palm_dec_attach
+    4300014: palm_dec_palm_attach
+    4300016: palm_fingers_attach
+    4300018: fingers_palm_attach
+    4300020: palm_thumb_attach
+    4300022: thumb_palm_attach
+    4300024: arm_dec
+    4300026: palm_dec
+    4300028: thumb
+    4300030: fingers
+    4300032: arm
+    4300034: palm
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

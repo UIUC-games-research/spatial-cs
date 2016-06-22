@@ -1,0 +1,99 @@
+fileFormatVersion: 2
+guid: 1b1b549c0ddc6804c8e16e5a68851a1f
+timeCreated: 1442007733
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: axle
+    100004: axle_left_support_attach
+    100006: axle_right_support_attach
+    100008: axle_throwing_arm_bottom_attach
+    100010: axle_throwing_arm_left_attach
+    100012: axle_throwing_arm_right_attach
+    400000: //RootNode
+    400002: axle
+    400004: axle_left_support_attach
+    400006: axle_right_support_attach
+    400008: axle_throwing_arm_bottom_attach
+    400010: axle_throwing_arm_left_attach
+    400012: axle_throwing_arm_right_attach
+    2300000: axle
+    2300002: axle_left_support_attach
+    2300004: axle_right_support_attach
+    2300006: axle_throwing_arm_bottom_attach
+    2300008: axle_throwing_arm_left_attach
+    2300010: axle_throwing_arm_right_attach
+    3300000: axle
+    3300002: axle_left_support_attach
+    3300004: axle_right_support_attach
+    3300006: axle_throwing_arm_bottom_attach
+    3300008: axle_throwing_arm_left_attach
+    3300010: axle_throwing_arm_right_attach
+    4300000: axle_left_support_attach
+    4300002: axle_right_support_attach
+    4300004: axle_throwing_arm_right_attach
+    4300006: axle_throwing_arm_left_attach
+    4300008: axle_throwing_arm_bottom_attach
+    4300010: axle
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

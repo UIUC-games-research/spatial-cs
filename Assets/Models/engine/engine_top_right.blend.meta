@@ -1,0 +1,114 @@
+fileFormatVersion: 2
+guid: 12e13d627779b6f48b9d5c37dda10013
+timeCreated: 1443664748
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BezierCircle_001
+    100002: BezierCircle_002
+    100004: BezierCircle_003
+    100006: BezierCircle_004
+    100008: BezierCircle_005
+    100010: BezierCircle_006
+    100012: BezierCircle_007
+    100014: engine_top_right
+    100016: //RootNode
+    100018: engine_top_right_engine_base_attach
+    400000: BezierCircle_001
+    400002: BezierCircle_002
+    400004: BezierCircle_003
+    400006: BezierCircle_004
+    400008: BezierCircle_005
+    400010: BezierCircle_006
+    400012: BezierCircle_007
+    400014: //RootNode
+    400016: engine_top_right
+    400018: engine_top_right_engine_base_attach
+    2300000: BezierCircle_001
+    2300002: BezierCircle_002
+    2300004: BezierCircle_003
+    2300006: BezierCircle_004
+    2300008: BezierCircle_005
+    2300010: BezierCircle_006
+    2300012: BezierCircle_007
+    2300014: engine_top_right
+    2300016: engine_top_right_engine_base_attach
+    3300000: BezierCircle_001
+    3300002: BezierCircle_002
+    3300004: BezierCircle_003
+    3300006: BezierCircle_004
+    3300008: BezierCircle_005
+    3300010: BezierCircle_006
+    3300012: BezierCircle_007
+    3300014: engine_top_right
+    3300016: engine_top_right_engine_base_attach
+    4300000: engine_top_right
+    4300002: BezierCircle_001
+    4300004: BezierCircle_002
+    4300006: BezierCircle_003
+    4300008: BezierCircle_004
+    4300010: BezierCircle_007
+    4300012: BezierCircle_006
+    4300014: BezierCircle_005
+    4300016: engine_top_right_engine_base_attach
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

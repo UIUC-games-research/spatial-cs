@@ -1,0 +1,104 @@
+fileFormatVersion: 2
+guid: f558035d0abadd64a97b7bce667b2e30
+timeCreated: 1442007758
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: front_axle
+    100002: //RootNode
+    100004: front_axle_front_left_wheel_attach
+    100006: front_axle_platform_bottom_attach
+    100008: front_axle_platform_left_attach
+    100010: front_axle_platform_right_attach
+    100012: front_right_wheel
+    100014: front_axle_back_axle_attach
+    400000: front_axle
+    400002: //RootNode
+    400004: front_axle_front_left_wheel_attach
+    400006: front_axle_platform_bottom_attach
+    400008: front_axle_platform_left_attach
+    400010: front_axle_platform_right_attach
+    400012: front_right_wheel
+    400014: front_axle_back_axle_attach
+    2300000: front_axle
+    2300002: front_axle_front_left_wheel_attach
+    2300004: front_axle_platform_bottom_attach
+    2300006: front_axle_platform_left_attach
+    2300008: front_axle_platform_right_attach
+    2300010: front_right_wheel
+    2300012: front_axle_back_axle_attach
+    3300000: front_axle
+    3300002: front_axle_front_left_wheel_attach
+    3300004: front_axle_platform_bottom_attach
+    3300006: front_axle_platform_left_attach
+    3300008: front_axle_platform_right_attach
+    3300010: front_right_wheel
+    3300012: front_axle_back_axle_attach
+    4300000: front_axle_platform_right_attach
+    4300002: front_axle_platform_left_attach
+    4300004: front_axle_platform_bottom_attach
+    4300006: front_axle_front_left_wheel_attach
+    4300008: front_right_wheel
+    4300010: front_axle
+    4300012: front_axle_back_axle_attach
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
