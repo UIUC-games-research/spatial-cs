@@ -186,10 +186,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				if (m_RigidBody.velocity.sqrMagnitude <= (movementSettings.CurrentTargetSpeed * movementSettings.CurrentTargetSpeed)
 					|| Vector3.Angle(m_RigidBody.velocity, desiredMove) > 60)
 				{
-					Debug.Log(velocityCompare.magnitude);
 					m_RigidBody.AddForce(desiredMove, ForceMode.Impulse);
 					if (velocityCompare.magnitude > (0.8f * movementSettings.RunMultiplier * movementSettings.ForwardSpeed))
-						m_RigidBody.AddForce(desiredMove, ForceMode.Impulse);
+						m_RigidBody.AddForce(0.25f * desiredMove, ForceMode.Impulse);
 				}
 
 				// Now make sure we aren't going way too fast.
