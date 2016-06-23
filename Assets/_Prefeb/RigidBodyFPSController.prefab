@@ -60,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118868}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 250, y: 47.8, z: 250}
+  m_LocalPosition: {x: 237.62865, y: 29.64, z: 286.36194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 445902}
@@ -206,8 +206,8 @@ MonoBehaviour:
   cam: {fileID: 2017382}
   movementSettings:
     ForwardSpeed: 8
-    BackwardSpeed: 4
-    StrafeSpeed: 4
+    BackwardSpeed: 6
+    StrafeSpeed: 6
     RunMultiplier: 2
     RunKey: 304
     JumpForce: 50
@@ -240,14 +240,17 @@ MonoBehaviour:
     MinimumX: -45
     MaximumX: 90
     smooth: 1
-    smoothTime: 18
+    smoothTime: 40
     lockCursor: 1
   advancedSettings:
     groundCheckDistance: 0.1
     stickToGroundHelperDistance: 0.6
-    slowDownRate: 20
+    slowDownRate: 10
     airControl: 0
+    customAirControl: 1
+    customAirPowerMult: 0.25
     shellOffset: 0
+    angleTolerance: 43
 --- !u!114 &11489768
 MonoBehaviour:
   m_ObjectHideFlags: 1
