@@ -174,6 +174,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			// A slightly different method for air control. Feels a bit less awkward since it ignores the vertical axis.
 			if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && !m_IsGrounded && advancedSettings.customAirControl && !m_Pushing)
 			{
+				Vector3 velocityCompare = m_RigidBody.velocity;
+				velocityCompare.y = 0;
+
 				Vector3 desiredMove = cam.transform.forward * input.y + cam.transform.right * input.x;
 				desiredMove.Normalize();
 
@@ -181,18 +184,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				desiredMove.z = desiredMove.z * movementSettings.CurrentTargetSpeed * 0.5f;
 
 				if (m_RigidBody.velocity.sqrMagnitude <= (movementSettings.CurrentTargetSpeed * movementSettings.CurrentTargetSpeed)
-					|| Vector3.Angle(m_RigidBody.velocity, desiredMove) > 40)
+					|| Vector3.Angle(m_RigidBody.velocity, desiredMove) > 60)
 				{
+					Debug.Log(velocityCompare.magnitude);
 					m_RigidBody.AddForce(desiredMove, ForceMode.Impulse);
+					if (velocityCompare.magnitude > (0.8f * movementSettings.RunMultiplier * movementSettings.ForwardSpeed))
+						m_RigidBody.AddForce(desiredMove, ForceMode.Impulse);
 				}
 
 				// Now make sure we aren't going way too fast.
-				Vector3 velocityCompare = m_RigidBody.velocity;
-				velocityCompare.y = 0;
-
 				if (velocityCompare.magnitude > (movementSettings.RunMultiplier * movementSettings.ForwardSpeed))
 				{
-					m_RigidBody.AddForce(-1.1f * desiredMove, ForceMode.Impulse);
+					m_RigidBody.AddForce(-1.2f * desiredMove, ForceMode.Impulse);
 				}
 			}
 
