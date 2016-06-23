@@ -70,10 +70,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             public float groundCheckDistance = 0.01f; // distance for checking if the controller is grounded ( 0.01f seems to work best for this )
             public float stickToGroundHelperDistance = 0.5f; // stops the character
-            public float slowDownRate = 20f; // rate at which the controller comes to a stop when there is no input
-            public bool airControl; // can the user control the direction that is being moved in the air
+            public float slowDownRate = 10f; // rate at which the controller comes to a stop when there is no input
+			public bool airControl; // can the user control the direction that is being moved in the air
+			public bool customAirControl; // A slighly different version of air control
+			public float customAirPowerMult = 0.5f; // A non-linear multiplier for custom air control
             [Tooltip("set it to 0.1 or more if you get stuck in wall")]
             public float shellOffset; //reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)
+			public float angleTolerance = 45f; // how steep of an incline the player can climb.
         }
 
 
@@ -87,7 +90,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private CapsuleCollider m_Capsule;
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
-        private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
+        private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded, m_Pushing;
 
 
         public Vector3 Velocity
@@ -140,9 +143,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void FixedUpdate()
         {
             GroundCheck();
+			PushAwayFromCliffs();
             Vector2 input = GetInput();
 
-            if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
+			// Implementation of slowDownRate.
+			// Input Gravity is a better way to do this, but this code will also help fix the sliding-down-slopes issue.
+			if (input.sqrMagnitude < 0.5 && m_RigidBody.velocity.sqrMagnitude > 0.1f && m_IsGrounded)
+			{
+				m_RigidBody.AddForce(-10 * advancedSettings.slowDownRate * m_RigidBody.velocity.normalized);
+			}
+			
+			
+
+			if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
             {
                 // always move along the camera forward as it is the direction that it being aimed at
                 Vector3 desiredMove = cam.transform.forward*input.y + cam.transform.right*input.x;
@@ -158,6 +171,31 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }
 
+			// A slightly different method for air control. Feels a bit less awkward since it ignores the vertical axis.
+			if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && !m_IsGrounded && advancedSettings.customAirControl && !m_Pushing)
+			{
+				Vector3 desiredMove = cam.transform.forward * input.y + cam.transform.right * input.x;
+				desiredMove.Normalize();
+
+				desiredMove.x = desiredMove.x * movementSettings.CurrentTargetSpeed * 0.5f;
+				desiredMove.z = desiredMove.z * movementSettings.CurrentTargetSpeed * 0.5f;
+
+				if (m_RigidBody.velocity.sqrMagnitude <= (movementSettings.CurrentTargetSpeed * movementSettings.CurrentTargetSpeed)
+					|| Vector3.Angle(m_RigidBody.velocity, desiredMove) > 40)
+				{
+					m_RigidBody.AddForce(desiredMove, ForceMode.Impulse);
+				}
+
+				// Now make sure we aren't going way too fast.
+				Vector3 velocityCompare = m_RigidBody.velocity;
+				velocityCompare.y = 0;
+
+				if (velocityCompare.magnitude > (movementSettings.RunMultiplier * movementSettings.ForwardSpeed))
+				{
+					m_RigidBody.AddForce(-1.1f * desiredMove, ForceMode.Impulse);
+				}
+			}
+
             if (m_IsGrounded)
             {
                 m_RigidBody.drag = 5f;
@@ -170,7 +208,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_Jumping = true;
                 }
 
-                if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
+                if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 0.25f)
                 {
                     m_RigidBody.Sleep();
                 }
@@ -248,8 +286,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo,
                                    ((m_Capsule.height/2f) - m_Capsule.radius) + advancedSettings.groundCheckDistance, ~0, QueryTriggerInteraction.Ignore))
             {
-                m_IsGrounded = true;
-                m_GroundContactNormal = hitInfo.normal;
+				if (Vector3.Angle(hitInfo.normal, Vector3.up) <= advancedSettings.angleTolerance)
+				{
+					m_IsGrounded = true;
+					m_GroundContactNormal = hitInfo.normal;
+				}
+				else
+				{
+					m_IsGrounded = false;
+					m_GroundContactNormal = hitInfo.normal;
+				}
             }
             else
             {
@@ -261,5 +307,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Jumping = false;
             }
         }
+
+		// Prevent awkward wall and high-angle sticking.
+		private void PushAwayFromCliffs()
+		{
+			if (Vector3.Angle(m_GroundContactNormal, Vector3.up) > advancedSettings.angleTolerance)
+			{
+				m_Pushing = true;
+
+				// Prepare push vector by zeroing out the vertical component.
+				// Wouldn't make sense to push up.
+				Vector3 pushVector = m_GroundContactNormal;
+				pushVector.y = 0;
+				pushVector.Normalize();
+
+				// Push based on mass.
+				m_RigidBody.AddForce((10 * m_RigidBody.mass) * pushVector);
+			}
+			else
+			{
+				m_Pushing = false;
+			}
+		}
     }
 }
