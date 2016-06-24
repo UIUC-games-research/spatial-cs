@@ -22,7 +22,9 @@ public class ScrollingText : MonoBehaviour
 
 	// Public Variables
 	public float letterDelay = 0.1f; // The time between letters appearing.
-	public string[] conversation;
+	public string[] conversation;		// The basic conversation which scrolls across the screen.
+	public string[] choices;			// Choices, separated from the original conversation before scrolling even begins.
+	public string[] choiceConvoPointers;	// Where those choices point to, also separated from the original conversation.
 
 
 	void Start ()
@@ -57,7 +59,7 @@ public class ScrollingText : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.R))
 		{
 			//ApplyConversation(new string[] { "Test1", "Test2", "Test3" });
-			ApplyConversation(new string[] { "THE SAME", "THE SAME", "THE SAME" });
+			ApplyConversation(new string[] { "[wave]One", "[wave]Two", "[wave]Three", "[CHOOSE]", "Yes|TestYes", "No|TestNo" });
 		}
 
 		// Skipping line scrolling or advancing a conversation.
@@ -202,10 +204,11 @@ public class ScrollingText : MonoBehaviour
 		}
 	}
 
-	// When two lines of the exact same text are next to each other, the system freezes 
-	// since it can't detect the no-op of setting text to itself. This is a hack to prevent that.
+	// Does various fancy things to make the conversation work and set up choices.
 	void PrepConversation()
 	{
+		// When two lines of the exact same text are next to each other, the system freezes 
+		// since it can't detect the no-op of setting text to itself. This is a hack to prevent that.
 		if (conversation.Length >= 2)
 		{
 			for (int i = 0; i < conversation.Length - 1; i++)
@@ -215,6 +218,61 @@ public class ScrollingText : MonoBehaviour
 					conversation[i + 1] += " ";
 				}
 			}
+		}
+
+		// A simple parse for storing conversation choices.
+		int chooseMarkerIndex = -1;
+		string[] tempChoices;   // Holds the strings which are considered choices.
+		string[] tempChoicePointers; // Holds the string names of the next conversation for each choice.
+		string[] tempConversation;	// Holds the strings which are not choices.
+		for (int i = 0; i < conversation.Length; i++)
+		{
+			if (conversation[i] == "[CHOOSE]")
+			{
+				chooseMarkerIndex = i;
+				break;
+			}
+		}
+
+		// Set up choices if there is a choice marker.
+		if (chooseMarkerIndex != -1)
+		{
+			// Make the tempChoices and tempConversation arrays.
+			tempChoices = new string[conversation.Length - chooseMarkerIndex - 1];
+			tempChoicePointers = new string[conversation.Length - chooseMarkerIndex - 1];
+			tempConversation = new string[chooseMarkerIndex];
+
+			for (int i = 0; i < tempConversation.Length; i++)
+			{
+				tempConversation[i] = conversation[i];
+			}
+			for (int i = chooseMarkerIndex + 1, j = 0; i < conversation.Length; i++, j++)
+			{
+				tempChoices[j] = conversation[i];
+			}
+
+			// Now we need to lift the name of the conversation each choice starts.
+			// The syntax of a choice is as follows:
+			// "This is the text of the choice|nameOfNextConvo"
+			for (int i = 0; i < tempChoices.Length; i++)
+			{
+				int barIdx = tempChoices[i].IndexOf('|');
+				if (barIdx < 0)
+					Debug.LogError("One of your conversation choices doesn't point to anything! That choice looks like: \"" + tempChoices[i] +
+						"\"   Use | to indicate the name of the conversation you want this choice to go to. Example:  \"Yes|testConversationYes\"");
+				tempChoicePointers[i] = tempChoices[i].Substring(barIdx + 1);
+				tempChoices[i] = tempChoices[i].Substring(0, barIdx);
+			}
+
+			// Set conversation and choices.
+			conversation = tempConversation;
+			choices = tempChoices;
+			choiceConvoPointers = tempChoicePointers;
+		}
+		else // No choice marker? Clear the choices array.
+		{
+			choices = new string[0];
+			choiceConvoPointers = new string[0];
 		}
 	}
 
