@@ -6,7 +6,16 @@ public class ConversationsDB : MonoBehaviour
 {
 	// All conversations are stored in a dictionary, with a string name to look them up by.
 	public static Dictionary<string, string[]> convos = new Dictionary<string, string[]>
-	{
+	{		
+		// This nowhere conversation comes in handy for choices, if you want one of the choices to end the conversation.
+		// Also, don't delete it because parts of the system use it.
+		{
+			"nowhere",
+			new string [0]
+		},
+
+		// Here is a generic test conversation. It loops itself (single choice, points to its own name.)
+		// Also shows off a few of the fun effects.
 		{
 			"testConversation",
 			new string []
@@ -19,14 +28,9 @@ public class ConversationsDB : MonoBehaviour
 				"[rbowwave]This one is my favorite.",
 				"When you want to make a choice, insert the [color]900[CHOOSE][color] tag as the [color]900only thing[color] on a line, everything afterwards will be parsed as a choice",
 				"[CHOOSE]",
-				"[wave]Got it|testConversation"
+				"RANDOM ANSWER|testConversation"
 			}
-		},
-
-		// This nowhere conversation comes in handy for choices, since it will just end the conversation.
-		{
-			"nowhere",
-			new string [0]
 		}
+
 	};
 }

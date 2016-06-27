@@ -66,6 +66,12 @@ public class ScrollingText : MonoBehaviour
 			ApplyConversation(ConversationsDB.convos["testConversation"]);
 		}
 
+		// Ability to cancel a conversation.
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			ApplyConversation(ConversationsDB.convos["nowhere"]);
+		}
+
 		// Skipping line scrolling or advancing a conversation.
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
