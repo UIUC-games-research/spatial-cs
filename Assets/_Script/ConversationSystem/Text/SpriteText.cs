@@ -189,6 +189,7 @@ public class SpriteText : MonoBehaviour
 		rgb = new int[] { -1, -1, -1 };
 		colorCounter = 0;
 		int charactersParsed = 0;
+		int charactersToIgnore = 0;	// Used for word wrapping. Ignores the parsing characters when calculating word length.
 
 		// Parse ease-of-use tags
 		while (txt.text.Contains("[color]"))
@@ -253,6 +254,7 @@ public class SpriteText : MonoBehaviour
             {
 				//Debug.Log("Begin parsing");
 				parsingColor = true;
+				charactersToIgnore += 1;
 				continue;
 			}
 			// Parse color.
@@ -261,6 +263,7 @@ public class SpriteText : MonoBehaviour
 				//Debug.Log("Parsing color");
 				rgb[colorCounter] = (int)i - 48;
 				colorCounter++;
+				charactersToIgnore += 1;
 				continue;
 			}
 			// End parsing.
@@ -269,6 +272,7 @@ public class SpriteText : MonoBehaviour
 				colorCounter = 0;
 				//Debug.Log("Stop parsing");
 				parsingColor = false;
+				charactersToIgnore += 1;
 				continue;
 			}
 
@@ -277,12 +281,14 @@ public class SpriteText : MonoBehaviour
 			if (i == '╡' && !parsingWave)
 			{
 				parsingWave = true;
+				charactersToIgnore += 1;
 				continue;
 			}
 			// End parsing.
 			if (i == '╡' && parsingWave)
 			{
 				parsingWave = false;
+				charactersToIgnore += 1;
 				continue;
 			}
 
@@ -291,12 +297,14 @@ public class SpriteText : MonoBehaviour
 			if (i == '╢' && !parsingShake)
 			{
 				parsingShake = true;
+				charactersToIgnore += 1;
 				continue;
 			}
 			// End parsing.
 			if (i == '╢' && parsingShake)
 			{
 				parsingShake = false;
+				charactersToIgnore += 1;
 				continue;
 			}
 
@@ -305,12 +313,14 @@ public class SpriteText : MonoBehaviour
 			if (i == '╖' && !parsingRandoColor)
 			{
 				parsingRandoColor = true;
+				charactersToIgnore += 1;
 				continue;
 			}
 			// End parsing.
 			if (i == '╖' && parsingRandoColor)
 			{
 				parsingRandoColor = false;
+				charactersToIgnore += 1;
 				continue;
 			}
 
@@ -319,22 +329,24 @@ public class SpriteText : MonoBehaviour
             if (i == '╕' && !parsingRbowWave)
             {
                 parsingRbowWave = true;
-                continue;
+				charactersToIgnore += 1;
+				continue;
             }
             // End parsing.
             if (i == '╕' && parsingRbowWave)
             {
                 parsingRbowWave = false;
-                continue;
+				charactersToIgnore += 1;
+				continue;
             }
 
 
             // CREATING TEXT.
 
 			// Check for word length issues.
-			if (justParsedSpace && i != ' ')
+			if (justParsedSpace && i != ' ' && (scrollController == null || !firstRun))
 			{
-				Debug.Log(txt.text);
+				//Debug.Log(txt.text);
 				//Debug.Log("STARTING SPACING BLOCK");
 				//Debug.Log("Current Char: " + i + " Is char number: " + charactersParsed);
 				// Grab max word length based on rect size.
@@ -361,8 +373,21 @@ public class SpriteText : MonoBehaviour
 				//Debug.Log("Chars remaining in line: " + charsRemaining);
 
 				// Grab current word length.
-				int j = charactersParsed;
-				int charactersToIgnore = 0;
+				// Check to make sure the word doesn't start with an invisible character.
+				int j = charactersParsed + charactersToIgnore;
+				//Debug.Log("Text at " + j + " is: " + txt.text[j] + " or char num: " + (int)(txt.text[j]));
+				
+				if (txt.text[j] == '╡' || txt.text[j] == '╢' || txt.text[j] == '╖' || txt.text[j] == '╕')
+				{
+					charactersToIgnore += 1;
+					Debug.Log("Pushing parse# up 1");
+				}
+				if (txt.text[j] == '┤')
+				{
+					charactersToIgnore += 4;
+				}
+				j = charactersParsed + charactersToIgnore;
+
 				while (j < txt.text.Length && txt.text[j] != ' ' && (j - charactersParsed) < max)
 				{
 					// Special cases for tags to add ignored characters.
@@ -374,14 +399,11 @@ public class SpriteText : MonoBehaviour
 					//{
 					//	charactersToIgnore += 1;
 					//}
-					
 					j++;
 				}
-				int wordLength = j - charactersParsed;
-				charactersParsed += charactersToIgnore;
+				int wordLength = j - charactersParsed - charactersToIgnore;
 
-				//Debug.Log("Word Length: " + wordLength);
-				Debug.Log("Outputting from: " + charactersParsed + " for " + wordLength + " : " + txt.text.Substring(charactersParsed, wordLength));
+				Debug.Log("Word Length: " + wordLength + "   Word: " + txt.text.Substring(charactersParsed + charactersToIgnore, wordLength));
 
 
 				// Force new line by adding spaces if word is too long.
@@ -483,6 +505,6 @@ public class SpriteText : MonoBehaviour
 		}
 		else if (firstRun)
 			firstRun = false;
-
+		
 	}
 }
