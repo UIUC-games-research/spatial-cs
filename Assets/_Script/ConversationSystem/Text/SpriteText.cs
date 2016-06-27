@@ -388,22 +388,14 @@ public class SpriteText : MonoBehaviour
 				}
 				j = charactersParsed + charactersToIgnore;
 
+				// Iterate j up to the end of a word to find its length.
 				while (j < txt.text.Length && txt.text[j] != ' ' && (j - charactersParsed) < max)
 				{
-					// Special cases for tags to add ignored characters.
-					//if (txt.text[j] == '┤' && (j+1) < txt.text.Length && (txt.text[j+1] >= 48 && txt.text[j+1] <= 57))
-					//{
-					//	charactersToIgnore += 4;
-					//}
-					//else if (txt.text[j] == '┤' || txt.text[j] == '╡' || txt.text[j] == '╢' || txt.text[j] == '╖' || txt.text[j] == '╕')
-					//{
-					//	charactersToIgnore += 1;
-					//}
 					j++;
 				}
 				int wordLength = j - charactersParsed - charactersToIgnore;
 
-				Debug.Log("Word Length: " + wordLength + "   Word: " + txt.text.Substring(charactersParsed + charactersToIgnore, wordLength));
+				//Debug.Log("Word Length: " + wordLength + "   Word: " + txt.text.Substring(charactersParsed + charactersToIgnore, wordLength));
 
 
 				// Force new line by adding spaces if word is too long.
@@ -427,6 +419,7 @@ public class SpriteText : MonoBehaviour
 				
 			}
 
+			// Time to actually make the letter we're currently working with.
 			// Grab text index.
 			int index;
 			if (indices.TryGetValue(i.ToString().ToLower()[0], out index) == false)
