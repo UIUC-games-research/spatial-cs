@@ -58,20 +58,6 @@ public class ScrollingText : MonoBehaviour
 
 	void Update()
 	{
-		// DEBUG functionality
-		if (Input.GetKeyDown(KeyCode.R))
-		{
-			//ApplyConversation(new string[] { "Test1", "Test2", "Test3" });
-			//ApplyConversation(new string[] { "[wave]One", "[wave]Two", "[wave]Three", "[CHOOSE]", "[wave]Yes|TestYes", "No|TestNo" });
-			ApplyConversation(ConversationsDB.convos["testConversation"]);
-		}
-
-		// Ability to cancel a conversation.
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			ApplyConversation(ConversationsDB.convos["nowhere"]);
-		}
-
 		// Skipping line scrolling or advancing a conversation.
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
@@ -97,7 +83,7 @@ public class ScrollingText : MonoBehaviour
 				{
 					case 0:
 						// Apply the nowhere conversation to safely end the conversation.
-						ApplyConversation(ConversationsDB.convos["nowhere"]);
+						ConversationController.Disable();
 						break;
 					case 1:
 						// Apply the conversation relating to the only choice.
@@ -106,7 +92,7 @@ public class ScrollingText : MonoBehaviour
 					default:
 						//TODO for now just disable.
 						Debug.Log("Multiple choices not yet implemented. Disabling");
-						ApplyConversation(ConversationsDB.convos["nowhere"]);
+						ConversationController.Disable();
 						break;
 				}
 			}

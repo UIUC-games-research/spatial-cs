@@ -152,7 +152,7 @@ public class InventoryController : MonoBehaviour
 		Vector3 pos = go.transform.localPosition;
 		if (!active)
 		{
-			pos.z = 800;
+			pos.z = 80000;
 			go.transform.localPosition = pos;
 		}
 		else
