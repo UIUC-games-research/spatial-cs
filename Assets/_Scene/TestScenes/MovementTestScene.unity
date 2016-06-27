@@ -1233,10 +1233,8 @@ MonoBehaviour:
   numScrolled: 0
   letterDelay: 0.1
   conversation:
-  - Hello, this is some percentage of a conversation system.
-  - '[rbowwave]It is pretty cool though[rbowwave]'
-  - '[wave][rbowwave]Like, really cool[wave]'
-  - I'll keep working on it.
+  - '[wave]Chrysanthemum test of long words'
+  - '[wave]Chrysanthemum test of long words'
   choices: []
   choiceConvoPointers: []
 --- !u!114 &976644506

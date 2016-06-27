@@ -334,6 +334,7 @@ public class SpriteText : MonoBehaviour
 			// Check for word length issues.
 			if (justParsedSpace && i != ' ')
 			{
+				Debug.Log(txt.text);
 				//Debug.Log("STARTING SPACING BLOCK");
 				//Debug.Log("Current Char: " + i + " Is char number: " + charactersParsed);
 				// Grab max word length based on rect size.
@@ -361,10 +362,26 @@ public class SpriteText : MonoBehaviour
 
 				// Grab current word length.
 				int j = charactersParsed;
-				while (j < txt.text.Length && txt.text[j] != ' ' &&  (j - charactersParsed) < max)
+				int charactersToIgnore = 0;
+				while (j < txt.text.Length && txt.text[j] != ' ' && (j - charactersParsed) < max)
+				{
+					// Special cases for tags to add ignored characters.
+					//if (txt.text[j] == '┤' && (j+1) < txt.text.Length && (txt.text[j+1] >= 48 && txt.text[j+1] <= 57))
+					//{
+					//	charactersToIgnore += 4;
+					//}
+					//else if (txt.text[j] == '┤' || txt.text[j] == '╡' || txt.text[j] == '╢' || txt.text[j] == '╖' || txt.text[j] == '╕')
+					//{
+					//	charactersToIgnore += 1;
+					//}
+					
 					j++;
+				}
 				int wordLength = j - charactersParsed;
+				charactersParsed += charactersToIgnore;
+
 				//Debug.Log("Word Length: " + wordLength);
+				Debug.Log("Outputting from: " + charactersParsed + " for " + wordLength + " : " + txt.text.Substring(charactersParsed, wordLength));
 
 
 				// Force new line by adding spaces if word is too long.

@@ -38,16 +38,19 @@ public class ScrollingText : MonoBehaviour
 			Destroy(this);
 		}
 
-		PrepConversation();
+
 
 		// If the conversation array has any elements, treat this as a conversation with multiple lines and parse any tags it has.
 		// If we don't parse here, everything breaks due to the fact that Unity's text requires us to refresh twice.
 		if (conversation.Length != 0)
 		{
 			conversationMode = true;
-			ParseTags();
+			ParseTags(conversation);
+			PrepConversation();
 			textBase.text = conversation[0];		
 		}
+
+
 
 		// This Start function effectively continues in PrepNextLine to ensure functions are called AFTER the text has been created.
 		// Race conditions, basically. Who knew? Also apparently LateUpdate doesn't work how I thought it did.
@@ -59,7 +62,8 @@ public class ScrollingText : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.R))
 		{
 			//ApplyConversation(new string[] { "Test1", "Test2", "Test3" });
-			ApplyConversation(new string[] { "[wave]One", "[wave]Two", "[wave]Three", "[CHOOSE]", "Yes|TestYes", "No|TestNo" });
+			//ApplyConversation(new string[] { "[wave]One", "[wave]Two", "[wave]Three", "[CHOOSE]", "[wave]Yes|TestYes", "No|TestNo" });
+			ApplyConversation(ConversationsDB.convos["testConversation"]);
 		}
 
 		// Skipping line scrolling or advancing a conversation.
@@ -82,8 +86,23 @@ public class ScrollingText : MonoBehaviour
 			}
 			else
 			{
-				// If we reach this case, the conversation is over and we can disable the text.
-				DisableLetters();
+				// This else clause is for when we reach the end of a conversation. 0 choices means end, 1 choice means direct link, 2+ choices means show choices.
+				switch (choices.Length)
+				{
+					case 0:
+						// Apply the nowhere conversation to safely end the conversation.
+						ApplyConversation(ConversationsDB.convos["nowhere"]);
+						break;
+					case 1:
+						// Apply the conversation relating to the only choice.
+						ApplyConversation(ConversationsDB.convos[choiceConvoPointers[0]]);
+						break;
+					default:
+						//TODO for now just disable.
+						Debug.Log("Multiple choices not yet implemented. Disabling");
+						ApplyConversation(ConversationsDB.convos["nowhere"]);
+						break;
+				}
 			}
 
 		}
@@ -152,54 +171,54 @@ public class ScrollingText : MonoBehaviour
 	}
 
 	// Parse all ease of use tags into their ascii garbage equivalents.
-	void ParseTags ()
+	void ParseTags (string[] conversationArr)
 	{
-		for (int i = 0; i < conversation.Length; i++)
+		for (int i = 0; i < conversationArr.Length; i++)
 		{
-			while (conversation[i].Contains("[color]"))
+			while (conversationArr[i].Contains("[color]"))
 			{
-				StringBuilder tempText = new StringBuilder(conversation[i]);
-				int idxStart = conversation[i].IndexOf("[color]");
+				StringBuilder tempText = new StringBuilder(conversationArr[i]);
+				int idxStart = conversationArr[i].IndexOf("[color]");
 				int numToRemove = 6;
 				tempText.Remove(idxStart, numToRemove);
 				tempText[idxStart] = '┤';
-				conversation[i] = tempText.ToString();
+				conversationArr[i] = tempText.ToString();
 			}
-			while (conversation[i].Contains("[wave]"))
+			while (conversationArr[i].Contains("[wave]"))
 			{
-				StringBuilder tempText = new StringBuilder(conversation[i]);
-				int idxStart = conversation[i].IndexOf("[wave]");
+				StringBuilder tempText = new StringBuilder(conversationArr[i]);
+				int idxStart = conversationArr[i].IndexOf("[wave]");
 				int numToRemove = 5;
 				tempText.Remove(idxStart, numToRemove);
 				tempText[idxStart] = '╡';
-				conversation[i] = tempText.ToString();
+				conversationArr[i] = tempText.ToString();
 			}
-			while (conversation[i].Contains("[shake]"))
+			while (conversationArr[i].Contains("[shake]"))
 			{
-				StringBuilder tempText = new StringBuilder(conversation[i]);
-				int idxStart = conversation[i].IndexOf("[shake]");
+				StringBuilder tempText = new StringBuilder(conversationArr[i]);
+				int idxStart = conversationArr[i].IndexOf("[shake]");
 				int numToRemove = 6;
 				tempText.Remove(idxStart, numToRemove);
 				tempText[idxStart] = '╢';
-				conversation[i] = tempText.ToString();
+				conversationArr[i] = tempText.ToString();
 			}
-			while (conversation[i].Contains("[rando]"))
+			while (conversationArr[i].Contains("[rando]"))
 			{
-				StringBuilder tempText = new StringBuilder(conversation[i]);
-				int idxStart = conversation[i].IndexOf("[rando]");
+				StringBuilder tempText = new StringBuilder(conversationArr[i]);
+				int idxStart = conversationArr[i].IndexOf("[rando]");
 				int numToRemove = 6;
 				tempText.Remove(idxStart, numToRemove);
 				tempText[idxStart] = '╖';
-				conversation[i] = tempText.ToString();
+				conversationArr[i] = tempText.ToString();
 			}
-			while (conversation[i].Contains("[rbowwave]"))
+			while (conversationArr[i].Contains("[rbowwave]"))
 			{
-				StringBuilder tempText = new StringBuilder(conversation[i]);
-				int idxStart = conversation[i].IndexOf("[rbowwave]");
+				StringBuilder tempText = new StringBuilder(conversationArr[i]);
+				int idxStart = conversationArr[i].IndexOf("[rbowwave]");
 				int numToRemove = 9;
 				tempText.Remove(idxStart, numToRemove);
 				tempText[idxStart] = '╕';
-				conversation[i] = tempText.ToString();
+				conversationArr[i] = tempText.ToString();
 			}
 		}
 	}
@@ -279,12 +298,27 @@ public class ScrollingText : MonoBehaviour
 	// A function so other scripts can provide a conversation to play.
 	public void ApplyConversation(string[] newConversation)
 	{
-		// Silly glitch again with no-op text assignment. See above function.
-		if (newConversation[0] == textBase.text)
-			newConversation[0] += " ";
+		if (newConversation.Length == 0)
+		{
+			DisableLetters();
+			choices = new string[0];
+			choiceConvoPointers = new string[0];
+		}
+		else
+		{
+			ParseTags(newConversation);
+
+			// Silly glitch again with no-op text assignment. See above function.
+			if (newConversation[0] == textBase.text)
+				newConversation[0] += " ";
+		}
 
 		conversation = newConversation;
 		Reset();
+
+		// Extra work for nowhere conversations... Can't exactly "scroll" nothing.
+		if (conversation.Length == 0)
+			scrolling = false;
 	}
 
 	// Resets the conversation to the very beginning.
