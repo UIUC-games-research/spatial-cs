@@ -30,6 +30,18 @@ public class ConversationsDB : MonoBehaviour
 				"[CHOOSE]",
 				"RANDOM ANSWER|testConversation"
 			}
+		},
+
+		// A test of choices.
+		{
+			"choiceTest",
+			new string []
+			{
+				"This is a test of the choice system.",
+				"[CHOOSE]",
+				"Okay|nowhere",
+				"What?|choiceTest"
+			}
 		}
 
 	};

@@ -9,8 +9,7 @@ public class ConversationTrigger : MonoBehaviour
 	public enum TriggerType { SimpleTrigger, Automatic};
 	public TriggerType trigger;
 
-	[Header("Simple Trigger")]
-	public Collider hitbox;
+
 
 	void OnTriggerEnter(Collider other)
 	{

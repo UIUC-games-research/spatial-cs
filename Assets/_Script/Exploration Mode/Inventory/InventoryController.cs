@@ -41,7 +41,8 @@ public class InventoryController : MonoBehaviour
 	void Start ()
 	{
 		// Grabbing references.
-		player = Reference.Instance().player;
+		//player = Reference.Instance().player;
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>();
 		//tabButtonY = tabButtons[1].transform.localPosition.y;
 
 		// Will be closed on run, so disable all menus.

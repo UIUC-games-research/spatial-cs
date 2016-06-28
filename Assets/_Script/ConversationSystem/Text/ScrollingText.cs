@@ -24,8 +24,16 @@ public class ScrollingText : MonoBehaviour
 	public float letterDelay = 0.1f; // The time between letters appearing.
 	public string[] conversation;		// The basic conversation which scrolls across the screen.
 	public string[] choices;			// Choices, separated from the original conversation before scrolling even begins.
-	public string[] choiceConvoPointers;	// Where those choices point to, also separated from the original conversation.
+	public string[] choiceConvoPointers;    // Where those choices point to, also separated from the original conversation.
 
+	// All of the things required for choices to work.
+	public Image choiceContainer;
+	GameObject choiceButton;
+
+	void Awake ()
+	{
+		choiceButton = Resources.Load<GameObject>("Prefabs/ChoiceButton");
+	}
 
 	void Start ()
 	{
@@ -59,7 +67,7 @@ public class ScrollingText : MonoBehaviour
 	void Update()
 	{
 		// Skipping line scrolling or advancing a conversation.
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
 		{
 			if (scrolling)
 			{
@@ -90,9 +98,8 @@ public class ScrollingText : MonoBehaviour
 						ApplyConversation(ConversationsDB.convos[choiceConvoPointers[0]]);
 						break;
 					default:
-						//TODO for now just disable.
-						Debug.Log("Multiple choices not yet implemented. Disabling");
-						ConversationController.Disable();
+						// More than 1 choice, so show them.
+						ShowChoices();
 						break;
 				}
 			}
@@ -275,6 +282,8 @@ public class ScrollingText : MonoBehaviour
 				tempChoices[i] = tempChoices[i].Substring(0, barIdx);
 			}
 
+			//TODO further parse the choice pointers for tokens, which are OPTIONAL.
+
 			// Set conversation and choices.
 			conversation = tempConversation;
 			choices = tempChoices;
@@ -306,11 +315,39 @@ public class ScrollingText : MonoBehaviour
 		}
 
 		conversation = newConversation;
+		DeleteChoices();
 		Reset();
 
 		// Extra work for nowhere conversations... Can't exactly "scroll" nothing.
 		if (conversation.Length == 0)
+		{
 			scrolling = false;
+			ConversationController.SoftDisable();
+		}
+	}
+
+	public void ShowChoices()
+	{
+		// Only create the choice buttons if they don't already exist.
+		if (choiceContainer.GetComponentsInChildren<Button>().Length == 0)
+		{
+			for (int ii = 0; ii < choices.Length; ii++)
+			{
+				GameObject instance = Instantiate(choiceButton);
+				ChoiceButtonBridge cbb = instance.GetComponent<ChoiceButtonBridge>();
+				cbb.choiceText = choices[ii];
+				cbb.choicePointer = choiceConvoPointers[ii];
+				instance.transform.SetParent(choiceContainer.transform, false);
+			}
+		}
+	}
+
+	public void DeleteChoices()
+	{
+		foreach (Button ii in choiceContainer.GetComponentsInChildren<Button>())
+		{
+			Destroy(ii.gameObject);
+		}
 	}
 
 	// Resets the conversation to the very beginning.

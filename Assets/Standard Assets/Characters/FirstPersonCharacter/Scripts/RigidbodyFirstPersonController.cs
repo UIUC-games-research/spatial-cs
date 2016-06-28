@@ -8,6 +8,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
+		// A variable which can be accessed from anywhere and allows for the complete disabling
+		// of this script's input. Useful for inventory, conversation, etc.
+		public static bool allowMovement = true;
+
         [Serializable]
         public class MovementSettings
         {
@@ -133,7 +137,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
 
-            if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
+            if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump && allowMovement)
             {
                 m_Jump = true;
             }
@@ -251,6 +255,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Vector2 GetInput()
         {
+			if (!allowMovement)
+				return Vector2.zero;
             
             Vector2 input = new Vector2
                 {
