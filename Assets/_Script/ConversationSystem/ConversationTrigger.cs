@@ -34,7 +34,7 @@ public class ConversationTrigger : MonoBehaviour
 		if (trigger == TriggerType.Instant || trigger == TriggerType.HardInstant)
 		{
 			timer += Time.deltaTime;
-			if (timer > 0.5f && CheckTokens() && (!ConversationController.currentlyEnabled || trigger == TriggerType.HardInstant))
+			if (timer > 0.25f && CheckTokens() && (!ConversationController.currentlyEnabled || trigger == TriggerType.HardInstant))
 			{
 				timer = 0f;
 				if (trigger == TriggerType.HardInstant)

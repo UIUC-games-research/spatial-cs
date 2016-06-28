@@ -2126,7 +2126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfStarter: '[rando][color]909Hard Instant'
+  nameOfStarter: '[shake]Hard Instant'
   conversationName: hardInstantTest
   trigger: 2
   tokenWhitelist:

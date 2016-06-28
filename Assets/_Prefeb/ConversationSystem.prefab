@@ -91,11 +91,11 @@ MonoBehaviour:
   leadingMultiplier: 1
   allowColor: 1
   allowWave: 1
-  wavePower: 10
+  wavePower: 3
   waveTimeOffset: 0.1
   waveSpeed: 4
   allowShake: 1
-  shakePower: 5
+  shakePower: 2
   allowRandoColor: 1
   randoColorRGBWeights:
   - 1
@@ -103,7 +103,7 @@ MonoBehaviour:
   - 1
   allowRbowWave: 1
   rbowWaveTimeOffset: 0.1
-  rbowWaveSpeed: 4
+  rbowWaveSpeed: 2
   unprocessedText: 
 --- !u!114 &11405340
 MonoBehaviour:
