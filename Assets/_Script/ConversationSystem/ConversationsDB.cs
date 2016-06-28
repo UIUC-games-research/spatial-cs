@@ -42,6 +42,62 @@ public class ConversationsDB : MonoBehaviour
 				"Okay|nowhere",
 				"What?|choiceTest"
 			}
+		},
+
+		// A test of choice tokens.
+		{
+			"tokenTest",
+			new string []
+			{
+				"This is a token test. Respond with yes and then talk to the nearby platform.",
+				"You can also press 'I' now to test the Hard Instant trigger.",
+				"[CHOOSE]",
+				"Yes|nowhere|tokenTestToken",
+				"No|nowhere"
+			}
+		},
+
+		// For when you do not have the "tokenTestToken"
+		{
+			"tokenTestNegative",
+			new string []
+			{
+				"You have either not talked to the nearby platform, or responded no to it."
+			}
+		},
+
+		// For when you have the "tokenTestToken"
+		{
+			"tokenTestPositive",
+			new string []
+			{
+				"You have talked to the platform near this one, and responded yes!"
+			}
+		},
+
+		// Test conversation for an Instant trigger.
+		{
+			"instantTest",
+			new string []
+			{
+				"This is an instant conversation.",
+				"It happens automatically, but only when not already in a conversation.",
+				"[CHOOSE]",
+				"nowhere|nowhere|instantTestDone"
+			}
+		},
+
+		// Test conversation for a Hard Instant trigger.
+		{
+			"hardInstantTest",
+			new string []
+			{
+				"This is a hard instant conversation.",
+				"It will happen as soon as its conditons are met, no matter what.",
+				"This also means it will override any current conversation you are in.",
+				"[CHOOSE]",
+				"nowhere|nowhere|hardInstantTestDone"
+			}
 		}
 
 	};

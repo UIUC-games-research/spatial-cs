@@ -21,6 +21,8 @@ public class ConversationController : MonoBehaviour
 	// Internal variables.
 	static float sensitivityXTemp = 0; // Used to store sensitivity settings while conversation is open.
 	static float sensitivityYTemp = 0;
+	public static bool currentlyEnabled = false;
+	public static string currentConversationName = "";
 
 	void Start ()
 	{
@@ -47,6 +49,11 @@ public class ConversationController : MonoBehaviour
 		{
 			Disable();
 		}
+
+		if (Input.GetKeyDown(KeyCode.I) && currentConversationName == "tokenTest")
+		{
+			ConversationTrigger.tokens.Add("hardInstantTest");
+		}
 	}
 
 
@@ -55,8 +62,10 @@ public class ConversationController : MonoBehaviour
 	public static void Disable()
 	{
 		textBox.ApplyConversation(ConversationsDB.convos["nowhere"]);
+		currentConversationName = "nowhere";
 		SetStarterName("");
 		FakeActive(thisObject, false);
+		currentlyEnabled = false;
 		LockMouse();
 	}
 
@@ -65,7 +74,9 @@ public class ConversationController : MonoBehaviour
 	// It allows the box to close safely.
 	public static void SoftDisable()
 	{
+		currentConversationName = "nowhere";
 		FakeActive(thisObject, false);
+		currentlyEnabled = false;
 		LockMouse();
 		SetStarterName("");
 	}
@@ -74,12 +85,14 @@ public class ConversationController : MonoBehaviour
 	public static void Enable(string conversationName)
 	{
 		textBox.ApplyConversation(ConversationsDB.convos[conversationName]);
+		currentConversationName = conversationName;
 		if (conversationName == "nowhere")
 		{
 			SoftDisable();
 			return;
 		}
 		FakeActive(thisObject, true);
+		currentlyEnabled = true;
 		AllowMouse();
 	}
 
@@ -87,6 +100,7 @@ public class ConversationController : MonoBehaviour
 	public static void Enable(string conversationName, string conversationStarter)
 	{
 		textBox.ApplyConversation(ConversationsDB.convos[conversationName]);
+		currentConversationName = conversationName;
 		if (conversationName == "nowhere")
 		{
 			SoftDisable();
@@ -94,6 +108,7 @@ public class ConversationController : MonoBehaviour
 		}
 		SetStarterName(conversationStarter);
 		FakeActive(thisObject, true);
+		currentlyEnabled = true;
 		AllowMouse();
 	}
 
@@ -101,6 +116,7 @@ public class ConversationController : MonoBehaviour
 	public static void Enable(ConversationTrigger trigger)
 	{
 		textBox.ApplyConversation(ConversationsDB.convos[trigger.conversationName]);
+		currentConversationName = trigger.conversationName;
 		if (trigger.conversationName == "nowhere")
 		{
 			SoftDisable();
@@ -108,6 +124,7 @@ public class ConversationController : MonoBehaviour
 		}
 		SetStarterName(trigger.nameOfStarter);
 		FakeActive(thisObject, true);
+		currentlyEnabled = true;
 		AllowMouse();
 	}
 

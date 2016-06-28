@@ -25,6 +25,7 @@ public class ScrollingText : MonoBehaviour
 	public string[] conversation;		// The basic conversation which scrolls across the screen.
 	public string[] choices;			// Choices, separated from the original conversation before scrolling even begins.
 	public string[] choiceConvoPointers;    // Where those choices point to, also separated from the original conversation.
+	public string[] choiceTokens;		// Choices can give arbitrary "token" values, allowing for some form of progression.
 
 	// All of the things required for choices to work.
 	public Image choiceContainer;
@@ -95,7 +96,9 @@ public class ScrollingText : MonoBehaviour
 						break;
 					case 1:
 						// Apply the conversation relating to the only choice.
+						// Also make sure to add any token which may be a part of this single choice.
 						ApplyConversation(ConversationsDB.convos[choiceConvoPointers[0]]);
+						ConversationTrigger.tokens.Add(choiceTokens[0]);
 						break;
 					default:
 						// More than 1 choice, so show them.
@@ -242,6 +245,7 @@ public class ScrollingText : MonoBehaviour
 		int chooseMarkerIndex = -1;
 		string[] tempChoices;   // Holds the strings which are considered choices.
 		string[] tempChoicePointers; // Holds the string names of the next conversation for each choice.
+		string[] tempChoiceTokens;	// Holds the string names of the tokens which are added by making the respective choice.
 		string[] tempConversation;	// Holds the strings which are not choices.
 		for (int i = 0; i < conversation.Length; i++)
 		{
@@ -258,6 +262,7 @@ public class ScrollingText : MonoBehaviour
 			// Make the tempChoices and tempConversation arrays.
 			tempChoices = new string[conversation.Length - chooseMarkerIndex - 1];
 			tempChoicePointers = new string[conversation.Length - chooseMarkerIndex - 1];
+			tempChoiceTokens = new string[conversation.Length - chooseMarkerIndex - 1];
 			tempConversation = new string[chooseMarkerIndex];
 
 			for (int i = 0; i < tempConversation.Length; i++)
@@ -282,12 +287,27 @@ public class ScrollingText : MonoBehaviour
 				tempChoices[i] = tempChoices[i].Substring(0, barIdx);
 			}
 
-			//TODO further parse the choice pointers for tokens, which are OPTIONAL.
+			// Further parse the choice pointers for tokens, which are OPTIONAL.
+			for (int i = 0; i < tempChoicePointers.Length; i++)
+			{
+				int barIdx = tempChoicePointers[i].IndexOf('|');
+				if (barIdx < 0)
+				{
+					tempChoiceTokens[i] = "";
+				}
+				else
+				{
+					tempChoiceTokens[i] = tempChoicePointers[i].Substring(barIdx + 1);
+					tempChoicePointers[i] = tempChoicePointers[i].Substring(0, barIdx);
+				}
+			}
 
 			// Set conversation and choices.
 			conversation = tempConversation;
 			choices = tempChoices;
 			choiceConvoPointers = tempChoicePointers;
+			choiceTokens = tempChoiceTokens;
+			
 		}
 		else // No choice marker? Clear the choices array.
 		{
@@ -337,6 +357,7 @@ public class ScrollingText : MonoBehaviour
 				ChoiceButtonBridge cbb = instance.GetComponent<ChoiceButtonBridge>();
 				cbb.choiceText = choices[ii];
 				cbb.choicePointer = choiceConvoPointers[ii];
+				cbb.choiceToken = choiceTokens[ii];
 				instance.transform.SetParent(choiceContainer.transform, false);
 			}
 		}

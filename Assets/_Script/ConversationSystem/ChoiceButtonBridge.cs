@@ -6,6 +6,7 @@ public class ChoiceButtonBridge : MonoBehaviour
 {
 	public string choiceText;
 	public string choicePointer;
+	public string choiceToken;
 
 	void Start()
 	{
@@ -13,6 +14,7 @@ public class ChoiceButtonBridge : MonoBehaviour
 		GetComponent<Button>().onClick.AddListener(() =>    // Adds an event to the button
 		{
 			ConversationController.Enable(choicePointer);
+			ConversationTrigger.tokens.Add(choiceToken);
 		});
 	}
 }
