@@ -159,25 +159,31 @@ public class ConversationController : MonoBehaviour
 	// Also disables player movement.
 	static void AllowMouse()
 	{
-		player.mouseLook.SetCursorLock(false);
-		if (player.mouseLook.XSensitivity != 0)
+		if (player != null)
 		{
-			sensitivityXTemp = player.mouseLook.XSensitivity;
-			sensitivityYTemp = player.mouseLook.YSensitivity;
-		}
-		player.mouseLook.XSensitivity = 0;
-		player.mouseLook.YSensitivity = 0;
+			player.mouseLook.SetCursorLock(false);
+			if (player.mouseLook.XSensitivity != 0)
+			{
+				sensitivityXTemp = player.mouseLook.XSensitivity;
+				sensitivityYTemp = player.mouseLook.YSensitivity;
+			}
+			player.mouseLook.XSensitivity = 0;
+			player.mouseLook.YSensitivity = 0;
 
-		UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = false;
+			UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = false;
+		}
 	}
 
 	// Re-enables all aspects of the player controller.
 	static void LockMouse()
 	{
-		player.mouseLook.SetCursorLock(true);
-		player.mouseLook.XSensitivity = sensitivityXTemp;
-		player.mouseLook.YSensitivity = sensitivityYTemp;
+		if (player != null)
+		{
+			player.mouseLook.SetCursorLock(true);
+			player.mouseLook.XSensitivity = sensitivityXTemp;
+			player.mouseLook.YSensitivity = sensitivityYTemp;
 
-		UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = true;
+			UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = true;
+		}
 	}
 }
