@@ -30,13 +30,19 @@ public class ConversationController : MonoBehaviour
 		// Grab references.
 		thisObject = gameObject;
 		textBox = GetComponentInChildren<ScrollingText>();
-		player = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>();
+		if (GameObject.FindGameObjectWithTag("Player") != null)
+		{
+			player = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>();
+		}
 		starterName = starterNameRef;
 		nameBox = nameBoxRef;
 
 		// Set initial values of sensitivity temps.
-		sensitivityXTemp = player.mouseLook.XSensitivity;
-		sensitivityYTemp = player.mouseLook.YSensitivity;
+		if (player != null)
+		{
+			sensitivityXTemp = player.mouseLook.XSensitivity;
+			sensitivityYTemp = player.mouseLook.YSensitivity;
+		}
 
 		// Disable to start with.
 		FakeActive(gameObject, false);
