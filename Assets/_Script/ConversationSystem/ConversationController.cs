@@ -23,6 +23,7 @@ public class ConversationController : MonoBehaviour
 	static float sensitivityYTemp = 0;
 	public static bool currentlyEnabled = false;
 	public static string currentConversationName = "";
+	public static bool currentEscRule = true;
 
 	void Start ()
 	{
@@ -45,7 +46,7 @@ public class ConversationController : MonoBehaviour
 	void Update ()
 	{
 		// Ability to cancel a conversation.
-		if (Input.GetKeyDown(KeyCode.Escape))
+		if (Input.GetKeyDown(KeyCode.Escape) && currentEscRule)
 		{
 			Disable();
 		}
@@ -112,11 +113,12 @@ public class ConversationController : MonoBehaviour
 		AllowMouse();
 	}
 
-	// Enable the text box, supplying a trigger. This is generally better, since it will also get name information.
+	// Enable the text box, supplying a trigger. This is generally better when possible, since it will set name / escape rule.
 	public static void Enable(ConversationTrigger trigger)
 	{
 		textBox.ApplyConversation(ConversationsDB.convos[trigger.conversationName]);
 		currentConversationName = trigger.conversationName;
+		currentEscRule = trigger.allowEscape;
 		if (trigger.conversationName == "nowhere")
 		{
 			SoftDisable();

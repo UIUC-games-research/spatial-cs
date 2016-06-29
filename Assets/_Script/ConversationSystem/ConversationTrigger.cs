@@ -7,8 +7,12 @@ public class ConversationTrigger : MonoBehaviour
 	[Header("Global Settings")]
 	public string nameOfStarter;
 	public string conversationName;
-	public enum TriggerType { SimpleTrigger, Instant, HardInstant };
+	public bool allowEscape = true;	// If true, you cannot press Esc to quit out of this conversation.
+	public enum TriggerType { SimpleTrigger, ButtonTrigger, Instant, HardInstant };
 	public TriggerType trigger;
+
+	[Header("Button Trigger Settings")]
+	public KeyCode keyRequired;
 
 	[Header("Token Requirements")]
 	public string[] tokenWhitelist;	// Tokens which the player must have for this conversation to trigger.
@@ -24,6 +28,14 @@ public class ConversationTrigger : MonoBehaviour
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player" && trigger == TriggerType.SimpleTrigger && CheckTokens())
+		{
+			ConversationController.Enable(this);
+		}
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		if (other.tag == "Player" && trigger == TriggerType.ButtonTrigger && Input.GetKey(keyRequired) && CheckTokens())
 		{
 			ConversationController.Enable(this);
 		}
