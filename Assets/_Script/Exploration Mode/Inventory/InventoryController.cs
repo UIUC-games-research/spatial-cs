@@ -41,7 +41,8 @@ public class InventoryController : MonoBehaviour
 	void Start ()
 	{
 		// Grabbing references.
-		player = Reference.Instance().player;
+		//player = Reference.Instance().player;
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>();
 		//tabButtonY = tabButtons[1].transform.localPosition.y;
 
 		// Will be closed on run, so disable all menus.
@@ -152,7 +153,7 @@ public class InventoryController : MonoBehaviour
 		Vector3 pos = go.transform.localPosition;
 		if (!active)
 		{
-			pos.z = 800;
+			pos.z = 80000;
 			go.transform.localPosition = pos;
 		}
 		else
