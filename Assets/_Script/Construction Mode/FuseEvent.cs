@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -58,11 +59,11 @@ public class FuseEvent : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		GlobalVariables globalVariables = GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>();
-		globalVariables.hidePasswords();
+		//GlobalVariables globalVariables = GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>();
+		//globalVariables.hidePasswords();
 
 		Button backButton = GameObject.Find ("Back Button").GetComponent<Button>();
-		backButton.onClick.AddListener(() => globalVariables.backToMainScreen());
+		//backButton.onClick.AddListener(() => globalVariables.backToMainScreen());
 		backButton.onClick.AddListener (() => stopLevelTimer());
 		backButton.onClick.AddListener (() => printLevelDataFail());
 
@@ -695,7 +696,7 @@ public class FuseEvent : MonoBehaviour {
 				stopLevelTimer();
 				printLevelData();
 				if(mode != "intro") {
-					GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>().setLevelCompleted(mode);
+					//GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>().setLevelCompleted(mode);
 				}
 				tutorialOn = false;
 				rotatePanelGroup.alpha = 0;
@@ -928,7 +929,8 @@ public class FuseEvent : MonoBehaviour {
 			StartCoroutine(StartLoader());
 		}else{
 			if(mode.Equals ("intro")) {
-				Application.LoadLevel(2);
+				//Application.LoadLevel(2);
+				SceneManager.LoadScene("construction");
 			} 
 		} 
 	}

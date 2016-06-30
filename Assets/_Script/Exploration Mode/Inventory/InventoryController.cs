@@ -75,8 +75,13 @@ public class InventoryController : MonoBehaviour
 	// Defaults to "Inventory" tab.
 	void OpenInventory()
 	{
+		// Check to see if conversation is currently going. Conversations currently take priority over inventory.
+		if (ConversationController.currentlyEnabled)
+			return;
+
 		// Internal Settings.
 		menuOpen = true;
+		UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = false;
 
 		// Player Settings.
 		player.mouseLook.SetCursorLock(false);
@@ -94,6 +99,7 @@ public class InventoryController : MonoBehaviour
 	{
 		// Internal Settings.
 		menuOpen = false;
+		UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = true;
 
 		// Player Settings.
 		player.mouseLook.SetCursorLock(true);
