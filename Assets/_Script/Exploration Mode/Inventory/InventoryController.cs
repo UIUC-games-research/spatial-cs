@@ -33,8 +33,9 @@ public class InventoryController : MonoBehaviour
 	void Awake ()
 	{
 		// Initial recipes unlocked should be placed here.
-		RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe);
-		RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe2);
+		//RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe);
+		//RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe2);
+		RecipesDB.unlockedRecipes.Add(RecipesDB.RocketBoots);
 	}
 
 
@@ -269,7 +270,7 @@ public class InvItem
 public class Recipe
 {
 	public string recipeName;       // Name of recipe.
-	public string recipeDesc;		// Description of recipe.
+	public string recipeDesc;		// Description of recipe. Currently used as scene name to load.
 	public List<InvItem> components = new List<InvItem>();	// List of InvItems which make up the recipe.
 
 	public Recipe(string newName, string newDesc, string[] itemNames, int[] itemQuantities)

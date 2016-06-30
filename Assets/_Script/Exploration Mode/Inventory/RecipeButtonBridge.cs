@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -57,6 +58,11 @@ public class RecipeButtonBridge : MonoBehaviour
 				// Add to object list.
 				recPop.iconsInList.Add(instanceTile);
 			}
+
+			recPop.constructButton.onClick.AddListener(() =>
+			{
+				SceneManager.LoadScene(myRecipe.recipeDesc);
+			});
 		});
 	}
 }

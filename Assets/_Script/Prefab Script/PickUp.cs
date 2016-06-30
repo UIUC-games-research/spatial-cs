@@ -13,11 +13,21 @@ public class PickUp : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        //if (other.gameObject.CompareTag("Player"))
+		if (other.tag == "Player")
         {
 			InventoryController.Add(this, 1);
 			if (respawn)
-                ObjectRespawner.Instance().RespawnOBJ(this.gameObject, respawnTime);
+			{
+				ObjectRespawner.Instance().RespawnOBJ(this.gameObject, respawnTime);
+			}
+			else
+			{
+				// Object still needs to exist for the icon to work.
+				// Silly, but let's just shove it into a corner and forget about it.
+				transform.position = new Vector3(-1000f, -1000f, -1000f);
+			}
+
         }
     }
 
