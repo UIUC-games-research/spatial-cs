@@ -30,6 +30,11 @@ public class InventoryController : MonoBehaviour
 	//public static List<InvItem> items = new List<InvItem>();
 	public static Dictionary<string, InvItem> items = new Dictionary<string, InvItem>();
 
+	// Static references to the current player state, set when pressing the button to enter construction mode.
+	// These are set in the script "RecipeButtonBridge", on the AddListener for the construction button.
+	// Necessary so construction mode knows which scene to dump you back into.
+	public static string levelName = "";
+
 	void Awake ()
 	{
 		// Initial recipes unlocked should be placed here.

@@ -64,6 +64,7 @@ public class FuseEvent : MonoBehaviour {
 
 		Button backButton = GameObject.Find ("Back Button").GetComponent<Button>();
 		//backButton.onClick.AddListener(() => globalVariables.backToMainScreen());
+		backButton.onClick.AddListener(() => SceneManager.LoadScene(InventoryController.levelName));
 		backButton.onClick.AddListener (() => stopLevelTimer());
 		backButton.onClick.AddListener (() => printLevelDataFail());
 
