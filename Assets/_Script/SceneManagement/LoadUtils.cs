@@ -63,6 +63,13 @@ public class LoadUtils : MonoBehaviour
 		// Get scene ref.
 		Scene current = SceneManager.GetActiveScene();
 
+		// Ensure selfRef exists.
+		if (selfRef == null)
+		{
+			GameObject instance = Instantiate(Resources.Load("Prefabs/SceneManager") as GameObject);
+			selfRef = instance.GetComponent<LoadUtils>();
+		}
+
 		// If the scene is already loaded, just switch to it.
 		if (loadedScenes.ContainsKey(sceneName))
 		{
