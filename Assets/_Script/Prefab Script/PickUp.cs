@@ -16,6 +16,7 @@ public class PickUp : MonoBehaviour
 		// We need to rename all the bits under the model of the pickup, if there are any.
 		// The reason for this is names will conflict with names inside construction mode, and
 		// construction mode uses a ton of GameObject.Find... Weird things start to happen!
+		//TODO better fix than this maybe? I've been putting this one off for a while.
 		foreach (Transform ii in GetComponentsInChildren<Transform>())
 		{
 			ii.name = "NAME CHANGED TO PREVENT BUGS";
