@@ -231,7 +231,7 @@ public class CreatePartIntro : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newMid = (GameObject)Instantiate (parts[0], pos, fuseToRotation);
+			GameObject newMid = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
 
 			//fixes off center rotation problem
 			Transform midChild = newMid.transform.FindChild("mid");
@@ -297,7 +297,7 @@ public class CreatePartIntro : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newTop = (GameObject)Instantiate (parts[1], pos, fuseToRotation);
+			GameObject newTop = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
 
 			//fixes off center rotation problem
 			Transform topChild = newTop.transform.FindChild("top");

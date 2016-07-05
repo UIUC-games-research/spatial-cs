@@ -122,9 +122,10 @@ public class LoadUtils : MonoBehaviour
 		currentSceneObject = loadedScenes[sceneName];
 	}
 
-	public static void InstantiateParenter(GameObject toParent)
+	public static GameObject InstantiateParenter(GameObject toParent)
 	{
 		toParent.transform.SetParent(currentSceneObject.transform);
+		return toParent;
 	}
 	
 }
