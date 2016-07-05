@@ -51,16 +51,6 @@ public class ConversationController : MonoBehaviour
 	
 	void Update ()
 	{
-		//TODO REMOVE THIS DEBUG STUFF.
-		if (Input.GetKeyDown(KeyCode.B))
-		{
-			LoadUtils.BundleScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-		}
-		if (Input.GetKeyDown(KeyCode.N))
-		{
-			LoadUtils.LoadScene("construction", this);
-		}
-
 		// Ability to cancel a conversation.
 		if (Input.GetKeyDown(KeyCode.Escape) && currentEscRule)
 		{

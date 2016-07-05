@@ -5,8 +5,19 @@ using System.Collections.Generic;
 
 public class LoadUtils : MonoBehaviour
 {
+	// Store static reference to controller.
+	static LoadUtils selfRef;
+
+	// Store root object of currently loaded scene.
+	static GameObject currentSceneObject;
+
 	// Stores all scenes which have been loaded. Added to in BundleScene whenever a new bundle is created.
 	public static Dictionary<string, GameObject> loadedScenes = new Dictionary<string, GameObject>();
+
+	void Awake()
+	{
+		selfRef = this;
+	}
 
 	// Bundles a scene so it is entirely parented under an empty GameObject named
 	// the same way as the scene. This should be called when loading scenes to ensure
@@ -28,7 +39,7 @@ public class LoadUtils : MonoBehaviour
 		{
 			GameObject gg = (GameObject)ii;
 			Transform tt = gg.transform;
-			if (tt.parent == null && gg.tag != "SceneBundle")
+			if (tt.parent == null && gg.tag != "SceneBundle" && gg.tag != "SceneManager")
 			{
 				tt.parent = sceneBundle.transform;
 			}
@@ -41,29 +52,38 @@ public class LoadUtils : MonoBehaviour
 		}
 	}
 
-	public static void LoadScene(string sceneName, MonoBehaviour caller)
+	// Since the load function requires a coroutine, it's nice to have a wrapper
+	// like this to just call. We could probably do the bundle and get the current
+	// scene ref inside the coroutine, but this is fine.
+	public static void LoadScene(string sceneName)
 	{
-		// Ensure scene is already bundled.
+		// Ensure scene is already bundled properly.
 		BundleScene(SceneManager.GetActiveScene().name);
 
 		// Get scene ref.
 		Scene current = SceneManager.GetActiveScene();
 
-		// Load the scene we are trying to merge.
-		Debug.Log("Running Function.");
-		GameObject dummy = new GameObject();
-		caller.StartCoroutine(Loader(sceneName,current));
+		// If the scene is already loaded, just switch to it.
+		if (loadedScenes.ContainsKey(sceneName))
+		{
+			Debug.Log("Scene already loaded, going back to that one.");
+			selfRef.StartCoroutine(Switcher(sceneName));
+		}
+		else
+		{
+			// Load the scene we are trying to merge.
+			selfRef.StartCoroutine(Loader(sceneName, current));
+		}
 	}
 
+	// Coroutine for loading scenes the silly-but-useful way.
 	static IEnumerator Loader(string sceneName, Scene current)
 	{
 		// Load.
-		Debug.Log("Loading");
 		SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
 		
 		// Wait for it to load.
 		yield return null;
-		Debug.Log("Waited one frame");
 
 		// Merge.
 		Scene toLoad = SceneManager.GetSceneByName(sceneName);
@@ -72,11 +92,39 @@ public class LoadUtils : MonoBehaviour
 		// Bundle.
 		BundleScene(sceneName);
 
-		// Deactivate current scene.
-		loadedScenes[current.name].SetActive(false);
+		// Disable all scenes for a frame to prevent unique objects from yelling.
+		// EventSystems, AudioListeners, and the like. EventSystems are the main problem,
+		// since they are prone to disabling themselves. Jerks.
+		foreach(KeyValuePair<string, GameObject> ii in loadedScenes)
+		{
+			ii.Value.SetActive(false);
+		}
+		yield return null;
+		// Activate the scene we just loaded
+		loadedScenes[sceneName].SetActive(true);
+		currentSceneObject = loadedScenes[sceneName];
 
 		// Give cursor back.
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.None;
 	}
+
+	static IEnumerator Switcher(string sceneName)
+	{
+		// Disable all for safety.
+		foreach (KeyValuePair<string, GameObject> ii in loadedScenes)
+		{
+			ii.Value.SetActive(false);
+		}
+		yield return null;
+		// Activate the scene we want.
+		loadedScenes[sceneName].SetActive(true);
+		currentSceneObject = loadedScenes[sceneName];
+	}
+
+	public static void InstantiateParenter(GameObject toParent)
+	{
+		toParent.transform.SetParent(currentSceneObject.transform);
+	}
+	
 }

@@ -64,13 +64,8 @@ public class RecipeButtonBridge : MonoBehaviour
 				// Save player info before entering.
 				InventoryController.levelName = SceneManager.GetActiveScene().name;
 
-				// TODO remove items from player's inventory... When should this happen?
-				// Talk to Helen about disallowing jumping back and forth between scenes. Would be 1000x easier.
-				// Just have recipes require some amount of energy to start, and you have to finish them before leaving
-				// the mode. Or something like that.
-
 				// Enter.
-				SceneManager.LoadScene(myRecipe.recipeDesc);
+				LoadUtils.LoadScene(myRecipe.recipeDesc);
 			});
 		});
 	}
