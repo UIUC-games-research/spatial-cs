@@ -64,11 +64,7 @@ public class LoadUtils : MonoBehaviour
 		Scene current = SceneManager.GetActiveScene();
 
 		// Ensure selfRef exists.
-		if (selfRef == null)
-		{
-			GameObject instance = Instantiate(Resources.Load("Prefabs/SceneManager") as GameObject);
-			selfRef = instance.GetComponent<LoadUtils>();
-		}
+		EnsureRefExists();
 
 		// If the scene is already loaded, just switch to it.
 		if (loadedScenes.ContainsKey(sceneName))
@@ -112,6 +108,8 @@ public class LoadUtils : MonoBehaviour
 		currentSceneObject = loadedScenes[sceneName];
 
 		// Give cursor back.
+		//! This might actually cause problems in the future if we have a scene change which
+		//! happens between two sections of the game in which the mouse is hidden. We'll see.
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.None;
 	}
@@ -129,9 +127,34 @@ public class LoadUtils : MonoBehaviour
 		currentSceneObject = loadedScenes[sceneName];
 	}
 
+	// This can be a good idea to save memory. Sometimes it may be worth unloading a scene completely,
+	// Losing any progress in that scene since load. For example: Completed Construction-mode stages,
+	// Exploration-mode areas you cannot return to, things like that.
+	public static void UnloadScene(string sceneName)
+	{
+		loadedScenes.Remove(sceneName);
+		Destroy(loadedScenes[sceneName]);
+	}
+
+	static void EnsureRefExists()
+	{
+		if (selfRef == null)
+		{
+			GameObject instance = Instantiate(Resources.Load("Prefabs/SceneManager") as GameObject);
+			selfRef = instance.GetComponent<LoadUtils>();
+		}
+	}
+
 	public static GameObject InstantiateParenter(GameObject toParent)
 	{
 		toParent.transform.SetParent(currentSceneObject.transform);
+		return toParent;
+	}
+
+	public static GameObject IconParenter(GameObject toParent)
+	{
+		EnsureRefExists();
+		toParent.transform.SetParent(selfRef.transform);
 		return toParent;
 	}
 	
