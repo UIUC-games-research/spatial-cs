@@ -79,7 +79,7 @@ public class InventoryController : MonoBehaviour
 	}
 
 	// Defaults to "Inventory" tab.
-	void OpenInventory()
+	public void OpenInventory()
 	{
 		// Check to see if conversation is currently going. Conversations currently take priority over inventory.
 		if (ConversationController.currentlyEnabled)
@@ -101,7 +101,7 @@ public class InventoryController : MonoBehaviour
 		SwitchToInv();
 	}
 
-	void CloseInventory()
+	public void CloseInventory()
 	{
 		// Internal Settings.
 		menuOpen = false;

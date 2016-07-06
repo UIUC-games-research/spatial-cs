@@ -110,8 +110,8 @@ public class LoadUtils : MonoBehaviour
 		// Give cursor back.
 		//! This might actually cause problems in the future if we have a scene change which
 		//! happens between two sections of the game in which the mouse is hidden. We'll see.
-		Cursor.visible = true;
-		Cursor.lockState = CursorLockMode.None;
+		//Cursor.visible = true;
+		//Cursor.lockState = CursorLockMode.None;
 	}
 
 	static IEnumerator Switcher(string sceneName)
