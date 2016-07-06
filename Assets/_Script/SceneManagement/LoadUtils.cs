@@ -147,7 +147,10 @@ public class LoadUtils : MonoBehaviour
 
 	public static GameObject InstantiateParenter(GameObject toParent)
 	{
-		toParent.transform.SetParent(currentSceneObject.transform);
+		if (currentSceneObject != null)
+		{
+			toParent.transform.SetParent(currentSceneObject.transform);
+		}
 		return toParent;
 	}
 
