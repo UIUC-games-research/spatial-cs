@@ -359,7 +359,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = Quaternion.Euler (90, 270, 0);
-			GameObject newAxle = (GameObject)Instantiate (parts[0], pos, fuseToRotation);
+			GameObject newAxle = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
 			
 			Transform axleLeftSupportAttach = newAxle.transform.FindChild("axle_left_support_attach");
 			Transform axleRightSupportAttach = newAxle.transform.FindChild("axle_right_support_attach");
@@ -404,7 +404,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,270,0);
-			GameObject newThrowingArm = (GameObject)Instantiate (parts[1], pos, fuseToRotation);
+			GameObject newThrowingArm = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
 			
 			Transform throwingArmAxleLeftAttach = newThrowingArm.transform.FindChild("throwing_arm_axle_left_attach");
 			Transform throwingArmAxleRightAttach = newThrowingArm.transform.FindChild("throwing_arm_axle_right_attach");
@@ -439,7 +439,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,0);
-			GameObject newRightSupport = (GameObject)Instantiate (parts[2], pos, fuseToRotation);	
+			GameObject newRightSupport = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation));	
 			
 			Transform rightSupportAxleAttach = newRightSupport.transform.FindChild("right_support_axle_attach");
 			Transform rightSupportPlatformAttach = newRightSupport.transform.FindChild("right_support_platform_attach");
@@ -469,7 +469,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (180,90,0);
-			GameObject newBackAxle = (GameObject)Instantiate (parts[3], pos, fuseToRotation);
+			GameObject newBackAxle = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
 			
 			Transform backAxleFrontAxleAttach = newBackAxle.transform.FindChild("back_axle_front_axle_attach");
 			Transform backAxlePlatformLeftAttach = newBackAxle.transform.FindChild("back_axle_platform_left_attach");
@@ -514,7 +514,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,180, 90);		
-			GameObject newFrontAxle = (GameObject)Instantiate (parts[4], pos, fuseToRotation);
+			GameObject newFrontAxle = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
 			
 			Transform frontAxleBackAxleAttach = newFrontAxle.transform.FindChild("front_axle_back_axle_attach");
 			Transform frontAxleFrontLeftWheelAttach = newFrontAxle.transform.FindChild("front_axle_front_left_wheel_attach");
@@ -559,7 +559,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,90);		
-			GameObject newLeftSupport = (GameObject)Instantiate (parts[5], pos, fuseToRotation);
+			GameObject newLeftSupport = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[5], pos, fuseToRotation));
 			
 			Transform leftSupportAxleAttach = newLeftSupport.transform.FindChild("left_support_axle_attach");
 			Transform leftSupportPlatformAttach = newLeftSupport.transform.FindChild("left_support_platform_attach");
@@ -589,7 +589,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();		
-			GameObject newFrontLeftWheel = (GameObject)Instantiate (parts[6], pos, fuseToRotation);
+			GameObject newFrontLeftWheel = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[6], pos, fuseToRotation));
 			
 			Transform frontLeftWheelFrontAxleAttach = newFrontLeftWheel.transform.FindChild("front_left_wheel_front_axle_attach");
 
@@ -614,7 +614,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();		
-			GameObject newBackRightWheel = (GameObject)Instantiate (parts[7], pos, fuseToRotation);
+			GameObject newBackRightWheel = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[7], pos, fuseToRotation));
 			
 			Transform backRightWheelBackAxleAttach = newBackRightWheel.transform.FindChild("back_right_wheel_back_axle_attach");
 

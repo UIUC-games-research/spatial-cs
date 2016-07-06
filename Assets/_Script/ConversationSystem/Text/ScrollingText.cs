@@ -88,22 +88,25 @@ public class ScrollingText : MonoBehaviour
 			else
 			{
 				// This else clause is for when we reach the end of a conversation. 0 choices means end, 1 choice means direct link, 2+ choices means show choices.
-				switch (choices.Length)
+				if (ConversationController.currentlyEnabled)
 				{
-					case 0:
-						// Apply the nowhere conversation to safely end the conversation.
-						ConversationController.Disable();
-						break;
-					case 1:
-						// Apply the conversation relating to the only choice.
-						// Also make sure to add any token which may be a part of this single choice.
-						ApplyConversation(ConversationsDB.convos[choiceConvoPointers[0]]);
-						ConversationTrigger.tokens.Add(choiceTokens[0]);
-						break;
-					default:
-						// More than 1 choice, so show them.
-						ShowChoices();
-						break;
+					switch (choices.Length)
+					{
+						case 0:
+							// Apply the nowhere conversation to safely end the conversation.
+							ConversationController.Disable();
+							break;
+						case 1:
+							// Apply the conversation relating to the only choice.
+							// Also make sure to add any token which may be a part of this single choice.
+							ApplyConversation(ConversationsDB.convos[choiceConvoPointers[0]]);
+							ConversationTrigger.tokens.Add(choiceTokens[0]);
+							break;
+						default:
+							// More than 1 choice, so show them.
+							ShowChoices();
+							break;
+					}
 				}
 			}
 

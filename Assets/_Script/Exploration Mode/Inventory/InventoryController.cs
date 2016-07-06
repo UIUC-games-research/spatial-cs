@@ -30,11 +30,17 @@ public class InventoryController : MonoBehaviour
 	//public static List<InvItem> items = new List<InvItem>();
 	public static Dictionary<string, InvItem> items = new Dictionary<string, InvItem>();
 
+	// Static references to the current player state, set when pressing the button to enter construction mode.
+	// These are set in the script "RecipeButtonBridge", on the AddListener for the construction button.
+	// Necessary so construction mode knows which scene to dump you back into.
+	public static string levelName = "";
+
 	void Awake ()
 	{
 		// Initial recipes unlocked should be placed here.
-		RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe);
-		RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe2);
+		//RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe);
+		//RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe2);
+		RecipesDB.unlockedRecipes.Add(RecipesDB.RocketBoots);
 	}
 
 
@@ -73,10 +79,15 @@ public class InventoryController : MonoBehaviour
 	}
 
 	// Defaults to "Inventory" tab.
-	void OpenInventory()
+	public void OpenInventory()
 	{
+		// Check to see if conversation is currently going. Conversations currently take priority over inventory.
+		if (ConversationController.currentlyEnabled)
+			return;
+
 		// Internal Settings.
 		menuOpen = true;
+		UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = false;
 
 		// Player Settings.
 		player.mouseLook.SetCursorLock(false);
@@ -90,10 +101,11 @@ public class InventoryController : MonoBehaviour
 		SwitchToInv();
 	}
 
-	void CloseInventory()
+	public void CloseInventory()
 	{
 		// Internal Settings.
 		menuOpen = false;
+		UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = true;
 
 		// Player Settings.
 		player.mouseLook.SetCursorLock(true);
@@ -263,7 +275,7 @@ public class InvItem
 public class Recipe
 {
 	public string recipeName;       // Name of recipe.
-	public string recipeDesc;		// Description of recipe.
+	public string recipeDesc;		// Description of recipe. Currently used as scene name to load.
 	public List<InvItem> components = new List<InvItem>();	// List of InvItems which make up the recipe.
 
 	public Recipe(string newName, string newDesc, string[] itemNames, int[] itemQuantities)

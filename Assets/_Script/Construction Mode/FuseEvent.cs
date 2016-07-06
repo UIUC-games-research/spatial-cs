@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -33,6 +34,7 @@ public class FuseEvent : MonoBehaviour {
 
 	public Text congrats;
 	public Text getPassword;
+	public Button claimItem;	// NEW ADDITION. A button which appears upon completion of an item to claim it in exploration mode.
 	public GameObject victoryPrefab;
 	public CanvasGroup rotatePanelGroup;
 	public CanvasGroup bottomPanelGroup;
@@ -58,13 +60,44 @@ public class FuseEvent : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		GlobalVariables globalVariables = GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>();
-		globalVariables.hidePasswords();
+		//GlobalVariables globalVariables = GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>();
+		//globalVariables.hidePasswords();
 
 		Button backButton = GameObject.Find ("Back Button").GetComponent<Button>();
-		backButton.onClick.AddListener(() => globalVariables.backToMainScreen());
-		backButton.onClick.AddListener (() => stopLevelTimer());
-		backButton.onClick.AddListener (() => printLevelDataFail());
+		//backButton.onClick.AddListener(() => globalVariables.backToMainScreen());
+		backButton.onClick.AddListener(() => LoadUtils.LoadScene(InventoryController.levelName));
+
+		// Had to disable this level data stuff, things were breaking when you quit out of a level before completeing it.
+		//backButton.onClick.AddListener (() => stopLevelTimer());
+		//backButton.onClick.AddListener (() => printLevelDataFail());
+
+		// New addition for claim item button.
+		if (claimItem != null)
+		{
+			claimItem.onClick.AddListener(() => {
+				switch (mode)
+				{
+					case "boot":
+						RocketBoots.ActivateBoots();
+						InventoryController.items.Remove("Rocket Boots Sole");
+						InventoryController.items.Remove("Rocket Boots Toe Sole");
+						InventoryController.items.Remove("Rocket Boots Toe");
+						InventoryController.items.Remove("Rocket Boots Trim");
+						InventoryController.items.Remove("Rocket Boots Calf");
+						InventoryController.items.Remove("Rocket Boots Body");
+						RecipesDB.unlockedRecipes.Remove(RecipesDB.RocketBoots);
+						LoadUtils.LoadScene(InventoryController.levelName);
+						LoadUtils.UnloadScene("construction");
+						break;
+					default:
+						Debug.Log("Not Yet Implemented: " + mode);
+						break;
+				}
+
+
+			});
+			claimItem.gameObject.SetActive(false);
+		}
 
 		fuseCount = 0;
 		createFuseMapping();
@@ -695,7 +728,7 @@ public class FuseEvent : MonoBehaviour {
 				stopLevelTimer();
 				printLevelData();
 				if(mode != "intro") {
-					GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>().setLevelCompleted(mode);
+					//GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>().setLevelCompleted(mode);
 				}
 				tutorialOn = false;
 				rotatePanelGroup.alpha = 0;
@@ -703,6 +736,8 @@ public class FuseEvent : MonoBehaviour {
 				congratsPanelGroup.GetComponent<Image>().CrossFadeAlpha(255, 4, false);
 				finishedImage.enabled = false;
 				congrats.enabled = true;
+				GameObject.Find("Back Button").SetActive(false);
+				claimItem.gameObject.SetActive(true);
 				musicSource.Stop();
 				mainCam.transform.position = new Vector3(-90,80,-3.36f);
 				mainCam.transform.rotation = Quaternion.Euler(new Vector3(15,0,0));
@@ -928,7 +963,8 @@ public class FuseEvent : MonoBehaviour {
 			StartCoroutine(StartLoader());
 		}else{
 			if(mode.Equals ("intro")) {
-				Application.LoadLevel(2);
+				//Application.LoadLevel(2);
+				SceneManager.LoadScene("construction");
 			} 
 		} 
 	}
@@ -1050,6 +1086,13 @@ public class FuseEvent : MonoBehaviour {
 	void Update () {
 		if(!tutorialOn && done ()) {
 			playVictory ();
+		}
+
+		// Ensure mouse works...
+		if (!Cursor.visible || Cursor.lockState != CursorLockMode.None)
+		{
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
 		}
 	}
 }

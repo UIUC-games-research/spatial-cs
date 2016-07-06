@@ -219,7 +219,7 @@ public class CreatePartEngine : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = Quaternion.Euler (90,90,0);
-			GameObject newEngineFront = (GameObject)Instantiate (parts[0], pos, fuseToRotation);
+			GameObject newEngineFront = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
 			
 			Transform engineFrontEngineBaseAttach = newEngineFront.transform.FindChild("engine_front_engine_base_attach");
 
@@ -244,7 +244,7 @@ public class CreatePartEngine : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newEngineTop = (GameObject)Instantiate (parts[1], pos, fuseToRotation);
+			GameObject newEngineTop = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
 			
 			Transform engineTopEngineBaseAttach = newEngineTop.transform.FindChild("engine_top_engine_base_attach");
 		
@@ -269,7 +269,7 @@ public class CreatePartEngine : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,90);
-			GameObject newEngineLeft = (GameObject)Instantiate (parts[2], pos, fuseToRotation);	
+			GameObject newEngineLeft = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation));	
 			
 			Transform engineLeftEngineBaseAttach = newEngineLeft.transform.FindChild("engine_left_engine_base_attach");
 	
@@ -294,7 +294,7 @@ public class CreatePartEngine : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newEngineTopRight = (GameObject)Instantiate (parts[3], pos, fuseToRotation);
+			GameObject newEngineTopRight = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
 			
 			Transform engineTopRightEngineBaseAttach = newEngineTopRight.transform.FindChild("engine_top_right_engine_base_attach");
 
@@ -319,7 +319,7 @@ public class CreatePartEngine : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);		
-			GameObject newEngineRight = (GameObject)Instantiate (parts[4], pos, fuseToRotation);
+			GameObject newEngineRight = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
 			
 			Transform engineRightEngineBaseAttach = newEngineRight.transform.FindChild("engine_right_engine_base_attach");
 

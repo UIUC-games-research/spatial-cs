@@ -55,10 +55,15 @@ public class InventoryPopulator : MonoBehaviour
 		// dedicated UI camera.
 		GameObject icon = Instantiate(iconBase);
 		icon.transform.SetParent(parent);
-		icon.transform.localPosition = new Vector3(0f, 0f, -10f);		// Arbitrary.
-		icon.transform.localScale = icon.transform.localScale / 4;		// Arbitrary.
-		icon.layer = 5;		// UI layer.
-		Destroy(icon.GetComponent<PickUp>());	// Don't want to be able to actually collect it out of the menu.
+		icon.transform.localPosition = new Vector3(0f, 4f, -10f);		// Arbitrary.
+		icon.transform.localScale = icon.transform.localScale / 2;      // Arbitrary.
+		foreach (Transform ii in icon.GetComponentsInChildren<Transform>())
+		{
+			//icon.layer = 5;     // UI layer.
+			ii.gameObject.layer = 5;
+		}
+		Destroy(icon.GetComponent<PickUp>());   // Don't want to be able to actually collect it out of the menu.
+		Destroy(icon.GetComponent<ParticleSystem>());	// Or else the inventory becomes a rave party.
 		icon.SetActive(true);		// Often spawns in disabled, for some unknown reason.
 	}
 }

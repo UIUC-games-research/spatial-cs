@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,15 +12,19 @@ public class RecipeButtonBridge : MonoBehaviour
 	// References.
 	public Recipe myRecipe;	// Set on creation by RecipePopulator.
 	public RecipePopulator recPop; // Same as above.
+	InventoryController invController;
 	Sprite questionMark;
 
 	void Awake ()
 	{
 		questionMark = Resources.Load<Sprite>("UI_Elements/QuestionMark");
+
 	}
 
 	void Start ()
 	{
+		invController = transform.parent.parent.parent.GetComponent<InventoryController>();
+
 		GetComponent<Button>().onClick.AddListener(() =>    // Adds an event to the button
 		{
 			//Debug.Log("Recipe Button Pressed: " + myRecipe.recipeName);
@@ -57,6 +62,24 @@ public class RecipeButtonBridge : MonoBehaviour
 				// Add to object list.
 				recPop.iconsInList.Add(instanceTile);
 			}
+
+			recPop.constructButton.onClick.AddListener(() =>
+			{
+				// Save player info before entering.
+				InventoryController.levelName = SceneManager.GetActiveScene().name;
+
+				// Close the inventory for safety on updates.
+				//invController.CloseInventory();
+
+				// Ensure cursor is active.
+				//Cursor.visible = true;
+				//Cursor.lockState = CursorLockMode.None;
+
+				// Enter.
+				LoadUtils.LoadScene(myRecipe.recipeDesc);
+
+				invController.CloseInventory();
+			});
 		});
 	}
 }

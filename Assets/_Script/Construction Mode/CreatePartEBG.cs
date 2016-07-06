@@ -384,7 +384,7 @@ public class CreatePartEBG : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newBody = (GameObject)Instantiate (parts[0], pos, fuseToRotation);
+			GameObject newBody = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
 			lastCreatedPart = newBody;
 
 			Transform bodyGripAttach = newBody.transform.FindChild("body_grip_attach");
@@ -427,7 +427,7 @@ public class CreatePartEBG : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newGrip = (GameObject)Instantiate (parts[1], pos, fuseToRotation);
+			GameObject newGrip = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
 			lastCreatedPart = newGrip;
 
 			Transform gripBaseAttach = newGrip.transform.FindChild("grip_base_attach");
@@ -459,7 +459,7 @@ public class CreatePartEBG : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler(270,0,0);
-			GameObject newStrut = (GameObject)Instantiate (parts[2], pos, fuseToRotation);	
+			GameObject newStrut = LoadUtils.InstantiateParenter((GameObject)Instantiate(parts[2], pos, fuseToRotation));	
 			lastCreatedPart = newStrut;
 
 			Transform strutTopBodyAttach = newStrut.transform.FindChild("strut_top_body_attach");
@@ -498,7 +498,7 @@ public class CreatePartEBG : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newGen = (GameObject)Instantiate (parts[3], pos, fuseToRotation);
+			GameObject newGen = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
 			lastCreatedPart = newGen;
 
 			Transform energy = newGen.transform.FindChild("top_energy");
@@ -537,7 +537,7 @@ public class CreatePartEBG : MonoBehaviour {
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler(270,0,0);
 
-			GameObject newPointy = (GameObject)Instantiate (parts[4], pos, fuseToRotation);
+			GameObject newPointy = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
 			lastCreatedPart = newPointy;
 
 			Transform pointyStrutTopAttach = newPointy.transform.FindChild("pointy_strut_top_attach");

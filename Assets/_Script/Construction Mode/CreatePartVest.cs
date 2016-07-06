@@ -251,7 +251,7 @@ public class CreatePartVest : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,90);
-			GameObject newLeftStrap = (GameObject)Instantiate (parts[1], pos, fuseToRotation);
+			GameObject newLeftStrap = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
 			
 			Transform backStraLongBackStrapShortAttach = newLeftStrap.transform.FindChild("back_strap_long_back_strap_short_attach");
 			Transform leftStrapVestBaseBottomAttach = newLeftStrap.transform.FindChild("left_strap_vest_base_bottom_attach");
@@ -288,7 +288,7 @@ public class CreatePartVest : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,270,90);
-			GameObject newBack = (GameObject)Instantiate (parts[0], pos, fuseToRotation);
+			GameObject newBack = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
 			
 			Transform backStrapShortBackStrapLongAttach = newBack.transform.FindChild("back_strap_short_back_strap_long_attach");
 			Transform backStrapRightStrapAttach = newBack.transform.FindChild("back_strap_right_strap_attach");
@@ -318,7 +318,7 @@ public class CreatePartVest : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,270,0);
-			GameObject newBackSlope = (GameObject)Instantiate (parts[2], pos, fuseToRotation);	
+			GameObject newBackSlope = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation));	
 			
 			Transform leftVestOvalVestDiamondAttach = newBackSlope.transform.FindChild("left_vest_oval_vest_diamond_attach");
 
@@ -349,7 +349,7 @@ public class CreatePartVest : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
-			GameObject newLeftCover = (GameObject)Instantiate (parts[4], pos, fuseToRotation);
+			GameObject newLeftCover = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
 			
 			Transform vestDiamondLeftVestOvalAttach = newLeftCover.transform.FindChild("vest_diamond_left_vest_oval_attach");
 			Transform vestDiamondRightVestOvalAttach = newLeftCover.transform.FindChild("vest_diamond_right_vest_oval_attach");
@@ -391,7 +391,7 @@ public class CreatePartVest : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (180,0,0);		
-			GameObject newRightCover = (GameObject)Instantiate (parts[3], pos, fuseToRotation);
+			GameObject newRightCover = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
 			
 			Transform vestOvalVestDiamondAttach = newRightCover.transform.FindChild("vest_oval_vest_diamond_attach");
 

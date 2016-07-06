@@ -221,7 +221,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
-			GameObject newC = (GameObject)Instantiate (parts[0], pos, fuseToRotation);
+			GameObject newC = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
 			
 			Transform cMiddleTBottomAttach = newC.transform.FindChild("c_middle_t_bottom_attach");
 			Transform cMiddleTFrontAttach = newC.transform.FindChild("c_middle_t_front_attach");
@@ -261,7 +261,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (90,90,0);
-			GameObject newHangingL = (GameObject)Instantiate (parts[1], pos, fuseToRotation);
+			GameObject newHangingL = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
 			
 			Transform hangingLPostAttach = newHangingL.transform.FindChild("hanging_l_post_attach");
 			
@@ -286,7 +286,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);
-			GameObject newMiddleT = (GameObject)Instantiate (parts[2], pos, fuseToRotation);	
+			GameObject newMiddleT = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation));	
 			
 			Transform middleTCBottomAttach = newMiddleT.transform.FindChild("middle_t_c_bottom_attach");
 			Transform middleTCFrontAttach = newMiddleT.transform.FindChild("middle_t_c_front_attach");
@@ -326,7 +326,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newUlCorner = (GameObject)Instantiate (parts[3], pos, fuseToRotation);
+			GameObject newUlCorner = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
 			
 			Transform ulCornerCAttach = newUlCorner.transform.FindChild("ul_corner_c_attach");
 			
@@ -351,7 +351,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,180);		
-			GameObject newZigzag = (GameObject)Instantiate (parts[4], pos, fuseToRotation);
+			GameObject newZigzag = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
 			
 			Transform zigzagPostAttach = newZigzag.transform.FindChild("zigzag_post_attach");
 			
