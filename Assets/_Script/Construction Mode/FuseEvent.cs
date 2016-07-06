@@ -87,6 +87,7 @@ public class FuseEvent : MonoBehaviour {
 						InventoryController.items.Remove("Rocket Boots Body");
 						RecipesDB.unlockedRecipes.Remove(RecipesDB.RocketBoots);
 						LoadUtils.LoadScene(InventoryController.levelName);
+						LoadUtils.UnloadScene("construction");
 						break;
 					default:
 						Debug.Log("Not Yet Implemented: " + mode);
@@ -735,6 +736,7 @@ public class FuseEvent : MonoBehaviour {
 				congratsPanelGroup.GetComponent<Image>().CrossFadeAlpha(255, 4, false);
 				finishedImage.enabled = false;
 				congrats.enabled = true;
+				GameObject.Find("Back Button").SetActive(false);
 				claimItem.gameObject.SetActive(true);
 				musicSource.Stop();
 				mainCam.transform.position = new Vector3(-90,80,-3.36f);

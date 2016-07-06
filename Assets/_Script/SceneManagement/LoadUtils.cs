@@ -132,8 +132,8 @@ public class LoadUtils : MonoBehaviour
 	// Exploration-mode areas you cannot return to, things like that.
 	public static void UnloadScene(string sceneName)
 	{
-		loadedScenes.Remove(sceneName);
 		Destroy(loadedScenes[sceneName]);
+		loadedScenes.Remove(sceneName);
 	}
 
 	static void EnsureRefExists()
