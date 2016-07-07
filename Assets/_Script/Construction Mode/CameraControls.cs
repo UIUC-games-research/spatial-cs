@@ -12,7 +12,7 @@ public class CameraControls : MonoBehaviour
 	const string INPUT_MOUSE_Y = "Mouse Y";
 	const float MIN_CAM_DISTANCE = 80f;
 	const float MAX_CAM_DISTANCE = 160f;
-	Vector3 orbitPoint = new Vector3(-90f, 30f, 100f);
+	public Vector3 orbitPoint = new Vector3(-90f, 30f, 100f);
 
 	// how fast the camera orbits
 	[Range(2f, 15f)]
