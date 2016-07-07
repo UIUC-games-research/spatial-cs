@@ -25,26 +25,42 @@ public class PickUp : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.CompareTag("Player"))
 		if (other.tag == "Player")
         {
-			InventoryController.Add(this, 1);
-			if (respawn)
+			// Special case for batteries.
+			if (pickupName == "Battery")
 			{
-				ObjectRespawner.Instance().RespawnOBJ(this.gameObject, respawnTime);
+				BatterySystem.AddPower(5);
+				RespawnBattery();
 			}
 			else
 			{
-				// Object still needs to exist for the icon to work.
-				// Silly, but let's just shove it into a corner and forget about it.
-				// Also parents to the scene manager object so it rejects deletion as much as possible.
-				transform.position = new Vector3(-1000f, -1000f, -1000f);
-				LoadUtils.IconParenter(this.gameObject);
+				InventoryController.Add(this, 1);
+				if (respawn)
+				{
+					ObjectRespawner.Instance().RespawnOBJ(this.gameObject, respawnTime);
+				}
+				else
+				{
+					// Object still needs to exist for the icon to work.
+					// Silly, but let's just shove it into a corner and forget about it.
+					// Also parents to the scene manager object so it rejects deletion as much as possible.
+					transform.position = new Vector3(-1000f, -1000f, -1000f);
+					LoadUtils.IconParenter(this.gameObject);
+				}
 			}
-
         }
     }
 
+
+	// Batteries will find a new position when picked up. Battery markers don't actually spawn anything,
+	// they just mark positions. You have to have batteries in your scene for battery markers to matter.
+	void RespawnBattery()
+	{
+		GameObject[] allMarkers = GameObject.FindGameObjectsWithTag("BatteryMarker");
+		int randomIdx = Random.Range(0, allMarkers.Length);
+		transform.position = allMarkers[randomIdx].transform.position;
+	}
 
 
 }

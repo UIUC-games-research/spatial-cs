@@ -8,6 +8,10 @@ TagManager:
   - PickUp
   - SceneBundle
   - SceneManager
+  - pointy
+  - strut
+  - passwordCanvas
+  - BatteryMarker
   layers:
   - Default
   - TransparentFX

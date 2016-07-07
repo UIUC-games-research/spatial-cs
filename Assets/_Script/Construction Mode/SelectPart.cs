@@ -116,12 +116,28 @@ public class SelectPart : MonoBehaviour {
 					if(prevSelectedFuseTo != null) {
 						unhighTexture = prevSelectedFuseTo.GetComponent<SelectBehavior>().unhighTex;
 						prevSelectedFuseTo.GetComponent<Renderer>().material.mainTexture = unhighTexture;
+
+						//! CODE FOR REMOVING Marker FROM PREVIOUS PART. prevSelectedFuseTo
+						/*
+						if (prevSelectedFuseTo != selectedFuseTo)
+							Destroy(prevSelectedFuseTo.GetComponent<SelectedEffect>());
+						*/
 					}
 					
 					selectedFuseTo = objectToSelect;
 					print("Currently Selected FuseTo: " + selectedFuseTo);
 					highTexture = selectedFuseTo.GetComponent<SelectBehavior>().highTex;
 					selectedFuseTo.GetComponent<Renderer>().material.mainTexture = highTexture;
+
+					//! CODE FOR ADDING MARKER TO SELECTED PART. selectedFuseTo
+					/*
+					if (GetComponent<SelectedEffect>() == null)
+					{
+						SelectedEffect sel = selectedFuseTo.AddComponent<SelectedEffect>();
+						sel.hitInfo = hitInfo;
+					}
+					*/
+
 					prevSelectedFuseTo = selectedFuseTo;
 
 					int numClicksHigh = cameraControls.getNumClicksHigh();
@@ -151,6 +167,12 @@ public class SelectPart : MonoBehaviour {
 					if(prevSelectedObject != null) {
 						Texture regTex = prevSelectedObject.GetComponent<SelectBehavior>().unhighTex;
 						prevSelectedObject.GetComponent<Renderer>().material.mainTexture = regTex;
+
+						//! CODE FOR REMOVING MARKER FROM PREVIOUS PART. prevSelectedFuseTo
+						/*
+						if (prevSelectedObject != selectedObject)
+							Destroy(prevSelectedObject.GetComponent<SelectedEffect>());
+						*/
 					}
 
 					selectedObject = hitInfo.transform.gameObject;
@@ -162,6 +184,15 @@ public class SelectPart : MonoBehaviour {
 						print ("Unable to load texture");
 					}
 					print("Currently Selected Object: " + selectedObject);
+
+					//! CODE FOR ADDING MARKER TO SELECTED PART. selectedFuseTo
+					/*
+					if (GetComponent<SelectedEffect>() == null)
+					{
+						SelectedEffect sel = selectedObject.AddComponent<SelectedEffect>();
+						sel.hitInfo = hitInfo;
+					}
+					*/
 
 					prevSelectedObject = selectedObject;
 					//print ("prevSelected: " + prevSelectedObject.name);
