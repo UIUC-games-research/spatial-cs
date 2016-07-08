@@ -118,10 +118,8 @@ public class SelectPart : MonoBehaviour {
 						prevSelectedFuseTo.GetComponent<Renderer>().material.mainTexture = unhighTexture;
 
 						//! CODE FOR REMOVING Marker FROM PREVIOUS PART. prevSelectedFuseTo
-						/*
-						if (prevSelectedFuseTo != selectedFuseTo)
-							Destroy(prevSelectedFuseTo.GetComponent<SelectedEffect>());
-						*/
+						//Destroy(prevSelectedFuseTo.GetComponent<SelectedEffect>());
+						
 					}
 					
 					selectedFuseTo = objectToSelect;
@@ -135,6 +133,7 @@ public class SelectPart : MonoBehaviour {
 					{
 						SelectedEffect sel = selectedFuseTo.AddComponent<SelectedEffect>();
 						sel.hitInfo = hitInfo;
+						sel.selected = selectedFuseTo;
 					}
 					*/
 
@@ -168,11 +167,9 @@ public class SelectPart : MonoBehaviour {
 						Texture regTex = prevSelectedObject.GetComponent<SelectBehavior>().unhighTex;
 						prevSelectedObject.GetComponent<Renderer>().material.mainTexture = regTex;
 
-						//! CODE FOR REMOVING MARKER FROM PREVIOUS PART. prevSelectedFuseTo
-						/*
-						if (prevSelectedObject != selectedObject)
-							Destroy(prevSelectedObject.GetComponent<SelectedEffect>());
-						*/
+						//! CODE FOR REMOVING MARKER FROM PREVIOUS PART. prevSelectedObject
+						//Destroy(prevSelectedObject.GetComponent<SelectedEffect>());
+						
 					}
 
 					selectedObject = hitInfo.transform.gameObject;
@@ -185,12 +182,13 @@ public class SelectPart : MonoBehaviour {
 					}
 					print("Currently Selected Object: " + selectedObject);
 
-					//! CODE FOR ADDING MARKER TO SELECTED PART. selectedFuseTo
+					//! CODE FOR ADDING MARKER TO SELECTED PART. selectedObject
 					/*
 					if (GetComponent<SelectedEffect>() == null)
 					{
 						SelectedEffect sel = selectedObject.AddComponent<SelectedEffect>();
 						sel.hitInfo = hitInfo;
+						sel.selected = selectedObject;
 					}
 					*/
 
