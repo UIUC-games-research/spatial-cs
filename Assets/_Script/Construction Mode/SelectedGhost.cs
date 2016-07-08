@@ -14,8 +14,31 @@ public class SelectedGhost : MonoBehaviour {
 	void Start ()
 	{
 		mesh = hitInfo.transform.GetComponent<MeshFilter>().mesh;
-		curDistance = Vector3.Distance(transform.localPosition, selected.transform.localPosition);
-		nexDistance = Vector3.Distance(transform.localPosition + (0.1f * hitInfo.normal), selected.transform.localPosition);
+		curDistance = Vector3.Distance(transform.position, transform.parent.position);
+		nexDistance = Vector3.Distance(transform.position + (0.01f * hitInfo.normal), transform.parent.position);
+		//Debug.DrawLine(transform.position, transform.position + (5000f * hitInfo.normal), Color.green, 3f);
+
+
+
+		// Make a back face.
+		/*
+		GameObject instance = new GameObject();
+		instance.transform.parent = transform;
+		instance.transform.localPosition = Vector3.zero;
+		instance.transform.localScale = Vector3.one;
+		instance.layer = 2;
+
+		// Flip
+		Vector3 rotation = instance.transform.localEulerAngles;
+		rotation.x += 180;
+		instance.transform.localEulerAngles = rotation;
+
+		// Add mesh.
+		MeshFilter meshf = instance.AddComponent<MeshFilter>();
+		meshf.mesh = GetComponent<MeshFilter>().mesh;
+		MeshRenderer meshr = instance.AddComponent<MeshRenderer>();
+		meshr.material = Resources.Load("Opacity") as Material;
+		*/
 	}
 	
 	void Update ()
@@ -35,15 +58,15 @@ public class SelectedGhost : MonoBehaviour {
 
 		// Get distances.
 		
-		if (curDistance > nexDistance)
+		if (curDistance < nexDistance)
 		{
 			Debug.Log("Moving against normal");
-			transform.localPosition += (-0.01f * hitInfo.normal);
+			transform.position += (0.05f * hitInfo.normal);
 		}
 		else
 		{
 			Debug.Log("Moving with normal");
-			transform.localPosition += (0.01f * hitInfo.normal);
+			transform.position += (0.05f * hitInfo.normal);
 		}
 		
 	}
