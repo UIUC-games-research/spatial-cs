@@ -41,7 +41,7 @@ public class SelectedGhost : MonoBehaviour {
 		*/
 	}
 	
-	void Update ()
+	void FixedUpdate ()
 	{
 		
 		// Move and delete after some time.
@@ -52,12 +52,16 @@ public class SelectedGhost : MonoBehaviour {
 			Destroy(this.gameObject);
 		}
 
+		transform.position += (0.08f * hitInfo.normal);
+
+
+		/*
 		// This sometimes goes the wrong way.
 		// I'm assuming selections always face outwards from the center of the object.
 		// Check to see if the normal is going toward the center. If it is, switch it.
 
 		// Get distances.
-		
+
 		if (curDistance < nexDistance)
 		{
 			Debug.Log("Moving against normal");
@@ -68,6 +72,6 @@ public class SelectedGhost : MonoBehaviour {
 			Debug.Log("Moving with normal");
 			transform.position += (0.05f * hitInfo.normal);
 		}
-		
+		*/
 	}
 }
