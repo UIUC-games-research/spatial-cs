@@ -722,6 +722,10 @@ public class FuseEvent : MonoBehaviour {
 			source.PlayOneShot (success);
 			selectedObject.GetComponent<FuseBehavior>().fuse(selectedFuseTo.name, selectedFuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag);
 
+			//! CODE FOR REMOVING GHOSTS ON CONNECT.
+			Destroy(selectedObject.GetComponent<SelectedEffect>());
+			Destroy(selectedFuseTo.GetComponent<SelectedEffect>());
+
 			fuseCleanUp();
 			fuseCount++;
 			if(done ()) {
