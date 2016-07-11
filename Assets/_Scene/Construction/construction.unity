@@ -662,7 +662,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 63a5c51fba1c5b4478452e37bdbc7217, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000004371139
+      value: -0.000000059778976
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 63a5c51fba1c5b4478452e37bdbc7217, type: 3}
       propertyPath: m_RootOrder
@@ -679,6 +679,22 @@ Prefab:
     - target: {fileID: 400002, guid: 63a5c51fba1c5b4478452e37bdbc7217, type: 3}
       propertyPath: m_LocalScale.z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 400028, guid: 63a5c51fba1c5b4478452e37bdbc7217, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7069846
+      objectReference: {fileID: 0}
+    - target: {fileID: 400028, guid: 63a5c51fba1c5b4478452e37bdbc7217, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400028, guid: 63a5c51fba1c5b4478452e37bdbc7217, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400028, guid: 63a5c51fba1c5b4478452e37bdbc7217, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70722896
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 63a5c51fba1c5b4478452e37bdbc7217, type: 3}
@@ -1496,7 +1512,6 @@ GameObject:
   - 20: {fileID: 922484374}
   - 124: {fileID: 922484373}
   - 92: {fileID: 922484372}
-  - 81: {fileID: 922484371}
   m_Layer: 0
   m_Name: UICamera
   m_TagString: Untagged
@@ -1516,13 +1531,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 108479438}
   m_RootOrder: 0
---- !u!81 &922484371
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 922484369}
-  m_Enabled: 1
 --- !u!92 &922484372
 Behaviour:
   m_ObjectHideFlags: 0

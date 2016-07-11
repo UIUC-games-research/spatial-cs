@@ -6,39 +6,24 @@ public class SelectedGhost : MonoBehaviour {
 	float timer = 0f;
 	float destroyAt = 1f;
 	public RaycastHit hitInfo;      // Set on creation by SelectedEffect.
+	Vector3 normal;
 	public GameObject selected;		// As above.
 	Mesh mesh;
-	float curDistance;
-	float nexDistance;
+	//Vector3 currRot = Vector3.zero;
+	//Vector3 startRot = Vector3.zero;
+	Quaternion currRot = Quaternion.identity;
+	Quaternion startRot = Quaternion.identity;
+	Vector3 initialFaceNormal;
 
 	void Start ()
 	{
 		mesh = hitInfo.transform.GetComponent<MeshFilter>().mesh;
-		curDistance = Vector3.Distance(transform.position, transform.parent.position);
-		nexDistance = Vector3.Distance(transform.position + (0.01f * hitInfo.normal), transform.parent.position);
-		//Debug.DrawLine(transform.position, transform.position + (5000f * hitInfo.normal), Color.green, 3f);
+		normal = hitInfo.normal;
+		currRot = transform.parent.rotation;
+		startRot = transform.parent.rotation;
+		initialFaceNormal = mesh.normals[0];
 
-
-
-		// Make a back face.
-		/*
-		GameObject instance = new GameObject();
-		instance.transform.parent = transform;
-		instance.transform.localPosition = Vector3.zero;
-		instance.transform.localScale = Vector3.one;
-		instance.layer = 2;
-
-		// Flip
-		Vector3 rotation = instance.transform.localEulerAngles;
-		rotation.x += 180;
-		instance.transform.localEulerAngles = rotation;
-
-		// Add mesh.
-		MeshFilter meshf = instance.AddComponent<MeshFilter>();
-		meshf.mesh = GetComponent<MeshFilter>().mesh;
-		MeshRenderer meshr = instance.AddComponent<MeshRenderer>();
-		meshr.material = Resources.Load("Opacity") as Material;
-		*/
+		FindHitFace();
 	}
 	
 	void FixedUpdate ()
@@ -52,26 +37,25 @@ public class SelectedGhost : MonoBehaviour {
 			Destroy(this.gameObject);
 		}
 
-		transform.position += (0.08f * hitInfo.normal);
+		transform.position += (0.08f * normal);
 
+		// Update normal direction
+		currRot = transform.parent.localRotation;
+		//Quaternion temp = currRot * Quaternion.Inverse(startRot);
 
-		/*
-		// This sometimes goes the wrong way.
-		// I'm assuming selections always face outwards from the center of the object.
-		// Check to see if the normal is going toward the center. If it is, switch it.
+		// Rotate.
+		//normal = Quaternion.Euler(currRot.eulerAngles) * hitInfo.normal;
+		//normal = Quaternion.Euler(-1 * startRot.eulerAngles) * normal;
+		//normal = Quaternion.Euler(transform.parent.localEulerAngles) * initialFaceNormal;
+		//normal = Quaternion.Euler(transform.localEulerAngles) * normal;
+		//normal = initialFaceNormals
+		Debug.DrawLine(transform.position, transform.position + (5f * normal), Color.green, 3f);
+	}
 
-		// Get distances.
-
-		if (curDistance < nexDistance)
-		{
-			Debug.Log("Moving against normal");
-			transform.position += (0.05f * hitInfo.normal);
-		}
-		else
-		{
-			Debug.Log("Moving with normal");
-			transform.position += (0.05f * hitInfo.normal);
-		}
-		*/
+	void FindHitFace()
+	{
+		//Vector3[] normals = mesh.normals;
+		//Debug.Log("FACE: " + normals[0]);
+		//Debug.Log("HIT: " + hitInfo.normal);
 	}
 }
