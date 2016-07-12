@@ -130,7 +130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22470018, guid: f3f5dd7ac3fbb4d4d8a5a73bcc56a18a, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 22470018, guid: f3f5dd7ac3fbb4d4d8a5a73bcc56a18a, type: 2}
       propertyPath: m_SizeDelta.x
@@ -2043,7 +2043,7 @@ MonoBehaviour:
   imagineYouAre: {fileID: 0}
   whatDirectionMust: {fileID: 0}
   lineUpBlackAreas: {fileID: 0}
-  rotateForwardButton: {fileID: 1792862565}
+  rotateForwardButton: {fileID: 0}
   connectButton: {fileID: 1418366672}
   clickBlackPanel: {fileID: 0}
   findOtherBlackRegionPanel: {fileID: 0}
@@ -2089,9 +2089,10 @@ MonoBehaviour:
   congrats: {fileID: 1766053919}
   getPassword: {fileID: 1667494523}
   claimItem: {fileID: 581119306}
+  rotateGizmo: {fileID: 0}
   victoryPrefab: {fileID: 121312, guid: 98faeccb7663b08489d5910c8d37988b, type: 2}
-  rotatePanelGroup: {fileID: 297973225}
-  bottomPanelGroup: {fileID: 473907162}
+  rotatePanelGroup: {fileID: 473907162}
+  bottomPanelGroup: {fileID: 297973225}
   congratsPanelGroup: {fileID: 535774167}
   finishedImage: {fileID: 1232480375}
   mainCam: {fileID: 108479437}
@@ -2117,9 +2118,10 @@ MonoBehaviour:
   - {fileID: 173496, guid: e0d3458914deae0409deee501240a5ff, type: 2}
   eventSystem: {fileID: 1321869678}
   NUM_PARTS: 7
-  rotateLeftButton: {fileID: 1383566440}
-  rotateForwardButton: {fileID: 1792862565}
+  rotateLeftButton: {fileID: 1792862565}
+  rotateForwardButton: {fileID: 1383566440}
   rotateAcrossButton: {fileID: 660833761}
+  rotateGizmo: {fileID: 0}
 --- !u!1 &1354454465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,6 +2688,68 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1667494521}
+--- !u!1001 &1702587675
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 466054, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 174822, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: m_TagString
+      value: RotationGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444632, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 108479433}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1730654015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3289,7 +3353,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: -60.8}
+  m_AnchoredPosition: {x: -249, y: -336}
   m_SizeDelta: {x: 32, y: 41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045693372

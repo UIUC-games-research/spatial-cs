@@ -12,6 +12,7 @@ TagManager:
   - strut
   - passwordCanvas
   - BatteryMarker
+  - RotationGizmo
   layers:
   - Default
   - TransparentFX

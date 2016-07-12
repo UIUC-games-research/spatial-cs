@@ -34,7 +34,8 @@ public class FuseEvent : MonoBehaviour {
 
 	public Text congrats;
 	public Text getPassword;
-	public Button claimItem;	// NEW ADDITION. A button which appears upon completion of an item to claim it in exploration mode.
+	public Button claimItem;    // NEW ADDITION. A button which appears upon completion of an item to claim it in exploration mode.
+	public RotationGizmo rotateGizmo;	// NEW ADDITION. when completing a fusion, disable the rotation gizmo.
 	public GameObject victoryPrefab;
 	public CanvasGroup rotatePanelGroup;
 	public CanvasGroup bottomPanelGroup;
@@ -64,6 +65,7 @@ public class FuseEvent : MonoBehaviour {
 		//globalVariables.hidePasswords();
 
 		Button backButton = GameObject.Find ("Back Button").GetComponent<Button>();
+		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 		//backButton.onClick.AddListener(() => globalVariables.backToMainScreen());
 		backButton.onClick.AddListener(() => LoadUtils.LoadScene(InventoryController.levelName));
 
@@ -725,6 +727,8 @@ public class FuseEvent : MonoBehaviour {
 			//! CODE FOR REMOVING GHOSTS ON CONNECT.
 			Destroy(selectedObject.GetComponent<SelectedEffect>());
 			Destroy(selectedFuseTo.GetComponent<SelectedEffect>());
+			// Also, disable rotation gizmo.
+			rotateGizmo.Disable();
 
 			fuseCleanUp();
 			fuseCount++;
