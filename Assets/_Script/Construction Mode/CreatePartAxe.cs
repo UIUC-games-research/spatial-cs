@@ -33,7 +33,7 @@ public class CreatePartAxe : MonoBehaviour {
 		}
 		createLoc = new Vector3(-40, 25, 100);
 		selectionManager = eventSystem.GetComponent<SelectPart>();
-		startObject = GameObject.Find ("shaft");
+		startObject = GameObject.Find ("startObject");
 		GameObject shaftHaftAttach = startObject.transform.FindChild("shaft_haft_attach").gameObject;
 		GameObject shaftTrapezoidAttach = startObject.transform.FindChild("shaft_trapezoid_attach").gameObject;
 		//to avoid errors when selectedObject starts as startObject
@@ -82,14 +82,15 @@ public class CreatePartAxe : MonoBehaviour {
 
 		if(trapezoid != null) {
 			Vector3 trapezoidPos = trapezoid.transform.position;
-			Vector3 fuseLocation = new Vector3 (trapezoidPos.x, trapezoidPos.y, trapezoidPos.z - 12);
+			Vector3 fuseLocation = new Vector3 (trapezoidPos.x, trapezoidPos.y - 0.5f, trapezoidPos.z - 12);
 			fuseLocations.Add ("trapezoid_head_attach", fuseLocation);
 			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,180,0));
 			fuseRotations.Add ("trapezoid_head_attach", fuseRotation);
 			
-			Quaternion acceptableRotation1 = Quaternion.Euler (270,180,0);
-			Quaternion acceptableRotation2 = Quaternion.Euler (90,0,0);
-			Quaternion[] acceptableRotations = {acceptableRotation1, acceptableRotation2};
+			Quaternion acceptableRotation1 = Quaternion.Euler (90,0,0);
+			Quaternion acceptableRotation2 = Quaternion.Euler (0,90,90);
+			Quaternion acceptableRotation3 = Quaternion.Euler (270,180,0);
+			Quaternion[] acceptableRotations = {acceptableRotation1, acceptableRotation2, acceptableRotation3};
 			fusePositions = new Dictionary<string, Quaternion[]>();
 			fusePositions.Add ("trapezoid_head_attach", acceptableRotations);
 		}
@@ -101,7 +102,7 @@ public class CreatePartAxe : MonoBehaviour {
 	}
 	
 	public FuseAttributes trapezoidFuses() {
-		GameObject shaft = GameObject.Find ("shaft");
+		GameObject shaft = startObject;
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
 		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
@@ -110,14 +111,15 @@ public class CreatePartAxe : MonoBehaviour {
 		
 		if(shaft != null) {
 			Vector3 shaftPos = shaft.transform.position;
-			Vector3 fuseLocation = new Vector3 (shaftPos.x, shaftPos.y + 12, shaftPos.z - 9);
+			Vector3 fuseLocation = new Vector3 (shaftPos.x, shaftPos.y + 21, shaftPos.z - 12);
 			fuseLocations.Add("shaft_trapezoid_attach", fuseLocation);
 			
 			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,180,0));
 			fuseRotations.Add ("shaft_trapezoid_attach", fuseRotation);
 			Quaternion acceptableRotation1 = Quaternion.Euler (270,180,0);
 			Quaternion acceptableRotation2 = Quaternion.Euler (90,0,0);
-			Quaternion[] acceptableRotations = {acceptableRotation1, acceptableRotation2};
+			Quaternion acceptableRotation3 = Quaternion.Euler (0,90,90);
+			Quaternion[] acceptableRotations = {acceptableRotation1, acceptableRotation2, acceptableRotation3};
 			
 			fusePositions.Add ("shaft_trapezoid_attach", acceptableRotations);
 			
@@ -285,11 +287,6 @@ public class CreatePartAxe : MonoBehaviour {
 			
 			Transform trapezoidHeadAttach = newTrapezoid.transform.FindChild("trapezoid_head_attach");
 			Transform trapezoidShaftAttach = newTrapezoid.transform.FindChild("trapezoid_shaft_attach");
-
-			//fixes off center rotation problem
-			//strutTopBodyAttach.transform.localPosition = new Vector3(0, 0, 0);
-			//strutTopGeneratorAttach.transform.localPosition = new Vector3(0.08f, 0, -0.72f);
-			//strutTopPointyAttach.transform.localPosition = new Vector3(0, 0, 0);
 			
 			FuseAttributes fuseAtts = trapezoidFuses ();
 			
