@@ -824,7 +824,7 @@ public class FuseEvent : MonoBehaviour {
 			walkingPants.transform.parent = group.transform;
 			uprightRect.transform.parent = group.transform;
 		} else if (mode.Equals ("axe")) {
-			GameObject shaft = GameObject.Find ("shaft");
+			GameObject shaft = GameObject.Find ("startObject");
 			GameObject head = GameObject.Find ("headPrefab(Clone)");
 			GameObject trapezoid = GameObject.Find ("trapezoidPrefab(Clone)");
 			GameObject topPoint = GameObject.Find ("top_pointPrefab(Clone)");
