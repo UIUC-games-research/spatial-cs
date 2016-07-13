@@ -139,6 +139,7 @@ public class SelectPart : MonoBehaviour {
 
 					prevSelectedFuseTo = selectedFuseTo;
 
+					/*
 					int numClicksHigh = cameraControls.getNumClicksHigh();
 					if(cameraAdjusts.ContainsKey(selectedFuseTo.name)) {
 
@@ -151,6 +152,7 @@ public class SelectPart : MonoBehaviour {
 							numClicksHigh = cameraControls.getNumClicksHigh();
 						}
 					}
+					*/
 					//tutorial
 					if(tutorialOn && tutorialMidAndBottomSelected()) {
 						StartCoroutine(findOtherBlackRegion());
