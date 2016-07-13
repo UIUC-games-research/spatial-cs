@@ -18,7 +18,7 @@ public class RocketBoots : MonoBehaviour
 	public float recharge = 1f;
 
 
-	void Start ()
+	void Awake ()
 	{
 		playerBody = GetComponent<Rigidbody>();
 		uiElementStatic = uiElement;
@@ -54,5 +54,11 @@ public class RocketBoots : MonoBehaviour
 	{
 		bootsActive = true;
 		uiElementStatic.gameObject.SetActive(true);
+		SaveController.Save();
+	}
+
+	public static bool GetBootsActive()
+	{
+		return bootsActive;
 	}
 }

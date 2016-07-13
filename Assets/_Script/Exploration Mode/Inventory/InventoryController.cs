@@ -63,6 +63,9 @@ public class InventoryController : MonoBehaviour
 		recPop.Repopulate();
 
 		CloseInventory();
+
+		// Load save when inventory controller activates. Has to happen somewhere!
+		SaveController.Load();
 	}
 	
 	void Update ()
@@ -220,6 +223,7 @@ public class InventoryController : MonoBehaviour
 // Here starts the item class //
 ////////////////////////////////
 
+[System.Serializable]
 public class InvItem
 {
 	// Fields
