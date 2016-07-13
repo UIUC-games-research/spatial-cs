@@ -19,8 +19,13 @@ public class SaveController : MonoBehaviour
 		SaveContainer data = new SaveContainer();
 
 		//! Fields go here.
-		data.rocketBoots = RocketBoots.GetBootsActive();
-		
+		// Save all tokens!
+		List<string> tokensTemp = new List<string>();
+		foreach (string ii in ConversationTrigger.tokens)
+		{
+			tokensTemp.Add(ii);
+		}
+		data.tokens = new List<string>(tokensTemp);
 
 		// Save and close safely.
 		bf.Serialize(file, data);
@@ -43,8 +48,7 @@ public class SaveController : MonoBehaviour
 			file.Close();
 
 			//! Fields go here.
-			if (data.rocketBoots)
-				RocketBoots.ActivateBoots();
+			ConversationTrigger.tokens = new HashSet<string>(data.tokens);
 
 			Debug.Log("Loaded all options successfully.");
 		}
@@ -68,5 +72,5 @@ public class SaveController : MonoBehaviour
 class SaveContainer
 {
 	//! Fields go here.
-	public bool rocketBoots = false;
+	public List<string> tokens;
 }

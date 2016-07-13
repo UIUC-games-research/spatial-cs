@@ -27,6 +27,14 @@ public class RocketBoots : MonoBehaviour
 		if (!bootsActive)
 			uiElement.gameObject.SetActive(false);
 	}
+
+	void Start ()
+	{
+		// Check tokens to see if boots are active.
+		// Save is loaded somewhere else in an Awake() function.
+		if (ConversationTrigger.GetToken("gear_rocketboots"))
+			ActivateBoots();
+	}
 	
 	void FixedUpdate ()
 	{
@@ -50,11 +58,14 @@ public class RocketBoots : MonoBehaviour
 		}
 	}
 
+	// When activating the boots, we add a token as a form of saving progress.
+	// We check for this token at start, which will check the loaded options,
+	// and enable the rocket boots if we've unlocked them before.
 	public static void ActivateBoots()
 	{
 		bootsActive = true;
 		uiElementStatic.gameObject.SetActive(true);
-		SaveController.Save();
+		ConversationTrigger.AddToken("gear_rocketboots");
 	}
 
 	public static bool GetBootsActive()

@@ -100,7 +100,7 @@ public class ScrollingText : MonoBehaviour
 							// Apply the conversation relating to the only choice.
 							// Also make sure to add any token which may be a part of this single choice.
 							ApplyConversation(ConversationsDB.convos[choiceConvoPointers[0]]);
-							ConversationTrigger.tokens.Add(choiceTokens[0]);
+							ConversationTrigger.AddToken(choiceTokens[0]);
 							break;
 						default:
 							// More than 1 choice, so show them.
