@@ -24,7 +24,7 @@ public class SelectedEffect : MonoBehaviour
 		// Also add a hitcaster object to keep our normal updated.
 		hitCaster = new GameObject();
 		hitCaster.transform.position = transform.position;
-		hitCaster.transform.localScale = 10 * transform.localScale;
+		hitCaster.transform.localScale = transform.parent.localScale; //3f * transform.localScale;
 		hitCaster.transform.rotation = transform.rotation;
 		hitCaster.transform.parent = transform.parent;
 		hitCaster.transform.position += (20f * hitInfo.normal);
@@ -52,7 +52,7 @@ public class SelectedEffect : MonoBehaviour
 		instance = new GameObject();
 
 		instance.transform.position = transform.position;
-		instance.transform.localScale = 10 * transform.localScale;
+		instance.transform.localScale = /*10 */ transform.parent.localScale.x * transform.localScale;
 		instance.transform.rotation = transform.rotation;
 		//instance.transform.parent = transform.parent;
 		LoadUtils.InstantiateParenter(instance);
