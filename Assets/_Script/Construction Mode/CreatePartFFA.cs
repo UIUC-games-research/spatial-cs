@@ -19,7 +19,8 @@ public class CreatePartFFA : MonoBehaviour {
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;
 	public GameObject rotateZButton;
-	
+	public RotationGizmo rotateGizmo;
+
 	// Use this for initialization
 	void Awake () {
 		//number of parts to fuse
@@ -49,7 +50,8 @@ public class CreatePartFFA : MonoBehaviour {
 		centerRingForwardAttach.GetComponent<FuseBehavior>().isFused = true;
 		centerRingLeftAttach.GetComponent<FuseBehavior>().isFused = true;
 		centerRingRightAttach.GetComponent<FuseBehavior>().isFused = true;
-		
+
+		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 	}
 	
 	// y+ = up, y- = down
@@ -238,7 +240,7 @@ public class CreatePartFFA : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
-			GameObject newRing = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
+			GameObject newRing = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
 			Transform ringCenterBoxLeftAttach = newRing.transform.FindChild("ring_center_box_left_attach");
 			Transform ringCenterBoxRightAttach = newRing.transform.FindChild("ring_center_box_right_attach");
@@ -278,7 +280,7 @@ public class CreatePartFFA : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,270);
-			GameObject newCenterTri = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
+			GameObject newCenterTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
 			Transform centerTriRingAttach = newCenterTri.transform.FindChild("center_tri_ring_attach");
 			
@@ -303,7 +305,7 @@ public class CreatePartFFA : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (90,90,0);
-			GameObject newLeftTri = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation));	
+			GameObject newLeftTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
 			Transform leftTriRingAttach = newLeftTri.transform.FindChild("left_tri_ring_attach");
 			
@@ -328,7 +330,7 @@ public class CreatePartFFA : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newRightTri = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
+			GameObject newRightTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
 			Transform rightTriRingAttach = newRightTri.transform.FindChild("right_tri_ring_attach");
 
@@ -353,7 +355,7 @@ public class CreatePartFFA : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);		
-			GameObject newHandle = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
+			GameObject newHandle = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
 			Transform handleCenterBoxTopAttach = newHandle.transform.FindChild("handle_center_box_top_attach");
 			Transform handleCenterBoxBottomAttach = newHandle.transform.FindChild("handle_center_box_bottom_attach");

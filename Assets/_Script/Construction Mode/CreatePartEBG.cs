@@ -21,7 +21,7 @@ public class CreatePartEBG : MonoBehaviour {
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;
 	public GameObject rotateZButton;
-	
+	public RotationGizmo rotateGizmo;
 
 	private bool rotating;
 	
@@ -46,6 +46,7 @@ public class CreatePartEBG : MonoBehaviour {
 		GameObject baseGripAttach = startObject.transform.FindChild("base_grip_attach").gameObject;
 		//to avoid errors when selectedObject starts as startObject
 		baseGripAttach.GetComponent<FuseBehavior>().isFused = true;
+		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 	}
 
 	// y+ = up, y- = down
@@ -384,7 +385,7 @@ public class CreatePartEBG : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newBody = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
+			GameObject newBody = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			lastCreatedPart = newBody;
 
 			Transform bodyGripAttach = newBody.transform.FindChild("body_grip_attach");
@@ -427,7 +428,7 @@ public class CreatePartEBG : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newGrip = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
+			GameObject newGrip = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			lastCreatedPart = newGrip;
 
 			Transform gripBaseAttach = newGrip.transform.FindChild("grip_base_attach");
@@ -459,7 +460,7 @@ public class CreatePartEBG : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler(270,0,0);
-			GameObject newStrut = LoadUtils.InstantiateParenter((GameObject)Instantiate(parts[2], pos, fuseToRotation));	
+			GameObject newStrut = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate(parts[2], pos, fuseToRotation)));	
 			lastCreatedPart = newStrut;
 
 			Transform strutTopBodyAttach = newStrut.transform.FindChild("strut_top_body_attach");
@@ -498,7 +499,7 @@ public class CreatePartEBG : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newGen = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
+			GameObject newGen = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			lastCreatedPart = newGen;
 
 			Transform energy = newGen.transform.FindChild("top_energy");
@@ -537,7 +538,7 @@ public class CreatePartEBG : MonoBehaviour {
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler(270,0,0);
 
-			GameObject newPointy = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
+			GameObject newPointy = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			lastCreatedPart = newPointy;
 
 			Transform pointyStrutTopAttach = newPointy.transform.FindChild("pointy_strut_top_attach");

@@ -19,7 +19,8 @@ public class CreatePartHull : MonoBehaviour {
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;
 	public GameObject rotateZButton;
-	
+	public RotationGizmo rotateGizmo;
+
 	// Use this for initialization
 	void Awake () {
 		//number of parts to fuse
@@ -48,7 +49,7 @@ public class CreatePartHull : MonoBehaviour {
 		bridgeBackAttach.GetComponent<FuseBehavior>().isFused = true;
 		bridgeBridgeCoverLeftAttach.GetComponent<FuseBehavior>().isFused = true;
 		bridgeBridgeCoverRightAttach.GetComponent<FuseBehavior>().isFused = true;
-
+		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 	}
 	
 	// y+ = up, y- = down
@@ -246,7 +247,7 @@ public class CreatePartHull : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newBridgeCover = (GameObject)Instantiate (parts[0], pos, fuseToRotation);
+			GameObject newBridgeCover = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
 			Transform bridgeCoverBridgeLeftAttach = newBridgeCover.transform.FindChild("bridge_cover_bridge_left_attach");
 			Transform bridgeCoverBridgeRightAttach = newBridgeCover.transform.FindChild("bridge_cover_bridge_right_attach");
@@ -281,7 +282,7 @@ public class CreatePartHull : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
-			GameObject newBack = (GameObject)Instantiate (parts[1], pos, fuseToRotation);
+			GameObject newBack = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
 			Transform backLeftCoverAttach = newBack.transform.FindChild("back_left_cover_attach");
 			Transform backRightCoverAttach = newBack.transform.FindChild("back_right_cover_attach");
@@ -316,7 +317,7 @@ public class CreatePartHull : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (90,180,0);
-			GameObject newBackSlope = (GameObject)Instantiate (parts[2], pos, fuseToRotation);	
+			GameObject newBackSlope = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
 			Transform backSlopeBridgeCoverAttach = newBackSlope.transform.FindChild("back_slope_bridge_cover_attach");
 			Transform backSlopeLeftCoverAttach = newBackSlope.transform.FindChild("back_slope_left_cover_attach");
@@ -356,7 +357,7 @@ public class CreatePartHull : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newLeftCover = (GameObject)Instantiate (parts[3], pos, fuseToRotation);
+			GameObject newLeftCover = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
 			Transform leftCoverBackSlopeAttach = newLeftCover.transform.FindChild("left_cover_back_slope_attach");
 			Transform leftCoverBackAttach = newLeftCover.transform.FindChild("left_cover_back_attach");
@@ -386,7 +387,7 @@ public class CreatePartHull : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,90);		
-			GameObject newRightCover = (GameObject)Instantiate (parts[4], pos, fuseToRotation);
+			GameObject newRightCover = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
 			Transform rightCoverBackAttach = newRightCover.transform.FindChild("right_cover_back_attach");
 			Transform rightCoverBackSlopeAttach = newRightCover.transform.FindChild("right_cover_back_slope_attach");

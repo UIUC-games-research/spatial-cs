@@ -19,7 +19,8 @@ public class CreatePartForceGloves : MonoBehaviour {
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;
 	public GameObject rotateZButton;
-	
+	public RotationGizmo rotateGizmo;
+
 	// Use this for initialization
 	void Awake () {
 		//number of parts to fuse
@@ -40,7 +41,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 		//to avoid errors when selectedObject starts as startObject
 		armArmDecAttach.GetComponent<FuseBehavior>().isFused = true;
 		armPalmAttach.GetComponent<FuseBehavior>().isFused = true;
-		
+		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 	}
 	
 	// y+ = up, y- = down
@@ -213,7 +214,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,90);
-			GameObject newPalm = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
+			GameObject newPalm = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
 			Transform palmArmAttach = newPalm.transform.FindChild("palm_arm_attach");
 			Transform palmFingersAttach = newPalm.transform.FindChild("palm_fingers_attach");
@@ -253,7 +254,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (180,90,0);
-			GameObject newFingers = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
+			GameObject newFingers = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
 			Transform fingersPalmAttach = newFingers.transform.FindChild("fingers_palm_attach");
 
@@ -278,7 +279,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,270,0);
-			GameObject newThumb = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation));	
+			GameObject newThumb = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
 			Transform thumbPalmAttach = newThumb.transform.FindChild("thumb_palm_attach");
 			
@@ -303,7 +304,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,0);
-			GameObject newArmDec = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
+			GameObject newArmDec = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
 			Transform armDecArmAttach = newArmDec.transform.FindChild("arm_dec_arm_attach");
 			
@@ -328,7 +329,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,90);		
-			GameObject newPalmDec = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
+			GameObject newPalmDec = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
 			Transform palmDecPalmAttach = newPalmDec.transform.FindChild("palm_dec_palm_attach");
 

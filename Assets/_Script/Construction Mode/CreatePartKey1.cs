@@ -19,6 +19,7 @@ public class CreatePartKey1 : MonoBehaviour {
 	public GameObject rotateLeftButton;
 	public GameObject rotateForwardButton;
 	public GameObject rotateAcrossButton;
+	public RotationGizmo rotateGizmo;
 
 	// Use this for initialization
 	void Awake () {
@@ -43,6 +44,7 @@ public class CreatePartKey1 : MonoBehaviour {
 		uprightLAttach.GetComponent<FuseBehavior>().isFused = true;
 		uprightTAttach.GetComponent<FuseBehavior>().isFused = true;
 		walkingPantsAttach.GetComponent<FuseBehavior>().isFused = true;
+		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 	}
 	
 	// y+ = up, y- = down
@@ -220,7 +222,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,90);
-			GameObject newUprightL = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
+			GameObject newUprightL = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
 			Transform uprightLDanglyTAttach = newUprightL.transform.FindChild("upright_L_dangly_T_attach");
 			Transform uprightLWaluigiAttach = newUprightL.transform.FindChild("upright_L_waluigi_attach");
@@ -259,7 +261,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newUprightT = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
+			GameObject newUprightT = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
 			Transform uprightTdanglyTAttach = newUprightT.transform.FindChild("upright_T_dangly_T_attach");
 
@@ -290,7 +292,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newWaluigi = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation));	
+			GameObject newWaluigi = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
 			Transform waluigiUprightLAttach = newWaluigi.transform.FindChild("waluigi_upright_L_attach");
 
@@ -322,7 +324,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newWalkingPants = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
+			GameObject newWalkingPants = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
 			Transform walkingPantsDanglyTAttach = newWalkingPants.transform.FindChild("walking_pants_dangly_T_attach");
 			Transform walkingPantsUprightRectAttach = newWalkingPants.transform.FindChild("walking_pants_upright_rect_attach");
@@ -360,7 +362,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();		
-			GameObject newUprightRect = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
+			GameObject newUprightRect = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
 			Transform uprightRectWalkingPantsAttach = newUprightRect.transform.FindChild("upright_rect_walking_pants_attach");
 
