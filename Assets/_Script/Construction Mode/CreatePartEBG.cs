@@ -43,7 +43,8 @@ public class CreatePartEBG : MonoBehaviour {
 		selectionManager = eventSystem.GetComponent<SelectPart>();
 		startObject = GameObject.Find ("base");
 		lastCreatedPart = startObject;
-		GameObject baseGripAttach = startObject.transform.FindChild("base_grip_attach").gameObject;
+		//GameObject baseGripAttach = startObject.transform.FindChild("base_grip_attach").gameObject;
+		GameObject baseGripAttach = GameObject.Find("base_grip_attach");
 		//to avoid errors when selectedObject starts as startObject
 		baseGripAttach.GetComponent<FuseBehavior>().isFused = true;
 		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
