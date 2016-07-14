@@ -18,7 +18,7 @@ public class RocketBoots : MonoBehaviour
 	public float recharge = 1f;
 
 
-	void Start ()
+	void Awake ()
 	{
 		playerBody = GetComponent<Rigidbody>();
 		uiElementStatic = uiElement;
@@ -26,6 +26,14 @@ public class RocketBoots : MonoBehaviour
 		// Initially disabled.
 		if (!bootsActive)
 			uiElement.gameObject.SetActive(false);
+	}
+
+	void Start ()
+	{
+		// Check tokens to see if boots are active.
+		// Save is loaded somewhere else in an Awake() function.
+		if (ConversationTrigger.GetToken("gear_rocketboots"))
+			ActivateBoots();
 	}
 	
 	void FixedUpdate ()
@@ -50,9 +58,18 @@ public class RocketBoots : MonoBehaviour
 		}
 	}
 
+	// When activating the boots, we add a token as a form of saving progress.
+	// We check for this token at start, which will check the loaded options,
+	// and enable the rocket boots if we've unlocked them before.
 	public static void ActivateBoots()
 	{
 		bootsActive = true;
 		uiElementStatic.gameObject.SetActive(true);
+		ConversationTrigger.AddToken("gear_rocketboots");
+	}
+
+	public static bool GetBootsActive()
+	{
+		return bootsActive;
 	}
 }

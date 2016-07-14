@@ -82,4 +82,17 @@ public class ConversationTrigger : MonoBehaviour
 
 		return true;
 	}
+
+	// Use this to add a token.
+	public static void AddToken(string token)
+	{
+		tokens.Add(token);
+		SaveController.Save();
+	}
+
+	// Returns true if player has token.
+	public static bool GetToken(string token)
+	{
+		return tokens.Contains(token);
+	}
 }

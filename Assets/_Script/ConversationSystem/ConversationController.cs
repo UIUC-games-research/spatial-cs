@@ -59,7 +59,7 @@ public class ConversationController : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.I) && currentConversationName == "tokenTest")
 		{
-			ConversationTrigger.tokens.Add("hardInstantTest");
+			ConversationTrigger.AddToken("hardInstantTest");
 		}
 	}
 
