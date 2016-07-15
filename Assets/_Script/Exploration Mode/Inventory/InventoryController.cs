@@ -10,11 +10,14 @@ public class InventoryController : MonoBehaviour
 {
 	// Child references, set in inspector.
 	public GameObject tabs; // The tabs parent.
-	public Transform[] tabButtons;	// Every tab.
+	public Transform[] tabButtons;  // Every tab.
+	public GameObject[] menus;	// Every menu.
 	public GameObject inv;	// The inventory parent.
 	public GameObject rec;  // The recipes parent.
+	public GameObject clue; // The clues parent.
 	public InventoryPopulator invPop;   // Where items are populated.
-	public RecipePopulator recPop;		// Where recipes are populated.
+	public RecipePopulator recPop;      // Where recipes are populated.
+	public CluePopulator cluePop;		// Where clues are populated.
 
 	// Other references, grabbed on Start.
 	UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController player;
@@ -119,15 +122,13 @@ public class InventoryController : MonoBehaviour
 
 		// Menus Inactive.
 		FakeActive(tabs, false);
-		FakeActive(inv, false);
-		FakeActive(rec, false);
+		PickMenu(-1);
 	}
 
 	// Tab switching functions.
 	public void SwitchToInv()
 	{
-		FakeActive(inv, true);
-		FakeActive(rec, false);
+		PickMenu(0);
 
 		PopUpTab(0);
 
@@ -136,13 +137,33 @@ public class InventoryController : MonoBehaviour
 	}
 	public void SwitchToRec()
 	{
-		FakeActive(rec, true);
-		FakeActive(inv, false);
+		PickMenu(1);
 
 		PopUpTab(1);
 
 		// Ensure recipes pane is populated.
 		recPop.Repopulate();
+	}
+
+	public void SwitchToClue()
+	{
+		PickMenu(2);
+
+		PopUpTab(2);
+
+		// Ensure clues pane is populated.
+		cluePop.Repopulate();
+	}
+
+	// Enables menu at index. -1 disables all menus.
+	public void PickMenu(int idx)
+	{
+		foreach (GameObject ii in menus)
+		{
+			FakeActive(ii, false);
+		}
+		if (idx != -1)
+			FakeActive(menus[idx], true);
 	}
 
 	public void PopUpTab(int idx)

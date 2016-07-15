@@ -9,7 +9,12 @@ public class PickUp : MonoBehaviour
 
 	// Pickup-type Settings.
 	public string pickupName = "";	// Give it a name, consider this a type.
-	public string pickupDesc = "";	// Give it a description.
+	public string pickupDesc = "";  // This is mostly an internal tag. Doesn't really get used.
+
+	// SPECIAL
+	// Only necessary for clue:
+	public bool isClue = false;
+	public Sprite clueSprite;
 
 	void Start()
 	{
@@ -30,8 +35,13 @@ public class PickUp : MonoBehaviour
 			// Special case for batteries.
 			if (pickupName == "Battery")
 			{
-				BatterySystem.AddPower(5);
+				BatterySystem.AddPower(2);
 				RespawnBattery();
+			}
+			else if (isClue)
+			{
+				CluePopulator.AddClue(pickupName, clueSprite);
+				Destroy(gameObject);
 			}
 			else
 			{
