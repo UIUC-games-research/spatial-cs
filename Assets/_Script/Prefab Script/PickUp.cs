@@ -4,7 +4,8 @@ using System.Collections;
 public class PickUp : MonoBehaviour
 {
 	// Respawn settings.
-    public bool respawn = true;
+	[Header("Basic Variables")]
+	public bool respawn = true;
     public float respawnTime = 5.0f;
 
 	// Pickup-type Settings.
@@ -13,11 +14,19 @@ public class PickUp : MonoBehaviour
 
 	// SPECIAL
 	// Only necessary for clue:
+	[Header("Special Variables")]
 	public bool isClue = false;
 	public Sprite clueSprite;
 
+	[Tooltip("If the token specified here exists, this pickup will not spawn.")]
+	public string deleteToken = "";
+
 	void Start()
 	{
+		// check deleteToken.
+		if (deleteToken != "" && ConversationTrigger.GetToken(deleteToken))
+			Destroy(gameObject);
+
 		// We need to rename all the bits under the model of the pickup, if there are any.
 		// The reason for this is names will conflict with names inside construction mode, and
 		// construction mode uses a ton of GameObject.Find... Weird things start to happen!
