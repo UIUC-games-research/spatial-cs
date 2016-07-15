@@ -35,7 +35,7 @@ public class CluePopulator : MonoBehaviour
 
 		// Convert special tokens to clues.
 		// Clue sprites must be under Resources/Clues for this to work.
-		// Clue sprites must also have the same name as the item name.
+		//! Clue sprites must also have the same name as the item name.
 		foreach (string ii in ConversationTrigger.tokens)
 		{
 			if (ii.Contains("clue_"))

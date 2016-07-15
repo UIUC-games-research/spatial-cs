@@ -75,6 +75,17 @@ public class InventoryController : MonoBehaviour
 	
 	void Update ()
 	{
+		// DEBUG
+		if (Input.GetKeyDown(KeyCode.H))
+		{
+			ConvertInventoryToTokens();
+			foreach (string ii in ConversationTrigger.tokens)
+			{
+				Debug.Log(ii);
+			}
+		}
+
+
 		if (Input.GetKeyDown(KeyCode.I))
 		{
 			if (menuOpen)
@@ -239,6 +250,35 @@ public class InventoryController : MonoBehaviour
 
 		Debug.Log("Item not found: " + itemName);
 		return 0;
+	}
+
+	//! All pickups must be inside the Resources/Pickups folder, and the prefab name must be the same as the object name.
+	public static void ConvertInventoryToTokens()
+	{
+		// Remove all current inventory tokens. (anything containing "item|")
+		foreach (string ii in ConversationTrigger.tokens)
+		{
+			if (ii.Contains("item|"))
+				ConversationTrigger.RemoveToken(ii);
+		}
+
+		// Create and add the tokens to model the inventory.
+		// "item|PATH|COUNT"
+		foreach (KeyValuePair<string, InvItem> ii in items)
+		{
+			string newToken = "item|";
+			newToken += ii.Value.pickup.GetComponent<PickUp>().prefabPath;
+			newToken += "|";
+			newToken += ii.Value.quantity;
+			ConversationTrigger.AddToken(newToken);
+		}
+
+	}
+
+	public static void ConvertTokensToInventory()
+	{
+		// Read all tokens with "item|" in them, split into path and count.
+		// Spawn prefab found at PATH, COUNT times on top of the player.
 	}
 }
 

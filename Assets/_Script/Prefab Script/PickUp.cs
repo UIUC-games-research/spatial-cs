@@ -12,6 +12,9 @@ public class PickUp : MonoBehaviour
 	public string pickupName = "";	// Give it a name, consider this a type.
 	public string pickupDesc = "";  // This is mostly an internal tag. Doesn't really get used.
 
+	[Tooltip("This MUST BE SET for an item to save. It should look like Pickups/boots_sole or similar.")]
+	public string prefabPath = "";
+
 	// SPECIAL
 	// Only necessary for clue:
 	[Header("Special Variables")]

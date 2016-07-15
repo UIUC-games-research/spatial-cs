@@ -90,6 +90,15 @@ public class ConversationTrigger : MonoBehaviour
 		SaveController.Save();
 	}
 
+	public static void RemoveToken(string token)
+	{
+		if (tokens.Contains(token))
+		{
+			tokens.Remove(token);
+			SaveController.Save();
+		}
+	}
+
 	// Returns true if player has token.
 	public static bool GetToken(string token)
 	{
