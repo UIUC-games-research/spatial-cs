@@ -41,6 +41,7 @@ public class PickUp : MonoBehaviour
 			else if (isClue)
 			{
 				CluePopulator.AddClue(pickupName, clueSprite);
+				ConversationTrigger.AddToken("clue_" + pickupName);
 				Destroy(gameObject);
 			}
 			else

@@ -33,6 +33,18 @@ public class CluePopulator : MonoBehaviour
 			Destroy(ii);
 		}
 
+		// Convert special tokens to clues.
+		// Clue sprites must be under Resources/Clues for this to work.
+		// Clue sprites must also have the same name as the item name.
+		foreach (string ii in ConversationTrigger.tokens)
+		{
+			if (ii.Contains("clue_"))
+			{
+				string clueName = ii.Substring(5);
+				AddClue(clueName, Resources.Load<Sprite>("Clues/" + clueName));
+			}
+		}
+
 		// Actually repopulate.
 		foreach (KeyValuePair<string, Sprite> ii in clues)
 		//foreach (InvItem ii in InventoryController.items)

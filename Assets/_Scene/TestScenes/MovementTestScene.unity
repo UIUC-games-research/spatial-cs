@@ -1920,8 +1920,12 @@ Prefab:
     - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: clueSprite
       value: 
-      objectReference: {fileID: 21300000, guid: df671641b2a49f345acfa9e639c172dc,
+      objectReference: {fileID: 21300000, guid: 3b51b5ee0625a4f4f95a564cbc0460aa,
         type: 3}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupName
+      value: testclueA
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
   m_IsPrefabParent: 0
@@ -2736,7 +2740,7 @@ Prefab:
     - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: clueSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 19b2d5e819555364e8d9105b043a6c16,
+      objectReference: {fileID: 21300000, guid: 7cf7d05bff9245440a85a38d2a80efc7,
         type: 3}
     - target: {fileID: 117896, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: m_Name
@@ -2744,7 +2748,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: pickupName
-      value: Clue2
+      value: testclueB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
