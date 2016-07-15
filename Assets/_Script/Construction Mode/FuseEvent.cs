@@ -68,7 +68,7 @@ public class FuseEvent : MonoBehaviour {
 		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 		//backButton.onClick.AddListener(() => globalVariables.backToMainScreen());
 		backButton.onClick.AddListener(() => LoadUtils.LoadScene(InventoryController.levelName));
-
+		mainCam = Camera.main;
 		// Had to disable this level data stuff, things were breaking when you quit out of a level before completeing it.
 		//backButton.onClick.AddListener (() => stopLevelTimer());
 		//backButton.onClick.AddListener (() => printLevelDataFail());
@@ -98,6 +98,7 @@ public class FuseEvent : MonoBehaviour {
 
 
 			});
+			Debug.Log("Made it to this point");
 			claimItem.gameObject.SetActive(false);
 		}
 

@@ -19,7 +19,8 @@ public class CreatePartKey3 : MonoBehaviour {
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;
 	public GameObject rotateZButton;
-	
+	public RotationGizmo rotateGizmo;
+
 	// Use this for initialization
 	void Awake () {
 		//number of parts to fuse
@@ -51,7 +52,7 @@ public class CreatePartKey3 : MonoBehaviour {
 		//blockJutsLongLBackAttach.GetComponent<FuseBehavior>().isFused = true;
 		blockJutsLongLSideAttach.GetComponent<FuseBehavior>().isFused = true;
 		blockJutsLongLTopAttach.GetComponent<FuseBehavior>().isFused = true;
-
+		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 	}
 	
 	// y+ = up, y- = down
@@ -276,7 +277,7 @@ public class CreatePartKey3 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newLongL = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
+			GameObject newLongL = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
 			Transform longLBigCornerAttach = newLongL.transform.FindChild("long_l_big_corner_attach");
 			Transform longLCornerAttach = newLongL.transform.FindChild("long_l_corner_attach");
@@ -325,7 +326,7 @@ public class CreatePartKey3 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newConnector = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
+			GameObject newConnector = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
 			Transform backLeftCoverAttach = newConnector.transform.FindChild("connector_corner_attach");
 			Transform backRightCoverAttach = newConnector.transform.FindChild("connector_diagonal_side_attach");
@@ -360,7 +361,7 @@ public class CreatePartKey3 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newBigCorner = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation));	
+			GameObject newBigCorner = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
 			Transform bigCornerLongLAttach = newBigCorner.transform.FindChild("big_corner_long_l_attach");
 
@@ -391,7 +392,7 @@ public class CreatePartKey3 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newCorner = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
+			GameObject newCorner = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
 			Transform cornerLongLAttach = newCorner.transform.FindChild("corner_long_l_attach");
 			Transform cornerblockJutsAttach = newCorner.transform.FindChild("corner_block_juts_attach");
@@ -429,7 +430,7 @@ public class CreatePartKey3 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();		
-			GameObject newDiagonal = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
+			GameObject newDiagonal = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
 			Transform diagonalConnectorSideAttach = newDiagonal.transform.FindChild("diagonal_connector_side_attach");
 			Transform diagonalConnectorTopAttach = newDiagonal.transform.FindChild("diagonal_connector_top_attach");

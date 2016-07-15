@@ -53,7 +53,7 @@ public class SelectPart : MonoBehaviour {
 	void Awake() {
 		cameraAdjusts = new Dictionary<string, int>();
 		mainCamera = GameObject.Find ("Main Camera");
-		cameraControls = mainCamera.GetComponent<CameraControl>();
+		//cameraControls = mainCamera.GetComponent<CameraControl>();
 		findBlackRegionDone = false;
 		if(mode.Equals ("intro")) {
 			tutorialOn = true;

@@ -19,7 +19,8 @@ public class CreatePartKey2 : MonoBehaviour {
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;
 	public GameObject rotateZButton;
-	
+	public RotationGizmo rotateGizmo;
+
 	// Use this for initialization
 	void Awake () {
 		//number of parts to fuse
@@ -42,7 +43,7 @@ public class CreatePartKey2 : MonoBehaviour {
 		postHangingLAttach.GetComponent<FuseBehavior>().isFused = true;
 		postMiddleTAttach.GetComponent<FuseBehavior>().isFused = true;
 		postZigzagAttach.GetComponent<FuseBehavior>().isFused = true;
-
+		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 	}
 	
 	// y+ = up, y- = down
@@ -221,7 +222,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
-			GameObject newC = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation));
+			GameObject newC = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
 			Transform cMiddleTBottomAttach = newC.transform.FindChild("c_middle_t_bottom_attach");
 			Transform cMiddleTFrontAttach = newC.transform.FindChild("c_middle_t_front_attach");
@@ -261,7 +262,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (90,90,0);
-			GameObject newHangingL = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation));
+			GameObject newHangingL = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
 			Transform hangingLPostAttach = newHangingL.transform.FindChild("hanging_l_post_attach");
 			
@@ -286,7 +287,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);
-			GameObject newMiddleT = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation));	
+			GameObject newMiddleT = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
 			Transform middleTCBottomAttach = newMiddleT.transform.FindChild("middle_t_c_bottom_attach");
 			Transform middleTCFrontAttach = newMiddleT.transform.FindChild("middle_t_c_front_attach");
@@ -326,7 +327,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newUlCorner = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation));
+			GameObject newUlCorner = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
 			Transform ulCornerCAttach = newUlCorner.transform.FindChild("ul_corner_c_attach");
 			
@@ -351,7 +352,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,180);		
-			GameObject newZigzag = LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation));
+			GameObject newZigzag = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
 			Transform zigzagPostAttach = newZigzag.transform.FindChild("zigzag_post_attach");
 			
