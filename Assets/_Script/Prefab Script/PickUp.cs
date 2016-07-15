@@ -12,7 +12,7 @@ public class PickUp : MonoBehaviour
 	public string pickupName = "";	// Give it a name, consider this a type.
 	public string pickupDesc = "";  // This is mostly an internal tag. Doesn't really get used.
 
-	[Tooltip("This MUST BE SET for an item to save. It should look like Pickups/boots_sole or similar.")]
+	[Tooltip("This MUST BE SET for an item to save. It should look like PartPickups/RocketBoots/Pickup_Boots_Body or similar.")]
 	public string prefabPath = "";
 
 	// SPECIAL
@@ -58,7 +58,9 @@ public class PickUp : MonoBehaviour
 			}
 			else
 			{
+				// Add the item and update the tokens.
 				InventoryController.Add(this, 1);
+				InventoryController.ConvertInventoryToTokens();
 				if (respawn)
 				{
 					ObjectRespawner.Instance().RespawnOBJ(this.gameObject, respawnTime);

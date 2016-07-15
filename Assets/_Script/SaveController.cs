@@ -19,6 +19,9 @@ public class SaveController : MonoBehaviour
 		SaveContainer data = new SaveContainer();
 
 		//! Fields go here.
+		// Create and add inventory tokens.
+		//InventoryController.ConvertInventoryToTokens();
+
 		// Save all tokens!
 		List<string> tokensTemp = new List<string>();
 		foreach (string ii in ConversationTrigger.tokens)
@@ -49,6 +52,9 @@ public class SaveController : MonoBehaviour
 
 			//! Fields go here.
 			ConversationTrigger.tokens = new HashSet<string>(data.tokens);
+
+			// Read inventory tokens.
+			InventoryController.ConvertTokensToInventory();
 
 			Debug.Log("Loaded all options successfully.");
 		}

@@ -84,6 +84,10 @@ public class InventoryController : MonoBehaviour
 				Debug.Log(ii);
 			}
 		}
+		if (Input.GetKeyDown(KeyCode.N))
+		{
+			ConvertTokensToInventory();
+		}
 
 
 		if (Input.GetKeyDown(KeyCode.I))
@@ -252,33 +256,67 @@ public class InventoryController : MonoBehaviour
 		return 0;
 	}
 
-	//! All pickups must be inside the Resources/Pickups folder, and the prefab name must be the same as the object name.
+	// Called when an item is picked up. Prepares the tokens for saving.
 	public static void ConvertInventoryToTokens()
 	{
 		// Remove all current inventory tokens. (anything containing "item|")
+		List<string> toRemove = new List<string>();	// Need a list because you cannot modify a hashset while iterating over it.
 		foreach (string ii in ConversationTrigger.tokens)
 		{
 			if (ii.Contains("item|"))
-				ConversationTrigger.RemoveToken(ii);
+				toRemove.Add(ii);
+		}
+		foreach (string ii in toRemove)
+		{
+			ConversationTrigger.RemoveToken(ii);
 		}
 
 		// Create and add the tokens to model the inventory.
 		// "item|PATH|COUNT"
+		List<string> toAdd = new List<string>();	// Need a list because you cannot modify a hashset while iterating over it.
 		foreach (KeyValuePair<string, InvItem> ii in items)
 		{
 			string newToken = "item|";
 			newToken += ii.Value.pickup.GetComponent<PickUp>().prefabPath;
 			newToken += "|";
 			newToken += ii.Value.quantity;
-			ConversationTrigger.AddToken(newToken);
+			toAdd.Add(newToken);
+		}
+		foreach (string ii in toAdd)
+		{
+			ConversationTrigger.AddToken(ii);
 		}
 
 	}
 
+	// Only called by SaveController.Load();
 	public static void ConvertTokensToInventory()
 	{
+		// Get the references we will need.
+		Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+
 		// Read all tokens with "item|" in them, split into path and count.
-		// Spawn prefab found at PATH, COUNT times on top of the player.
+		List<string> itemStrings = new List<string>();
+		foreach (string ii in ConversationTrigger.tokens)
+		{
+			if (ii.Contains("item|"))
+				itemStrings.Add(ii);
+		}
+		foreach (string ii in itemStrings)
+		{
+			string[] separated = ii.Split(new char[]{ '|' });
+			string path = separated[1];
+			int count = int.Parse(separated[2]);
+
+			// Spawn prefab found at PATH, COUNT times on top of the player.
+			for (int i = 0; i < count; i++)
+			{
+				GameObject instance = Instantiate(Resources.Load<GameObject>(path));
+				instance.transform.position = player.position;
+			}
+		}
+
+
 	}
 }
 
