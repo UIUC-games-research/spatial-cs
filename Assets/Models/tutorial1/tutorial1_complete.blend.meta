@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: 110f6b3a1b5ccbb40b709923f511ac18
+timeCreated: 1468696244
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: box
+    100002: box_cone_attach
+    100004: box_pyr_attach
+    100006: box_tri_attach
+    100008: cone
+    100010: cone_box_attach
+    100012: pyr
+    100014: pyr_box_attach
+    100016: tri
+    100018: tri_box_attach
+    100020: //RootNode
+    400000: box
+    400002: box_cone_attach
+    400004: box_pyr_attach
+    400006: box_tri_attach
+    400008: cone
+    400010: cone_box_attach
+    400012: pyr
+    400014: pyr_box_attach
+    400016: tri
+    400018: tri_box_attach
+    400020: //RootNode
+    2300000: box
+    2300002: box_cone_attach
+    2300004: box_pyr_attach
+    2300006: box_tri_attach
+    2300008: cone
+    2300010: cone_box_attach
+    2300012: pyr
+    2300014: pyr_box_attach
+    2300016: tri
+    2300018: tri_box_attach
+    3300000: box
+    3300002: box_cone_attach
+    3300004: box_pyr_attach
+    3300006: box_tri_attach
+    3300008: cone
+    3300010: cone_box_attach
+    3300012: pyr
+    3300014: pyr_box_attach
+    3300016: tri
+    3300018: tri_box_attach
+    4300000: box_cone_attach
+    4300002: cone_box_attach
+    4300004: cone
+    4300006: box_pyr_attach
+    4300008: pyr_box_attach
+    4300010: pyr
+    4300012: box_tri_attach
+    4300014: tri_box_attach
+    4300016: tri
+    4300018: box
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -34,10 +34,15 @@ public class CreatePartAxe : MonoBehaviour {
 		}
 		createLoc = new Vector3(-40, 25, 100);
 		selectionManager = eventSystem.GetComponent<SelectPart>();
+
+		//CHANGE this string to the name of your starting part
 		startObject = GameObject.Find ("startObject");
+
+		//CHANGE these lines so they refer to each black part on your starting part
 		GameObject shaftHaftAttach = startObject.transform.FindChild("shaft_haft_attach").gameObject;
 		GameObject shaftTrapezoidAttach = startObject.transform.FindChild("shaft_trapezoid_attach").gameObject;
 		//to avoid errors when selectedObject starts as startObject
+		//CHANGE these lines to match above
 		shaftHaftAttach.GetComponent<FuseBehavior>().isFused = true;
 		shaftTrapezoidAttach.GetComponent<FuseBehavior>().isFused = true;
 		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
@@ -48,7 +53,14 @@ public class CreatePartAxe : MonoBehaviour {
 	// z+ = back, z- = front
 	// x+ = right, x- = left
 	// (looking at boot from the front)
-	
+
+
+	//CHANGE these next 5 methods so that they refer to the 5 prefabs you made. This requires you to 
+	// change most of the variables and strings in each method. For now, set the fuseLocation to the 
+	// location of whatever part you're going to attach it to, set the fuseRotation to the location 
+	// (0,0,0), and make acceptableRotations contain only one rotation: Quaternion.Euler (0,0,0). Later,
+	// you will come back and change fuseLocation, fuseRotation, and acceptableRotations after testing.
+
 	//returns list of objects body can fuse to
 	public FuseAttributes haftFuses() {
 		GameObject shaft = startObject;
@@ -215,7 +227,8 @@ public class CreatePartAxe : MonoBehaviour {
 		rotateZButton.transform.GetComponent<RotateButton>().setObjectToRotate(toRotate);
 	}
 	
-	
+	//CHANGE these next 5 methods so that they refer to the 5 prefabs you made. This requires you to 
+	// change most of the variables and strings in each method.	
 	public void createHaft() {
 		if(!partCreated[0]) {
 			clearPartsCreated();
