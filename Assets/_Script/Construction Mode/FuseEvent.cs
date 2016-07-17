@@ -153,6 +153,18 @@ public class FuseEvent : MonoBehaviour {
 			fuseMapping.Add("pyr_box_attach", fuseSet1);
 			fuseMapping.Add("tri_box_attach", fuseSet2);
 			fuseMapping.Add("cone_box_attach", fuseSet3);
+		} else if (mode.Equals("tutorial2")) {
+			HashSet<string> fuseSet2 = new HashSet<string>();
+			HashSet<string> fuseSet3 = new HashSet<string>();
+			HashSet<string> fuseSet4 = new HashSet<string>();
+			fuseSet1.Add("longbox_smallbox_yellow_attach");
+			fuseSet2.Add("longbox_tallbox_attach");
+			fuseSet3.Add("longbox_bigbox_attach");
+			fuseSet4.Add("bigbox_smallbox_blue_attach");
+			fuseMapping.Add("smallbox_yellow_longbox_attach", fuseSet1);
+			fuseMapping.Add("tallbox_longbox_attach", fuseSet2);
+			fuseMapping.Add("bigbox_longbox_attach", fuseSet3);
+			fuseMapping.Add("smallbox_blue_bigbox_attach", fuseSet4);
 		} else if (mode.Equals("boot")) {
 			fuseSet1.Add ("Sole_Heel_Top_Attach");
 			fuseMapping.Add ("Body_Bottom_Attach",fuseSet1);
@@ -797,6 +809,17 @@ public class FuseEvent : MonoBehaviour {
 			pyr.transform.parent = group.transform;
 			tri.transform.parent = group.transform;
 			cone.transform.parent = group.transform;
+		} else if(mode.Equals ("tutorial2")) {
+			GameObject longbox = GameObject.Find ("tutorial2_longbox");
+			GameObject smallboxYellow = GameObject.Find ("tutorial2_smallbox_yellowPrefab(Clone)");
+			GameObject tallbox = GameObject.Find ("tutorial2_tallboxPrefab(Clone)");
+			GameObject bigbox = GameObject.Find ("tutorial2_bigboxPrefab(Clone)");
+			GameObject smallboxBlue = GameObject.Find ("tutorial2_smallbox_bluePrefab(Clone)");
+			longbox.transform.parent = group.transform;
+			smallboxYellow.transform.parent = group.transform;
+			tallbox.transform.parent = group.transform;
+			bigbox.transform.parent = group.transform;
+			smallboxBlue.transform.parent = group.transform;
 		} else if(mode.Equals ("intro")) {
 			GameObject bottom = GameObject.Find ("intro_bottom");
 			GameObject mid = GameObject.Find ("introMidPrefab(Clone)");

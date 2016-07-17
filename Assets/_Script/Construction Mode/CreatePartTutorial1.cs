@@ -167,7 +167,7 @@ public class CreatePartTutorial1 : MonoBehaviour {
 		if(!partCreated[0]) {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
-			Quaternion fuseToRotation = Quaternion.Euler (0,0,0);
+			Quaternion fuseToRotation = Quaternion.Euler (180,0,90);
 			GameObject newPyr = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 
 			Transform pyrBoxAttach = newPyr.transform.FindChild("pyr_box_attach");
@@ -220,7 +220,7 @@ public class CreatePartTutorial1 : MonoBehaviour {
 		if(!partCreated[2]){
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
-			Quaternion fuseToRotation = Quaternion.Euler (0,0,0);
+			Quaternion fuseToRotation = Quaternion.Euler (0,90,90);
 			GameObject newCone = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 
 			Transform coneBoxAttach = newCone.transform.FindChild("cone_box_attach");
