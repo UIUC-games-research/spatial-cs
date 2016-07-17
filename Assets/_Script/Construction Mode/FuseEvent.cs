@@ -138,13 +138,34 @@ public class FuseEvent : MonoBehaviour {
 		fuseMapping = new Dictionary<string, HashSet<string>>();
 		//(active part, fused part)
 		HashSet<string> fuseSet1 = new HashSet<string>();
-		//CHANGE this if statemen by adding a new else if onto the end of it for your new level.
+		//CHANGE this if statement by adding a new else if onto the end of it for your new level.
 		// The name of the mode is the name of your level. You need to add key-value pairs to 
 		// fuseMapping where the keys are names of active part ACs and the values are
 		// HashSets containing the names of all fused part ACs that a given active part AC can attach to.
 		// Thus, fuseMapping["blah"] = the set of all fused part ACs that the active part "blah" can
 		// attach to. Most of your HashSets will only contain one string.
-		if (mode.Equals("boot")) {
+		if (mode.Equals("tutorial1")) {
+			HashSet<string> fuseSet2 = new HashSet<string>();
+			HashSet<string> fuseSet3 = new HashSet<string>();
+			fuseSet1.Add("box_pyr_attach");
+			fuseSet2.Add("box_tri_attach");
+			fuseSet3.Add("box_cone_attach");
+			fuseMapping.Add("pyr_box_attach", fuseSet1);
+			fuseMapping.Add("tri_box_attach", fuseSet2);
+			fuseMapping.Add("cone_box_attach", fuseSet3);
+		} else if (mode.Equals("tutorial2")) {
+			HashSet<string> fuseSet2 = new HashSet<string>();
+			HashSet<string> fuseSet3 = new HashSet<string>();
+			HashSet<string> fuseSet4 = new HashSet<string>();
+			fuseSet1.Add("longbox_smallbox_yellow_attach");
+			fuseSet2.Add("longbox_tallbox_attach");
+			fuseSet3.Add("longbox_bigbox_attach");
+			fuseSet4.Add("bigbox_smallbox_blue_attach");
+			fuseMapping.Add("smallbox_yellow_longbox_attach", fuseSet1);
+			fuseMapping.Add("tallbox_longbox_attach", fuseSet2);
+			fuseMapping.Add("bigbox_longbox_attach", fuseSet3);
+			fuseMapping.Add("smallbox_blue_bigbox_attach", fuseSet4);
+		} else if (mode.Equals("boot")) {
 			fuseSet1.Add ("Sole_Heel_Top_Attach");
 			fuseMapping.Add ("Body_Bottom_Attach",fuseSet1);
 			HashSet<string> fuseSet2 = new HashSet<string>();
@@ -779,7 +800,27 @@ public class FuseEvent : MonoBehaviour {
 	private void playVictory() {
 		//CHANGE this if statement by adding an else if onto the end of it for your new level.
 		// The name of the mode is the name of your new level.
-		if(mode.Equals ("intro")) {
+		if(mode.Equals ("tutorial1")) {
+			GameObject box = GameObject.Find ("tutorial1_box");
+			GameObject pyr = GameObject.Find ("tutorial1_pyrPrefab(Clone)");
+			GameObject tri = GameObject.Find ("tutorial1_triPrefab(Clone)");
+			GameObject cone = GameObject.Find ("tutorial1_conePrefab(Clone)");
+			box.transform.parent = group.transform;
+			pyr.transform.parent = group.transform;
+			tri.transform.parent = group.transform;
+			cone.transform.parent = group.transform;
+		} else if(mode.Equals ("tutorial2")) {
+			GameObject longbox = GameObject.Find ("tutorial2_longbox");
+			GameObject smallboxYellow = GameObject.Find ("tutorial2_smallbox_yellowPrefab(Clone)");
+			GameObject tallbox = GameObject.Find ("tutorial2_tallboxPrefab(Clone)");
+			GameObject bigbox = GameObject.Find ("tutorial2_bigboxPrefab(Clone)");
+			GameObject smallboxBlue = GameObject.Find ("tutorial2_smallbox_bluePrefab(Clone)");
+			longbox.transform.parent = group.transform;
+			smallboxYellow.transform.parent = group.transform;
+			tallbox.transform.parent = group.transform;
+			bigbox.transform.parent = group.transform;
+			smallboxBlue.transform.parent = group.transform;
+		} else if(mode.Equals ("intro")) {
 			GameObject bottom = GameObject.Find ("intro_bottom");
 			GameObject mid = GameObject.Find ("introMidPrefab(Clone)");
 			GameObject top = GameObject.Find ("introTopPrefab(Clone)");

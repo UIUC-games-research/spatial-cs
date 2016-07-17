@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: 32db98ce64b312144acfd4f371d95165
+timeCreated: 1468696253
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: bigbox_close
+    100002: bigbox_far
+    100004: bigbox_longbox_attach
+    100006: bigbox_smallbox_blue_attach
+    100008: longbox
+    100010: longbox_bigbox_attach
+    100012: longbox_smallbox_yellow_attach
+    100014: longbox_tallbox_attach
+    100016: smallbox_blue
+    100018: smallbox_blue_bigbox_attach
+    100020: smallbox_yellow
+    100022: smallbox_yellow_longbox_attach
+    100024: tallbox
+    100026: tallbox_longbox_attach
+    100028: //RootNode
+    400000: bigbox_close
+    400002: bigbox_far
+    400004: bigbox_longbox_attach
+    400006: bigbox_smallbox_blue_attach
+    400008: longbox
+    400010: longbox_bigbox_attach
+    400012: longbox_smallbox_yellow_attach
+    400014: longbox_tallbox_attach
+    400016: smallbox_blue
+    400018: smallbox_blue_bigbox_attach
+    400020: smallbox_yellow
+    400022: smallbox_yellow_longbox_attach
+    400024: tallbox
+    400026: tallbox_longbox_attach
+    400028: //RootNode
+    2300000: bigbox_close
+    2300002: bigbox_far
+    2300004: bigbox_longbox_attach
+    2300006: bigbox_smallbox_blue_attach
+    2300008: longbox
+    2300010: longbox_bigbox_attach
+    2300012: longbox_smallbox_yellow_attach
+    2300014: longbox_tallbox_attach
+    2300016: smallbox_blue
+    2300018: smallbox_blue_bigbox_attach
+    2300020: smallbox_yellow
+    2300022: smallbox_yellow_longbox_attach
+    2300024: tallbox
+    2300026: tallbox_longbox_attach
+    3300000: bigbox_close
+    3300002: bigbox_far
+    3300004: bigbox_longbox_attach
+    3300006: bigbox_smallbox_blue_attach
+    3300008: longbox
+    3300010: longbox_bigbox_attach
+    3300012: longbox_smallbox_yellow_attach
+    3300014: longbox_tallbox_attach
+    3300016: smallbox_blue
+    3300018: smallbox_blue_bigbox_attach
+    3300020: smallbox_yellow
+    3300022: smallbox_yellow_longbox_attach
+    3300024: tallbox
+    3300026: tallbox_longbox_attach
+    4300000: bigbox_smallbox_blue_attach
+    4300002: smallbox_blue_bigbox_attach
+    4300004: longbox_bigbox_attach
+    4300006: bigbox_longbox_attach
+    4300008: longbox_tallbox_attach
+    4300010: tallbox_longbox_attach
+    4300012: longbox_smallbox_yellow_attach
+    4300014: smallbox_yellow_longbox_attach
+    4300016: smallbox_blue
+    4300018: smallbox_yellow
+    4300020: bigbox_far
+    4300022: bigbox_close
+    4300024: tallbox
+    4300026: longbox
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
