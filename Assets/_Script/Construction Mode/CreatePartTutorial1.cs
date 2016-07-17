@@ -61,16 +61,16 @@ public class CreatePartTutorial1 : MonoBehaviour {
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
 
 		Vector3 boxPos = box.transform.position;
-		Vector3 fuseLocation = new Vector3 (boxPos.x, boxPos.y, boxPos.z);
+		Vector3 fuseLocation = new Vector3 (boxPos.x, boxPos.y + 28, boxPos.z);
 		fuseLocations.Add ("box_pyr_attach", fuseLocation);
 		fuseRotations.Add("box_pyr_attach", fuseRotation);
 
-		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
-	//	Quaternion acceptableRotation2 = Quaternion.Euler (270,90,0);
-	//	Quaternion acceptableRotation3 = Quaternion.Euler (270,180,0);
-	//	Quaternion acceptableRotation4 = Quaternion.Euler (270,270,0);
-		Quaternion[] acceptableRotations = {acceptableRotation1/*, acceptableRotation2, 
-			acceptableRotation3, acceptableRotation4 */};
+		Quaternion acceptableRotation1 = Quaternion.Euler (270,180,0);
+		Quaternion acceptableRotation2 = Quaternion.Euler (270,90,0);
+		Quaternion acceptableRotation3 = Quaternion.Euler (270,0,0);
+		Quaternion acceptableRotation4 = Quaternion.Euler (270,270,0);
+		Quaternion[] acceptableRotations = {acceptableRotation1, acceptableRotation2, 
+			acceptableRotation3, acceptableRotation4};
 		fusePositions.Add ("box_pyr_attach", acceptableRotations);
 
 		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
@@ -87,15 +87,13 @@ public class CreatePartTutorial1 : MonoBehaviour {
 
 
 		Vector3 boxPos = box.transform.position;
-		Vector3 fuseLocation = new Vector3 (boxPos.x, boxPos.y, boxPos.z);
+		Vector3 fuseLocation = new Vector3 (boxPos.x, boxPos.y, boxPos.z - 27);
 		fuseLocations.Add ("box_tri_attach", fuseLocation);
-		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
+		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,180,0));
 		fuseRotations.Add ("box_tri_attach", fuseRotation);
 
-		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
-	//	Quaternion acceptableRotation2 = Quaternion.Euler (0,90,90);
-	//	Quaternion acceptableRotation3 = Quaternion.Euler (270,180,0);
-		Quaternion[] acceptableRotations = {acceptableRotation1/*, acceptableRotation2, acceptableRotation3*/};
+		Quaternion acceptableRotation1 = Quaternion.Euler (270,180,0);
+		Quaternion[] acceptableRotations = {acceptableRotation1};
 		fusePositions = new Dictionary<string, Quaternion[]>();
 		fusePositions.Add ("box_tri_attach", acceptableRotations);
 
@@ -114,15 +112,16 @@ public class CreatePartTutorial1 : MonoBehaviour {
 		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
 
 		Vector3 boxPos = box.transform.position;
-		Vector3 fuseLocation = new Vector3 (boxPos.x, boxPos.y, boxPos.z);
+		Vector3 fuseLocation = new Vector3 (boxPos.x, boxPos.y - 30.5f, boxPos.z);
 		fuseLocations.Add("box_cone_attach", fuseLocation);
 
 		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 		fuseRotations.Add ("box_cone_attach", fuseRotation);
-		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
-	//	Quaternion acceptableRotation2 = Quaternion.Euler (90,0,0);
-	//	Quaternion acceptableRotation3 = Quaternion.Euler (0,90,90);
-		Quaternion[] acceptableRotations = {acceptableRotation1/*, acceptableRotation2, acceptableRotation3*/};
+		Quaternion acceptableRotation1 = Quaternion.Euler (90,0,0);
+		Quaternion acceptableRotation2 = Quaternion.Euler (90,180,0);
+		Quaternion acceptableRotation3 = Quaternion.Euler (90,90,0);
+		Quaternion acceptableRotation4 = Quaternion.Euler (90,270,0);
+		Quaternion[] acceptableRotations = {acceptableRotation1, acceptableRotation2, acceptableRotation3,acceptableRotation4};
 
 		fusePositions.Add ("box_cone_attach", acceptableRotations);
 

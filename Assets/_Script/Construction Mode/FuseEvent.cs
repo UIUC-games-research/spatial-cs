@@ -147,12 +147,12 @@ public class FuseEvent : MonoBehaviour {
 		if (mode.Equals("tutorial1")) {
 			HashSet<string> fuseSet2 = new HashSet<string>();
 			HashSet<string> fuseSet3 = new HashSet<string>();
-			fuseSet1.Add("pyr_box_attach");
-			fuseSet2.Add("tri_box_attach");
-			fuseSet3.Add("cone_box_attach");
-			fuseMapping.Add("box_pyr_attach", fuseSet1);
-			fuseMapping.Add("box_tri_attach", fuseSet2);
-			fuseMapping.Add("box_cone_attach", fuseSet3);
+			fuseSet1.Add("box_pyr_attach");
+			fuseSet2.Add("box_tri_attach");
+			fuseSet3.Add("box_cone_attach");
+			fuseMapping.Add("pyr_box_attach", fuseSet1);
+			fuseMapping.Add("tri_box_attach", fuseSet2);
+			fuseMapping.Add("cone_box_attach", fuseSet3);
 		} else if (mode.Equals("boot")) {
 			fuseSet1.Add ("Sole_Heel_Top_Attach");
 			fuseMapping.Add ("Body_Bottom_Attach",fuseSet1);
