@@ -87,6 +87,11 @@ public class PickUp : MonoBehaviour
 	{
 		GameObject[] allMarkers = GameObject.FindGameObjectsWithTag("BatteryMarker");
 		int randomIdx = Random.Range(0, allMarkers.Length);
+		while (transform.position == allMarkers[randomIdx].transform.position)
+		{
+			randomIdx = Random.Range(0, allMarkers.Length);
+			Debug.Log("Not letting battery spawn on same spot!");
+		}	
 		transform.position = allMarkers[randomIdx].transform.position;
 	}
 

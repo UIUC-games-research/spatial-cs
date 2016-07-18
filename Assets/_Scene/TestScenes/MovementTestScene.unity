@@ -2666,7 +2666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfStarter: '[rbowwave]Whimsical Test Platform'
   conversationName: testConversation
-  allowEscape: 1
+  allowEscape: 0
   trigger: 0
   keyRequired: 0
   tokenWhitelist: []

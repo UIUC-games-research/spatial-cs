@@ -132,6 +132,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             mouseLook.Init (transform, cam.transform);
         }
 
+		void OnEnable ()
+		{
+			Debug.Log("Enabled!");
+			cam.transform.localPosition = new Vector3(0f, 0.6f, 0f);
+		}
+
 
         private void Update()
         {
