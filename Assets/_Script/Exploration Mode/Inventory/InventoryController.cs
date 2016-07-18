@@ -75,21 +75,6 @@ public class InventoryController : MonoBehaviour
 	
 	void Update ()
 	{
-		// DEBUG
-		if (Input.GetKeyDown(KeyCode.H))
-		{
-			ConvertInventoryToTokens();
-			foreach (string ii in ConversationTrigger.tokens)
-			{
-				Debug.Log(ii);
-			}
-		}
-		if (Input.GetKeyDown(KeyCode.N))
-		{
-			ConvertTokensToInventory();
-		}
-
-
 		if (Input.GetKeyDown(KeyCode.I))
 		{
 			if (menuOpen)
