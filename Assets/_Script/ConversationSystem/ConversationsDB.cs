@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -101,4 +102,16 @@ public class ConversationsDB : MonoBehaviour
 		}
 
 	};
+
+
+	// Alternatively, load them in from text files.
+	// This function is automatically called by the SaveController.Load function.
+	static TextAsset[] conversationFiles = Resources.LoadAll<TextAsset>("Conversations");
+	public static void LoadConversationsFromFiles()
+	{
+		foreach (TextAsset ii in conversationFiles)
+		{
+			convos.Add(ii.name, ii.text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries));
+		}
+	}
 }

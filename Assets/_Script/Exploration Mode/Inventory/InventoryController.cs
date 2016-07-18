@@ -10,11 +10,14 @@ public class InventoryController : MonoBehaviour
 {
 	// Child references, set in inspector.
 	public GameObject tabs; // The tabs parent.
-	public Transform[] tabButtons;	// Every tab.
+	public Transform[] tabButtons;  // Every tab.
+	public GameObject[] menus;	// Every menu.
 	public GameObject inv;	// The inventory parent.
 	public GameObject rec;  // The recipes parent.
+	public GameObject clue; // The clues parent.
 	public InventoryPopulator invPop;   // Where items are populated.
-	public RecipePopulator recPop;		// Where recipes are populated.
+	public RecipePopulator recPop;      // Where recipes are populated.
+	public CluePopulator cluePop;		// Where clues are populated.
 
 	// Other references, grabbed on Start.
 	UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController player;
@@ -119,15 +122,13 @@ public class InventoryController : MonoBehaviour
 
 		// Menus Inactive.
 		FakeActive(tabs, false);
-		FakeActive(inv, false);
-		FakeActive(rec, false);
+		PickMenu(-1);
 	}
 
 	// Tab switching functions.
 	public void SwitchToInv()
 	{
-		FakeActive(inv, true);
-		FakeActive(rec, false);
+		PickMenu(0);
 
 		PopUpTab(0);
 
@@ -136,13 +137,33 @@ public class InventoryController : MonoBehaviour
 	}
 	public void SwitchToRec()
 	{
-		FakeActive(rec, true);
-		FakeActive(inv, false);
+		PickMenu(1);
 
 		PopUpTab(1);
 
 		// Ensure recipes pane is populated.
 		recPop.Repopulate();
+	}
+
+	public void SwitchToClue()
+	{
+		PickMenu(2);
+
+		PopUpTab(2);
+
+		// Ensure clues pane is populated.
+		cluePop.Repopulate();
+	}
+
+	// Enables menu at index. -1 disables all menus.
+	public void PickMenu(int idx)
+	{
+		foreach (GameObject ii in menus)
+		{
+			FakeActive(ii, false);
+		}
+		if (idx != -1)
+			FakeActive(menus[idx], true);
 	}
 
 	public void PopUpTab(int idx)
@@ -218,6 +239,78 @@ public class InventoryController : MonoBehaviour
 
 		Debug.Log("Item not found: " + itemName);
 		return 0;
+	}
+
+	// Called when an item is picked up. Prepares the tokens for saving.
+	public static void ConvertInventoryToTokens()
+	{
+		// Remove all current inventory tokens. (anything containing "item|")
+		List<string> toRemove = new List<string>();	// Need a list because you cannot modify a hashset while iterating over it.
+		foreach (string ii in ConversationTrigger.tokens)
+		{
+			if (ii.Contains("item|"))
+				toRemove.Add(ii);
+		}
+		foreach (string ii in toRemove)
+		{
+			ConversationTrigger.RemoveToken(ii, false);
+		}
+
+		// Create and add the tokens to model the inventory.
+		// "item|PATH|COUNT"
+		List<string> toAdd = new List<string>();	// Need a list because you cannot modify a hashset while iterating over it.
+		foreach (KeyValuePair<string, InvItem> ii in items)
+		{
+			string newToken = "item|";
+			newToken += ii.Value.pickup.GetComponent<PickUp>().prefabPath;
+			newToken += "|";
+			newToken += ii.Value.quantity;
+			toAdd.Add(newToken);
+		}
+		foreach (string ii in toAdd)
+		{
+			ConversationTrigger.AddToken(ii, false);
+		}
+		SaveController.Save();
+	}
+
+	// Only called by SaveController.Load();
+	public static void ConvertTokensToInventory()
+	{
+		// Get the references we will need.
+		Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+
+		// Read all tokens with "item|" in them, split into path and count.
+		List<string> itemStrings = new List<string>();
+		foreach (string ii in ConversationTrigger.tokens)
+		{
+			if (ii.Contains("item|"))
+				itemStrings.Add(ii);
+		}
+		foreach (string ii in itemStrings)
+		{
+			string[] separated = ii.Split(new char[]{ '|' });
+			string path = separated[1];
+			int count = int.Parse(separated[2]);
+
+			// Spawn prefab found at PATH, COUNT times on top of the player.
+			GameObject instantiated = Resources.Load<GameObject>(path);
+			for (int i = 0; i < count; i++)
+			{
+				if (instantiated == null)
+				{
+					Debug.LogError("Path for item was not found! Path was: " + path);
+				}
+				else
+				{
+					GameObject instance = Instantiate(instantiated);
+					instance.GetComponent<PickUp>().autoDelete = false;
+					instance.transform.position = player.position;
+				}
+			}
+		}
+
+
 	}
 }
 

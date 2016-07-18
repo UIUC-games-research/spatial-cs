@@ -5,13 +5,16 @@ using System.Collections.Generic;
 public class ConversationTrigger : MonoBehaviour
 {
 	[Header("Global Settings")]
+	[Tooltip("The name that appears in the top bar. Bar will not exist if left blank.")]
 	public string nameOfStarter;
+	[Tooltip("Internal name / file name of conversation to play")]
 	public string conversationName;
 	public bool allowEscape = true;	// If true, you cannot press Esc to quit out of this conversation.
 	public enum TriggerType { SimpleTrigger, ButtonTrigger, Instant, HardInstant };
 	public TriggerType trigger;
 
 	[Header("Button Trigger Settings")]
+	[Tooltip("Only used for Button Trigger type.")]
 	public KeyCode keyRequired;
 
 	[Header("Token Requirements")]
@@ -88,6 +91,30 @@ public class ConversationTrigger : MonoBehaviour
 	{
 		tokens.Add(token);
 		SaveController.Save();
+	}
+	public static void AddToken(string token, bool save)
+	{
+		tokens.Add(token);
+		if (save)
+			SaveController.Save();
+	}
+
+	public static void RemoveToken(string token)
+	{
+		if (tokens.Contains(token))
+		{
+			tokens.Remove(token);
+			SaveController.Save();
+		}
+	}
+	public static void RemoveToken(string token, bool save)
+	{
+		if (tokens.Contains(token))
+		{
+			tokens.Remove(token);
+			if (save)
+				SaveController.Save();
+		}
 	}
 
 	// Returns true if player has token.
