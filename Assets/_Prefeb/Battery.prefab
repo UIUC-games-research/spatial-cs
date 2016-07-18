@@ -334,17 +334,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c2d183f2dac7d4198260ee8bdfdd6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawn: 0
-  respawnTime: 5
+  type: 1
   pickupName: Battery
   pickupDesc: A fancy floating cube.
+  prefabPath: 
+  isClue: 0
+  clueSprite: {fileID: 0}
+  deleteToken: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 101006}

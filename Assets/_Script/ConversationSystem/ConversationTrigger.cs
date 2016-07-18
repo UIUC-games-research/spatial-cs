@@ -89,6 +89,12 @@ public class ConversationTrigger : MonoBehaviour
 		tokens.Add(token);
 		SaveController.Save();
 	}
+	public static void AddToken(string token, bool save)
+	{
+		tokens.Add(token);
+		if (save)
+			SaveController.Save();
+	}
 
 	public static void RemoveToken(string token)
 	{
@@ -96,6 +102,15 @@ public class ConversationTrigger : MonoBehaviour
 		{
 			tokens.Remove(token);
 			SaveController.Save();
+		}
+	}
+	public static void RemoveToken(string token, bool save)
+	{
+		if (tokens.Contains(token))
+		{
+			tokens.Remove(token);
+			if (save)
+				SaveController.Save();
 		}
 	}
 

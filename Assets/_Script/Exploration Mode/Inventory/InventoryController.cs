@@ -268,7 +268,7 @@ public class InventoryController : MonoBehaviour
 		}
 		foreach (string ii in toRemove)
 		{
-			ConversationTrigger.RemoveToken(ii);
+			ConversationTrigger.RemoveToken(ii, false);
 		}
 
 		// Create and add the tokens to model the inventory.
@@ -284,9 +284,9 @@ public class InventoryController : MonoBehaviour
 		}
 		foreach (string ii in toAdd)
 		{
-			ConversationTrigger.AddToken(ii);
+			ConversationTrigger.AddToken(ii, false);
 		}
-
+		SaveController.Save();
 	}
 
 	// Only called by SaveController.Load();
@@ -309,10 +309,19 @@ public class InventoryController : MonoBehaviour
 			int count = int.Parse(separated[2]);
 
 			// Spawn prefab found at PATH, COUNT times on top of the player.
+			GameObject instantiated = Resources.Load<GameObject>(path);
 			for (int i = 0; i < count; i++)
 			{
-				GameObject instance = Instantiate(Resources.Load<GameObject>(path));
-				instance.transform.position = player.position;
+				if (instantiated == null)
+				{
+					Debug.LogError("Path for item was not found! Path was: " + path);
+				}
+				else
+				{
+					GameObject instance = Instantiate(instantiated);
+					instance.GetComponent<PickUp>().autoDelete = false;
+					instance.transform.position = player.position;
+				}
 			}
 		}
 

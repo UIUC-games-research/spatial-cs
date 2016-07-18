@@ -290,14 +290,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c2d183f2dac7d4198260ee8bdfdd6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawn: 0
-  respawnTime: 5
+  type: 0
   pickupName: Rocket Boots Toe Sole
   pickupDesc: A fancy floating cube.
   prefabPath: PartPickups/RocketBoots/Pickup_Boots_ToeSole
-  isClue: 0
   clueSprite: {fileID: 0}
   deleteToken: 
+  autoDelete: 1
 --- !u!114 &11457490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1868,6 +1867,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: prefabPath
       value: PartPickups/RocketBoots/Pickup_Boots_ToeSole
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: autoDelete
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

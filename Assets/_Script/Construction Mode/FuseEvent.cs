@@ -87,6 +87,7 @@ public class FuseEvent : MonoBehaviour {
 						InventoryController.items.Remove("Rocket Boots Trim");
 						InventoryController.items.Remove("Rocket Boots Calf");
 						InventoryController.items.Remove("Rocket Boots Body");
+						InventoryController.ConvertInventoryToTokens();
 						RecipesDB.unlockedRecipes.Remove(RecipesDB.RocketBoots);
 						LoadUtils.LoadScene(InventoryController.levelName);
 						LoadUtils.UnloadScene("construction");
