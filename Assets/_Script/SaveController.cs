@@ -40,6 +40,9 @@ public class SaveController : MonoBehaviour
 	// Applies all options from the saved file to the locally created variables.
 	public static void Load()
 	{
+		// Make sure all the strings for conversations are loaded.
+		ConversationsDB.LoadConversationsFromFiles();
+
 		if (File.Exists(WhereIsData()))
 		{
 			// Prepare for data IO.
