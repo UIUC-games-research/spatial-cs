@@ -134,6 +134,13 @@ public class ConversationController : MonoBehaviour
 		FakeActive(thisObject, true);
 		currentlyEnabled = true;
 		AllowMouse();
+
+		// Oneshot destroys the trigger and marks it with a token so it never comes back again.
+		if (trigger.oneShot)
+		{
+			Destroy(trigger);
+			ConversationTrigger.AddToken("oneShot_" + trigger.conversationName);
+		}
 	}
 
 	// Set the name box to whoever started this conversation.

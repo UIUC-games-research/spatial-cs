@@ -495,6 +495,7 @@ MonoBehaviour:
   nameOfStarter: '[rbowwave]Whimsical Test Platform'
   conversationName: tokenTestNegative
   allowEscape: 1
+  oneShot: 0
   trigger: 0
   keyRequired: 0
   tokenWhitelist: []
@@ -514,6 +515,7 @@ MonoBehaviour:
   nameOfStarter: '[rbowwave]Whimsical Test Platform'
   conversationName: tokenTestPositive
   allowEscape: 1
+  oneShot: 0
   trigger: 0
   keyRequired: 0
   tokenWhitelist:
@@ -622,6 +624,7 @@ MonoBehaviour:
   nameOfStarter: '[rbowwave]Whimsical Test Platform'
   conversationName: choiceTest
   allowEscape: 1
+  oneShot: 0
   trigger: 0
   keyRequired: 0
   tokenWhitelist: []
@@ -2667,6 +2670,7 @@ MonoBehaviour:
   nameOfStarter: '[rbowwave]Whimsical Test Platform'
   conversationName: testConversation
   allowEscape: 0
+  oneShot: 0
   trigger: 0
   keyRequired: 0
   tokenWhitelist: []
@@ -2753,12 +2757,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfStarter: Absolutely Nothing
   conversationName: loadedConversation
-  allowEscape: 1
+  allowEscape: 0
+  oneShot: 1
   trigger: 2
   keyRequired: 0
   tokenWhitelist: []
-  tokenBlacklist:
-  - instantTestDone
+  tokenBlacklist: []
 --- !u!114 &1857162047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2773,6 +2777,7 @@ MonoBehaviour:
   nameOfStarter: '[shake]Hard Instant'
   conversationName: hardInstantTest
   allowEscape: 1
+  oneShot: 0
   trigger: 3
   keyRequired: 0
   tokenWhitelist:
@@ -3038,6 +3043,7 @@ MonoBehaviour:
   nameOfStarter: '[rbowwave]Whimsical Test Platform'
   conversationName: testConversation
   allowEscape: 1
+  oneShot: 0
   trigger: 1
   keyRequired: 101
   tokenWhitelist: []
@@ -3145,6 +3151,7 @@ MonoBehaviour:
   nameOfStarter: '[rbowwave]Whimsical Test Platform'
   conversationName: tokenTest
   allowEscape: 1
+  oneShot: 0
   trigger: 0
   keyRequired: 0
   tokenWhitelist: []
