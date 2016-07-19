@@ -111,18 +111,21 @@ public class InventoryController : MonoBehaviour
 
 	public void CloseInventory()
 	{
-		// Internal Settings.
-		menuOpen = false;
-		UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = true;
+		if (!ConversationController.currentlyEnabled)
+		{
+			// Internal Settings.
+			menuOpen = false;
+			UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = true;
 
-		// Player Settings.
-		player.mouseLook.SetCursorLock(true);
-		player.mouseLook.XSensitivity = sensitivityXTemp;
-		player.mouseLook.YSensitivity = sensitivityYTemp;
+			// Player Settings.
+			player.mouseLook.SetCursorLock(true);
+			player.mouseLook.XSensitivity = sensitivityXTemp;
+			player.mouseLook.YSensitivity = sensitivityYTemp;
 
-		// Menus Inactive.
-		FakeActive(tabs, false);
-		PickMenu(-1);
+			// Menus Inactive.
+			FakeActive(tabs, false);
+			PickMenu(-1);
+		}
 	}
 
 	// Tab switching functions.

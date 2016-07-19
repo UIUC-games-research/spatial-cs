@@ -9,7 +9,9 @@ public class ConversationTrigger : MonoBehaviour
 	public string nameOfStarter;
 	[Tooltip("Internal name / file name of conversation to play")]
 	public string conversationName;
-	public bool allowEscape = true;	// If true, you cannot press Esc to quit out of this conversation.
+	public bool allowEscape = true; // If true, you can press Esc to quit out of this conversation.
+	[Tooltip("Conversation can only be started once if true. Best used with disallowed escape.")]
+	public bool oneShot = false;	// If true, this trigger will automatically destroy itself once it completes a conversation.
 	public enum TriggerType { SimpleTrigger, ButtonTrigger, Instant, HardInstant };
 	public TriggerType trigger;
 
@@ -27,6 +29,14 @@ public class ConversationTrigger : MonoBehaviour
 	// Internal variables
 	// For Instant trigger.
 	float timer = 0f;
+
+	void Start ()
+	{
+		if (oneShot && GetToken("oneShot_" + conversationName))
+		{
+			Destroy(this);
+		}
+	}
 
 	void OnTriggerEnter(Collider other)
 	{
