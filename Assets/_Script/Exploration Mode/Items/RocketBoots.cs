@@ -23,7 +23,11 @@ public class RocketBoots : MonoBehaviour
 		playerBody = GetComponent<Rigidbody>();
 		uiElementStatic = uiElement;
 
-		// Initially disabled.
+		Debug.Log((int)'’');
+		Debug.Log((int)'\'');
+
+
+		// Initially disabled. ’
 		if (!bootsActive)
 			uiElement.gameObject.SetActive(false);
 	}

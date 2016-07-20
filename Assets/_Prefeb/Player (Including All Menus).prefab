@@ -1222,7 +1222,7 @@ MonoBehaviour:
     StrafeSpeed: 6
     RunMultiplier: 2
     RunKey: 304
-    JumpForce: 50
+    JumpForce: 100
     SlopeCurveModifier:
       serializedVersion: 2
       m_Curve:
@@ -3101,7 +3101,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: movementSettings.JumpForce
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125448}

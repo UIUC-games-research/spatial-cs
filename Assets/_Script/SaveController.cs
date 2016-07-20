@@ -56,8 +56,9 @@ public class SaveController : MonoBehaviour
 			//! Fields go here.
 			ConversationTrigger.tokens = new HashSet<string>(data.tokens);
 
-			// Read inventory tokens.
+			// Read inventory-related tokens.
 			InventoryController.ConvertTokensToInventory();
+			BatterySystem.TokensToPower();
 
 			Debug.Log("Loaded all options successfully.");
 		}
