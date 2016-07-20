@@ -728,6 +728,7 @@ public class FuseEvent : MonoBehaviour {
 		} else if (!fuseMapping.ContainsKey (selectedObject.name)){
 			numWrongFacesFails++;
 			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
+			//display error on screen
 			source.PlayOneShot (failure);
 
 		} else if(fuseMapping[selectedObject.name].Contains(selectedFuseTo.name) && positionMatches (selectedObject, selectedFuseTo)) {

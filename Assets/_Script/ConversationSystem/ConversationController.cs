@@ -122,7 +122,18 @@ public class ConversationController : MonoBehaviour
 	// Enable the text box, supplying a trigger. This is generally better when possible, since it will set name / escape rule.
 	public static void Enable(ConversationTrigger trigger)
 	{
+		foreach(string k in ConversationsDB.convos.Keys) {
+			print(k);
+		}
+
+		if (!ConversationsDB.convos.ContainsKey(trigger.conversationName))
+		{
+			ConversationsDB.LoadConversationsFromFiles();
+
+		}
 		textBox.ApplyConversation(ConversationsDB.convos[trigger.conversationName]);
+
+			
 		currentConversationName = trigger.conversationName;
 		currentEscRule = trigger.allowEscape;
 		if (trigger.conversationName == "nowhere")
