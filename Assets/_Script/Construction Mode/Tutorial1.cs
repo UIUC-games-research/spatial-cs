@@ -29,21 +29,7 @@ public class Tutorial1 : MonoBehaviour {
 
 		rotationScript = rotationGizmo.GetComponent<RotationGizmo>();
 
-		// fourth event: Dresha highlights the two black regions: Pyr's and the corresponding fuseTo on the cube
 
-		// fifth event: Dresha's failed connect attempt with error message
-
-		// sixth event: Welder interface fizzes to life and all controls are enabled
-
-		// seventh event: Dresha flashes pyramid again ("Click on this!")
-
-		//eighth event: player clicks on pyramid
-
-		//ninth event: Dresha flashes Pyr's attachment region
-
-		// tenth event: Dresha flashes cube's fuseTo for Pyr
-
-		// eleventh event: player moves camera
 	}
 
 	// Update is called once per frame
@@ -64,9 +50,28 @@ public class Tutorial1 : MonoBehaviour {
 			StartCoroutine(wait2());
 			ConversationTrigger.AddToken("dreshaCreatedPyr");
 		// third event: Dresha rotates Pyr left, then down
-		} else if (!triggersFinished[2] && ConversationTrigger.tokens.Contains("dreshaReadyToCreatePyr")) {
+		} else if (!triggersFinished[2] && ConversationTrigger.tokens.Contains("dreshaReadyToRotatePyr")) {
 			rotationScript.runManualRotation(0f, -90f, 0f);
+			rotationScript.runManualRotation(0f, 0f, -90f);
+			triggersFinished[2] = true;
+			StartCoroutine(wait2());
+			ConversationTrigger.AddToken("dreshaRotatedPyr");
 		}
+		// fourth event: Dresha highlights the two black regions: Pyr's and the corresponding fuseTo on the cube
+
+		// fifth event: Dresha's failed connect attempt with error message
+
+		// sixth event: Welder interface fizzes to life and all controls are enabled
+
+		// seventh event: Dresha flashes pyramid again ("Click on this!")
+
+		//eighth event: player clicks on pyramid
+
+		//ninth event: Dresha flashes Pyr's attachment region
+
+		// tenth event: Dresha flashes cube's fuseTo for Pyr
+
+		// eleventh event: player moves camera
 	}  
 
 	IEnumerator wait2() {
