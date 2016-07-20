@@ -1,5 +1,5 @@
-What? This isn’t what I’m supposed to be building?
-Calm down, we’ll get to your Rocket Boots in a moment! I want to show you how cool my Welder is.
+What? This isn't what I'm supposed to be building?
+Calm down, we'll get to your Rocket Boots in a moment! I want to show you how cool my Welder is.
 This-
 [CHOOSE]
-this goes to next convo|nowhere|dreshaFlashedFinishedImage
+this goes to next convo|nowhere|dreshaReadyToFlashFinishedImage

@@ -164,6 +164,10 @@ public class RotationGizmo : MonoBehaviour
 		rotating = false;
 	}
 
+	public void runManualRotation(float x, float y, float z) {
+		StartCoroutine(Rotate(x, y, z));
+	}
+
 	public void Disable()
 	{
 		toRotate = null;
