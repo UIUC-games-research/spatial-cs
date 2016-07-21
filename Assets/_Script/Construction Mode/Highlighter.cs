@@ -17,7 +17,16 @@ public class Highlighter : MonoBehaviour
 		Destroy(go.GetComponent<Highlighter>());
 	}
 
+	public void Highlight2Sec(GameObject go) {
+		Highlight(go);
+		GameObject eventsystem = GameObject.Find("EventSystem");
+		eventsystem.GetComponent<FuseEvent>().StartCoroutine(wait2_unhighlight(go));
+	}
 
+	IEnumerator wait2_unhighlight(GameObject go) {
+		yield return new WaitForSeconds(2);
+		Unhighlight(go);
+	}
 
 	// When this script is applied to an object, sine waves!
 	MeshRenderer meshr;

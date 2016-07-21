@@ -165,7 +165,8 @@ public class RotationGizmo : MonoBehaviour
 	}
 
 	//Warning - will probably break on X and Z rotations if used outside of tutorial
-	public void runManualRotation(float x, float y, float z) {
+	public void runManualRotation(GameObject objectToRotate, float x, float y, float z) {
+		toRotate = objectToRotate;
 		StartCoroutine(Rotate(x, y, z));
 	}
 

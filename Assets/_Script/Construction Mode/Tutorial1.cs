@@ -9,15 +9,15 @@ public class Tutorial1 : MonoBehaviour {
 	public Button pyrButton;
 	public GameObject rotationGizmo;
 	private RotationGizmo rotationScript;
+	private Highlighter highlighter;
 	public Text errorMessage;
 	public GameObject[] interfaceElements;
+	private GameObject pyramid;
 	private GameObject pyramidBoxAttach;
 	private GameObject boxPyramidAttach;
 
 	private bool[] triggersFinished;
 	private const int NUM_TRIGGERS = 11;
-
-	private bool highlighted = false;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +28,7 @@ public class Tutorial1 : MonoBehaviour {
 		}
 
 		rotationScript = rotationGizmo.GetComponent<RotationGizmo>();
-
+		highlighter = new Highlighter();
 
 	}
 
@@ -36,9 +36,8 @@ public class Tutorial1 : MonoBehaviour {
 	void Update () {
 		// first event: Dresha flashes finished image, which triggers next convo
 		if(!triggersFinished[0] && ConversationTrigger.tokens.Contains("dreshaReadyToFlashFinishedImage")) {
-			Highlighter.Highlight(finishedImage);
 			triggersFinished[0] = true;
-			StartCoroutine(wait2());
+			highlighter.Highlight2Sec(finishedImage);
 			ConversationTrigger.AddToken("dreshaFlashedFinishedImage");
 		// second event: Dresha creates Pyr, which triggers next convo
 		} else if (!triggersFinished[1] && ConversationTrigger.tokens.Contains("dreshaReadyToCreatePyr")) {
@@ -51,8 +50,9 @@ public class Tutorial1 : MonoBehaviour {
 			ConversationTrigger.AddToken("dreshaCreatedPyr");
 		// third event: Dresha rotates Pyr left, then down
 		} else if (!triggersFinished[2] && ConversationTrigger.tokens.Contains("dreshaReadyToRotatePyr")) {
-			rotationScript.runManualRotation(0f, -90f, 0f);
-			rotationScript.runManualRotation(0f, 0f, -90f);
+			pyramid = GameObject.Find("tutorial1_pyrPrefab(Clone)");
+			rotationScript.runManualRotation(pyramid, 0f, -90f, 0f);
+			rotationScript.runManualRotation(pyramid, 0f, 0f, -90f);
 			triggersFinished[2] = true;
 			StartCoroutine(wait2());
 			ConversationTrigger.AddToken("dreshaRotatedPyr");

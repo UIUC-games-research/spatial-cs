@@ -126,21 +126,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 71784289}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfStarter: 447265736861
-  conversationName: 647265736861437265617465507972546f526f74617465507972
+  nameOfStarter: Dresha
+  conversationName: dreshaCreatePyrToRotatePyr
   allowEscape: 0
   oneShot: 1
   trigger: 3
   keyRequired: 0
   tokenWhitelist:
-  - 64726573686143726561746564507972
+  - dreshaCreatedPyr
   tokenBlacklist: []
-  timer: 0
 --- !u!65 &71784291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -972,15 +971,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfStarter: 447265736861
-  conversationName: 73746172745475746f7269616c31546f447265736861466c617368
+  nameOfStarter: Dresha
+  conversationName: startTutorial1ToDreshaFlash
   allowEscape: 0
   oneShot: 1
   trigger: 2
   keyRequired: 0
   tokenWhitelist: []
   tokenBlacklist: []
-  timer: 0
 --- !u!65 &656125873
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1380,21 +1378,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1006242959}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfStarter: 447265736861
-  conversationName: 647265736861466c617368546f437265617465507972
+  nameOfStarter: Dresha
+  conversationName: dreshaFlashToCreatePyr
   allowEscape: 0
   oneShot: 1
   trigger: 3
   keyRequired: 0
   tokenWhitelist:
-  - 647265736861466c617368656446696e6973686564496d616765
+  - dreshaFlashedFinishedImage
   tokenBlacklist: []
-  timer: 0
 --- !u!65 &1006242961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1464,7 +1461,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1058967712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,20 +1985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8daa7e2be9c48d94ea0d4cd4ad5e46a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedObject: {fileID: 0}
-  prevSelectedObject: {fileID: 0}
-  activePart: {fileID: 0}
-  mainCamera: {fileID: 0}
-  cameraControls: {fileID: 0}
-  unhighTexture: {fileID: 0}
-  highTexture: {fileID: 0}
-  selectedFuseTo: {fileID: 0}
-  prevSelectedFuseTo: {fileID: 0}
-  prevColorSelectedFuseTo:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
   tutorialOn: 0
   mode: 7475746f7269616c31
   getCorrectRotation: {fileID: 287866740}
@@ -2022,7 +2005,6 @@ MonoBehaviour:
   clickBlackPanel: {fileID: 0}
   findOtherBlackRegionPanel: {fileID: 0}
   rotateToFindBlackPanel: {fileID: 0}
-  findBlackRegionDone: 0
 --- !u!114 &1321869684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,7 +2016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c39bb3cbdbef3468eff3a52593b264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotated: {fileID: 0}
 --- !u!114 &1321869685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2046,12 +2027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a62bd1f9e428d64fb664298c3add03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedObject: {fileID: 0}
-  selectedFuseTo: {fileID: 0}
-  middleTRotation: 0
-  victoryCounter: 0
-  victoryFinished: 0
-  fadeTime: 5
   mode: 7475746f7269616c31
   source: {fileID: 369571929}
   musicSource: {fileID: 1868226679}
@@ -2076,16 +2051,7 @@ MonoBehaviour:
   congratsPanelGroup: {fileID: 188299409}
   finishedImage: {fileID: 1232480375}
   mainCam: {fileID: 0}
-  group: {fileID: 0}
-  fuseCount: 0
-  NUM_FUSES: 0
   tutorialOn: 0
-  levelTimer: 0
-  filename: 
-  numFuseAttempts: 0
-  numFuseFails: 0
-  numWrongRotationFails: 0
-  numWrongFacesFails: 0
 --- !u!114 &1321869686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2097,18 +2063,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3a6a2d0a9a8b24c84908450eb86d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiated: []
   parts:
   - {fileID: 161026, guid: 153edda37ab3244489fe35d9dd619061, type: 2}
   - {fileID: 123804, guid: d0b0e8d9444216b4fb51f5fcb9eaa0cd, type: 2}
   - {fileID: 178090, guid: eb55e82068c06ff44892cd5a8235eef3, type: 2}
-  partCreated: []
-  createLoc: {x: 0, y: 0, z: 0}
   eventSystem: {fileID: 1321869678}
-  selectionManager: {fileID: 0}
   NUM_PARTS: 3
-  startObject: {fileID: 0}
-  password: 4b5644494b68
   rotateYButton: {fileID: 1383566440}
   rotateXButton: {fileID: 1792862565}
   rotateZButton: {fileID: 660833761}
@@ -2124,6 +2084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb47f5be5f0b074885d21feca888d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1321869678}
   finishedImage: {fileID: 1232480373}
   pyrButton: {fileID: 1354454469}
   rotationGizmo: {fileID: 387021286}
@@ -2133,10 +2094,6 @@ MonoBehaviour:
   - {fileID: 1354454465}
   - {fileID: 1649524225}
   - {fileID: 1418366672}
-  pyramidBoxAttach: {fileID: 0}
-  boxPyramidAttach: {fileID: 0}
-  triggersFinished: []
-  highlighted: 0
 --- !u!1001 &1344410734
 Prefab:
   m_ObjectHideFlags: 0
@@ -2248,8 +2205,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFused: 0
-  assignedButton: {fileID: 0}
-  tagged: 0
 --- !u!114 &1344410742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2287,8 +2242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFused: 0
-  assignedButton: {fileID: 0}
-  tagged: 0
 --- !u!114 &1344410745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2326,8 +2279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFused: 0
-  assignedButton: {fileID: 0}
-  tagged: 0
 --- !u!114 &1344410748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2917,21 +2868,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653403953}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfStarter: 447265736861
-  conversationName: 647265736861526f74617465507972546f426c61636b526567696f6e73
+  nameOfStarter: Dresha
+  conversationName: dreshaRotatePyrToBlackRegions
   allowEscape: 0
   oneShot: 1
   trigger: 3
   keyRequired: 0
   tokenWhitelist:
-  - 647265736861526f7461746564507972
+  - dreshaRotatedPyr
   tokenBlacklist: []
-  timer: 0
 --- !u!65 &1653403955
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3001,7 +2951,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &1707600177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3343,21 +3293,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807749779}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfStarter: 447265736861
-  conversationName: 647265736861426c61636b526567696f6e73546f576174636854686973
+  nameOfStarter: Dresha
+  conversationName: dreshaBlackRegionsToWatchThis
   allowEscape: 0
   oneShot: 1
   trigger: 3
   keyRequired: 0
   tokenWhitelist:
-  - 6472657368614661696c6564417474656d7074
+  - dreshaPointedOutBlackRegions
   tokenBlacklist: []
-  timer: 0
 --- !u!65 &1807749781
 BoxCollider:
   m_ObjectHideFlags: 0
