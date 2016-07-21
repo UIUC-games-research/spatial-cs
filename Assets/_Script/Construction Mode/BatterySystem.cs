@@ -9,7 +9,7 @@ public class BatterySystem : MonoBehaviour
 	Text indicator;
 
 	// counter for battery power.
-	static int batteryPower = 15;
+	static int batteryPower = 6;
 
 	public static int GetPower()
 	{
