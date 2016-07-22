@@ -11,15 +11,17 @@ public class Sledgehammer : ItemBase
 	static GameObject sledgehammerStatic;
 
 	bool selected = false;
+	bool swinging = false;
 
 	void Start ()
 	{
 		sledgehammerStatic = sledgehammer;
 
-		// Check token and activate if unlocked.
+		// Check token and activate if unlocked, but deselected.
 		if (ConversationTrigger.GetToken("gear_sledgehammer"))
 		{
 			ActivateSledgehammer();
+			Deselect();
 		}
 		else
 		{
@@ -36,10 +38,41 @@ public class Sledgehammer : ItemBase
 
 	void Update ()
 	{
-		// DEBUG.
-		if (Input.GetKeyDown(KeyCode.H))
+		if (sledgeActive && selected)
 		{
-			ActivateSledgehammer();
+			// Press left mouse to swing.
+			if (Input.GetMouseButtonDown(0))
+			{
+				StartCoroutine(Swing());
+			}
+		}
+	}
+
+	IEnumerator Swing()
+	{
+		swinging = false;
+		for (int i = 0; i < 10; i++)
+		{
+			sledgehammer.transform.Rotate(90f / 10f, 0f, 0f, Space.Self);
+			if (i > 5)
+				swinging = true;
+			else
+				swinging = false;
+			yield return null;
+		}
+		swinging = false;
+		for (int i = 0; i < 15; i++)
+		{
+			sledgehammer.transform.Rotate(-90f / 15f, 0f, 0f, Space.Self);
+			yield return null;
+		}
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		if (swinging && other.tag == "Breakable")
+		{
+			Destroy(other.gameObject);
 		}
 	}
 
@@ -65,6 +98,7 @@ public class Sledgehammer : ItemBase
 			// Hide the sledge when deselected, and set a flag.
 			sledgehammerStatic.gameObject.SetActive(false);
 			selected = false;
+			swinging = false;
 		}
 	}
 	public override void Select()
@@ -75,6 +109,7 @@ public class Sledgehammer : ItemBase
 			// Re-show the sledgewhen selected, and set a flag.
 			sledgehammerStatic.gameObject.SetActive(true);
 			selected = true;
+			swinging = false;
 		}
 	}
 }

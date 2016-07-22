@@ -40,10 +40,11 @@ public class InventoryController : MonoBehaviour
 
 	void Awake ()
 	{
-		// Initial recipes unlocked should be placed here.
+		//! Initial recipes unlocked should be placed here.
 		//RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe);
 		//RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe2);
 		RecipesDB.unlockedRecipes.Add(RecipesDB.RocketBoots);
+		RecipesDB.unlockedRecipes.Add(RecipesDB.Sledgehammer);
 
 		// Load save when inventory controller activates. Has to happen somewhere!
 		SaveController.Load();

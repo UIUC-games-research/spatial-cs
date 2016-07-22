@@ -25,4 +25,9 @@ public class RecipesDB : MonoBehaviour
 												  "construction",
 												  new string[] { "Rocket Boots Sole", "Rocket Boots Toe Sole", "Rocket Boots Toe", "Rocket Boots Trim", "Rocket Boots Calf", "Rocket Boots Body" },
 												  new int[] { 1, 1, 1, 1, 1, 1 });
+
+	public static Recipe Sledgehammer = new Recipe("Sledgehammer",
+												   "axe",
+												   new string[] { "Sledgehammer Bottom Point", "Sledgehammer Haft", "Sledgehammer Head", "Sledgehammer Shaft", "Sledgehammer Top Point", "Sledgehammer Trapezoid" },
+												   new int[] { 1, 1, 1, 1, 1, 1 });
 }

@@ -13,6 +13,7 @@ TagManager:
   - passwordCanvas
   - BatteryMarker
   - RotationGizmo
+  - Breakable
   layers:
   - Default
   - TransparentFX
