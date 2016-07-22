@@ -33,6 +33,8 @@ public class FuseEvent : MonoBehaviour {
 	public GameObject rotateZButton;
 
 	public Text congrats;
+	public Text shapesWrong;
+	public Text rotationWrong;
 	public Text getPassword;
 	public Button claimItem;    // NEW ADDITION. A button which appears upon completion of an item to claim it in exploration mode.
 	public RotationGizmo rotateGizmo;	// NEW ADDITION. when completing a fusion, disable the rotation gizmo.
@@ -40,6 +42,7 @@ public class FuseEvent : MonoBehaviour {
 	public CanvasGroup rotatePanelGroup;
 	public CanvasGroup bottomPanelGroup;
 	public CanvasGroup congratsPanelGroup;
+	public CanvasGroup errorPanelGroup;
 	public Image finishedImage;
 
 	public Camera mainCam;
@@ -726,10 +729,9 @@ public class FuseEvent : MonoBehaviour {
 			source.PlayOneShot (failure);
 
 		} else if (!fuseMapping.ContainsKey (selectedObject.name)){
-			numWrongFacesFails++;
 			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
-			//display error on screen
-			source.PlayOneShot (failure);
+			//display error on screen for 1 sec
+			StartCoroutine(errorWrongFace());
 
 		} else if(fuseMapping[selectedObject.name].Contains(selectedFuseTo.name) && positionMatches (selectedObject, selectedFuseTo)) {
 			if(selectedObject.transform.parent.name.Equals ("middle_tPrefab(Clone)")) {
@@ -748,11 +750,7 @@ public class FuseEvent : MonoBehaviour {
 			source.PlayOneShot (success);
 			selectedObject.GetComponent<FuseBehavior>().fuse(selectedFuseTo.name, selectedFuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag);
 
-			//! CODE FOR REMOVING GHOSTS ON CONNECT.
-			Destroy(selectedObject.GetComponent<SelectedEffect>());
-			Destroy(selectedFuseTo.GetComponent<SelectedEffect>());
-			// Also, disable rotation gizmo.
-			rotateGizmo.Disable();
+	
 
 			fuseCleanUp();
 			fuseCount++;
@@ -781,22 +779,39 @@ public class FuseEvent : MonoBehaviour {
 
 
 		} else if (!fuseMapping[selectedObject.name].Contains (selectedFuseTo.name)) {
-			numWrongFacesFails++;
 			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
-			source.PlayOneShot (failure);
+			StartCoroutine(errorWrongFace());
 
 		} else if (fuseMapping[selectedObject.name].Contains (selectedFuseTo.name) && !positionMatches (selectedObject, selectedFuseTo)){
 			//rotation isn't right - tell player this or let them figure it out themselves?
-			numWrongRotationFails++;
-
+			StartCoroutine(errorWrongRotation());
 			print ("Invalid fuse: Correct fuse selection, but the orientation isn't right!");
-			source.PlayOneShot (failure);
 		} else {
 			//this shouldn't happen
 			print ("MYSTERIOUS FUSE ERROR");
 		}
 
 
+	}
+
+	IEnumerator errorWrongFace() {
+		numWrongFacesFails++;
+		errorPanelGroup.alpha = 1;
+		shapesWrong.enabled = true;
+		source.PlayOneShot (failure);
+		yield return new WaitForSeconds(1f);
+		shapesWrong.enabled=false;
+		errorPanelGroup.alpha = 0;
+	}
+
+	IEnumerator errorWrongRotation() {
+		numWrongRotationFails++;
+		errorPanelGroup.alpha = 1;
+		rotationWrong.enabled = true;
+		source.PlayOneShot (failure);
+		yield return new WaitForSeconds(1f);
+		rotationWrong.enabled=false;
+		errorPanelGroup.alpha = 0;
 	}
 
 	private void playVictory() {
@@ -1037,7 +1052,10 @@ public class FuseEvent : MonoBehaviour {
 
 	//remove old arrows from fused part and unselect fused parts
 	private void fuseCleanUp() {
+		// Disable rotation gizmo.
+		rotateGizmo.Disable();
 
+		//Unselect and unghost the attached fuseTo and active part
 		GetComponent<SelectPart>().resetSelectedObject();
 		GetComponent<SelectPart>().resetSelectedFuseTo();
 		disableConnectButton();

@@ -1,4 +1,4 @@
 -show me where I can attach parts together!
 Watch this!
 [CHOOSE]
-wait for Dresha's failed attempt at attaching Pyr to Tri attachment|nowhere
+Dresha is about to try attaching the two parts|nowhere|dreshaReadyToTryAttaching
