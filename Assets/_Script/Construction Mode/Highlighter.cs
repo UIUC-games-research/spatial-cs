@@ -17,17 +17,17 @@ public class Highlighter : MonoBehaviour
 		Destroy(go.GetComponent<Highlighter>());
 	}
 
-	public void Highlight2Sec(GameObject go) {
+	public void HighlightTimed(GameObject go, float time) {
 		Highlight(go);
 		GameObject eventsystem = GameObject.Find("EventSystem");
-		eventsystem.GetComponent<FuseEvent>().StartCoroutine(wait2_unhighlight(go));
+		eventsystem.GetComponent<FuseEvent>().StartCoroutine(wait_unhighlight_timed(go, time));
 	}
 
-	IEnumerator wait2_unhighlight(GameObject go) {
-		yield return new WaitForSeconds(2);
+	IEnumerator wait_unhighlight_timed(GameObject go, float time) {
+		yield return new WaitForSeconds(time);
 		Unhighlight(go);
 	}
-
+		
 	// When this script is applied to an object, sine waves!
 	MeshRenderer meshr;
 	Color defaultColor;
@@ -41,6 +41,7 @@ public class Highlighter : MonoBehaviour
 		if (meshr != null)
 		{
 			defaultColor = meshr.material.GetColor("_Color");
+			print("Parent Object for Mesh:" + meshr.gameObject);
 			defaultEmiss = meshr.material.GetColor("_EmissionColor");
 		}
 
