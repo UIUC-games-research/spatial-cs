@@ -140,7 +140,8 @@ public class ConversationController : MonoBehaviour
 		currentlyEnabled = true;
 		AllowMouse();
 
-		// Oneshot destroys the trigger and marks it with a token so it never comes back again.
+		// Oneshot destroys the trigger and marks it with a token so it never comes back again. Ever.
+		// You'll have to delete the save file to have it trigger again.
 		if (trigger.oneShot)
 		{
 			Destroy(trigger);
