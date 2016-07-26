@@ -1,0 +1,3 @@
+Hmm...Try selecting a different shape on this block.
+[CHOOSE]
+Dresha will now flash box|nowhere|wrongFaceDreshaReadyToFlashBox

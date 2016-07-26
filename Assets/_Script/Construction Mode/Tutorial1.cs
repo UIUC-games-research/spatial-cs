@@ -6,6 +6,7 @@ public class Tutorial1 : MonoBehaviour {
 
 	public GameObject eventSystem;
 	private SelectPart selectPart;
+	private FuseEvent fuseEvent;
 	public Button[] partButtons;
 	public Button connectButton;
 	public GameObject finishedImage;
@@ -13,13 +14,18 @@ public class Tutorial1 : MonoBehaviour {
 	public GameObject rotationGizmo;
 	private RotationGizmo rotationScript;
 	public Highlighter highlighter;
-	public Text errorMessage;
 	private GameObject pyramid;
 	public GameObject[] attachments;
+	public Text shapesWrong;
+	public Text rotationWrong;
+	public Text congrats;
+	public Button goToNextTutorial;
 
 	private bool[] triggersFinished;
 	private const int NUM_TRIGGERS = 25;
 	private bool doneDragging;
+	private bool pyrButtonClicked;
+	private GameObject selectedObj;
 
 	// Use this for initialization
 	void Start () {
@@ -30,8 +36,10 @@ public class Tutorial1 : MonoBehaviour {
 		}
 
 		rotationScript = rotationGizmo.GetComponent<RotationGizmo>();
+		fuseEvent = eventSystem.GetComponent<FuseEvent>();
 		selectPart = eventSystem.GetComponent<SelectPart>();
 		doneDragging = false;
+		pyrButtonClicked = false;
 
 		//disable part buttons so player can't use them while Dresha talks
 		foreach(Button b in partButtons) {
@@ -107,9 +115,7 @@ public class Tutorial1 : MonoBehaviour {
 			Highlighter.Unhighlight(GameObject.Find("pyr"));
 			Highlighter.Unhighlight(GameObject.Find("box"));
 			//tenth event: player just depressed mouse key to begin dragging camera
-
-		} else if(!doneDragging && triggersFinished[9]) {
-			//player just finished dragging camera
+			// figure out later how to get this to work for an actual drag
 			doneDragging = true;
 			ConversationTrigger.AddToken("playerMovedCamera");
 
@@ -126,12 +132,13 @@ public class Tutorial1 : MonoBehaviour {
 		} else if(!triggersFinished[12] && ConversationTrigger.tokens.Contains("dreshaReadyToFlashPyrAgain")) {
 			triggersFinished[12] = true;
 			// Dresha has just told player to select the pyr's attachment
-			Highlighter.Highlight(GameObject.Find("pyr")); //what if player has created another part in meantime?
+			Highlighter.Highlight(GameObject.Find("pyr")); // needs to generalize to any selectedObj
+
 		} else if(!triggersFinished[13] && triggersFinished[12] == true
-			
 			&& selectPart.getSelectedObject() != null) {
 			triggersFinished[13] = true;
 			// player just selected pyr's attachment (or some other selectedObject, if we're allowing different shapes
+			connectButton.enabled = false;
 			Highlighter.Unhighlight(GameObject.Find("pyr")); 
 			ConversationTrigger.AddToken("playerSelectedAnObj");
 
@@ -146,32 +153,95 @@ public class Tutorial1 : MonoBehaviour {
 			// Dresha will now flash rotation gizmo and explain it
 			Highlighter.Unhighlight(connectButton.gameObject);
 			StartCoroutine(highlightGizmoWait());
+
 		} else if(!triggersFinished[16] && ConversationTrigger.tokens.Contains("dreshaReadyToFlashPyrAfterGizmo")) {
 			triggersFinished[16] = true;
 			// Dresha will now flash pyr once again
 			highlighter.HighlightTimed(GameObject.Find("pyr"), 2); 
 			ConversationTrigger.AddToken("dreshaFlashedPyrAfterGizmo");
-		} else if(!triggersFinished[17] && triggersFinished[16]) {
+
+		} else if(!triggersFinished[17] && ConversationTrigger.tokens.Contains("readyToEnableConnectButton")) {
 			triggersFinished[17] = true;
-			//triggers Dresha telling you to try out connect button
-			ConversationTrigger.AddToken("playerFinishedRotatingPyr");
-			// Dresha enables Connect button so you can attempt your first connection
-			//automatic?
+			//enable connect button - Dresha is already talking
+			connectButton.enabled = true;
+
+		} else if(!triggersFinished[18] && ConversationTrigger.GetToken("wrongRotationDreshaReadyToFlashObj")) {
+			// wrong rotation - Dresha just finished tryRotatingAgain1 and will now flash selectedObj
+			// for 2 seconds, followed by the convo tryRotatingAgain2
+			StartCoroutine(highlightPyrWrongRotationWait());
+			ConversationTrigger.RemoveToken("wrongRotationDreshaReadyToFlashObj");
+
+		} else if(!triggersFinished[18] && ConversationTrigger.GetToken("wrongFaceDreshaReadyToFlashBox")) {
+			// wrong shape - Dresha just finished tryDifferentShape1 and will now flash box
+			// for 2 seconds, followed by the convo tryDifferentShape2
+			StartCoroutine(highlightBoxWait());
+			ConversationTrigger.RemoveToken("wrongFaceDreshaReadyToFlashBox");
+
+		} else if(!triggersFinished[18] && ConversationTrigger.GetToken("wrongFaceDreshaReadyToFlashObj")) {
+			// wrong shape - Dresha just finished tryDifferentShape2 and will now flash selectedObj
+			// for 2 seconds, followed by the convo tryDifferentShape3
+			StartCoroutine(highlightPyrWrongFaceWait());
+			ConversationTrigger.RemoveToken("wrongFaceDreshaReadyToFlashObj");
+
+		} else if (ConversationTrigger.GetToken("dreshaPracticeToNextLevel")) {
+			goToNextTutorial.gameObject.SetActive(true);
+		}
+
+		if(congrats.enabled) {
+			// player wins!
+			// Dresha talks about next level
+			// next level should not load until player finishes this convo
+			ConversationTrigger.AddToken("playerFinishedTutorial1");
+
 		}
 
 	
 	}  
 
-	//does nothing when Pyr button is clicked subsequent times
-	public void playerClicksPyrButton() {
-	//	if(!triggersFinished[7]) {
-			Highlighter.Unhighlight(pyrButton.gameObject);
-			ConversationTrigger.AddToken("playerClicksPyrButton");
-	//	}
+	//disables/enables connect-related conversation tokens
+	//to prevent infinite triggers since they aren't oneshots
+	//called every time Connect button is invoked once player has control
+	public void resetConnectTokens() {
+		//BRANCH: if attaching works, go to conversation playerAttachToFinish
+			//			if attaching is wrong rotation, go to conversation tryRotatingAgain
+			//			if attaching is wrong shape, go to conversation tryDifferentShape
+			//	These triggers are NOT oneshots
+		if(!triggersFinished[18] && triggersFinished[17]) {
+			string fuseStatus = fuseEvent.getFuseStatus();
+			if(fuseStatus.Equals("wrongFace")) {
+				// player tried to attach but selected the wrong FuseTo
+				// Dresha will now tell player to select a different FuseTo
+				ConversationTrigger.RemoveToken("playerRotationIncorrect"); // to stop infinite triggers
+				ConversationTrigger.RemoveToken("playerAttachedSuccessfully"); // to stop infinite triggers
+				ConversationTrigger.AddToken("playerAttachedWrongFace"); // convo tryDifferentShape
+
+				//tryDifferentShape should be disabled as soon as it starts
+				//tryDifferentShape should be re-enabled as soon as Connect button is clicked again
+			} else if (fuseStatus.Equals("wrongRotation")) {
+				// player tried to attach but rotation wasn't right
+				// Dresha will now tell player to try a different rotation
+				ConversationTrigger.RemoveToken("playerAttachedWrongFace"); // to stop infinite triggers
+				ConversationTrigger.RemoveToken("playerAttachedSuccessfully"); // to stop infinite triggers
+				ConversationTrigger.AddToken("playerRotationIncorrect"); // convo tryRotatingAgain
+
+			} else if (fuseStatus.Equals("success")){
+				triggersFinished[18] = true;
+				//player successfully attached part
+				//Dresha will now tell player to try rest on their own
+				ConversationTrigger.RemoveToken("playerAttachedWrongFace"); // to stop infinite triggers
+				ConversationTrigger.RemoveToken("playerRotationIncorrect"); // to stop infinite triggers
+				ConversationTrigger.AddToken("playerAttachedSuccessfully"); // to stop infinite triggers
+			}
+		}
 	}
 
-	void OnMouseDrag() {
-		doneDragging = true;
+	//does nothing when Pyr button is clicked subsequent times
+	public void playerClicksPyrButton() {
+		if(!pyrButtonClicked) {
+			pyrButtonClicked = true;
+			Highlighter.Unhighlight(pyrButton.gameObject);
+			ConversationTrigger.AddToken("playerClicksPyrButton");
+		}
 	}
 
 	IEnumerator createPyrWait() {
@@ -196,12 +266,12 @@ public class Tutorial1 : MonoBehaviour {
 	IEnumerator pointToBlackRegionsWait() {
 		selectPart.selectObject(GameObject.Find("pyr_box_attach"));
 		selectPart.selectFuseTo(GameObject.Find("box_tri_attach"));
+		connectButton.interactable = false;
 		yield return new WaitForSeconds(1f);
 		ConversationTrigger.AddToken("dreshaPointedToBlackRegions");
 	}
 
 	IEnumerator tryAttachPyrWait() {
-		connectButton.interactable = false;
 		yield return new WaitForSeconds(1f);
 		connectButton.onClick.Invoke();
 		//deselect the active part
@@ -234,8 +304,35 @@ public class Tutorial1 : MonoBehaviour {
 	}
 
 	IEnumerator highlightGizmoWait() {
-		highlighter.HighlightTimed(rotationGizmo, 2); 
-		yield return new WaitForSeconds(2f);
+		// maybe should highlight only the sliders instead?
+		foreach(Transform child in rotationGizmo.transform) {
+			highlighter.HighlightTimed(child.gameObject, 2); 
+		}
+		yield return new WaitForSeconds(1f);
 		ConversationTrigger.AddToken("dreshaFlashedGizmo");
+	}
+
+	IEnumerator highlightPyrWrongRotationWait() { // needs to generalize to all selectedObj
+		highlighter.HighlightTimed(GameObject.Find("pyr"), 2); 
+		yield return new WaitForSeconds(1f);
+		ConversationTrigger.AddToken("wrongRotationDreshaFlashedObj");
+		ConversationTrigger.RemoveToken("blockTryRotatingAgain2");
+
+	}
+
+	IEnumerator highlightBoxWait() { 
+		highlighter.HighlightTimed(GameObject.Find("box"), 2); 
+		yield return new WaitForSeconds(1f);
+		ConversationTrigger.AddToken("wrongFaceDreshaFlashedBox");
+		ConversationTrigger.RemoveToken("wrongFaceDreshaReadyToFlashObj");
+
+	}
+
+	IEnumerator highlightPyrWrongFaceWait() { // needs to generalize to all selectedObj
+		highlighter.HighlightTimed(GameObject.Find("pyr"), 2); 
+		yield return new WaitForSeconds(1f);
+		ConversationTrigger.AddToken("wrongFaceDreshaFlashedObj");
+		ConversationTrigger.RemoveToken("blockTryDifferentShape3");
+	
 	}
 }

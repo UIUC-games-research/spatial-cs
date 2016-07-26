@@ -355,6 +355,7 @@ public class ScrollingText : MonoBehaviour
 		// Only create the choice buttons if they don't already exist.
 		if (choiceContainer.GetComponentsInChildren<Button>().Length == 0)
 		{
+			Debug.Log("# of choices: " + choices.Length);
 			for (int ii = 0; ii < choices.Length; ii++)
 			{
 				GameObject instance = Instantiate(choiceButton);

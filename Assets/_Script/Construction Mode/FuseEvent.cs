@@ -25,6 +25,7 @@ public class FuseEvent : MonoBehaviour {
 	public AudioClip success;
 	public AudioClip failure;
 	public AudioClip victory;
+	private string fuseStatus;
 
 	public GameObject[] partButtons;
 	public GameObject connectButton;
@@ -82,6 +83,9 @@ public class FuseEvent : MonoBehaviour {
 			claimItem.onClick.AddListener(() => {
 				switch (mode)
 				{
+					case "tutorial1":
+						SceneManager.LoadScene("tutorial2");
+						break;
 					case "boot":
 						RocketBoots.ActivateBoots();
 						InventoryController.items.Remove("Rocket Boots Sole");
@@ -107,6 +111,7 @@ public class FuseEvent : MonoBehaviour {
 		}
 
 		fuseCount = 0;
+		fuseStatus = "none";
 		createFuseMapping();
 		filename = "ConstructionModeData.txt";
 		sr = File.AppendText(filename);
@@ -136,6 +141,10 @@ public class FuseEvent : MonoBehaviour {
 			return true;
 		}
 		return false;
+	}
+
+	public string getFuseStatus() {
+		return fuseStatus;
 	}
 
 	public void createFuseMapping() {
@@ -725,11 +734,11 @@ public class FuseEvent : MonoBehaviour {
 		//}
 		if(selectedObject == null) {
 			//player tries to connect when there is no active part (only at beginning)
-			print ("Select the black regions you want to join together!");
+			//print ("Select the black regions you want to join together!");
 			source.PlayOneShot (failure);
 
 		} else if (!fuseMapping.ContainsKey (selectedObject.name)){
-			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
+			//print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
 			//display error on screen for 1 sec
 			StartCoroutine(errorWrongFace());
 
@@ -746,7 +755,7 @@ public class FuseEvent : MonoBehaviour {
 				}
 			} 
 			print ("Successful fuse!");
-
+			fuseStatus="success";
 			source.PlayOneShot (success);
 			selectedObject.GetComponent<FuseBehavior>().fuse(selectedFuseTo.name, selectedFuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag);
 
@@ -767,7 +776,9 @@ public class FuseEvent : MonoBehaviour {
 				finishedImage.enabled = false;
 				congrats.enabled = true;
 				GameObject.Find("Back Button").SetActive(false);
-				claimItem.gameObject.SetActive(true);
+				if(mode != "tutorial1" && mode != "tutorial2") {
+					claimItem.gameObject.SetActive(true);
+				}
 				musicSource.Stop();
 				mainCam.transform.position = new Vector3(-90,80,-3.36f);
 				mainCam.transform.rotation = Quaternion.Euler(new Vector3(15,0,0));
@@ -795,6 +806,7 @@ public class FuseEvent : MonoBehaviour {
 	}
 
 	IEnumerator errorWrongFace() {
+		fuseStatus="wrongFace";
 		numWrongFacesFails++;
 		errorPanelGroup.alpha = 1;
 		shapesWrong.enabled = true;
@@ -805,6 +817,7 @@ public class FuseEvent : MonoBehaviour {
 	}
 
 	IEnumerator errorWrongRotation() {
+		fuseStatus="wrongRotation";
 		numWrongRotationFails++;
 		errorPanelGroup.alpha = 1;
 		rotationWrong.enabled = true;

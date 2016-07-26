@@ -12,6 +12,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scene/Construction/passwordScreen.unity
   - enabled: 1
+    path: Assets/_Scene/Construction/tutorial1.unity
+  - enabled: 1
+    path: Assets/_Scene/Construction/tutorial2.unity
+  - enabled: 1
     path: Assets/_Scene/Construction/construction.unity
   - enabled: 1
     path: Assets/_Scene/Construction/introConstruction.unity
