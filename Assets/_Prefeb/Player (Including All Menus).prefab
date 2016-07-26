@@ -2135,8 +2135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiElement: {fileID: 11492070}
   charge: 100
-  power: 150
-  drain: 1.5
+  power: 175
+  drain: 3
   recharge: 1
 --- !u!114 &11418660
 MonoBehaviour:
@@ -4184,6 +4184,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: movementSettings.JumpForce
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: charge
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: drain
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: power
+      value: 175
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
