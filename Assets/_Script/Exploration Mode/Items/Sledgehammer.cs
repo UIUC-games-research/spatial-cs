@@ -97,6 +97,8 @@ public class Sledgehammer : ItemBase
 			Vector3 newPos = transform.position;
 			newPos.y += 1f;
 			instance.transform.position = newPos;
+			instance.transform.localScale = new Vector3(Random.Range(0.5f, 4f), Random.Range(0.5f, 4f), Random.Range(0.5f, 4f));
+			rb.AddTorque(Random.Range(-10f, 10f), Random.Range(0f, 15f), Random.Range(-10f, 10f), ForceMode.Impulse);
 			rb.AddForce(Random.Range(-10f, 10f), Random.Range(0f, 15f), Random.Range(-10f, 10f), ForceMode.Impulse);
 		}
 	}
