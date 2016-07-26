@@ -63,6 +63,10 @@ public class RecipeButtonBridge : MonoBehaviour
 				recPop.iconsInList.Add(instanceTile);
 			}
 
+			// Remove all other listeners so only the one we add in the next line will work.
+			// This stops several scenes from loading at once, causing terrible things.
+			recPop.constructButton.onClick.RemoveAllListeners();
+
 			recPop.constructButton.onClick.AddListener(() =>
 			{
 				// Save player info before entering.

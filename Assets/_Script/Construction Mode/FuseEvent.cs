@@ -88,9 +88,21 @@ public class FuseEvent : MonoBehaviour {
 						InventoryController.items.Remove("Rocket Boots Calf");
 						InventoryController.items.Remove("Rocket Boots Body");
 						InventoryController.ConvertInventoryToTokens();
-						RecipesDB.unlockedRecipes.Remove(RecipesDB.RocketBoots);
+						//RecipesDB.unlockedRecipes.Remove(RecipesDB.RocketBoots);
 						LoadUtils.LoadScene(InventoryController.levelName);
 						LoadUtils.UnloadScene("construction");
+						break;
+					case "axe":
+						Sledgehammer.ActivateSledgehammer();
+						InventoryController.items.Remove("Sledgehammer Bottom Point");
+						InventoryController.items.Remove("Sledgehammer Haft");
+						InventoryController.items.Remove("Sledgehammer Head");
+						InventoryController.items.Remove("Sledgehammer Shaft");
+						InventoryController.items.Remove("Sledgehammer Top Point");
+						InventoryController.items.Remove("Sledgehammer Trapezoid");
+						InventoryController.ConvertInventoryToTokens();
+						LoadUtils.LoadScene(InventoryController.levelName);
+						LoadUtils.UnloadScene("axe");
 						break;
 					default:
 						Debug.Log("Not Yet Implemented: " + mode);

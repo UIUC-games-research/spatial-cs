@@ -1,0 +1,14 @@
+Terrain Model:
+	Built in 3dsmax based on a heightmap grabbed from terrain.party	(I chose the grand canyon area.)
+		Made a 100x100 poly plane.
+		Added displacement modifier with heightmap.
+		Added Edit Poly modifier and moved verts with soft selection and scaling. Disabled smoothing groups here.
+		Tweaked for a while.
+		Added Optimize modifier with Face Threshold of 10.
+		Added VertexPaint modifier.
+Terrain Texture:
+	Vertex paint shenanigans
+		Messed with vertex paint until I liked what it looked like.
+		Created an orthographic camera pointing vertically downward onto the terrain.
+		Made a copy of the terrain and flattened it so the camera doesn't see shadows.
+		Took a screenshot of the viewport to get the texture. Don't judge, it looks fine.

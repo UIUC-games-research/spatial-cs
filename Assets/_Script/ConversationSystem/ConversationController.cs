@@ -122,6 +122,11 @@ public class ConversationController : MonoBehaviour
 	// Enable the text box, supplying a trigger. This is generally better when possible, since it will set name / escape rule.
 	public static void Enable(ConversationTrigger trigger)
 	{
+		// Make sure the dictionary is prepped if a "bad" key is given.
+		if (!ConversationsDB.convos.ContainsKey(trigger.conversationName))
+		{
+			ConversationsDB.LoadConversationsFromFiles();
+		}
 		textBox.ApplyConversation(ConversationsDB.convos[trigger.conversationName]);
 		currentConversationName = trigger.conversationName;
 		currentEscRule = trigger.allowEscape;
@@ -135,7 +140,8 @@ public class ConversationController : MonoBehaviour
 		currentlyEnabled = true;
 		AllowMouse();
 
-		// Oneshot destroys the trigger and marks it with a token so it never comes back again.
+		// Oneshot destroys the trigger and marks it with a token so it never comes back again. Ever.
+		// You'll have to delete the save file to have it trigger again.
 		if (trigger.oneShot)
 		{
 			Destroy(trigger);
