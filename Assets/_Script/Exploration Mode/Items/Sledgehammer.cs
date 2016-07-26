@@ -72,7 +72,32 @@ public class Sledgehammer : ItemBase
 	{
 		if (swinging && other.tag == "Breakable")
 		{
+			BreakFX(other.gameObject);
 			Destroy(other.gameObject);
+		}
+	}
+
+	void BreakFX(GameObject toMimic)
+	{
+		// Get the Renderer for the object we're breaking so we can mimic its material.
+		MeshRenderer meshr = toMimic.GetComponent<MeshRenderer>();
+		if (meshr == null)
+		{
+			Debug.Log("Didn't find a mesh on top level of object attempting to be broken.");
+			return;
+		}
+
+		GameObject spawned = Resources.Load<GameObject>("Prefabs/DebrisBase");
+		for (int i = 0; i < 20; i++)
+		{
+			GameObject instance = LoadUtils.InstantiateParenter(Instantiate(spawned));
+			Rigidbody rb = instance.GetComponent<Rigidbody>();
+			MeshRenderer mr = instance.GetComponent<MeshRenderer>();
+			mr.material = meshr.material;
+			Vector3 newPos = transform.position;
+			newPos.y += 1f;
+			instance.transform.position = newPos;
+			rb.AddForce(Random.Range(-10f, 10f), Random.Range(0f, 15f), Random.Range(-10f, 10f), ForceMode.Impulse);
 		}
 	}
 
