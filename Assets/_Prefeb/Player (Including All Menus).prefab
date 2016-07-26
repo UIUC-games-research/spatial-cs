@@ -2135,8 +2135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiElement: {fileID: 11492070}
   charge: 100
-  power: 175
-  drain: 3
+  power: 125
+  drain: 2
   recharge: 1
 --- !u!114 &11418660
 MonoBehaviour:
@@ -2278,7 +2278,7 @@ MonoBehaviour:
     StrafeSpeed: 6
     RunMultiplier: 2
     RunKey: 304
-    JumpForce: 100
+    JumpForce: 70
     SlopeCurveModifier:
       serializedVersion: 2
       m_Curve:
@@ -4183,7 +4183,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: movementSettings.JumpForce
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: charge
@@ -4191,11 +4191,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: drain
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: power
-      value: 175
+      value: 125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
