@@ -39,29 +39,16 @@ public class Tutorial2 : MonoBehaviour {
 			triggersFinished[1] = true;
 			// second event: Dresha flashes part buttons
 			StartCoroutine(highlightPartButtonsWait());
-		} else if(ConversationTrigger.GetToken("playerRotationIncorrect") && !ConversationTrigger.GetToken("wrongRotationDreshaReadyToFlashObj")) {
-			// wrong rotation - Dresha just finished tryRotatingAgain1 and will now flash selectedObj
-			// for 2 seconds, followed by the convo tryRotatingAgain2
-			GameObject selectedObj = selectPart.getSelectedObject();
-			if(selectedObj.name.Equals("tutorial2_bigboxPrefab(Clone)")) {
-				highlighter.HighlightTimed(GameObject.Find("bigbox_close"), 2); 
-				highlighter.HighlightTimed(GameObject.Find("bigbox_far"), 2); 
-			} else if(selectedObj.name.Equals("tutorial2_smallbox_bluePrefab(Clone")) {
-				highlighter.HighlightTimed(GameObject.Find("smallbox_blue"), 2); 
-			} else if(selectedObj.name.Equals("tutorial2_smallbox_yellowPrefab(Clone")) {
-				highlighter.HighlightTimed(GameObject.Find("smallbox_yellow"), 2); 
-			} else {
-				highlighter.HighlightTimed(GameObject.Find("tallbox"), 2); 
-			}
-
-
-		} else if(ConversationTrigger.GetToken("wrongRotationDreshaReadyToFlashObj") && !ConversationTrigger.GetToken("blockTryRotatingAgain2")){
+		} else if(ConversationTrigger.GetToken("wrongRotationDreshaReadyToFlashObj")){
 			// Dresha flashes selected obj and then lets the player try again
-			StartCoroutine(highlightObjWait());
+			highlightSelectedObj(1f);
+			ConversationTrigger.AddToken("dreshaFlashedSelectedObj2");	
+
 		} else if(ConversationTrigger.GetToken("playerAttachedWrongFace") && !ConversationTrigger.GetToken("wrongFaceDreshaReadyToFlashBox")) {
-			// wrong shape - Dresha just finished tryDifferentShape1 and will now flash box
-			// for 2 seconds
-			highlighter.HighlightTimed(GameObject.Find("longbox"), 2); 
+			// wrong shape - Dresha just finished tryDifferentShape1 and 
+			// will now flash box and part menu for 2 seconds
+			StartCoroutine(highlightPartButtonsWait());
+			StartCoroutine(waitAndHighlightBox());
 
 		} else if (ConversationTrigger.GetToken("showNextLevelButton2")) {
 			goToRocketBootsLevel.gameObject.SetActive(true);
@@ -85,59 +72,54 @@ public class Tutorial2 : MonoBehaviour {
 		//			if attaching is wrong shape, go to conversation tryDifferentShape
 		//	These triggers are NOT oneshots
 		string fuseStatus = fuseEvent.getFuseStatus();
-		//ConversationTrigger.RemoveToken("wrongFaceDreshaReadyToFlashBox"); // to stop infinite triggers
+		ConversationTrigger.RemoveToken("playerRotationIncorrect"); // to stop infinite triggers
+		ConversationTrigger.RemoveToken("wrongRotationDreshaReadyToFlashObj"); // to stop infinite triggers
+		ConversationTrigger.RemoveToken("dreshaFlashedSelectedObj2"); // to stop infinite triggers
+		ConversationTrigger.RemoveToken("blockTryRotatingAgain2"); // to stop infinite triggers
+		ConversationTrigger.RemoveToken("playerAttachedWrongFace"); // to stop infinite triggers
+		ConversationTrigger.RemoveToken("wrongFaceDreshaReadyToFlashBox"); // to stop infinite triggers
 
 		if(fuseStatus.Equals("wrongFace")) {
 			// player tried to attach but selected the wrong FuseTo
 			// Dresha will now tell player to select a different FuseTo
-			ConversationTrigger.RemoveToken("playerRotationIncorrect"); // to stop infinite triggers
-			ConversationTrigger.RemoveToken("playerAttachedSuccessfully"); // to stop infinite triggers
 			ConversationTrigger.AddToken("playerAttachedWrongFace"); // convo tryDifferentShape
 
-			//tryDifferentShape should be disabled as soon as it starts
-			//tryDifferentShape should be re-enabled as soon as Connect button is clicked again
 		} else if (fuseStatus.Equals("wrongRotation")) {
 			// player tried to attach but rotation wasn't right
 			// Dresha will now tell player to try a different rotation
-			ConversationTrigger.RemoveToken("playerAttachedWrongFace"); // to stop infinite triggers
-			ConversationTrigger.RemoveToken("playerAttachedSuccessfully"); // to stop infinite triggers
-
-			Debug.Log("adding playerRotationIncorrect token!");
 			ConversationTrigger.AddToken("playerRotationIncorrect"); // convo tryRotatingAgain
+		} 
+	}
 
-		} else if (fuseStatus.Equals("success")){
-			//player successfully attached part
-			ConversationTrigger.RemoveToken("playerAttachedWrongFace"); // to stop infinite triggers
-			ConversationTrigger.RemoveToken("playerRotationIncorrect"); // to stop infinite triggers
-
+	private void highlightSelectedObj(float sec) { // generalizes to any selectedObj
+		GameObject selectedObj = selectPart.getSelectedObject();
+		if(selectedObj.name.Equals("tutorial2_bigboxPrefab(Clone)")) {
+			highlighter.HighlightTimed(GameObject.Find("bigbox_close"), sec); 
+			highlighter.HighlightTimed(GameObject.Find("bigbox_far"), sec); 
+		} else if(selectedObj.name.Equals("tutorial2_smallbox_bluePrefab(Clone")) {
+			highlighter.HighlightTimed(GameObject.Find("smallbox_blue"), sec); 
+		} else if(selectedObj.name.Equals("tutorial2_smallbox_yellowPrefab(Clone")) {
+			highlighter.HighlightTimed(GameObject.Find("smallbox_yellow"), sec); 
+		} else {
+			highlighter.HighlightTimed(GameObject.Find("tallbox"), sec); 
 		}
 	}
 
 	IEnumerator highlightPartButtonsWait() {
 		foreach (Button b in partButtons) {
-			highlighter.HighlightTimed(b.gameObject, 2);
+			highlighter.HighlightTimed(b.gameObject, 1);
 		}
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1f);
 		ConversationTrigger.AddToken("dreshaFlashedPartButtons");
 		foreach (Button b in partButtons) {
 			b.enabled = true;
 		}
 	}
 
-	IEnumerator highlightObjWait() {
-		GameObject selectedObj = selectPart.getSelectedObject();
-		if(selectedObj.name.Equals("tutorial2_bigboxPrefab(Clone)")) {
-			highlighter.HighlightTimed(GameObject.Find("bigbox_close"), 1); 
-			highlighter.HighlightTimed(GameObject.Find("bigbox_far"), 1); 
-		} else if(selectedObj.name.Equals("tutorial2_smallbox_bluePrefab(Clone")) {
-			highlighter.HighlightTimed(GameObject.Find("smallbox_blue"), 1); 
-		} else if(selectedObj.name.Equals("tutorial2_smallbox_yellowPrefab(Clone")) {
-			highlighter.HighlightTimed(GameObject.Find("smallbox_yellow"), 1); 
-		} else {
-			highlighter.HighlightTimed(GameObject.Find("tallbox"), 1); 
-		}
+	IEnumerator waitAndHighlightBox() {
 		yield return new WaitForSeconds(1f);
-		ConversationTrigger.AddToken("dreshaFlashedSelectedObj2");
+		highlighter.HighlightTimed(GameObject.Find("longbox"), 1);
 	}
+
 		
 }
