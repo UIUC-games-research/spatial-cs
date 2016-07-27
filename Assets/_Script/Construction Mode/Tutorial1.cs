@@ -185,7 +185,6 @@ public class Tutorial1 : MonoBehaviour {
 
 		} else if (ConversationTrigger.GetToken("showNextLevelButton")) {
 			goToNextTutorial.gameObject.SetActive(true);
-			Debug.Log("Enabling goToNextTutorial button!");
 		}
 
 		if(congrats.enabled) {

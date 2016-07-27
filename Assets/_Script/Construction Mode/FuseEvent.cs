@@ -86,6 +86,9 @@ public class FuseEvent : MonoBehaviour {
 					case "tutorial1":
 						SceneManager.LoadScene("tutorial2");
 						break;
+					case "tutorial2":
+						SceneManager.LoadScene("construction");
+						break;
 					case "boot":
 						RocketBoots.ActivateBoots();
 						InventoryController.items.Remove("Rocket Boots Sole");
@@ -442,7 +445,6 @@ public class FuseEvent : MonoBehaviour {
 			fuseMapping.Add ("zigzag_post_attach", fuseToForZigzag);
 		} else if (mode.Equals ("catapult")) {
 			//fuse to Platform
-			print ("initializing fuseMapping");
 			HashSet<string> fuseToForBackAxleBottom = new HashSet<string>();
 			HashSet<string> fuseToForBackAxleLeft = new HashSet<string>();
 			HashSet<string> fuseToForBackAxleRight = new HashSet<string>();
@@ -734,10 +736,10 @@ public class FuseEvent : MonoBehaviour {
 
 	public void initiateFuse() {
 		numFuseAttempts++;
-		print ("Fusing: " + GetComponent<SelectPart>().getSelectedObject() + " to " + GetComponent<SelectPart>().getSelectedFuseTo());
+		//print ("Fusing: " + GetComponent<SelectPart>().getSelectedObject() + " to " + GetComponent<SelectPart>().getSelectedFuseTo());
 		selectedObject = GetComponent<SelectPart>().getSelectedObject();
 		selectedFuseTo = GetComponent<SelectPart>().getSelectedFuseTo();
-		print ("fuseMapping.ContainsKey(" + selectedObject.name + ")?");
+		//print ("fuseMapping.ContainsKey(" + selectedObject.name + ")?");
 		//print ("In initiateFuse(): selectedObject = " + selectedObject);
 		//print ("SelectedObject: " + selectedObject.name + ", SelectedFuseTo: " + selectedFuseTo.name);
 		//print ("SelectedObjectParent: " + selectedObjectParent.name + ", SelectedFuseToParent: " + selectedFuseToParent.name);
@@ -767,7 +769,7 @@ public class FuseEvent : MonoBehaviour {
 					}
 				}
 			} 
-			print ("Successful fuse!");
+			//print ("Successful fuse!");
 			fuseStatus="success";
 			source.PlayOneShot (success);
 			selectedObject.GetComponent<FuseBehavior>().fuse(selectedFuseTo.name, selectedFuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag);
@@ -803,16 +805,16 @@ public class FuseEvent : MonoBehaviour {
 
 
 		} else if (!fuseMapping[selectedObject.name].Contains (selectedFuseTo.name)) {
-			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
+			//print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
 			StartCoroutine(errorWrongFace());
 
 		} else if (fuseMapping[selectedObject.name].Contains (selectedFuseTo.name) && !positionMatches (selectedObject, selectedFuseTo)){
 			//rotation isn't right - tell player this or let them figure it out themselves?
 			StartCoroutine(errorWrongRotation());
-			print ("Invalid fuse: Correct fuse selection, but the orientation isn't right!");
+			//print ("Invalid fuse: Correct fuse selection, but the orientation isn't right!");
 		} else {
 			//this shouldn't happen
-			print ("MYSTERIOUS FUSE ERROR");
+			//print ("MYSTERIOUS FUSE ERROR");
 		}
 
 
@@ -1098,7 +1100,7 @@ public class FuseEvent : MonoBehaviour {
 			} else if(selectedObjName.Equals ("generator_strut_top_attach")) {
 				return Quaternion.Euler (0, 180, 240);
 			} else {
-				print("Invalid selected object name: " + selectedObjName);
+				//print("Invalid selected object name: " + selectedObjName);
 				return new Quaternion();
 			}
 		} else if(newFuseToName.Equals ("strut_top_generator_attach_right")) {
@@ -1109,7 +1111,7 @@ public class FuseEvent : MonoBehaviour {
 			} else if(selectedObjName.Equals ("generator_strut_top_attach")) {
 				return Quaternion.Euler (0, 180, 120);
 			} else {
-				print("Invalid selected object name: " + selectedObjName);
+				//print("Invalid selected object name: " + selectedObjName);
 				return new Quaternion();
 			}
 		} else if(newFuseToName.Equals ("strut_top_generator_attach_top")) {
@@ -1120,11 +1122,11 @@ public class FuseEvent : MonoBehaviour {
 			} else if(selectedObjName.Equals ("generator_strut_top_attach")) {
 				return Quaternion.Euler (0, 180, 0);
 			} else {
-				print("Invalid selected object name: " + selectedObjName);
+				//print("Invalid selected object name: " + selectedObjName);
 				return new Quaternion();
 			}
 		} else {
-			print ("Invalid newFuseTo name: " + newFuseToName);
+			//print ("Invalid newFuseTo name: " + newFuseToName);
 			return new Quaternion();
 		}
 	}
@@ -1141,7 +1143,7 @@ public class FuseEvent : MonoBehaviour {
 			correctRotations[1] = Quaternion.Euler (0, 0, 0);
 			return correctRotations;
 		} else {
-			print ("Invalid selectedObj name: " + selectedObjName);
+			//print ("Invalid selectedObj name: " + selectedObjName);
 			return new Quaternion[0];
 		}
 	}
@@ -1152,7 +1154,7 @@ public class FuseEvent : MonoBehaviour {
 		//append "_left", "_right", or "_top" to name of fuseTo where relevant
 
 		string newFuseToName = fuseTo.name + fuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag;
-		print ("Selected Obj: " + selectedObj + ": Get Acceptable Rotations(" + newFuseToName + "):  ");
+		//print ("Selected Obj: " + selectedObj + ": Get Acceptable Rotations(" + newFuseToName + "):  ");
 
 		Quaternion[] acceptedRotations = new Quaternion[2];
 		if(selectedObj.transform.parent.name.Equals ("generatorPrefab(Clone)")) {
@@ -1171,7 +1173,7 @@ public class FuseEvent : MonoBehaviour {
 			if (Mathf.Abs(angle) < 5.0f) {
 				acceptable = true;
 			}
-			print ("Angle: " + angle + ", Current Rotation: " + currentRotation.eulerAngles + " accepted: " + acceptedRotations[i].eulerAngles);
+			//print ("Angle: " + angle + ", Current Rotation: " + currentRotation.eulerAngles + " accepted: " + acceptedRotations[i].eulerAngles);
 		}
 		return acceptable;
 	}

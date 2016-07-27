@@ -41,7 +41,6 @@ public class Highlighter : MonoBehaviour
 		if (meshr != null)
 		{
 			defaultColor = meshr.material.GetColor("_Color");
-			print("Parent Object for Mesh:" + meshr.gameObject);
 			defaultEmiss = meshr.material.GetColor("_EmissionColor");
 		}
 

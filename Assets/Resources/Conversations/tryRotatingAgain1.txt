@@ -1,4 +1,4 @@
 Hmm...I think maybe the two shapes aren't lined up yet.
-Try rotating this part-
+Try rotating this part some more-
 [CHOOSE]
 Dresha will now flash the selectedObj|nowhere|wrongRotationDreshaReadyToFlashObj
