@@ -64,6 +64,7 @@ public class PickUp : MonoBehaviour
 
 				case PickupType.Battery:
 					BatterySystem.AddPower(2);
+					BatterySystem.PowerToTokens();
 					RespawnBattery();
 					break;
 

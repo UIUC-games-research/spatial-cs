@@ -1,6 +1,7 @@
-Test1
-Test2
-Test3
-Test4
-[CHOOSE]
-nowhere|nowhere|instantTestDone
+Test1: I'm
+Test2: He's
+Test3: Shouldn't
+Test4: Couldn't've
+First apostrophe:  '
+Second apostrophe:  ' 
+What? This Isn`t What I`m Supposed to be building?

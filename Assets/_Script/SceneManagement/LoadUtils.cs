@@ -128,12 +128,27 @@ public class LoadUtils : MonoBehaviour
 	}
 
 	// This can be a good idea to save memory. Sometimes it may be worth unloading a scene completely,
-	// Losing any progress in that scene since load. For example: Completed Construction-mode stages,
-	// Exploration-mode areas you cannot return to, things like that.
+	// Losing any progress in that scene since load. For example: Completed Construction-mode stages.
 	public static void UnloadScene(string sceneName)
 	{
 		Destroy(loadedScenes[sceneName]);
 		loadedScenes.Remove(sceneName);
+	}
+
+	// This is the function which is used to load a fresh area. Any in-progress construction will be lost.
+	// That shouldn't be a problem, because there should never be any leftover parts, and all constructed items
+	// will be finished. Spawn point for the player MUST be pre-determined and passed into this function.
+	public static void LoadNewExplorationLevel(string sceneName, Vector3 spawnPos)
+	{
+		// Grab player objects, bring to scene root, set as nondelete.
+		GameObject playerRefs = GameObject.Find("Player (Including All Menus)");
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		playerRefs.transform.SetParent(null);
+		DontDestroyOnLoad(playerRefs);
+
+		// Then load the new scene and position the player.
+		SceneManager.LoadScene(sceneName);
+		player.transform.position = spawnPos;
 	}
 
 	static void EnsureRefExists()

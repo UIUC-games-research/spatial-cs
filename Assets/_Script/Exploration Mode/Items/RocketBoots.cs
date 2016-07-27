@@ -2,8 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
-public class RocketBoots : MonoBehaviour
+public class RocketBoots : ItemBase
 {
 	// References
 	Rigidbody playerBody;
@@ -17,15 +18,12 @@ public class RocketBoots : MonoBehaviour
 	public float drain = 1.5f;
 	public float recharge = 1f;
 
+	bool selected = false;
 
 	void Awake ()
 	{
 		playerBody = GetComponent<Rigidbody>();
 		uiElementStatic = uiElement;
-
-		// Initially disabled.
-		if (!bootsActive)
-			uiElement.gameObject.SetActive(false);
 	}
 
 	void Start ()
@@ -33,12 +31,28 @@ public class RocketBoots : MonoBehaviour
 		// Check tokens to see if boots are active.
 		// Save is loaded somewhere else in an Awake() function.
 		if (ConversationTrigger.GetToken("gear_rocketboots"))
+		{
 			ActivateBoots();
+
+			// This is the first item you get, and it will be the one that always starts active when you load a game.
+			// Therefore, we need this line here.
+			ItemManager.SelectGear(0);
+		}
+		else
+		{
+			uiElement.gameObject.SetActive(false);
+		}
+	}
+
+	// Restart when re-enabled. Fixes saving bugs.
+	void OnEnable()
+	{
+		Start();
 	}
 	
 	void FixedUpdate ()
 	{
-		if (bootsActive)
+		if (bootsActive && selected)
 		{
 
 			if (Input.GetKey(KeyCode.Space) && charge > 0)
@@ -71,5 +85,33 @@ public class RocketBoots : MonoBehaviour
 	public static bool GetBootsActive()
 	{
 		return bootsActive;
+	}
+
+	// Sometimes, things don't happen in time. Specifically, this static reference conversion.
+	void GetRef()
+	{
+		if (uiElementStatic == null)
+			uiElementStatic = uiElement;
+	}
+
+	public override void Deselect()
+	{
+		if (bootsActive)
+		{
+			GetRef();
+			// Hide the UI element when deselected, and set a flag.
+			uiElementStatic.gameObject.SetActive(false);
+			selected = false;
+		}
+	}
+	public override void Select()
+	{
+		if (bootsActive)
+		{
+			GetRef();
+			// Re-show the UI element when selected, and set a flag.
+			uiElementStatic.gameObject.SetActive(true);
+			selected = true;
+		}
 	}
 }
