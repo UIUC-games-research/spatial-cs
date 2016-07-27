@@ -1,0 +1,4 @@
+You can look at different sides of the block by dragging the mouse around.
+Try it!
+[CHOOSE]
+Send token to Tutorial1 to wait for player to move camera|nowhere|playerReadyToMoveCamera

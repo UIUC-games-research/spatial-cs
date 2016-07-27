@@ -1,0 +1,3 @@
+-to rotate this part-
+[CHOOSE]
+Dresha will now flash pyr once again|nowhere|dreshaReadyToFlashPyrAfterGizmo

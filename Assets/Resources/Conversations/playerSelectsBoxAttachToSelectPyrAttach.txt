@@ -1,0 +1,3 @@
+Ok, now click on the matching black shape on the other part.
+[CHOOSE]
+Dresha will now flash pyramid again|nowhere|dreshaReadyToFlashPyrAgain

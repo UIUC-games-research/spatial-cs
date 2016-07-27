@@ -1,0 +1,4 @@
+Good!
+Now match up the black area on this part-
+[CHOOSE]
+Send token to Tutorial1 signaling to wait for player's click on Pyr attachment|nowhere|dreshaReadyToFlashPyr

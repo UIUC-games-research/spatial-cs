@@ -100,6 +100,7 @@ public class ScrollingText : MonoBehaviour
 							// Apply the conversation relating to the only choice.
 							// Also make sure to add any token which may be a part of this single choice.
 							ApplyConversation(ConversationsDB.convos[choiceConvoPointers[0]]);
+							Debug.Log("Adding token: " + choiceTokens[0]);
 							ConversationTrigger.AddToken(choiceTokens[0]);
 							break;
 						default:
@@ -354,6 +355,7 @@ public class ScrollingText : MonoBehaviour
 		// Only create the choice buttons if they don't already exist.
 		if (choiceContainer.GetComponentsInChildren<Button>().Length == 0)
 		{
+			Debug.Log("# of choices: " + choices.Length);
 			for (int ii = 0; ii < choices.Length; ii++)
 			{
 				GameObject instance = Instantiate(choiceButton);
