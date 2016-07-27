@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 33494577}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1.6666666}
   m_Children:
   - {fileID: 546583799}
   - {fileID: 1620710422}
@@ -240,8 +240,8 @@ Transform:
   - {fileID: 2028676154}
   - {fileID: 400224915}
   - {fileID: 1101669198}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 851006030}
+  m_RootOrder: 9
 --- !u!1001 &37482312
 Prefab:
   m_ObjectHideFlags: 0
@@ -6332,6 +6332,7 @@ GameObject:
   - 33: {fileID: 782248216}
   - 65: {fileID: 782248215}
   - 23: {fileID: 782248214}
+  - 114: {fileID: 782248217}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -6346,8 +6347,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 782248212}
   m_LocalRotation: {x: 0, y: 0.2902847, z: 0, w: 0.95694035}
-  m_LocalPosition: {x: 7.099, y: 0.343, z: -4.749}
-  m_LocalScale: {x: 0.02, y: 0.7, z: 1.33}
+  m_LocalPosition: {x: 7.023, y: 0.343, z: -4.698}
+  m_LocalScale: {x: 0.2, y: 0.7, z: 1.33}
   m_Children: []
   m_Father: {fileID: 794292397}
   m_RootOrder: 0
@@ -6384,11 +6385,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 782248212}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.1, y: 0, z: 0}
 --- !u!33 &782248216
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6396,6 +6397,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 782248212}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &782248217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 782248212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c32580edee75647b14a9593caed389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: RuinedCity
+  spawnPosition: {x: 0, y: 5, z: 0}
 --- !u!4 &794292397 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ae8384ea6cfa02e4ca1ba946083c2762, type: 3}
@@ -6815,6 +6829,7 @@ Transform:
   - {fileID: 1008388205}
   - {fileID: 1541097498}
   - {fileID: 794292397}
+  - {fileID: 33494578}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1001 &855146918
