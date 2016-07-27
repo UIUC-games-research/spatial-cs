@@ -119,6 +119,7 @@ public class FuseEvent : MonoBehaviour {
 
 			});
 			Debug.Log("Made it to this point");
+			Debug.Log("Disabling goToNextTutorial button!");
 			claimItem.gameObject.SetActive(false);
 		}
 

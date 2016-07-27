@@ -22,7 +22,7 @@ public class Tutorial1 : MonoBehaviour {
 	public Button goToNextTutorial;
 
 	private bool[] triggersFinished;
-	private const int NUM_TRIGGERS = 25;
+	private const int NUM_TRIGGERS = 18;
 	private bool doneDragging;
 	private bool pyrButtonClicked;
 	private GameObject selectedObj;
@@ -183,8 +183,9 @@ public class Tutorial1 : MonoBehaviour {
 			StartCoroutine(highlightPyrWrongFaceWait());
 			ConversationTrigger.RemoveToken("wrongFaceDreshaReadyToFlashObj");
 
-		} else if (ConversationTrigger.GetToken("dreshaPracticeToNextLevel")) {
+		} else if (ConversationTrigger.GetToken("showNextLevelButton")) {
 			goToNextTutorial.gameObject.SetActive(true);
+			Debug.Log("Enabling goToNextTutorial button!");
 		}
 
 		if(congrats.enabled) {
