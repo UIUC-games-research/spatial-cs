@@ -2273,10 +2273,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 2062238}
   movementSettings:
-    ForwardSpeed: 8
-    BackwardSpeed: 6
-    StrafeSpeed: 6
-    RunMultiplier: 2
+    ForwardSpeed: 16
+    BackwardSpeed: 12
+    StrafeSpeed: 12
+    RunMultiplier: 0.5
     RunKey: 304
     JumpForce: 70
     SlopeCurveModifier:
@@ -4196,6 +4196,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: power
       value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementSettings.ForwardSpeed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementSettings.RunMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementSettings.BackwardSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementSettings.StrafeSpeed
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
