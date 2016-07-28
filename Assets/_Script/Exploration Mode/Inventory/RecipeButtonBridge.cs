@@ -15,6 +15,9 @@ public class RecipeButtonBridge : MonoBehaviour
 	InventoryController invController;
 	Sprite questionMark;
 
+	// Internal.
+	List<bool> constructFlags = new List<bool>();	// Holds a list of booleans when deciding if construct button should enable.
+
 	void Awake ()
 	{
 		questionMark = Resources.Load<Sprite>("UI_Elements/QuestionMark");
@@ -34,6 +37,8 @@ public class RecipeButtonBridge : MonoBehaviour
 			{
 				Destroy(jj);
 			}
+			// Clear the flag list.
+			constructFlags.Clear();
 
 			// Actually repopulate.
 			foreach (InvItem jj in myRecipe.components)
@@ -55,12 +60,26 @@ public class RecipeButtonBridge : MonoBehaviour
 
 				// Decide whether to make Construct button selectable.
 				if (InventoryController.GetQuantity(jj.itemName) >= jj.quantity)
-					recPop.constructButton.interactable = true;
+					constructFlags.Add(true);
 				else
-					recPop.constructButton.interactable = false;
+					constructFlags.Add(false);
 
 				// Add to object list.
 				recPop.iconsInList.Add(instanceTile);
+			}
+
+			// Check the flags for each item in the recipe to see if we have all the items.
+			foreach (bool bb in constructFlags)
+			{
+				if (!bb)
+				{
+					recPop.constructButton.interactable = false;
+					break;
+				}
+				else
+				{
+					recPop.constructButton.interactable = true;
+				}
 			}
 
 			// Remove all other listeners so only the one we add in the next line will work.
