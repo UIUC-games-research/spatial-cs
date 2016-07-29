@@ -30,4 +30,9 @@ public class RecipesDB : MonoBehaviour
 												   "axe",
 												   new string[] { "Sledgehammer Bottom Point", "Sledgehammer Haft", "Sledgehammer Head", "Sledgehammer Shaft", "Sledgehammer Top Point", "Sledgehammer Trapezoid" },
 												   new int[] { 1, 1, 1, 1, 1, 1 });
+
+	public static Recipe Key1 = new Recipe("Key 1",
+										   "key1",
+										   new string[] { "Key 1 Dangly T", "Key 1 Upright L", "Key 1 Upright Rect", "Key 1 Upright T", "Key 1 Walking Pants", "Key 1 Waluigi" },
+										   new int[] { 1, 1, 1, 1, 1, 1 });
 }
