@@ -23,7 +23,7 @@ public class Tutorial1 : MonoBehaviour {
 
 	private bool[] triggersFinished;
 	private const int NUM_TRIGGERS = 19;
-	private bool pyrButtonClicked;
+	private bool partButtonClicked;
 	private GameObject selectedObj;
 
 	void Awake() {
@@ -41,7 +41,7 @@ public class Tutorial1 : MonoBehaviour {
 		rotationScript = rotationGizmo.GetComponent<RotationGizmo>();
 		fuseEvent = eventSystem.GetComponent<FuseEvent>();
 		selectPart = eventSystem.GetComponent<SelectPart>();
-		pyrButtonClicked = false;
+		partButtonClicked = false;
 
 		//disable part buttons so player can't use them while Dresha talks
 		foreach(Button b in partButtons) {
@@ -233,10 +233,12 @@ public class Tutorial1 : MonoBehaviour {
 	}
 
 	//does nothing when Pyr button is clicked subsequent times
-	public void playerClicksPyrButton() {
-		if(!pyrButtonClicked) {
-			pyrButtonClicked = true;
-			Highlighter.Unhighlight(pyrButton.gameObject);
+	public void playerClicksAPartButton() {
+		if(!partButtonClicked) {
+			partButtonClicked = true;
+			foreach (Button b in partButtons) {
+				Highlighter.Unhighlight(b.gameObject);
+			}
 			ConversationTrigger.AddToken("playerClicksPyrButton");
 		}
 	}
