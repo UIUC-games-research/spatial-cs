@@ -14,7 +14,6 @@ public class CreatePart : MonoBehaviour {
 	private SelectPart selectionManager;
 	public int NUM_PARTS;
 	private GameObject startObject;
-	private string password = "e7O9aT";
 
 	public GameObject rotateLeftButton;
 	public GameObject rotateForwardButton;
@@ -229,15 +228,6 @@ public class CreatePart : MonoBehaviour {
 		}
 	}
 
-	public void createDirections(GameObject part) {
-		Quaternion defaultRotation = new Quaternion();
-
-
-		//need this in to set priority
-		print ("Initialization complete!");
-
-	}
-
 	public void enableManipulationButtons(GameObject toRotate) {
 		rotateLeftButton.transform.GetComponent<Button>().interactable = true;
 		rotateForwardButton.transform.GetComponent<Button>().interactable = true;
@@ -278,8 +268,6 @@ public class CreatePart : MonoBehaviour {
 			partCreated[0] = true;
 			selectionManager.newPartCreated("BodyPrefab(Clone)");
 
-			createDirections(parts[0]);
-
 			enableManipulationButtons(newBody);
 
 
@@ -308,7 +296,6 @@ public class CreatePart : MonoBehaviour {
 			instantiated[1] = newCalf;
 			partCreated[1] = true;
 			selectionManager.newPartCreated("calfPrefab(Clone)");
-			createDirections(parts[1]);
 
 			enableManipulationButtons(newCalf);
 
@@ -323,7 +310,6 @@ public class CreatePart : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);
 			GameObject newTrim = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 
-			Transform topTrim = newTrim.transform.FindChild("Top_Trim");
 			Transform topTrimAttach = newTrim.transform.FindChild("Top_Trim_Attach");
 
 			FuseAttributes fuseAtts = trimFuses ();
@@ -335,7 +321,6 @@ public class CreatePart : MonoBehaviour {
 			instantiated[2] = newTrim;	
 			partCreated[2] = true;
 			selectionManager.newPartCreated("trimPrefab(Clone)");
-			createDirections(parts[2]);
 
 			enableManipulationButtons(newTrim);
 
@@ -366,7 +351,6 @@ public class CreatePart : MonoBehaviour {
 			instantiated[3] = newToe;
 			partCreated[3] = true;
 			selectionManager.newPartCreated("ToePrefab(Clone)");
-			createDirections(parts[3]);
 
 			enableManipulationButtons(newToe);
 
@@ -398,7 +382,6 @@ public class CreatePart : MonoBehaviour {
 			instantiated[6] = newToeSole;
 			partCreated[6] = true;
 			selectionManager.newPartCreated("ToeSolePrefab(Clone)");
-			createDirections(parts[6]);
 
 			enableManipulationButtons(newToeSole);
 

@@ -14,7 +14,6 @@ public class CreatePartFFA : MonoBehaviour {
 	private SelectPart selectionManager;
 	public int NUM_PARTS;
 	private GameObject startObject;
-	private string password = "nY0JQz";
 
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;

@@ -14,7 +14,6 @@ public class CreatePartKey1 : MonoBehaviour {
 	private SelectPart selectionManager;
 	public int NUM_PARTS;
 	private GameObject startObject;
-	private string password = "FYVTzj";
 
 	public GameObject rotateLeftButton;
 	public GameObject rotateForwardButton;
@@ -191,16 +190,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			}
 		}
 	}
-	
-	public void createDirections(GameObject part) {
-		Quaternion defaultRotation = new Quaternion();
-		
-		
-		//need this in to set priority
-		print ("Initialization complete!");
-		
-	}
-	
+
 	public void enableManipulationButtons(GameObject toRotate) {
 		
 		if(toRotate.name.Equals ("ebg_bodyPrefab(Clone)") || toRotate.name.Equals ("gripPrefab(Clone)")) {
@@ -247,9 +237,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			instantiated[0] = newUprightL;
 			partCreated[0] = true;
 			selectionManager.newPartCreated("upright_LPrefab(Clone)");
-			
-			createDirections(parts[0]);
-			
+
 			enableManipulationButtons(newUprightL);
 			
 			
@@ -279,8 +267,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			instantiated[1] = newUprightT;
 			partCreated[1] = true;
 			selectionManager.newPartCreated("uprightTPrefab(Clone)");
-			createDirections(parts[1]);
-			
+
 			enableManipulationButtons(newUprightT);
 			
 			
@@ -311,8 +298,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			instantiated[2] = newWaluigi;	
 			partCreated[2] = true;
 			selectionManager.newPartCreated("waluigiPrefab(Clone)");
-			createDirections(parts[2]);
-			
+
 			enableManipulationButtons(newWaluigi);
 			
 			
@@ -349,8 +335,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			instantiated[3] = newWalkingPants;
 			partCreated[3] = true;
 			selectionManager.newPartCreated("walking_pantsPrefab(Clone)");
-			createDirections(parts[3]);
-			
+
 			enableManipulationButtons(newWalkingPants);
 			
 			
@@ -381,8 +366,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			instantiated[4] = newUprightRect;
 			partCreated[4] = true;
 			selectionManager.newPartCreated("upright_rectPrefab(Clone)");
-			createDirections(parts[4]);
-			
+
 			enableManipulationButtons(newUprightRect);
 			
 			

@@ -14,7 +14,6 @@ public class CreatePartTutorial2 : MonoBehaviour {
 	private SelectPart selectionManager;
 	public int NUM_PARTS;
 	private GameObject startObject;
-	private string password = "KVDIKh";
 
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;
@@ -44,8 +43,10 @@ public class CreatePartTutorial2 : MonoBehaviour {
 		GameObject longboxSmallboxYellowAttach = startObject.transform.FindChild("longbox_smallbox_yellow_attach").gameObject;
 		//to avoid errors when selectedObject starts as startObject
 		//CHANGE these lines to match above
+		//these lines may be unnecessary?
 		longboxBigBoxAttach.GetComponent<FuseBehavior>().isFused = true;
 		longboxTallboxAttach.GetComponent<FuseBehavior>().isFused = true;
+		longboxSmallboxYellowAttach.GetComponent<FuseBehavior>().isFused = true;
 		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 
 	}
@@ -184,16 +185,7 @@ public class CreatePartTutorial2 : MonoBehaviour {
 			}
 		}
 	}
-
-	public void createDirections(GameObject part) {
-		Quaternion defaultRotation = new Quaternion();
-
-
-		//need this in to set priority
-		print ("Initialization complete!");
-
-	}
-
+		
 	public void enableManipulationButtons(GameObject toRotate) {
 		rotateYButton.transform.GetComponent<Button>().interactable = true;
 		rotateXButton.transform.GetComponent<Button>().interactable = true;
@@ -225,8 +217,6 @@ public class CreatePartTutorial2 : MonoBehaviour {
 			partCreated[0] = true;
 			selectionManager.newPartCreated("tutorial2_smallbox_yellowPrefab(Clone)");
 
-			createDirections(parts[0]);
-
 			enableManipulationButtons(newSmallboxYellow);
 
 
@@ -251,7 +241,6 @@ public class CreatePartTutorial2 : MonoBehaviour {
 			instantiated[1] = newTallbox;
 			partCreated[1] = true;
 			selectionManager.newPartCreated("tutorial2_tallboxPrefab(Clone)");
-			createDirections(parts[1]);
 
 			enableManipulationButtons(newTallbox);
 
@@ -277,7 +266,6 @@ public class CreatePartTutorial2 : MonoBehaviour {
 			instantiated[2] = newSmallboxBlue;	
 			partCreated[2] = true;
 			selectionManager.newPartCreated("tutorial2_smallbox_bluePrefab(Clone)");
-			createDirections(parts[2]);
 
 			enableManipulationButtons(newSmallboxBlue);
 
@@ -308,7 +296,6 @@ public class CreatePartTutorial2 : MonoBehaviour {
 			instantiated[3] = newBigbox;
 			partCreated[3] = true;
 			selectionManager.newPartCreated("tutorial2_bigboxPrefab(Clone)");
-			createDirections(parts[3]);
 
 			enableManipulationButtons(newBigbox);
 

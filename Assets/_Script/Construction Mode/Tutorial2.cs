@@ -26,6 +26,8 @@ public class Tutorial2 : MonoBehaviour {
 
 		selectPart = eventSystem.GetComponent<SelectPart>();
 		fuseEvent = eventSystem.GetComponent<FuseEvent>();
+		ConversationTrigger.RemoveToken("blockTutorial2Start");
+
 	}
 	
 	// Update is called once per frame
@@ -42,7 +44,7 @@ public class Tutorial2 : MonoBehaviour {
 		} else if(ConversationTrigger.GetToken("wrongRotationDreshaReadyToFlashObj")){
 			// Dresha flashes selected obj and then lets the player try again
 			highlightSelectedObj(1f);
-			ConversationTrigger.AddToken("dreshaFlashedSelectedObj2");	
+			ConversationTrigger.AddToken("dreshaFlashedSelectedObj2");
 
 		} else if(ConversationTrigger.GetToken("playerAttachedWrongFace") && !ConversationTrigger.GetToken("wrongFaceDreshaReadyToFlashBox")) {
 			// wrong shape - Dresha just finished tryDifferentShape1 and 
@@ -74,10 +76,10 @@ public class Tutorial2 : MonoBehaviour {
 		string fuseStatus = fuseEvent.getFuseStatus();
 		ConversationTrigger.RemoveToken("playerRotationIncorrect"); // to stop infinite triggers
 		ConversationTrigger.RemoveToken("wrongRotationDreshaReadyToFlashObj"); // to stop infinite triggers
-		ConversationTrigger.RemoveToken("dreshaFlashedSelectedObj2"); // to stop infinite triggers
 		ConversationTrigger.RemoveToken("blockTryRotatingAgain2"); // to stop infinite triggers
 		ConversationTrigger.RemoveToken("playerAttachedWrongFace"); // to stop infinite triggers
 		ConversationTrigger.RemoveToken("wrongFaceDreshaReadyToFlashBox"); // to stop infinite triggers
+		ConversationTrigger.RemoveToken("dreshaFlashedSelectedObj2");
 
 		if(fuseStatus.Equals("wrongFace")) {
 			// player tried to attach but selected the wrong FuseTo
@@ -96,9 +98,9 @@ public class Tutorial2 : MonoBehaviour {
 		if(selectedObj.name.Equals("tutorial2_bigboxPrefab(Clone)")) {
 			highlighter.HighlightTimed(GameObject.Find("bigbox_close"), sec); 
 			highlighter.HighlightTimed(GameObject.Find("bigbox_far"), sec); 
-		} else if(selectedObj.name.Equals("tutorial2_smallbox_bluePrefab(Clone")) {
+		} else if(selectedObj.name.Equals("tutorial2_smallbox_bluePrefab(Clone)")) {
 			highlighter.HighlightTimed(GameObject.Find("smallbox_blue"), sec); 
-		} else if(selectedObj.name.Equals("tutorial2_smallbox_yellowPrefab(Clone")) {
+		} else if(selectedObj.name.Equals("tutorial2_smallbox_yellowPrefab(Clone)")) {
 			highlighter.HighlightTimed(GameObject.Find("smallbox_yellow"), sec); 
 		} else {
 			highlighter.HighlightTimed(GameObject.Find("tallbox"), sec); 

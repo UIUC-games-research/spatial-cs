@@ -331,7 +331,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Congratulations - you built the Ugly Mess!
 
-'
+
+    Ready to build the Rocket Boots?'
 --- !u!222 &115846946
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2024,7 +2025,8 @@ MonoBehaviour:
   trigger: 2
   keyRequired: 0
   tokenWhitelist: []
-  tokenBlacklist: []
+  tokenBlacklist:
+  - blockTutorial2Start
 --- !u!1 &1232480373
 GameObject:
   m_ObjectHideFlags: 0

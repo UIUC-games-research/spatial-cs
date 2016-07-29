@@ -551,7 +551,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Congratulations - you built the Purple Cube!
 
-'
+
+    Ready for more practice?'
 --- !u!222 &115846946
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1105,7 +1106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &385386806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2969,7 +2970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1243003143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3155,6 +3156,10 @@ Prefab:
     - target: {fileID: 22480596, guid: ca95c809c7100f941a716a128503d054, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 194062, guid: ca95c809c7100f941a716a128503d054, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca95c809c7100f941a716a128503d054, type: 2}
@@ -5249,7 +5254,8 @@ MonoBehaviour:
   keyRequired: 0
   tokenWhitelist:
   - playerAttachedWrongFace
-  tokenBlacklist: []
+  tokenBlacklist:
+  - wrongFaceDreshaReadyToFlashBox
 --- !u!65 &1941006054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5440,7 +5446,8 @@ MonoBehaviour:
   keyRequired: 0
   tokenWhitelist:
   - playerRotationIncorrect
-  tokenBlacklist: []
+  tokenBlacklist:
+  - wrongRotationDreshaReadyToFlashObj
 --- !u!65 &1987984657
 BoxCollider:
   m_ObjectHideFlags: 0

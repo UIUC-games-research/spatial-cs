@@ -758,17 +758,7 @@ public class FuseEvent : MonoBehaviour {
 			StartCoroutine(errorWrongFace());
 
 		} else if(fuseMapping[selectedObject.name].Contains(selectedFuseTo.name) && positionMatches (selectedObject, selectedFuseTo)) {
-			if(selectedObject.transform.parent.name.Equals ("middle_tPrefab(Clone)")) {
-				Quaternion currentRotation = selectedObject.transform.rotation;
-				Quaternion[] acceptedRotations = selectedObject.GetComponent<FuseBehavior>().getAcceptableRotations(selectedFuseTo.name);
-
-				for(int i = 0; i < acceptedRotations.Length; i++) {
-					float angle = Quaternion.Angle(currentRotation, acceptedRotations[i]);
-					if (Mathf.Abs(angle) < 5.0f) {
-						middleTRotation = i;
-					}
-				}
-			} 
+	
 			//print ("Successful fuse!");
 			fuseStatus="success";
 			source.PlayOneShot (success);

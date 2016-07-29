@@ -9,8 +9,6 @@ public class SelectPart : MonoBehaviour {
 	private GameObject selectedObject;
 	private GameObject prevSelectedObject;
 	private GameObject activePart;
-	private Dictionary<string, int> cameraAdjusts;
-	private GameObject mainCamera;
 	private CameraControl cameraControls;
 
 	private Texture unhighTexture;
@@ -51,9 +49,6 @@ public class SelectPart : MonoBehaviour {
 	// selected part becomes null?
 
 	void Awake() {
-		cameraAdjusts = new Dictionary<string, int>();
-		mainCamera = GameObject.Find ("Main Camera");
-		//cameraControls = mainCamera.GetComponent<CameraControl>();
 		findBlackRegionDone = false;
 		if(mode.Equals ("intro")) {
 			tutorialOn = true;
@@ -139,20 +134,6 @@ public class SelectPart : MonoBehaviour {
 
 					prevSelectedFuseTo = selectedFuseTo;
 
-					/*
-					int numClicksHigh = cameraControls.getNumClicksHigh();
-					if(cameraAdjusts.ContainsKey(selectedFuseTo.name)) {
-
-						while(numClicksHigh != cameraAdjusts[selectedFuseTo.name]) {
-							if(numClicksHigh < cameraAdjusts[selectedFuseTo.name]) {
-								cameraControls.rotateUp ();
-							} else {
-								cameraControls.rotateDown ();
-							}
-							numClicksHigh = cameraControls.getNumClicksHigh();
-						}
-					}
-					*/
 					//tutorial
 					if(tutorialOn && tutorialMidAndBottomSelected()) {
 						StartCoroutine(findOtherBlackRegion());
@@ -272,6 +253,10 @@ public class SelectPart : MonoBehaviour {
 
 	public GameObject getSelectedFuseTo() {
 		return selectedFuseTo;
+	}
+
+	public GameObject getActivePart() {
+		return activePart;
 	}
 
 	public void resetSelectedObject() {

@@ -14,7 +14,6 @@ public class CreatePartAxe : MonoBehaviour {
 	private SelectPart selectionManager;
 	public int NUM_PARTS;
 	private GameObject startObject;
-	private string password = "KVDIKh";
 
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;
@@ -208,15 +207,6 @@ public class CreatePartAxe : MonoBehaviour {
 		}
 	}
 	
-	public void createDirections(GameObject part) {
-		Quaternion defaultRotation = new Quaternion();
-		
-		
-		//need this in to set priority
-		print ("Initialization complete!");
-		
-	}
-	
 	public void enableManipulationButtons(GameObject toRotate) {
 		rotateYButton.transform.GetComponent<Button>().interactable = true;
 		rotateXButton.transform.GetComponent<Button>().interactable = true;
@@ -247,9 +237,7 @@ public class CreatePartAxe : MonoBehaviour {
 			instantiated[0] = newHaft;
 			partCreated[0] = true;
 			selectionManager.newPartCreated("haftPrefab(Clone)");
-			
-			createDirections(parts[0]);
-			
+
 			enableManipulationButtons(newHaft);
 			
 			
@@ -285,8 +273,7 @@ public class CreatePartAxe : MonoBehaviour {
 			instantiated[1] = newHead;
 			partCreated[1] = true;
 			selectionManager.newPartCreated("headPrefab(Clone)");
-			createDirections(parts[1]);
-			
+
 			enableManipulationButtons(newHead);
 			
 			
@@ -316,8 +303,7 @@ public class CreatePartAxe : MonoBehaviour {
 			instantiated[2] = newTrapezoid;	
 			partCreated[2] = true;
 			selectionManager.newPartCreated("trapezoidPrefab(Clone)");
-			createDirections(parts[2]);
-			
+
 			enableManipulationButtons(newTrapezoid);
 			
 			
@@ -347,8 +333,7 @@ public class CreatePartAxe : MonoBehaviour {
 			instantiated[3] = newBottomPoint;
 			partCreated[3] = true;
 			selectionManager.newPartCreated("bottom_pointPrefab(Clone)");
-			createDirections(parts[3]);
-			
+
 			enableManipulationButtons(newBottomPoint);
 			
 			
@@ -373,8 +358,7 @@ public class CreatePartAxe : MonoBehaviour {
 			instantiated[4] = newTopPoint;
 			partCreated[4] = true;
 			selectionManager.newPartCreated("top_pointPrefab(Clone)");
-			createDirections(parts[4]);
-			
+
 			enableManipulationButtons(newTopPoint);
 			
 			
