@@ -12,10 +12,8 @@ public class GlobalVariables : MonoBehaviour {
 	
 	private List<Text> levelPasswordTexts;
 
-	private string mode;
 	public bool newLoad = true;
 
-	private GameObject passwordTextCanvas;
 	private Text rocketBootsPassword;
 	private Text axePassword;
 	private Text key1Password;
@@ -37,7 +35,6 @@ public class GlobalVariables : MonoBehaviour {
 		}
 
 		levelNames = new List<string>();
-		mode = "mainScreen";
 		levelNames.Add ("boot");
 		levelNames.Add ("axe");
 		levelNames.Add ("key1");
@@ -55,7 +52,6 @@ public class GlobalVariables : MonoBehaviour {
 			levelComplete.Add (false);
 		}
 
-		passwordTextCanvas = GameObject.Find ("PasswordTextCanvas");
 		rocketBootsPassword = GameObject.Find ("bootPassword").GetComponent<Text>();
 		axePassword = GameObject.Find ("axePassword").GetComponent<Text>();
 		key1Password = GameObject.Find ("key1Password").GetComponent<Text>();
@@ -129,10 +125,9 @@ public class GlobalVariables : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Application.loadedLevel == 0 && newLoad) {
+		if(SceneManager.GetSceneAt(0).isLoaded && newLoad) {
 			newLoad = false;
 
-			passwordTextCanvas = GameObject.Find ("PasswordTextCanvas");
 			rocketBootsPassword = GameObject.Find ("bootPassword").GetComponent<Text>();
 			axePassword = GameObject.Find ("axePassword").GetComponent<Text>();
 			key1Password = GameObject.Find ("key1Password").GetComponent<Text>();

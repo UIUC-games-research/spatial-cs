@@ -14,7 +14,6 @@ public class CreatePartKey2 : MonoBehaviour {
 	private SelectPart selectionManager;
 	public int NUM_PARTS;
 	private GameObject startObject;
-	private string password = "9FRHXi";
 
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;

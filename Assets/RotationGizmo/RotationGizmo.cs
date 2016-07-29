@@ -5,6 +5,7 @@ public class RotationGizmo : MonoBehaviour
 {
 	public GameObject mainCamera;
 	public GameObject toRotate;
+	public bool tutorialOn;
 
 	public GameObject xGizmo;
 	public GameObject yGizmo;
@@ -42,7 +43,7 @@ public class RotationGizmo : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hitInfo = new RaycastHit();
-			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) && BatterySystem.GetPower() > 0)
+			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) && (tutorialOn || BatterySystem.GetPower() > 0))
 			{
 				//Debug.Log(hitInfo.transform.name);
 				switch(hitInfo.transform.name)
@@ -94,7 +95,9 @@ public class RotationGizmo : MonoBehaviour
 	IEnumerator Rotate(float x, float y, float z)
 	{
 		// Integration for battery power.
-		BatterySystem.SubPower(1);
+		if(!tutorialOn) {
+			BatterySystem.SubPower(1);
+		}
 
 		// Set rotate flag and start rotating.
 		// Flag is reset every frame to ensure the check only runs at the end of all queued rotations.

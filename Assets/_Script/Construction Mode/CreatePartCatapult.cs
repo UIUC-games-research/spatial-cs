@@ -14,8 +14,7 @@ public class CreatePartCatapult : MonoBehaviour {
 	private SelectPart selectionManager;
 	public int NUM_PARTS;
 	private GameObject startObject;
-	private string password = "daVbGX";
-	
+
 	public GameObject rotateYButton;
 	public GameObject rotateXButton;
 	public GameObject rotateZButton;

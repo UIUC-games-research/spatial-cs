@@ -1,4 +1,4 @@
 Don't worry, it's easy to use. 
-Click on this button to put the part I was just trying to attach on the screen.
+Choose a part by clicking on one of these buttons.
 [CHOOSE]
 Send token to Tutorial1 signaling to flash Pyr button|nowhere|dreshaReadyToFlashPyrButton
