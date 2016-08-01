@@ -45,6 +45,7 @@ public class InventoryController : MonoBehaviour
 		//RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe2);
 		RecipesDB.unlockedRecipes.Add(RecipesDB.RocketBoots);
 		RecipesDB.unlockedRecipes.Add(RecipesDB.Sledgehammer);
+		RecipesDB.unlockedRecipes.Add(RecipesDB.Key1);
 
 		// Load save when inventory controller activates. Has to happen somewhere!
 		SaveController.Load();
@@ -85,6 +86,9 @@ public class InventoryController : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.Escape))
 			CloseInventory();
+
+		if (Input.GetKeyDown(KeyCode.Keypad5))
+			LoadUtils.LoadNewExplorationLevel("RuinedCity", new Vector3(0f, 5f, 0f));
 	}
 
 	// Defaults to "Inventory" tab.
