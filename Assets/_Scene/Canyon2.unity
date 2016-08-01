@@ -7077,6 +7077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: RuinedCity
+  tokenRequired: 
   spawnPosition: {x: 0, y: 5, z: 0}
 --- !u!1001 &793532740
 Prefab:
