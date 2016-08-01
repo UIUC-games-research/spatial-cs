@@ -275,6 +275,9 @@ public class SelectPart : MonoBehaviour {
 	}
 
 	public void resetSelectedObject() {
+		//! CODE FOR REMOVING GHOSTS ON CONNECT.
+		Destroy(selectedObject.GetComponent<SelectedEffect>());
+
 		prevSelectedObject = selectedObject;
 		selectedObject = null;
 		Texture unhighlightedTex = prevSelectedObject.GetComponent<SelectBehavior>().unhighTex;
@@ -282,6 +285,9 @@ public class SelectPart : MonoBehaviour {
 	}
 	
 	public void resetSelectedFuseTo() {
+		//! CODE FOR REMOVING GHOSTS ON CONNECT.
+		Destroy(selectedFuseTo.GetComponent<SelectedEffect>());
+
 		prevSelectedFuseTo = selectedFuseTo;
 		selectedFuseTo = null;
 		Texture unhighlightedTex = prevSelectedFuseTo.GetComponent<SelectBehavior>().unhighTex;
@@ -294,6 +300,8 @@ public class SelectPart : MonoBehaviour {
 		prevSelectedObject = null;
 		selectedObject = null;
 	}
+
+
 
 	//selects on command - use when new object is created
 	public void selectObject(GameObject newSelection) {
@@ -311,8 +319,52 @@ public class SelectPart : MonoBehaviour {
 		} 
 		Texture highlightedTex = selectedObject.GetComponent<SelectBehavior>().highTex;
 		selectedObject.GetComponent<Renderer>().material.mainTexture = highlightedTex;
+
+		RaycastHit hitInfo = new RaycastHit();
+		float xCoord = newSelection.transform.position.x;
+		float yCoord = newSelection.transform.position.y;
+		float zCoord = newSelection.transform.position.z;
+		if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(xCoord, yCoord, zCoord)), out hitInfo)) {
+			if (selectedObject.GetComponent<SelectedEffect>() == null)
+			{
+				SelectedEffect sel = selectedObject.AddComponent<SelectedEffect>();
+				sel.hitInfo = hitInfo;
+				sel.selected = selectedObject;
+			}
+		}
+
 	}
 
+	public void selectFuseTo(GameObject newSelection) {
+		prevSelectedFuseTo = newSelection;
+		selectedFuseTo = newSelection;
+
+		if (selectedFuseTo.GetComponent<SelectBehavior>() == null) {
+			//BOO stupid priority problem - this is an ugly workaround
+			selectedFuseTo.AddComponent<SelectBehavior>();
+			Texture unhighTexture = selectedFuseTo.GetComponent<Renderer>().material.mainTexture;
+			selectedFuseTo.GetComponent<SelectBehavior>().unhighTex = unhighTexture;
+			Texture highTexture = (Texture)Resources.Load (unhighTexture.name + "_h");
+			selectedFuseTo.GetComponent<SelectBehavior>().highTex = highTexture;
+
+		} 
+		Texture highlightedTex = selectedFuseTo.GetComponent<SelectBehavior>().highTex;
+		selectedFuseTo.GetComponent<Renderer>().material.mainTexture = highlightedTex;
+
+		RaycastHit hitInfo = new RaycastHit();
+		float xCoord = newSelection.transform.position.x;
+		float yCoord = newSelection.transform.position.y;
+		float zCoord = newSelection.transform.position.z;
+		if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(xCoord, yCoord, zCoord)), out hitInfo)) {
+			if (selectedFuseTo.GetComponent<SelectedEffect>() == null)
+			{
+				SelectedEffect sel = selectedObject.AddComponent<SelectedEffect>();
+				sel.hitInfo = hitInfo;
+				sel.selected = selectedFuseTo;
+			}
+		}
+
+	}
 
 	public void newPartCreated(string part) {
 		if(selectedObject != null) {

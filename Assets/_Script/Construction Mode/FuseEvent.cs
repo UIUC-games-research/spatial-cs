@@ -25,6 +25,7 @@ public class FuseEvent : MonoBehaviour {
 	public AudioClip success;
 	public AudioClip failure;
 	public AudioClip victory;
+	private string fuseStatus;
 
 	public GameObject[] partButtons;
 	public GameObject connectButton;
@@ -33,6 +34,8 @@ public class FuseEvent : MonoBehaviour {
 	public GameObject rotateZButton;
 
 	public Text congrats;
+	public Text shapesWrong;
+	public Text rotationWrong;
 	public Text getPassword;
 	public Button claimItem;    // NEW ADDITION. A button which appears upon completion of an item to claim it in exploration mode.
 	public RotationGizmo rotateGizmo;	// NEW ADDITION. when completing a fusion, disable the rotation gizmo.
@@ -40,6 +43,7 @@ public class FuseEvent : MonoBehaviour {
 	public CanvasGroup rotatePanelGroup;
 	public CanvasGroup bottomPanelGroup;
 	public CanvasGroup congratsPanelGroup;
+	public CanvasGroup errorPanelGroup;
 	public Image finishedImage;
 
 	public Camera mainCam;
@@ -79,6 +83,9 @@ public class FuseEvent : MonoBehaviour {
 			claimItem.onClick.AddListener(() => {
 				switch (mode)
 				{
+					case "tutorial1":
+						SceneManager.LoadScene("tutorial2");
+						break;
 					case "boot":
 						RocketBoots.ActivateBoots();
 						InventoryController.items.Remove("Rocket Boots Sole");
@@ -116,6 +123,7 @@ public class FuseEvent : MonoBehaviour {
 		}
 
 		fuseCount = 0;
+		fuseStatus = "none";
 		createFuseMapping();
 		filename = "ConstructionModeData.txt";
 		sr = File.AppendText(filename);
@@ -145,6 +153,10 @@ public class FuseEvent : MonoBehaviour {
 			return true;
 		}
 		return false;
+	}
+
+	public string getFuseStatus() {
+		return fuseStatus;
 	}
 
 	public void createFuseMapping() {
@@ -734,13 +746,13 @@ public class FuseEvent : MonoBehaviour {
 		//}
 		if(selectedObject == null) {
 			//player tries to connect when there is no active part (only at beginning)
-			print ("Select the black regions you want to join together!");
+			//print ("Select the black regions you want to join together!");
 			source.PlayOneShot (failure);
 
 		} else if (!fuseMapping.ContainsKey (selectedObject.name)){
-			numWrongFacesFails++;
-			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
-			source.PlayOneShot (failure);
+			//print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
+			//display error on screen for 1 sec
+			StartCoroutine(errorWrongFace());
 
 		} else if(fuseMapping[selectedObject.name].Contains(selectedFuseTo.name) && positionMatches (selectedObject, selectedFuseTo)) {
 			if(selectedObject.transform.parent.name.Equals ("middle_tPrefab(Clone)")) {
@@ -755,15 +767,11 @@ public class FuseEvent : MonoBehaviour {
 				}
 			} 
 			print ("Successful fuse!");
-
+			fuseStatus="success";
 			source.PlayOneShot (success);
 			selectedObject.GetComponent<FuseBehavior>().fuse(selectedFuseTo.name, selectedFuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag);
 
-			//! CODE FOR REMOVING GHOSTS ON CONNECT.
-			Destroy(selectedObject.GetComponent<SelectedEffect>());
-			Destroy(selectedFuseTo.GetComponent<SelectedEffect>());
-			// Also, disable rotation gizmo.
-			rotateGizmo.Disable();
+	
 
 			fuseCleanUp();
 			fuseCount++;
@@ -780,7 +788,9 @@ public class FuseEvent : MonoBehaviour {
 				finishedImage.enabled = false;
 				congrats.enabled = true;
 				GameObject.Find("Back Button").SetActive(false);
-				claimItem.gameObject.SetActive(true);
+				if(mode != "tutorial1" && mode != "tutorial2") {
+					claimItem.gameObject.SetActive(true);
+				}
 				musicSource.Stop();
 				mainCam.transform.position = new Vector3(-90,80,-3.36f);
 				mainCam.transform.rotation = Quaternion.Euler(new Vector3(15,0,0));
@@ -792,22 +802,41 @@ public class FuseEvent : MonoBehaviour {
 
 
 		} else if (!fuseMapping[selectedObject.name].Contains (selectedFuseTo.name)) {
-			numWrongFacesFails++;
 			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
-			source.PlayOneShot (failure);
+			StartCoroutine(errorWrongFace());
 
 		} else if (fuseMapping[selectedObject.name].Contains (selectedFuseTo.name) && !positionMatches (selectedObject, selectedFuseTo)){
 			//rotation isn't right - tell player this or let them figure it out themselves?
-			numWrongRotationFails++;
-
+			StartCoroutine(errorWrongRotation());
 			print ("Invalid fuse: Correct fuse selection, but the orientation isn't right!");
-			source.PlayOneShot (failure);
 		} else {
 			//this shouldn't happen
 			print ("MYSTERIOUS FUSE ERROR");
 		}
 
 
+	}
+
+	IEnumerator errorWrongFace() {
+		fuseStatus="wrongFace";
+		numWrongFacesFails++;
+		errorPanelGroup.alpha = 1;
+		shapesWrong.enabled = true;
+		source.PlayOneShot (failure);
+		yield return new WaitForSeconds(1f);
+		shapesWrong.enabled=false;
+		errorPanelGroup.alpha = 0;
+	}
+
+	IEnumerator errorWrongRotation() {
+		fuseStatus="wrongRotation";
+		numWrongRotationFails++;
+		errorPanelGroup.alpha = 1;
+		rotationWrong.enabled = true;
+		source.PlayOneShot (failure);
+		yield return new WaitForSeconds(1f);
+		rotationWrong.enabled=false;
+		errorPanelGroup.alpha = 0;
 	}
 
 	private void playVictory() {
@@ -1048,7 +1077,10 @@ public class FuseEvent : MonoBehaviour {
 
 	//remove old arrows from fused part and unselect fused parts
 	private void fuseCleanUp() {
+		// Disable rotation gizmo.
+		rotateGizmo.Disable();
 
+		//Unselect and unghost the attached fuseTo and active part
 		GetComponent<SelectPart>().resetSelectedObject();
 		GetComponent<SelectPart>().resetSelectedFuseTo();
 		disableConnectButton();

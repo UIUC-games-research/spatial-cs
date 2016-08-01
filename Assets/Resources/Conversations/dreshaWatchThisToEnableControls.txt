@@ -1,0 +1,6 @@
+Uh, hmm, what's going on?
+Oh, uh, yes, this is all part of my demonstration! I'm just testing you!
+You see, this part won't go here! It needs to go somewhere else.
+I'll bet you can do it. Here, take the Welder!
+[CHOOSE]
+Dresha gives control of interface to player|nowhere|dreshaReadyToEnableControls

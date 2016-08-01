@@ -1,0 +1,4 @@
+-show me where I can attach parts together!
+Watch this!
+[CHOOSE]
+Dresha is about to try attaching the two parts|nowhere|dreshaReadyToTryAttaching

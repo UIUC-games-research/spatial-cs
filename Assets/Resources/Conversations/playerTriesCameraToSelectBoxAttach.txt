@@ -1,0 +1,4 @@
+Yeah, like that!
+Now find the black shape on this block that looks the same as the one on the other part and click on it.
+[CHOOSE]
+Dresha will now flash the box again |nowhere|dreshaReadyToFlashBoxAgain

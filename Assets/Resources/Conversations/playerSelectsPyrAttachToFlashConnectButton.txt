@@ -1,0 +1,4 @@
+Ok, now let's try to attach the two pieces together.
+This is done using the Connect button.
+[CHOOSE]
+Dresha will now flash Connect button. |nowhere|dreshaReadyToFlashConnectButton

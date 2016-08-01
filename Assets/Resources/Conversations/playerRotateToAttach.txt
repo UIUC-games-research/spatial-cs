@@ -1,0 +1,4 @@
+Now, let's see if you chose the right place to attach this part and if its rotation is right.
+Attach the two black shapes you selected together by clicking the Connect button.
+[CHOOSE]
+Dresha waits till player clicks Connect button|nowhere|readyToEnableConnectButton
