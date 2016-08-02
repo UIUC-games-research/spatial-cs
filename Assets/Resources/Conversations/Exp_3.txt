@@ -1,0 +1,8 @@
+Oh, good, you found something! Let me see it!
+Oh, uh, I'm not sure if I can use that for your spaceship. But if you find a few more parts like it, maybe I could make you something else.
+I think I'd need, maybe, [color]8805 more parts[color] to build it. You can see how many parts you have by [color]880pressing I to access your inventory.
+Well, come on! We don't have all day!
+What? Why aren't I helping? Look, ever since...Well, let's just say I'm not as strong as I used to be. Getting older.
+But you're young and spry. You collect, I'll build.
+[CHOOSE]
+nowhere|nowhere|Exp_3_Done

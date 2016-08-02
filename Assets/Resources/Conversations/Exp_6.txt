@@ -1,0 +1,5 @@
+Great! Now let's keep looking for more useful parts!
+There's a city up ahead, so I'm sure we can find some good parts for you spaceship there.
+My welder is battery powered, so keep looking for more batteries, we'll need them!
+[CHOOSE]
+nowhere|nowhere|Exp_6_Done

@@ -1,0 +1,6 @@
+Nice! You made a sledgehammer!
+You should be able to use this to clear the rubble blocking the entrance to the city.
+Just use the mousewheel to switch between your equipment.
+Then, you can swing the hammer by clicking.
+[CHOOSE]
+nowhere|nowhere|Exp_6_Done
