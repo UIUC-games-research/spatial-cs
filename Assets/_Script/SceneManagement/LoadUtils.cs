@@ -153,6 +153,9 @@ public class LoadUtils : MonoBehaviour
 		// Then load the new scene and position the player.
 		SceneManager.LoadScene(sceneName);
 		player.transform.position = spawnPos;
+
+		// And setup a new position tracking file for the new scene.
+		SimpleData.CreateNewPositionFile();
 	}
 
 	static void EnsureRefExists()
