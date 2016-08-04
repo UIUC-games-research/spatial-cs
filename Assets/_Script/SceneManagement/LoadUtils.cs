@@ -100,7 +100,8 @@ public class LoadUtils : MonoBehaviour
 		// since they are prone to disabling themselves. Jerks.
 		foreach(KeyValuePair<string, GameObject> ii in loadedScenes)
 		{
-			ii.Value.SetActive(false);
+			if (ii.Value != null)
+				ii.Value.SetActive(false);
 		}
 		yield return null;
 		// Activate the scene we just loaded
@@ -145,6 +146,9 @@ public class LoadUtils : MonoBehaviour
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		playerRefs.transform.SetParent(null);
 		DontDestroyOnLoad(playerRefs);
+
+		// Clear the loadedscenes dictionary.
+		loadedScenes.Clear();
 
 		// Then load the new scene and position the player.
 		SceneManager.LoadScene(sceneName);

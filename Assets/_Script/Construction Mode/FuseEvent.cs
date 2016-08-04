@@ -114,6 +114,18 @@ public class FuseEvent : MonoBehaviour {
 						LoadUtils.LoadScene(InventoryController.levelName);
 						LoadUtils.UnloadScene("axe");
 						break;
+					case "key1":
+						ConversationTrigger.AddToken("player_has_key1");
+						InventoryController.items.Remove("Key 1 Dangly T");
+						InventoryController.items.Remove("Key 1 Upright L");
+						InventoryController.items.Remove("Key 1 Upright Rect");
+						InventoryController.items.Remove("Key 1 Upright T");
+						InventoryController.items.Remove("Key 1 Walking Pants");
+						InventoryController.items.Remove("Key 1 Waluigi");
+						InventoryController.ConvertInventoryToTokens();
+						LoadUtils.LoadScene(InventoryController.levelName);
+						LoadUtils.UnloadScene("key1");
+						break;
 					default:
 						Debug.Log("Not Yet Implemented: " + mode);
 						break;

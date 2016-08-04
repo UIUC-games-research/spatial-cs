@@ -41,3 +41,5 @@ EditorBuildSettings:
     path: Assets/_Scene/Canyon2.unity
   - enabled: 1
     path: Assets/_Scene/RuinedCity.unity
+  - enabled: 1
+    path: Assets/_Scene/CityVault.unity

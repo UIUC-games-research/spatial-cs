@@ -1,0 +1,7 @@
+Aha, you've finished!
+Sorry I left. Had something important to do. Yes, very important!
+Anyway, let's try out those boots!
+You can jump really high with these, try them out by holding [color]880Spacebar.
+I'll bet you can jump right out of this canyon! See you at the top!
+[CHOOSE]
+nowhere|nowhere|Exp_5_Done
