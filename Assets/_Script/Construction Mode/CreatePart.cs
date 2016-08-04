@@ -39,6 +39,7 @@ public class CreatePart : MonoBehaviour {
 
 		//to avoid errors when selectedObject starts as startObject
 		startObject.GetComponent<IsFused>().isFused = true;
+		ConversationTrigger.AddToken("beginRocketBoots");
 	}
 
 	// y+ = up, y- = down

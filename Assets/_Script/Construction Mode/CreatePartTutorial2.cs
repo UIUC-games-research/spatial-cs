@@ -227,7 +227,7 @@ public class CreatePartTutorial2 : MonoBehaviour {
 		if(!partCreated[1]){
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
-			Quaternion fuseToRotation = Quaternion.Euler (0,0,180);
+			Quaternion fuseToRotation = Quaternion.Euler (0,90,90);
 			GameObject newTallbox = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 
 			Transform tallboxLongboxAttach = newTallbox.transform.FindChild("tallbox_longbox_attach");
@@ -252,7 +252,7 @@ public class CreatePartTutorial2 : MonoBehaviour {
 		if(!partCreated[2]){
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
-			Quaternion fuseToRotation = Quaternion.Euler (270,90,90);
+			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);
 			GameObject newSmallboxBlue = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 
 			Transform smallboxBlueBigboxAttach = newSmallboxBlue.transform.FindChild("smallbox_blue_bigbox_attach");

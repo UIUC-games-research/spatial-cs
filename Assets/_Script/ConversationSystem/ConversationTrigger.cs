@@ -62,6 +62,8 @@ public class ConversationTrigger : MonoBehaviour
 			if (timer > 0.25f && CheckTokens() && (!ConversationController.currentlyEnabled || trigger == TriggerType.HardInstant))
 			{
 				timer = 0f;
+				Debug.Log("Token already exists in dict: " + conversationName);
+
 				if (trigger == TriggerType.HardInstant)
 				{
 					tokens.Add("HardInstant_" + conversationName);

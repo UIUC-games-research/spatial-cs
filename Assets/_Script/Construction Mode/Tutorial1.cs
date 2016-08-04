@@ -25,9 +25,10 @@ public class Tutorial1 : MonoBehaviour {
 	private const int NUM_TRIGGERS = 19;
 	private bool partButtonClicked;
 	private GameObject selectedObj;
+	private GameObject conversationSystem;
+	private bool done;
 
 	void Awake() {
-		ConversationTrigger.AddToken("blockTutorial2Start");
 	}
 
 	// Use this for initialization
@@ -42,6 +43,8 @@ public class Tutorial1 : MonoBehaviour {
 		fuseEvent = eventSystem.GetComponent<FuseEvent>();
 		selectPart = eventSystem.GetComponent<SelectPart>();
 		partButtonClicked = false;
+		conversationSystem = GameObject.Find("ConversationSystem");
+		done = false;
 
 		//disable part buttons so player can't use them while Dresha talks
 		foreach(Button b in partButtons) {
@@ -144,7 +147,6 @@ public class Tutorial1 : MonoBehaviour {
 			&& selectPart.getSelectedObject() != null) {
 			triggersFinished[13] = true;
 			// player just selected pyr's attachment (or some other selectedObject, if we're allowing different shapes
-			connectButton.enabled = false;
 			highlightSelectedObj(1f);
 			ConversationTrigger.AddToken("playerSelectedAnObj");
 
@@ -168,8 +170,10 @@ public class Tutorial1 : MonoBehaviour {
 
 		} else if(!triggersFinished[17] && ConversationTrigger.tokens.Contains("readyToEnableConnectButton")) {
 			triggersFinished[17] = true;
-			//enable connect button - Dresha is already talking
-			connectButton.enabled = true;
+
+			//turn tutorial mode off - this restores normal functionality of connect button
+			//this also enables connect button - Dresha is already talking
+			selectPart.setTutorialOn(false);
 
 		} else if(!triggersFinished[18] && ConversationTrigger.GetToken("wrongRotationDreshaReadyToFlashObj")){
 			// Dresha flashes selected obj and then lets the player try again
@@ -179,17 +183,18 @@ public class Tutorial1 : MonoBehaviour {
 		} else if(triggersFinished[17] && ConversationTrigger.GetToken("playerAttachedWrongFace") && !ConversationTrigger.GetToken("wrongFaceDreshaReadyToFlashBox")) {
 			// wrong shape - Dresha just finished tryDifferentShape1 and 
 			// will now flash box and part menu for 2 seconds
-			StartCoroutine(highlightPartButtonsWait());
-			StartCoroutine(waitAndHighlightBox());
+			highlightPartButtons();
+			highlighter.HighlightTimed(GameObject.Find("box"), 1);
 
 		} else if (ConversationTrigger.GetToken("showNextLevelButton")) {
-			goToNextTutorial.gameObject.SetActive(true);
+			StartCoroutine(waitAndEnableGoToNextLevel());
 		}
 
-		if(congrats.enabled) {
+		if(fuseEvent.done() && !done) {
 			// player wins!
 			// Dresha talks about next level
 			// next level should not load until player finishes this convo
+			done = true;
 			ConversationTrigger.AddToken("playerFinishedTutorial1");
 
 		}
@@ -265,14 +270,13 @@ public class Tutorial1 : MonoBehaviour {
 	IEnumerator pointToBlackRegionsWait() {
 		selectPart.selectObject(GameObject.Find("pyr_box_attach"));
 		selectPart.selectFuseTo(GameObject.Find("box_tri_attach"));
-		connectButton.interactable = false;
 		yield return new WaitForSeconds(1f);
 		ConversationTrigger.AddToken("dreshaPointedToBlackRegions");
 	}
 
 	IEnumerator tryAttachPyrWait() {
 		yield return new WaitForSeconds(1f);
-		connectButton.onClick.Invoke();
+		fuseEvent.initiateFuse();
 		//deselect the active part
 		selectPart.resetSelectedObject();
 		//deselect tri FuseTo
@@ -302,15 +306,12 @@ public class Tutorial1 : MonoBehaviour {
 		ConversationTrigger.AddToken("dreshaEnabledInterface");
 	}
 
-	IEnumerator highlightPartButtonsWait() {
+	private void highlightPartButtons() {
 		foreach (Button b in partButtons) {
-			highlighter.HighlightTimed(b.gameObject, 1);
+			highlighter.HighlightTimed(b.gameObject, 2);
 		}
-		yield return new WaitForSeconds(1f);
-		ConversationTrigger.AddToken("dreshaFlashedPartButtons");
-		foreach (Button b in partButtons) {
-			b.enabled = true;
-		}
+	//	ConversationTrigger.AddToken("dreshaFlashedPartButtons");
+
 	}
 
 	//highlights for the specified length of time, then unhighlights
@@ -351,11 +352,6 @@ public class Tutorial1 : MonoBehaviour {
 		}
 	}
 
-	IEnumerator waitAndHighlightBox() {
-		yield return new WaitForSeconds(1f);
-		highlighter.HighlightTimed(GameObject.Find("box"), 1);
-	}
-
 	IEnumerator highlightGizmoWait() {
 		// maybe should highlight only the sliders instead?
 		foreach(Transform child in rotationGizmo.transform) {
@@ -365,11 +361,9 @@ public class Tutorial1 : MonoBehaviour {
 		ConversationTrigger.AddToken("dreshaFlashedGizmo");
 	}
 
-	IEnumerator highlightBoxWait() { 
-		highlighter.HighlightTimed(GameObject.Find("box"), 2); 
-		yield return new WaitForSeconds(1f);
-		ConversationTrigger.AddToken("wrongFaceDreshaFlashedBox");
-		ConversationTrigger.RemoveToken("wrongFaceDreshaReadyToFlashObj");
+	IEnumerator waitAndEnableGoToNextLevel() {
+		yield return new WaitForSeconds(2f);
+		goToNextTutorial.gameObject.SetActive(true);
 
 	}
 		
