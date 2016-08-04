@@ -84,10 +84,12 @@ public class FuseEvent : MonoBehaviour {
 				switch (mode)
 				{
 					case "tutorial1":
+						ConversationTrigger.AddToken("done_with_tutorial_1");
 						LoadUtils.LoadScene("tutorial2");
 						LoadUtils.UnloadScene("tutorial1");
 						break;
 					case "tutorial2":
+						ConversationTrigger.AddToken("done_with_tutorial_2");
 						LoadUtils.LoadScene("construction");
 						LoadUtils.UnloadScene("tutorial2");
 						break;

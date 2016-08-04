@@ -9,7 +9,7 @@ public class BatterySystem : MonoBehaviour
 	Text indicator;
 
 	// counter for battery power.
-	static int batteryPower = 200;
+	static int batteryPower = 10;
 
 	public static int GetPower()
 	{
@@ -53,7 +53,7 @@ public class BatterySystem : MonoBehaviour
 	public static void TokensToPower()
 	{
 		// Find the battery token, split and set power.
-		string batString = "battery|6";
+		string batString = "battery|10";
 		foreach (string ii in ConversationTrigger.tokens)
 		{
 			if (ii.Contains("battery|"))
