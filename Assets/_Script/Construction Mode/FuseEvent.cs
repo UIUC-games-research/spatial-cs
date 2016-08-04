@@ -697,7 +697,7 @@ public class FuseEvent : MonoBehaviour {
 	}
 	
 	public void printLevelData() {
-		sr.WriteLine (mode + " level finished in " + levelTimer + " seconds.");
+		SimpleData.WriteStringToFile ("ConstructionData.txt", mode + " level finished in " + levelTimer + " seconds.");
 		RotateButton rotateButtonX = rotateXButton.GetComponent<RotateButton>();
 		RotateButton rotateButtonY = rotateYButton.GetComponent<RotateButton>();
 		RotateButton rotateButtonZ = rotateZButton.GetComponent<RotateButton>();
@@ -705,21 +705,21 @@ public class FuseEvent : MonoBehaviour {
 		int yRotations = rotateButtonY.getNumYRotations();
 		int zRotations = rotateButtonZ.getNumZRotations();
 		int totalRotations = xRotations + yRotations + zRotations;
-		sr.WriteLine ("X_ROTATIONS," + xRotations);
-		sr.WriteLine ("Y_ROTATIONS," + yRotations);
-		sr.WriteLine ("Z_ROTATIONS," + zRotations);
-		sr.WriteLine ("TOTAL_ROTATIONS," + totalRotations);
-		sr.WriteLine ("TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
-		sr.WriteLine ("TOTAL_FUSE_FAILS," + numFuseFails);
-		sr.WriteLine ("TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
-		sr.WriteLine ("TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
-		sr.WriteLine ("AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
+		SimpleData.WriteStringToFile("ConstructionData.txt", "X_ROTATIONS," + xRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "Y_ROTATIONS," + yRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "Z_ROTATIONS," + zRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_ROTATIONS," + totalRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_FUSE_FAILS," + numFuseFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
 
 		sr.Close();
 	}
 
 	public void printLevelDataFail() {
-		sr.WriteLine (mode + " level aborted after " + levelTimer + " seconds.");
+		SimpleData.WriteStringToFile ("ConstructionData.txt", mode + " level aborted after " + levelTimer + " seconds.");
 		RotateButton rotateButtonX = rotateXButton.GetComponent<RotateButton>();
 		RotateButton rotateButtonY = rotateYButton.GetComponent<RotateButton>();
 		RotateButton rotateButtonZ = rotateZButton.GetComponent<RotateButton>();
@@ -727,15 +727,15 @@ public class FuseEvent : MonoBehaviour {
 		int yRotations = rotateButtonY.getNumYRotations();
 		int zRotations = rotateButtonZ.getNumZRotations();
 		int totalRotations = xRotations + yRotations + zRotations;
-		sr.WriteLine ("X_ROTATIONS," + xRotations);
-		sr.WriteLine ("Y_ROTATIONS," + yRotations);
-		sr.WriteLine ("Z_ROTATIONS," + zRotations);
-		sr.WriteLine ("TOTAL_ROTATIONS," + totalRotations);
-		sr.WriteLine ("TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
-		sr.WriteLine ("TOTAL_FUSE_FAILS," + numFuseFails);
-		sr.WriteLine ("TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
-		sr.WriteLine ("TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
-		sr.WriteLine ("AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "X_ROTATIONS," + xRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "Y_ROTATIONS," + yRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "Z_ROTATIONS," + zRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_ROTATIONS," + totalRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_FUSE_FAILS," + numFuseFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", "AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
 		sr.Close();
 	}
 

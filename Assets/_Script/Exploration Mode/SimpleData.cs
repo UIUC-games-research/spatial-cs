@@ -95,12 +95,10 @@ public class SimpleData : MonoBehaviour
 	void OnDestroy ()
 	{
 		sw_Position.Close();
-		WriteStringToFile("testfile.txt", "Hey cool it works I guess.");
-		WriteStringToFile("testfile.txt", "Multiple times?");
 	}
 
 	// Static functions for easy data storage.
-	// Here's a catch-all!
+	// Here's a catch-all! Appends a line to a file by name.
 	public static void WriteStringToFile(string filename, string toWrite)
 	{
 		StreamWriter sw_temp = new StreamWriter(folder + "/" + filename, true);
