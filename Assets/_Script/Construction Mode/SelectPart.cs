@@ -23,44 +23,15 @@ public class SelectPart : MonoBehaviour {
 	//tutorial variables
 	public bool tutorialOn;
 	public string mode;
-	public Text getCorrectRotation;
-	public Text clickBlack;
-	public Text noticeHowThe;
-	public Text nowWhatSide;
-	public Text youNeedToFind;
-	public Text youCanRotate;
-	public Text rotateToFind;
-	public Text clickOnMatching;
-	public Text theTwoBlackAreas;
-	public Text inOrderToAttach;
-	public Text imagineYouAre;
-	public Text whatDirectionMust;
-	public Text lineUpBlackAreas;
 
-	public GameObject rotateForwardButton;
-	public GameObject connectButton;
+	public Button connectButton;
 	//background music: (4), (11), (34)
-	public CanvasGroup clickBlackPanel;
-	public CanvasGroup findOtherBlackRegionPanel;
-	public CanvasGroup rotateToFindBlackPanel;
 
-	private bool findBlackRegionDone;
 	// When an active part is replaced with another, currently
 	// selected part becomes null?
 
 	void Awake() {
-		findBlackRegionDone = false;
-		if(mode.Equals ("intro")) {
-			tutorialOn = true;
-		} else if(mode.Equals ("boot")){
-			tutorialOn = false;
 
-		} else if(mode.Equals ("ebg")){
-			tutorialOn = false;
-
-		} else if (mode.Equals ("key1")) {
-			tutorialOn = false;
-		}
 		//selectedObject = GameObject.Find ("Sole_Heel_Top_Attach");
 		selectedObject = null;
 		activePart = null;
@@ -77,18 +48,7 @@ public class SelectPart : MonoBehaviour {
 
 
 	}
-
-	public bool tutorialMidAndBottomSelected() {
-		if(selectedObject != null && selectedFuseTo != null) {
-			return selectedObject.Equals (GameObject.Find ("mid_bottom_attach")) 
-				&& selectedFuseTo.Equals (GameObject.Find ("bottom_attach"));
-		}
-		return false;
-
-	}
-	
-
-
+		
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown(0))
@@ -97,9 +57,8 @@ public class SelectPart : MonoBehaviour {
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo))
 			{
 				GameObject objectToSelect = hitInfo.transform.gameObject;
-				print ("Currently selected object: " + selectedObject);
-				print ("Active part: " + activePart);
-				print ("objectToSelect: " + objectToSelect + ", tutorial: " + tutorialOn);
+			//	print ("Currently selected object: " + selectedObject);
+			//	print ("Active part: " + activePart);
 				Transform objectParent = objectToSelect.transform.parent;
 
 				if(objectParent != null && 
@@ -134,14 +93,7 @@ public class SelectPart : MonoBehaviour {
 
 					prevSelectedFuseTo = selectedFuseTo;
 
-					//tutorial
-					if(tutorialOn && tutorialMidAndBottomSelected()) {
-						StartCoroutine(findOtherBlackRegion());
-						tutorialOn = false;
-					} else if(tutorialOn && selectedFuseTo.name.Equals ("bottom_attach") && !findBlackRegionDone) {
-						findBlackRegionDone = true;
-						StartCoroutine (findBlackRegion());
-					}
+
 				} else if (objectToSelect.transform.parent != null && objectToSelect.GetComponent<SelectBehavior>() != null){
 					//active part
 
@@ -178,18 +130,11 @@ public class SelectPart : MonoBehaviour {
 					prevSelectedObject = selectedObject;
 					//print ("prevSelected: " + prevSelectedObject.name);
 
-					//tutorial
-					if(tutorialOn && tutorialMidAndBottomSelected()) {
-						StartCoroutine(findOtherBlackRegion());
-						tutorialOn = false;
-					}
 				}
-				if(!tutorialMidAndBottomSelected() && selectedObject != null && selectedFuseTo != null) {
-					connectButton.transform.GetComponent<Button>().interactable = true;
-				} else if (tutorialMidAndBottomSelected () && selectedObject != null && selectedFuseTo != null) {
-					// do nothing
+				if(!tutorialOn && selectedObject != null && selectedFuseTo != null) {
+					connectButton.interactable = true;
 				} else {
-					connectButton.transform.GetComponent<Button>().interactable = false;
+					connectButton.interactable = false;
 				}
 
 
@@ -197,55 +142,10 @@ public class SelectPart : MonoBehaviour {
 		}
 	}
 
-	IEnumerator findBlackRegion() {
-		clickBlack.enabled = false;
-		noticeHowThe.enabled = true;
-		yield return new WaitForSeconds(4);
-		noticeHowThe.enabled = false;
-
-		nowWhatSide.enabled = true;
-		yield return new WaitForSeconds(4);
-		nowWhatSide.enabled = false;
-
-		youNeedToFind.enabled = true;
-		yield return new WaitForSeconds(4);
-		youNeedToFind.enabled = false;
-		clickBlackPanel.alpha = 0;
-
-		findOtherBlackRegionPanel.alpha = 1;
-		youCanRotate.enabled = true;
-		yield return new WaitForSeconds(4);
-		youCanRotate.enabled = false;
-
-		rotateToFind.enabled = true;
-		rotateForwardButton.GetComponent<Button>().interactable = true;
-		rotateForwardButton.transform.GetComponent<RotateButton>().setObjectToRotate(GameObject.Find ("introMidPrefab(Clone)"));
+	public void setTutorialOn(bool isOn) {
+		tutorialOn = isOn;
 	}
 
-	IEnumerator findOtherBlackRegion() {
-		clickOnMatching.enabled = false;
-		
-		theTwoBlackAreas.enabled = true;
-		yield return new WaitForSeconds(4);
-		theTwoBlackAreas.enabled = false;
-		
-		inOrderToAttach.enabled = true;
-		yield return new WaitForSeconds(4);
-		inOrderToAttach.enabled = false;
-		
-		imagineYouAre.enabled = true;
-		yield return new WaitForSeconds(4);
-		imagineYouAre.enabled = false;
-		
-		whatDirectionMust.enabled = true;
-		yield return new WaitForSeconds(4);
-		whatDirectionMust.enabled = false;
-		
-		lineUpBlackAreas.enabled = true;
-		rotateForwardButton.GetComponent<Button>().interactable = true;
-		rotateForwardButton.transform.GetComponent<RotateButton>().setObjectToRotate(GameObject.Find ("introMidPrefab(Clone)"));
-
-	}
 
 	public GameObject getSelectedObject() {
 		return selectedObject;
@@ -305,18 +205,6 @@ public class SelectPart : MonoBehaviour {
 		Texture highlightedTex = selectedObject.GetComponent<SelectBehavior>().highTex;
 		selectedObject.GetComponent<Renderer>().material.mainTexture = highlightedTex;
 
-		RaycastHit hitInfo = new RaycastHit();
-		float xCoord = newSelection.transform.position.x;
-		float yCoord = newSelection.transform.position.y;
-		float zCoord = newSelection.transform.position.z;
-		if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(xCoord, yCoord, zCoord)), out hitInfo)) {
-			if (selectedObject.GetComponent<SelectedEffect>() == null)
-			{
-				SelectedEffect sel = selectedObject.AddComponent<SelectedEffect>();
-				sel.hitInfo = hitInfo;
-				sel.selected = selectedObject;
-			}
-		}
 
 	}
 
@@ -336,19 +224,6 @@ public class SelectPart : MonoBehaviour {
 		Texture highlightedTex = selectedFuseTo.GetComponent<SelectBehavior>().highTex;
 		selectedFuseTo.GetComponent<Renderer>().material.mainTexture = highlightedTex;
 
-		RaycastHit hitInfo = new RaycastHit();
-		float xCoord = newSelection.transform.position.x;
-		float yCoord = newSelection.transform.position.y;
-		float zCoord = newSelection.transform.position.z;
-		if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(xCoord, yCoord, zCoord)), out hitInfo)) {
-			if (selectedFuseTo.GetComponent<SelectedEffect>() == null)
-			{
-				SelectedEffect sel = selectedObject.AddComponent<SelectedEffect>();
-				sel.hitInfo = hitInfo;
-				sel.selected = selectedFuseTo;
-			}
-		}
-
 	}
 
 	public void newPartCreated(string part) {
@@ -361,10 +236,6 @@ public class SelectPart : MonoBehaviour {
 		} 
 		activePart = GameObject.Find (part);
 
-		//print ("Destroying old direction images");
-		//Destroy (GameObject.FindGameObjectWithTag("X"));
-		//Destroy (GameObject.FindGameObjectWithTag("Y"));
-		//Destroy (GameObject.FindGameObjectWithTag("Z"));
 	}
 
 }

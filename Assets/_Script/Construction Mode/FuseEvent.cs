@@ -28,7 +28,7 @@ public class FuseEvent : MonoBehaviour {
 	private string fuseStatus;
 
 	public GameObject[] partButtons;
-	public GameObject connectButton;
+	public Button connectButton;
 	public GameObject rotateXButton;
 	public GameObject rotateYButton;
 	public GameObject rotateZButton;
@@ -724,7 +724,7 @@ public class FuseEvent : MonoBehaviour {
 	}
 
 	public void disableConnectButton() {
-		connectButton.transform.GetComponent<Button>().interactable = false;
+		connectButton.interactable = false;
 	}
 
 	public void disableRotationButtons() {
@@ -779,10 +779,13 @@ public class FuseEvent : MonoBehaviour {
 				bottomPanelGroup.alpha = 0;
 				congratsPanelGroup.GetComponent<Image>().CrossFadeAlpha(255, 4, false);
 				finishedImage.enabled = false;
-				congrats.enabled = true;
 				GameObject.Find("Back Button").SetActive(false);
+
+				// tutorials wait to enable text till conversation is over
+				// tutorials wait to enable I'm ready button till conversation is over
 				if(mode != "tutorial1" && mode != "tutorial2") {
 					claimItem.gameObject.SetActive(true);
+					congrats.enabled = true;
 				}
 				musicSource.Stop();
 				mainCam.transform.position = new Vector3(-90,80,-3.36f);
