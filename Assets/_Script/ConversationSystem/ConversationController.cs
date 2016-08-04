@@ -122,6 +122,13 @@ public class ConversationController : MonoBehaviour
 	// Enable the text box, supplying a trigger. This is generally better when possible, since it will set name / escape rule.
 	public static void Enable(ConversationTrigger trigger)
 	{
+		// Make sure we didn't lose our ref somehow...
+		if (textBox == null || textBox.isActiveAndEnabled == false)
+		{
+			textBox = thisObject.GetComponentInChildren<ScrollingText>();
+			textBox.enabled = true;
+		}
+
 		// Make sure the dictionary is prepped if a "bad" key is given.
 		if (!ConversationsDB.convos.ContainsKey(trigger.conversationName))
 		{

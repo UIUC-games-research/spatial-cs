@@ -84,10 +84,12 @@ public class FuseEvent : MonoBehaviour {
 				switch (mode)
 				{
 					case "tutorial1":
-						SceneManager.LoadScene("tutorial2");
+						LoadUtils.LoadScene("tutorial2");
+						LoadUtils.UnloadScene("tutorial1");
 						break;
 					case "tutorial2":
-						SceneManager.LoadScene("construction");
+						LoadUtils.LoadScene("construction");
+						LoadUtils.UnloadScene("tutorial2");
 						break;
 					case "boot":
 						RocketBoots.ActivateBoots();

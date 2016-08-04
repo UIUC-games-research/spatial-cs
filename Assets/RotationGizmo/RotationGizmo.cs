@@ -181,6 +181,7 @@ public class RotationGizmo : MonoBehaviour
 
 	public GameObject Enable(GameObject objectToRotate)
 	{
+		Debug.Log("Enabled the rotation gizmo.");
 		toRotate = objectToRotate;
 		transform.position = toRotate.transform.position;
 		return objectToRotate;
