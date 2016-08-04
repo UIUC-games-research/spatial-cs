@@ -47,6 +47,12 @@ public class ConversationController : MonoBehaviour
 		// Disable to start with.
 		FakeActive(gameObject, false);
 	}
+
+	void OnEnable()
+	{
+		// Fresh state every time this object is activated.
+		Start();
+	}
 	
 	
 	void Update ()
