@@ -8,11 +8,6 @@ public class SceneTimer : MonoBehaviour
 	public string sceneName;
 	float timer = 0f;
 
-	void OnEnable()
-	{
-		timer = 0f;
-	}
-
 	void Update()
 	{
 		timer += Time.deltaTime;
@@ -24,7 +19,9 @@ public class SceneTimer : MonoBehaviour
 		if (timer > 1f)
 			SimpleData.WriteStringToFile("TimeSpent.txt", Time.time + ",TIMESPENT_INLEVEL," + sceneName + "," + timer);
 
-		timer = 0f;
+		// If this next line is commented, system is additive, and will print the
+		// total time spent in a level every time the object is disabled.
+		//timer = 0f;
 	}
 
 }

@@ -714,7 +714,7 @@ public class FuseEvent : MonoBehaviour {
 	}
 	
 	public void printLevelData() {
-		SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION," + mode + " level finished in " + levelTimer + " seconds.");
+		SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION,FINISHED," + mode + "," + levelTimer);
 		int xRotations = rotateGizmo.xRots;
 		int yRotations = rotateGizmo.yRots;
 		int zRotations = rotateGizmo.zRots;
@@ -736,7 +736,7 @@ public class FuseEvent : MonoBehaviour {
 	}
 
 	public void printLevelDataFail() {
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION," + mode + " level aborted after " + levelTimer + " seconds.");
+		SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION,ABORTED," + mode + "," + levelTimer);
 		int xRotations = rotateGizmo.xRots;
 		int yRotations = rotateGizmo.yRots;
 		int zRotations = rotateGizmo.zRots;
