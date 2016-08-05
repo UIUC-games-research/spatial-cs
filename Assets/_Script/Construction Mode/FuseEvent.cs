@@ -63,6 +63,12 @@ public class FuseEvent : MonoBehaviour {
 	private int numWrongRotationFails;
 	private int numWrongFacesFails;
 
+
+	void OnEnable()
+	{
+		startLevelTimer();
+	}
+
 	// Use this for initialization
 	void Awake () {
 		//GlobalVariables globalVariables = GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>();
@@ -71,7 +77,14 @@ public class FuseEvent : MonoBehaviour {
 		Button backButton = GameObject.Find ("Back Button").GetComponent<Button>();
 		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
 		//backButton.onClick.AddListener(() => globalVariables.backToMainScreen());
-		backButton.onClick.AddListener(() => LoadUtils.LoadScene(InventoryController.levelName));
+		backButton.onClick.AddListener(() => 
+		{
+			SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
+			stopLevelTimer();
+			printLevelDataFail();
+			LoadUtils.LoadScene(InventoryController.levelName);
+		});
+
 		mainCam = Camera.main;
 		// Had to disable this level data stuff, things were breaking when you quit out of a level before completeing it.
 		//backButton.onClick.AddListener (() => stopLevelTimer());
@@ -81,6 +94,7 @@ public class FuseEvent : MonoBehaviour {
 		if (claimItem != null)
 		{
 			claimItem.onClick.AddListener(() => {
+				SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
 				switch (mode)
 				{
 					case "tutorial1":
@@ -697,45 +711,46 @@ public class FuseEvent : MonoBehaviour {
 	}
 	
 	public void printLevelData() {
-		SimpleData.WriteStringToFile ("ConstructionData.txt", mode + " level finished in " + levelTimer + " seconds.");
-		RotateButton rotateButtonX = rotateXButton.GetComponent<RotateButton>();
-		RotateButton rotateButtonY = rotateYButton.GetComponent<RotateButton>();
-		RotateButton rotateButtonZ = rotateZButton.GetComponent<RotateButton>();
-		int xRotations = rotateButtonX.getNumXRotations();
-		int yRotations = rotateButtonY.getNumYRotations();
-		int zRotations = rotateButtonZ.getNumZRotations();
+		SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION," + mode + " level finished in " + levelTimer + " seconds.");
+		int xRotations = rotateGizmo.xRots;
+		int yRotations = rotateGizmo.yRots;
+		int zRotations = rotateGizmo.zRots;
 		int totalRotations = xRotations + yRotations + zRotations;
-		SimpleData.WriteStringToFile("ConstructionData.txt", "X_ROTATIONS," + xRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "Y_ROTATIONS," + yRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "Z_ROTATIONS," + zRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_ROTATIONS," + totalRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_FUSE_FAILS," + numFuseFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
+		SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION,X_ROTATIONS," + xRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Y_ROTATIONS," + yRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Z_ROTATIONS," + zRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_ROTATIONS," + totalRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_FAILS," + numFuseFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
+		if (numFuseAttempts != 0)
+			SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
+		else
+			SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT,0");
 
 		sr.Close();
 	}
 
 	public void printLevelDataFail() {
-		SimpleData.WriteStringToFile ("ConstructionData.txt", mode + " level aborted after " + levelTimer + " seconds.");
-		RotateButton rotateButtonX = rotateXButton.GetComponent<RotateButton>();
-		RotateButton rotateButtonY = rotateYButton.GetComponent<RotateButton>();
-		RotateButton rotateButtonZ = rotateZButton.GetComponent<RotateButton>();
-		int xRotations = rotateButtonX.getNumXRotations();
-		int yRotations = rotateButtonY.getNumYRotations();
-		int zRotations = rotateButtonZ.getNumZRotations();
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION," + mode + " level aborted after " + levelTimer + " seconds.");
+		int xRotations = rotateGizmo.xRots;
+		int yRotations = rotateGizmo.yRots;
+		int zRotations = rotateGizmo.zRots;
 		int totalRotations = xRotations + yRotations + zRotations;
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "X_ROTATIONS," + xRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "Y_ROTATIONS," + yRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "Z_ROTATIONS," + zRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_ROTATIONS," + totalRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_FUSE_FAILS," + numFuseFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", "AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,X_ROTATIONS," + xRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Y_ROTATIONS," + yRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Z_ROTATIONS," + zRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_ROTATIONS," + totalRotations);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_FAILS," + numFuseFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
+		if (numFuseAttempts != 0)
+			SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
+		else
+			SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT,0");
+
 		sr.Close();
 	}
 

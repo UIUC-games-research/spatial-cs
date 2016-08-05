@@ -10,12 +10,23 @@ public class RotationGizmo : MonoBehaviour
 	public GameObject xGizmo;
 	public GameObject yGizmo;
 	public GameObject zGizmo;
+	public int xRots = 0;
+	public int yRots = 0;
+	public int zRots = 0;
 
 	bool rotating = false;
 
 	void Start ()
 	{
 		Disable();
+	}
+
+	void OnEnable()
+	{
+		// Reset rotation count.
+		xRots = 0;
+		yRots = 0;
+		zRots = 0;
 	}
 	
 	void Update ()
@@ -49,6 +60,7 @@ public class RotationGizmo : MonoBehaviour
 				switch(hitInfo.transform.name)
 				{
 					case "XUp":
+						xRots++;
 						if (Mathf.Approximately(xGizmo.transform.localEulerAngles.y, 180f))
 							StartCoroutine(Rotate(90f, 0f, 0f));
 						else
@@ -56,6 +68,7 @@ public class RotationGizmo : MonoBehaviour
 						break;
 
 					case "XDown":
+						xRots++;
 						if (Mathf.Approximately(xGizmo.transform.localEulerAngles.y, 180f))
 							StartCoroutine(Rotate(-90f, 0f, 0f));
 						else
@@ -63,14 +76,17 @@ public class RotationGizmo : MonoBehaviour
 						break;
 
 					case "YLeft":
+						yRots++;
 						StartCoroutine(Rotate(0f, 90f, 0f));
 						break;
 
 					case "YRight":
+						yRots++;
 						StartCoroutine(Rotate(0f, -90f, 0f));
 						break;
 
 					case "ZUp":
+						zRots++;
 						if (Mathf.Approximately(zGizmo.transform.localEulerAngles.y, 270f))
 							StartCoroutine(Rotate(0f, 0f, -90f));
 						else
@@ -78,6 +94,7 @@ public class RotationGizmo : MonoBehaviour
 						break;
 
 					case "ZDown":
+						zRots++;
 						if (Mathf.Approximately(zGizmo.transform.localEulerAngles.y, 270f))
 							StartCoroutine(Rotate(0f, 0f, 90f));
 						else

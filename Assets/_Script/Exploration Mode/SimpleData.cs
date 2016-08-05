@@ -21,11 +21,16 @@ public class SimpleData : MonoBehaviour
 	public float dataInterval = 1f;
 	static float timer = 0f;
 	static StreamWriter sw_Position;
+	static List<Vector3> points_forPathLength = new List<Vector3>();
 
 	// Reading
 	public string fileToLoad;
 	static StreamReader sr_Position;
 	static List<Vector3> points = new List<Vector3>();
+
+	// Internal data collection.
+	// IE stuff that may as well just be done in this script.
+	float standstillTimer = 0f;
 
 	void Awake ()
 	{
@@ -40,6 +45,10 @@ public class SimpleData : MonoBehaviour
 	// Called when entering new exploration scenes to keep the data separate.
 	public static void CreateNewPositionFile()
 	{
+		// Calculate path length.
+		WriteStringToFile( "MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
+
+		// Close and make a new file.
 		sw_Position.Close();
 		sw_Position = File.CreateText(folder + "/" + "PositionData_" + SceneManager.GetActiveScene().name + ".txt");
 	}
@@ -57,7 +66,19 @@ public class SimpleData : MonoBehaviour
 		if (timer >= dataInterval)
 		{
 			sw_Position.WriteLine(transform.position.x + "," + transform.position.y + "," + transform.position.z);
+			points_forPathLength.Add(transform.position);
 			timer = 0f;
+		}
+
+		// Timer for standing still, based on keypresses.
+		standstillTimer += Time.deltaTime;
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Space))
+		{
+			if (standstillTimer > 5f)
+			{
+				WriteStringToFile("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + standstillTimer);
+			}
+			standstillTimer = 0f;
 		}
 	}
 
@@ -94,15 +115,33 @@ public class SimpleData : MonoBehaviour
 
 	void OnDestroy ()
 	{
+		// Calculate path length.
+		WriteStringToFile("MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
+
+		// Close file.
 		sw_Position.Close();
+	}
+
+	static float CalculatePathLength()
+	{
+		float accum = 0;
+		for (int i = 0; i < points_forPathLength.Count - 1; i++)
+		{
+			accum += Vector3.Distance(points_forPathLength[i], points_forPathLength[i + 1]);
+		}
+		return accum;
 	}
 
 	// Static functions for easy data storage.
 	// Here's a catch-all! Appends a line to a file by name.
+	// Also appends to the master file.
 	public static void WriteStringToFile(string filename, string toWrite)
 	{
 		StreamWriter sw_temp = new StreamWriter(folder + "/" + filename, true);
+		StreamWriter sw_master = new StreamWriter(folder + "/ALLDATA.txt", true);
 		sw_temp.WriteLine(toWrite);
+		sw_master.WriteLine(toWrite);
 		sw_temp.Close();
+		sw_master.Close();
 	}
 }

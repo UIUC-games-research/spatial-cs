@@ -98,6 +98,9 @@ public class RecipeButtonBridge : MonoBehaviour
 				//Cursor.visible = true;
 				//Cursor.lockState = CursorLockMode.None;
 
+				// Record data.
+				SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + myRecipe.recipeDesc);
+
 				// Enter.
 
 				// Special cases for tutorial progress.
