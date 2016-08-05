@@ -1629,24 +1629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialOn: 0
   mode: key1
-  getCorrectRotation: {fileID: 287866740}
-  clickBlack: {fileID: 0}
-  noticeHowThe: {fileID: 0}
-  nowWhatSide: {fileID: 0}
-  youNeedToFind: {fileID: 0}
-  youCanRotate: {fileID: 0}
-  rotateToFind: {fileID: 0}
-  clickOnMatching: {fileID: 0}
-  theTwoBlackAreas: {fileID: 0}
-  inOrderToAttach: {fileID: 0}
-  imagineYouAre: {fileID: 0}
-  whatDirectionMust: {fileID: 0}
-  lineUpBlackAreas: {fileID: 0}
-  rotateForwardButton: {fileID: 1792862565}
-  connectButton: {fileID: 1432263276}
-  clickBlackPanel: {fileID: 0}
-  findOtherBlackRegionPanel: {fileID: 0}
-  rotateToFindBlackPanel: {fileID: 0}
+  connectButton: {fileID: 0}
 --- !u!114 &1321869684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1681,11 +1664,13 @@ MonoBehaviour:
   - {fileID: 912343166}
   - {fileID: 563987185}
   - {fileID: 2092701638}
-  connectButton: {fileID: 1432263276}
+  connectButton: {fileID: 0}
   rotateXButton: {fileID: 1792862565}
   rotateYButton: {fileID: 1383566440}
   rotateZButton: {fileID: 660833761}
   congrats: {fileID: 1015034652}
+  shapesWrong: {fileID: 0}
+  rotationWrong: {fileID: 0}
   getPassword: {fileID: 1283738851}
   claimItem: {fileID: 1421307139}
   rotateGizmo: {fileID: 0}
@@ -1693,6 +1678,7 @@ MonoBehaviour:
   rotatePanelGroup: {fileID: 473907162}
   bottomPanelGroup: {fileID: 473907162}
   congratsPanelGroup: {fileID: 2108371008}
+  errorPanelGroup: {fileID: 0}
   finishedImage: {fileID: 1232480375}
   mainCam: {fileID: 0}
   tutorialOn: 0

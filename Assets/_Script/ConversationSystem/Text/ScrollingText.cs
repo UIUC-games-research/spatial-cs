@@ -370,9 +370,12 @@ public class ScrollingText : MonoBehaviour
 
 	public void DeleteChoices()
 	{
-		foreach (Button ii in choiceContainer.GetComponentsInChildren<Button>())
+		if (choiceContainer != null)
 		{
-			Destroy(ii.gameObject);
+			foreach (Button ii in choiceContainer.GetComponentsInChildren<Button>())
+			{
+				Destroy(ii.gameObject);
+			}
 		}
 	}
 

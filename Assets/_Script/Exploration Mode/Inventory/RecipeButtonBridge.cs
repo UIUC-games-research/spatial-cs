@@ -98,8 +98,31 @@ public class RecipeButtonBridge : MonoBehaviour
 				//Cursor.visible = true;
 				//Cursor.lockState = CursorLockMode.None;
 
+				// Record data.
+				SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + myRecipe.recipeDesc);
+
 				// Enter.
-				LoadUtils.LoadScene(myRecipe.recipeDesc);
+
+				// Special cases for tutorial progress.
+				if (myRecipe.recipeDesc == "tutorial1")
+				{
+					if (ConversationTrigger.GetToken("done_with_tutorial_2"))
+					{
+						LoadUtils.LoadScene("construction");
+					}
+					else if (ConversationTrigger.GetToken("done_with_tutorial_1"))
+					{
+						LoadUtils.LoadScene("tutorial2");
+					}
+					else
+					{
+						LoadUtils.LoadScene("tutorial1");
+					}
+				}
+				else  // Normal function.
+				{
+					LoadUtils.LoadScene(myRecipe.recipeDesc);
+				}
 
 				invController.CloseInventory();
 			});

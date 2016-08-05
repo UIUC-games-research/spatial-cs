@@ -49,6 +49,7 @@ public class PickUp : MonoBehaviour
     {
 		if (other.tag == "Player")
         {
+			SimpleData.WriteStringToFile("pickups.txt", Time.time + ",PICKUP," + pickupName);
 			switch (type)
 			{
 				case PickupType.Item:
