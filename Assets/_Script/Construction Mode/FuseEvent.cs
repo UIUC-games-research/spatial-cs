@@ -94,7 +94,10 @@ public class FuseEvent : MonoBehaviour {
 		if (claimItem != null)
 		{
 			claimItem.onClick.AddListener(() => {
-				SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
+				if (mode != "tutorial1" && mode != "tutorial2")
+				{
+					SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
+				}
 				switch (mode)
 				{
 					case "tutorial1":
