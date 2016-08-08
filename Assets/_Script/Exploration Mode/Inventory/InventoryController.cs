@@ -87,8 +87,8 @@ public class InventoryController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Escape))
 			CloseInventory();
 
-		if (Input.GetKeyDown(KeyCode.Keypad5))
-			LoadUtils.LoadNewExplorationLevel("RuinedCity", new Vector3(0f, 5f, 0f));
+		//if (Input.GetKeyDown(KeyCode.Keypad5))
+		//	LoadUtils.LoadNewExplorationLevel("RuinedCity", new Vector3(0f, 5f, 0f));
 	}
 
 	// Defaults to "Inventory" tab.
