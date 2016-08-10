@@ -25,3 +25,6 @@ ExportedObj/
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+#Data collected in every run of Construction Mode
+ConstructionModeData.txt
