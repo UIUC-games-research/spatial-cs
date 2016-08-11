@@ -50,8 +50,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 0
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 3
     m_Resolution: 1
@@ -2921,24 +2921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialOn: 1
   mode: intro
-  getCorrectRotation: {fileID: 1894707567}
-  clickBlack: {fileID: 907016720}
-  noticeHowThe: {fileID: 2125153933}
-  nowWhatSide: {fileID: 1101905639}
-  youNeedToFind: {fileID: 874946514}
-  youCanRotate: {fileID: 3686498}
-  rotateToFind: {fileID: 1788816739}
-  clickOnMatching: {fileID: 1894707567}
-  theTwoBlackAreas: {fileID: 1586300801}
-  inOrderToAttach: {fileID: 2121496175}
-  imagineYouAre: {fileID: 1963875538}
-  whatDirectionMust: {fileID: 468499258}
-  lineUpBlackAreas: {fileID: 127825255}
-  rotateForwardButton: {fileID: 1972579550}
-  connectButton: {fileID: 1504942532}
-  clickBlackPanel: {fileID: 636301011}
-  findOtherBlackRegionPanel: {fileID: 1777411963}
-  rotateToFindBlackPanel: {fileID: 1777411963}
+  connectButton: {fileID: 0}
 --- !u!114 &1321869684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2970,17 +2953,21 @@ MonoBehaviour:
   partButtons:
   - {fileID: 1896753831}
   - {fileID: 556353008}
-  connectButton: {fileID: 1504942532}
+  connectButton: {fileID: 0}
   rotateXButton: {fileID: 1972579550}
   rotateYButton: {fileID: 62596388}
   rotateZButton: {fileID: 1764620023}
   congrats: {fileID: 2141634057}
+  shapesWrong: {fileID: 0}
+  rotationWrong: {fileID: 0}
   getPassword: {fileID: 154607021}
   claimItem: {fileID: 0}
+  rotateGizmo: {fileID: 0}
   victoryPrefab: {fileID: 174660, guid: 1e15f6670f1b66b43bf9df6cf615931d, type: 2}
   rotatePanelGroup: {fileID: 1070263155}
   bottomPanelGroup: {fileID: 277522692}
   congratsPanelGroup: {fileID: 365464648}
+  errorPanelGroup: {fileID: 0}
   finishedImage: {fileID: 1330706865}
   mainCam: {fileID: 108479437}
   tutorialOn: 1

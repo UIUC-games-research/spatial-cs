@@ -50,8 +50,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 0
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 3
     m_Resolution: 1
@@ -672,7 +672,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1056,7 +1056,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1160,7 +1160,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1631,24 +1631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialOn: 0
   mode: engine
-  getCorrectRotation: {fileID: 287866740}
-  clickBlack: {fileID: 0}
-  noticeHowThe: {fileID: 0}
-  nowWhatSide: {fileID: 0}
-  youNeedToFind: {fileID: 0}
-  youCanRotate: {fileID: 0}
-  rotateToFind: {fileID: 0}
-  clickOnMatching: {fileID: 0}
-  theTwoBlackAreas: {fileID: 0}
-  inOrderToAttach: {fileID: 0}
-  imagineYouAre: {fileID: 0}
-  whatDirectionMust: {fileID: 0}
-  lineUpBlackAreas: {fileID: 0}
-  rotateForwardButton: {fileID: 1792862565}
-  connectButton: {fileID: 1418366672}
-  clickBlackPanel: {fileID: 0}
-  findOtherBlackRegionPanel: {fileID: 0}
-  rotateToFindBlackPanel: {fileID: 0}
+  connectButton: {fileID: 0}
 --- !u!114 &1321869684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,11 +1666,13 @@ MonoBehaviour:
   - {fileID: 1649524225}
   - {fileID: 80113863}
   - {fileID: 667022226}
-  connectButton: {fileID: 1418366672}
+  connectButton: {fileID: 0}
   rotateXButton: {fileID: 1792862565}
   rotateYButton: {fileID: 1383566440}
   rotateZButton: {fileID: 660833761}
   congrats: {fileID: 1927235782}
+  shapesWrong: {fileID: 0}
+  rotationWrong: {fileID: 0}
   getPassword: {fileID: 1927366397}
   claimItem: {fileID: 618793565}
   rotateGizmo: {fileID: 0}
@@ -1695,6 +1680,7 @@ MonoBehaviour:
   rotatePanelGroup: {fileID: 297973225}
   bottomPanelGroup: {fileID: 473907162}
   congratsPanelGroup: {fileID: 1989636300}
+  errorPanelGroup: {fileID: 0}
   finishedImage: {fileID: 1232480375}
   mainCam: {fileID: 0}
   tutorialOn: 0
@@ -2110,7 +2096,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3227,7 +3213,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
