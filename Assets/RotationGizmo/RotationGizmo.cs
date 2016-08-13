@@ -31,6 +31,14 @@ public class RotationGizmo : MonoBehaviour
 	
 	void Update ()
 	{
+		// Restarting game while in construction mode.
+		// DEMO MODE ONLY.
+		if (Input.GetKey(KeyCode.T) && Input.GetKey(KeyCode.R))
+		{
+			InventoryController.RestartGame();
+		}
+
+
 		// LookAts.
 		Vector3 lookToward = mainCamera.transform.position;
 
@@ -203,4 +211,8 @@ public class RotationGizmo : MonoBehaviour
 		transform.position = toRotate.transform.position;
 		return objectToRotate;
 	}
+
+
+
+
 }

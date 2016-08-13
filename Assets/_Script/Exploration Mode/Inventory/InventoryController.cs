@@ -43,9 +43,12 @@ public class InventoryController : MonoBehaviour
 		//! Initial recipes unlocked should be placed here.
 		//RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe);
 		//RecipesDB.unlockedRecipes.Add(RecipesDB.TestRecipe2);
-		RecipesDB.unlockedRecipes.Add(RecipesDB.RocketBoots);
-		RecipesDB.unlockedRecipes.Add(RecipesDB.Sledgehammer);
-		RecipesDB.unlockedRecipes.Add(RecipesDB.Key1);
+		if (!RecipesDB.unlockedRecipes.Contains(RecipesDB.RocketBoots))
+			RecipesDB.unlockedRecipes.Add(RecipesDB.RocketBoots);
+		if (!RecipesDB.unlockedRecipes.Contains(RecipesDB.Sledgehammer))
+			RecipesDB.unlockedRecipes.Add(RecipesDB.Sledgehammer);
+		if (!RecipesDB.unlockedRecipes.Contains(RecipesDB.Key1))
+			RecipesDB.unlockedRecipes.Add(RecipesDB.Key1);
 
 		// Load save when inventory controller activates. Has to happen somewhere!
 		SaveController.Load();
@@ -74,6 +77,20 @@ public class InventoryController : MonoBehaviour
 
 
 	}
+
+	// Need this somewhere for the restart stuff.
+	// DEMO MODE ONLY
+	public static void RestartGame()
+	{
+		Debug.Log("Restarting!");
+		System.IO.File.Delete(Application.persistentDataPath + "/Save.dat");	// Delete save.
+		LoadUtils.loadedScenes.Clear();							// Clear loaded scenes to account for all scene conditions.
+		ConversationTrigger.tokens.Clear();						// Clear tokens for sanity.
+		items.Clear();											// Clear items for safety.
+		Destroy(GameObject.FindGameObjectWithTag("FullPlayer"));	// Must make sure the old player is properly deleted...
+		UnityEngine.SceneManagement.SceneManager.LoadScene("Canyon2");	// Reload, finally.
+	}
+
 	
 	void Update ()
 	{
@@ -87,8 +104,12 @@ public class InventoryController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Escape))
 			CloseInventory();
 
-		if (Input.GetKeyDown(KeyCode.Keypad5))
-			LoadUtils.LoadNewExplorationLevel("RuinedCity", new Vector3(0f, 5f, 0f));
+		// Restarting game
+		// DEMO MODE ONLY.
+		if (Input.GetKey(KeyCode.T) && Input.GetKey(KeyCode.R))
+		{
+			RestartGame();
+		}
 	}
 
 	// Defaults to "Inventory" tab.

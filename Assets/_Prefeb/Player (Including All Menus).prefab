@@ -270,7 +270,7 @@ GameObject:
   - 4: {fileID: 483322}
   m_Layer: 0
   m_Name: Player (Including All Menus)
-  m_TagString: Untagged
+  m_TagString: FullPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4212,6 +4212,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: movementSettings.StrafeSpeed
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: FullPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

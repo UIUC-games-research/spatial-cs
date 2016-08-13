@@ -1,0 +1,3 @@
+Welcome to our game, You can [color]880click with the mouse[color] or press the [color]880spacebar[color] to advance this text.
+The [color]880WASD Keys[color] will move you around, and the [color]880spacebar[color] will make you jump.
+Good Luck!

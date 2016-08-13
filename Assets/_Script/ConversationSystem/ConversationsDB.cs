@@ -111,7 +111,10 @@ public class ConversationsDB : MonoBehaviour
 	{
 		foreach (TextAsset ii in conversationFiles)
 		{
-			convos.Add(ii.name, ii.text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries));
+			if (!convos.ContainsKey(ii.name))
+				convos.Add(ii.name, ii.text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries));
+			else
+				Debug.LogError("Attempting to add a key which already exists. This is usually a bad thing.");
 		}
 	}
 }

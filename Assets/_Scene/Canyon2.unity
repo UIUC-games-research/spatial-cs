@@ -2480,6 +2480,7 @@ GameObject:
   - 114: {fileID: 257153002}
   - 114: {fileID: 257153005}
   - 114: {fileID: 257153006}
+  - 114: {fileID: 257153007}
   m_Layer: 0
   m_Name: TutTrigger_1
   m_TagString: Untagged
@@ -2574,6 +2575,25 @@ MonoBehaviour:
   keyRequired: 0
   tokenWhitelist:
   - gear_rocketboots
+  tokenBlacklist: []
+--- !u!114 &257153007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257153001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: MovementTutorial
+  allowEscape: 0
+  oneShot: 1
+  trigger: 2
+  keyRequired: 0
+  tokenWhitelist: []
   tokenBlacklist: []
 --- !u!1001 &258270863
 Prefab:
@@ -12605,11 +12625,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 55.76
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 34.100006
+      value: 100.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.z
@@ -14456,11 +14476,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 55.76
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 34.100006
+      value: 100.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.z
@@ -16395,11 +16415,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 55.76
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 34.1
+      value: 100.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.z
@@ -16834,11 +16854,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 55.76
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 34.1
+      value: 100.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
       propertyPath: m_LocalScale.z
