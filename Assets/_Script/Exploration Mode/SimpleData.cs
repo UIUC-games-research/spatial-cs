@@ -72,7 +72,7 @@ public class SimpleData : MonoBehaviour
 
 		// Timer for standing still, based on keypresses.
 		standstillTimer += Time.deltaTime;
-		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Space))
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Space) || Input.GetMouseButton(1))
 		{
 			if (standstillTimer > 5f)
 			{

@@ -95,6 +95,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded, m_Pushing;
+		private float stuckTimer = 0f;
+		private bool stuckLaunch = false;
 
 
         public Vector3 Velocity
@@ -162,8 +164,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			{
 				m_RigidBody.AddForce(-10 * advancedSettings.slowDownRate * m_RigidBody.velocity.normalized);
 			}
-			
-			
+
+			// Implementation of stuck timer.
+			if (!m_IsGrounded && Mathf.Abs(m_RigidBody.velocity.y) < 1f)
+			{
+				//Debug.Log("STUCK: Timer is active.");
+				stuckTimer += Time.deltaTime;
+			}
+			if (stuckTimer > 3f)
+			{
+				Debug.Log("Allowing stuck-escape jump!");
+				stuckLaunch = true;
+			}
+			if (m_IsGrounded)
+			{
+				stuckTimer = 0f;
+				//Debug.Log("Grounded");
+			}
 
 			if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
             {
@@ -208,13 +225,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				}
 			}
 
-            if (m_IsGrounded)
-            {
+            if (m_IsGrounded || stuckLaunch)
+            {				
+				stuckTimer = 0f;
                 m_RigidBody.drag = 5f;
 
                 if (m_Jump)
                 {
-                    m_RigidBody.drag = 0f;
+					stuckLaunch = false;
+					m_RigidBody.drag = 0f;
                     m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
                     m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
                     m_Jumping = true;
@@ -269,6 +288,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     x = CrossPlatformInputManager.GetAxis("Horizontal"),
                     y = CrossPlatformInputManager.GetAxis("Vertical")
                 };
+			if (Input.GetMouseButton(1))
+			{
+				input.y = 1;
+			}
 			movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
         }
