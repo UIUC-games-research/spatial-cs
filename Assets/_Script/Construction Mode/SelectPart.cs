@@ -137,8 +137,28 @@ public class SelectPart : MonoBehaviour {
 					connectButton.interactable = false;
 				}
 
-
+				//! TESTING PART MOVEMENT.
+				if (selectedFuseTo != null && selectedObject != null && objectToSelect.GetComponent<SelectBehavior>() != null)
+				{
+					// object must be moved in front of fuseto.
+					SelectedEffect fuseToFX = selectedFuseTo.GetComponent<SelectedEffect>();
+					if (fuseToFX != null)
+					{
+						// Moves it to the position of the fused object, offset by a multiple of the normal, 
+						// offset again by the scaled local positional difference of the connection face and the parent object.
+						StartCoroutine(SweepPosition(selectedObject.transform.parent.gameObject, 
+													 selectedFuseTo.transform.position + 
+													 ((30) * fuseToFX.hitInfo.normal) + 
+													 (selectedObject.transform.parent.localScale.x * selectedObject.transform.localPosition)));
+					}
+					else
+					{
+						Debug.LogError("Uh oh, no fuse fx for some reason!");
+					}
+				}
+				// END MOVEMENT TESTING
 			}
+
 		}
 	}
 
@@ -236,6 +256,22 @@ public class SelectPart : MonoBehaviour {
 		} 
 		activePart = GameObject.Find (part);
 
+	}
+
+
+	IEnumerator SweepPosition(GameObject toSweep, Vector3 targetPos)
+	{
+		// Interpolate.
+		Vector3 initialPos = toSweep.transform.position;
+		for (float i = 0.0f; i < 1; i += 0.05f)
+		{
+			toSweep.transform.position = Vector3.Lerp(initialPos, targetPos, i);
+			yield return null;
+		}
+
+		// Ensure it ends in the right place no matter what.
+		yield return null;
+		toSweep.transform.position = targetPos;
 	}
 
 }
