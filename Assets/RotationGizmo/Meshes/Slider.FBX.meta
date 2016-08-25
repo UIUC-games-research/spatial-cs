@@ -19,6 +19,7 @@ ModelImporter:
     3300004: //RootNode
     4300000: Tube001
     4300002: Tube002
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1
