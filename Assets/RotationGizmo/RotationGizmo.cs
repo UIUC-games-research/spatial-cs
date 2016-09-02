@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class RotationGizmo : MonoBehaviour
@@ -6,6 +7,7 @@ public class RotationGizmo : MonoBehaviour
 	public GameObject mainCamera;
 	public GameObject toRotate;
 	public bool tutorialOn;
+	public SelectPart adjuster;
 
 	public GameObject xGizmo;
 	public GameObject yGizmo;
@@ -18,6 +20,7 @@ public class RotationGizmo : MonoBehaviour
 
 	void Start ()
 	{
+		adjuster = EventSystem.current.gameObject.GetComponent<SelectPart>();
 		Disable();
 	}
 
@@ -123,6 +126,9 @@ public class RotationGizmo : MonoBehaviour
 
 	IEnumerator Rotate(float x, float y, float z)
 	{
+		// Adjustment of alignment.
+		adjuster.AdjustPartAlignment(x, y, z);
+
 		// Integration for battery power.
 		if(!tutorialOn) {
 			BatterySystem.SubPower(1);
