@@ -16234,6 +16234,65 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 569846784}
   m_Mesh: {fileID: 4300000, guid: 19c4c9498e349e94c8a729d673bbe31d, type: 3}
+--- !u!1001 &570372594
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -142.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.576
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -243.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.4119346
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.19208825
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.19208822
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8697782
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 117896, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_Name
+      value: ClueBase (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: clueSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f239f380a832c9a4b802e1918470ebc2,
+        type: 3}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupName
+      value: CityPart6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: deleteToken
+      value: clue_CityPart6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &571017099
 GameObject:
   m_ObjectHideFlags: 0
@@ -24210,6 +24269,61 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 843571883}
   m_Mesh: {fileID: 4300000, guid: 7e84a70fa7617814cb5da4d30f5d8b1b, type: 3}
+--- !u!1001 &847408798
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -51.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.4119346
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.19208825
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.19208822
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8697782
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupName
+      value: CityPart1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: deleteToken
+      value: clue_CityPart1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: clueSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03fdbc44f17ede74599ba473c5d6432b,
+        type: 3}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &855856728
 GameObject:
   m_ObjectHideFlags: 0
@@ -24726,6 +24840,69 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 883501319}
   m_Mesh: {fileID: 4300000, guid: 7e84a70fa7617814cb5da4d30f5d8b1b, type: 3}
+--- !u!1001 &885501327
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -228.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -144.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.4119346
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.19208825
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.19208822
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8697782
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 117896, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_Name
+      value: ClueBase (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: clueSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f364387c19bf04b4694db55c49f7a078,
+        type: 3}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: deleteToken
+      value: clue_CityPart3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupName
+      value: CityPart3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &885691809
 GameObject:
   m_ObjectHideFlags: 0
@@ -34439,7 +34616,7 @@ Transform:
   - {fileID: 2065914723}
   - {fileID: 1365395044}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1001 &1180272060
 Prefab:
   m_ObjectHideFlags: 0
@@ -44468,7 +44645,7 @@ Transform:
   - {fileID: 1506407394}
   - {fileID: 119234263}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &1531929598
 GameObject:
   m_ObjectHideFlags: 0
@@ -44954,6 +45131,65 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1544915097}
   m_Mesh: {fileID: 4300000, guid: 19c4c9498e349e94c8a729d673bbe31d, type: 3}
+--- !u!1001 &1545618029
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 88.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -510.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.4119346
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.19208825
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.19208822
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8697782
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 117896, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_Name
+      value: ClueBase (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: clueSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0781fc2435e2cd0449f536de1aad8117,
+        type: 3}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupName
+      value: CityPart5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: deleteToken
+      value: clue_CityPart5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1546420022
 GameObject:
   m_ObjectHideFlags: 0
@@ -52038,7 +52274,7 @@ Transform:
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1754831580
 GameObject:
   m_ObjectHideFlags: 0
@@ -54489,6 +54725,65 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1821543167}
   m_Mesh: {fileID: 4300000, guid: 4cef10078c6a11a4398a55fc5fb4caee, type: 3}
+--- !u!1001 &1827629636
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 213.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -171.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.4119346
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.19208825
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.19208822
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8697782
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 117896, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_Name
+      value: ClueBase (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: clueSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b057a16b31158d4bb99749ad2ea5241,
+        type: 3}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupName
+      value: CityPart2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: deleteToken
+      value: clue_CityPart2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1832929380
 GameObject:
   m_ObjectHideFlags: 0
@@ -57215,6 +57510,65 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1916871607}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1918021003
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 271.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -504.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.4119346
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.19208825
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.19208822
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8697782
+      objectReference: {fileID: 0}
+    - target: {fileID: 430296, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 117896, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: m_Name
+      value: ClueBase (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: clueSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 96cdc4bf39a17e149bc3067b57aba3e3,
+        type: 3}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupName
+      value: CityPart4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: deleteToken
+      value: clue_CityPart4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1919037955
 GameObject:
   m_ObjectHideFlags: 0
@@ -64182,7 +64536,7 @@ Transform:
   - {fileID: 112394155}
   - {fileID: 220264668}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &2117637933
 GameObject:
   m_ObjectHideFlags: 0

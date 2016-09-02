@@ -57,6 +57,9 @@ public class RotationGizmo : MonoBehaviour
 		zTemp.z = 90;
 		zGizmo.transform.localEulerAngles = zTemp;
 
+		// Object Itself
+		transform.position = toRotate.transform.position;
+
 
 		// Raycasts.
 		if (Input.GetMouseButtonDown(0))
