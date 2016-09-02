@@ -58,7 +58,8 @@ public class RotationGizmo : MonoBehaviour
 		zGizmo.transform.localEulerAngles = zTemp;
 
 		// Object Itself
-		transform.position = toRotate.transform.position;
+		if (toRotate != null)
+			transform.position = toRotate.transform.position;
 
 
 		// Raycasts.

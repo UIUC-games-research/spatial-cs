@@ -146,10 +146,29 @@ public class SelectPart : MonoBehaviour {
 					{
 						// Moves it to the position of the fused object, offset by a multiple of the normal, 
 						// offset again by the scaled local positional difference of the connection face and the parent object.
-						StartCoroutine(SweepPosition(selectedObject.transform.parent.gameObject, 
-													 selectedFuseTo.transform.position + 
+						/*
+						StartCoroutine(SweepPosition(selectedObject.transform.parent.gameObject,
+													 selectedFuseTo.transform.position +
 													 ((30) * fuseToFX.hitInfo.normal) + 
-													 (selectedObject.transform.parent.localScale.x * selectedObject.transform.localPosition)));
+													 (selectedObject.transform.parent.localScale.x * selectedObject.transform.localPosition)));*/
+
+						// The actual location of the selected fuse marker... Wow.
+						Vector3 properFuseToPos = selectedFuseTo.transform.position + (Quaternion.Euler(selectedFuseTo.transform.eulerAngles) * (selectedFuseTo.transform.parent.localScale.x * (selectedFuseTo.GetComponent<BoxCollider>().center)));
+
+						// The global positional difference between the pivot of the object we're trying to connect and its fuse marker.
+						//Vector3 properOffset = selectedObject.transform.localPosition + (Quaternion.Euler(selectedObject.transform.eulerAngles) * (selectedObject.transform.parent.localScale.x * (selectedObject.GetComponent<BoxCollider>().center)));
+						Vector3 properOffset = Quaternion.Euler(selectedObject.transform.parent.localEulerAngles) * (selectedObject.transform.parent.localScale.x * (selectedObject.transform.localPosition + Quaternion.Euler(selectedObject.transform.localEulerAngles) * (selectedObject.GetComponent<BoxCollider>().center)));
+
+						//Debug.Log(Quaternion.Euler(selectedObject.transform.localEulerAngles) * (selectedObject.GetComponent<BoxCollider>().center));
+
+						//Debug.DrawLine(selectedObject.transform.parent.position, selectedObject.transform.parent.position + properOffset, Color.red, 25f, false);
+						//Debug.DrawLine(selectedFuseTo.transform.parent.position, properFuseToPos, Color.red, 25f, false);
+
+
+
+						StartCoroutine(SweepPosition(selectedObject.transform.parent.gameObject, properFuseToPos - properOffset + (10 * hitInfo.normal)));
+
+						
 					}
 					else
 					{
