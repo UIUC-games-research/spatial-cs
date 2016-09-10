@@ -190,7 +190,7 @@ public class SelectPart : MonoBehaviour {
 		{
 			Vector3 properFuseToPos = selectedFuseTo.transform.position + (Quaternion.Euler(selectedFuseTo.transform.eulerAngles) * (selectedFuseTo.transform.parent.localScale.x * (selectedFuseTo.GetComponent<BoxCollider>().center)));
 			Vector3 properOffset = Quaternion.Euler(x, y, z) * Quaternion.Euler(selectedObject.transform.parent.localEulerAngles) * (selectedObject.transform.parent.localScale.x * (selectedObject.transform.localPosition + Quaternion.Euler(selectedObject.transform.localEulerAngles) * (selectedObject.GetComponent<BoxCollider>().center)));
-			StartCoroutine(SweepPosition(selectedObject.transform.parent.gameObject, properFuseToPos - properOffset + (10 * globalHitInfo.normal), 45));
+			StartCoroutine(SweepPosition(selectedObject.transform.parent.gameObject, properFuseToPos - properOffset + (10 * globalHitInfo.normal), 30));
 		}
 	}
 

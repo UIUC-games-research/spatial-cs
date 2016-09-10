@@ -20,7 +20,8 @@ public class RotationGizmo : MonoBehaviour
 
 	void Start ()
 	{
-		adjuster = EventSystem.current.gameObject.GetComponent<SelectPart>();
+		//adjuster = EventSystem.current.gameObject.GetComponent<SelectPart>();
+		//adjuster = GameObject.Find("EventSystem").GetComponent<SelectPart>();
 		Disable();
 	}
 
@@ -64,6 +65,56 @@ public class RotationGizmo : MonoBehaviour
 		if (toRotate != null)
 			transform.position = toRotate.transform.position;
 
+
+		// Highlight raycasts.
+		RaycastHit mouseOver = new RaycastHit();
+		if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out mouseOver))
+		{
+			switch (mouseOver.transform.name)
+			{
+				case "XUp":
+					Highlighter.Highlight(xGizmo);
+					Highlighter.Unhighlight(yGizmo);
+					Highlighter.Unhighlight(zGizmo);
+					break;
+
+				case "XDown":
+					Highlighter.Highlight(xGizmo);
+					Highlighter.Unhighlight(yGizmo);
+					Highlighter.Unhighlight(zGizmo);
+					break;
+
+				case "YLeft":
+					Highlighter.Highlight(yGizmo);
+					Highlighter.Unhighlight(xGizmo);
+					Highlighter.Unhighlight(zGizmo);
+					break;
+
+				case "YRight":
+					Highlighter.Highlight(yGizmo);
+					Highlighter.Unhighlight(xGizmo);
+					Highlighter.Unhighlight(zGizmo);
+					break;
+
+				case "ZUp":
+					Highlighter.Highlight(zGizmo);
+					Highlighter.Unhighlight(yGizmo);
+					Highlighter.Unhighlight(xGizmo);
+					break;
+
+				case "ZDown":
+					Highlighter.Highlight(zGizmo);
+					Highlighter.Unhighlight(yGizmo);
+					Highlighter.Unhighlight(xGizmo);
+					break;
+
+				default:
+					Highlighter.Unhighlight(xGizmo);
+					Highlighter.Unhighlight(yGizmo);
+					Highlighter.Unhighlight(zGizmo);
+					break;
+			}
+		}
 
 		// Raycasts.
 		if (Input.GetMouseButtonDown(0))
@@ -134,19 +185,23 @@ public class RotationGizmo : MonoBehaviour
 			BatterySystem.SubPower(1);
 		}
 
-		// Set rotate flag and start rotating.
-		// Flag is reset every frame to ensure the check only runs at the end of all queued rotations.
-		rotating = true;
-		for (int i = 0; i < 45; i++)
-		{
-			toRotate.transform.Rotate(x / 45f, y / 45f, z / 45f, Space.World);
-			rotating = true;
-			yield return null;
-		}
-		rotating = false;
-		yield return null;	// Wait a frame to see if another active rotation resets this flag to true.
+		// Can only start rotating if not already rotating. Prevents bugs with part movement.
 		if (!rotating)
-			StartCoroutine(CheckRotation());
+		{
+			// Set rotate flag and start rotating.
+			// Flag is reset every frame to ensure the check only runs at the end of all queued rotations.
+			rotating = true;
+			for (int i = 0; i < 30; i++)
+			{
+				toRotate.transform.Rotate(x / 30f, y / 30f, z / 30f, Space.World);
+				rotating = true;
+				yield return null;
+			}
+			rotating = false;
+			yield return null;  // Wait a frame to see if another active rotation resets this flag to true.
+			if (!rotating)
+				StartCoroutine(CheckRotation());
+		}
 	}
 
 	IEnumerator CheckRotation()

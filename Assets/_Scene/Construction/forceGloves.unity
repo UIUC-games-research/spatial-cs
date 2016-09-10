@@ -1015,6 +1015,10 @@ Prefab:
       propertyPath: m_TagString
       value: RotationGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 11444632, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: adjuster
+      value: 
+      objectReference: {fileID: 1321869683}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
   m_IsPrefabParent: 0
@@ -1948,6 +1952,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11426030, guid: b41e09363ef77f44da295e0f50cb338e, type: 2}
+      propertyPath: m_Text
+      value: Congratulations - you built the Force Gloves!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417174, guid: b41e09363ef77f44da295e0f50cb338e, type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b41e09363ef77f44da295e0f50cb338e, type: 2}
   m_IsPrefabParent: 0
@@ -2432,7 +2444,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Congratulations - you built it!
+  m_Text: 'Congratulations - you built the Force Gloves!
+
+'
 --- !u!222 &1766053920
 CanvasRenderer:
   m_ObjectHideFlags: 0
