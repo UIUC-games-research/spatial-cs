@@ -1517,10 +1517,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enter this code in Exploration Mode to get your Force Field Annihilator:
-
-
-    ko7cfj'
+  m_Text: 
 --- !u!222 &958799479
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2467,6 +2464,10 @@ Prefab:
       propertyPath: m_TagString
       value: RotationGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 11444632, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: adjuster
+      value: 
+      objectReference: {fileID: 1321869683}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
   m_IsPrefabParent: 0

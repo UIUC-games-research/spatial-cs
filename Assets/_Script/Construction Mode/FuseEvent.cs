@@ -66,17 +66,20 @@ public class FuseEvent : MonoBehaviour {
 
 	void OnEnable()
 	{
+		// For data collection.
 		startLevelTimer();
 	}
 
-	// Use this for initialization
-	void Awake () {
-		//GlobalVariables globalVariables = GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>();
-		//globalVariables.hidePasswords();
+	void Awake ()
+	{
+		// Setup camera reference properly.
+		mainCam = Camera.main;
 
-		Button backButton = GameObject.Find ("Back Button").GetComponent<Button>();
+		// Grab the rotation gizmo reference.
 		rotateGizmo = GameObject.FindGameObjectWithTag("RotationGizmo").GetComponent<RotationGizmo>();
-		//backButton.onClick.AddListener(() => globalVariables.backToMainScreen());
+
+		// Setup the back button.
+		Button backButton = GameObject.Find ("Back Button").GetComponent<Button>();
 		backButton.onClick.AddListener(() => 
 		{
 			SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
@@ -85,10 +88,25 @@ public class FuseEvent : MonoBehaviour {
 			LoadUtils.LoadScene(InventoryController.levelName);
 		});
 
-		mainCam = Camera.main;
-		// Had to disable this level data stuff, things were breaking when you quit out of a level before completeing it.
-		//backButton.onClick.AddListener (() => stopLevelTimer());
-		//backButton.onClick.AddListener (() => printLevelDataFail());
+		// Infinite energy if running construction mode separately.
+		if (InventoryController.levelName == "")
+		{
+			// This works because levelName will be "" when we aren't coming from any specific level.
+
+			// Add a ton of power and hide the battery indicator.
+			// Disabling is generally a bad idea.
+			BatterySystem.AddPower(999999999);
+			GameObject.Find("BatteryIndicator").transform.localScale = Vector3.zero;
+
+			// Hide the back button, too.
+			backButton.transform.localScale = Vector3.zero;
+
+			// Hide the claim button, too.
+			if (claimItem != null)
+			{
+				claimItem.transform.localScale = Vector3.zero;
+			}
+		}
 
 		// New addition for claim item button.
 		if (claimItem != null)

@@ -2813,7 +2813,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press the button below to continue.
+  m_Text: '
+
+'
 --- !u!222 &1667494524
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2879,6 +2881,10 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 108479433}
+    - target: {fileID: 11444632, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
+      propertyPath: adjuster
+      value: 
+      objectReference: {fileID: 1321869683}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91b7db2893ddd154ea72093511958cb3, type: 2}
   m_IsPrefabParent: 0
@@ -3593,7 +3599,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2026466740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2853, y: -52, z: -1899}
+  m_LocalPosition: {x: -2853, y: -165, z: -1899}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
