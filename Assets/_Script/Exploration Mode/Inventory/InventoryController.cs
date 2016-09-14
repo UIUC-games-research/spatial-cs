@@ -86,9 +86,10 @@ public class InventoryController : MonoBehaviour
 		System.IO.File.Delete(Application.persistentDataPath + "/Save.dat");	// Delete save.
 		LoadUtils.loadedScenes.Clear();							// Clear loaded scenes to account for all scene conditions.
 		ConversationTrigger.tokens.Clear();						// Clear tokens for sanity.
-		items.Clear();											// Clear items for safety.
+		items.Clear();                                          // Clear items for safety.
+		levelName = "";
 		Destroy(GameObject.FindGameObjectWithTag("FullPlayer"));	// Must make sure the old player is properly deleted...
-		UnityEngine.SceneManagement.SceneManager.LoadScene("Canyon2");	// Reload, finally.
+		UnityEngine.SceneManagement.SceneManager.LoadScene("SimpleMenu");	// Reload, finally.
 	}
 
 	

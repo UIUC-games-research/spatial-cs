@@ -53,6 +53,7 @@ public class FuseEvent : MonoBehaviour {
 
 	//tutorial variables
 	public bool tutorialOn;
+	public static bool runningJustConstructionMode = false;
 
 	//data collection
 	private float levelTimer;
@@ -87,26 +88,6 @@ public class FuseEvent : MonoBehaviour {
 			printLevelDataFail();
 			LoadUtils.LoadScene(InventoryController.levelName);
 		});
-
-		// Infinite energy if running construction mode separately.
-		if (InventoryController.levelName == "")
-		{
-			// This works because levelName will be "" when we aren't coming from any specific level.
-
-			// Add a ton of power and hide the battery indicator.
-			// Disabling is generally a bad idea.
-			BatterySystem.AddPower(999999999);
-			GameObject.Find("BatteryIndicator").transform.localScale = Vector3.zero;
-
-			// Hide the back button, too.
-			backButton.transform.localScale = Vector3.zero;
-
-			// Hide the claim button, too.
-			if (claimItem != null)
-			{
-				claimItem.transform.localScale = Vector3.zero;
-			}
-		}
 
 		// New addition for claim item button.
 		if (claimItem != null)
@@ -176,6 +157,47 @@ public class FuseEvent : MonoBehaviour {
 			Debug.Log("Disabling goToNextTutorial button!");
 			claimItem.gameObject.SetActive(false);
 		}
+
+		// Infinite energy if running construction mode separately.
+		if (InventoryController.levelName == "")
+		{
+			runningJustConstructionMode = true;
+			SimpleData.CreateInitialFiles();
+
+			// This works because levelName will be "" when we aren't coming from any specific level.
+
+			// Add a ton of power and hide the battery indicator.
+			// Disabling is generally a bad idea.
+			BatterySystem.AddPower(999999999);
+			GameObject.Find("BatteryIndicator").transform.localScale = Vector3.zero;
+
+			// Change back button functionality.
+			backButton.onClick.RemoveAllListeners();
+			backButton.onClick.AddListener(() =>
+			{
+				stopLevelTimer();
+				printLevelDataFail();
+				SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO,SimpleMenu");
+				SceneManager.LoadScene("SimpleMenu");
+			});
+
+
+			// Change Claim Item functionality.
+			if (claimItem != null)
+			{
+				//claimItem.transform.localScale = Vector3.zero;
+				claimItem.onClick.RemoveAllListeners();
+				claimItem.onClick.AddListener(() =>
+				{
+					SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO,SimpleMenu");
+					//stopLevelTimer();
+					//printLevelDataFail();
+					SceneManager.LoadScene("SimpleMenu");
+				});
+			}
+		}
+		else runningJustConstructionMode = false;
+
 
 		fuseCount = 0;
 		fuseStatus = "none";

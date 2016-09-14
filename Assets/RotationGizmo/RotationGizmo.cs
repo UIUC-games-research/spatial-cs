@@ -120,7 +120,7 @@ public class RotationGizmo : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hitInfo = new RaycastHit();
-			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) && (tutorialOn || BatterySystem.GetPower() > 0))
+			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) && (tutorialOn || BatterySystem.GetPower() > 0 || FuseEvent.runningJustConstructionMode) )
 			{
 				//Debug.Log(hitInfo.transform.name);
 				switch(hitInfo.transform.name)
