@@ -34,6 +34,11 @@ public class SimpleData : MonoBehaviour
 
 	void Awake ()
 	{
+		CreateInitialFiles();
+	}
+
+	public static void CreateInitialFiles()
+	{
 		// Create the initial folder for this session.
 		folder = Application.persistentDataPath + "/" + "Player_at_time_" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second;
 		Directory.CreateDirectory(folder);
