@@ -2727,7 +2727,7 @@ MonoBehaviour:
   conversationName: Exp_5
   allowEscape: 0
   oneShot: 1
-  trigger: 2
+  trigger: 3
   keyRequired: 0
   tokenWhitelist:
   - gear_rocketboots
@@ -18943,11 +18943,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22441034, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22441034, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22463334, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_AnchorMin.y
