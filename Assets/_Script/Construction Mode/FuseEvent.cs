@@ -168,7 +168,7 @@ public class FuseEvent : MonoBehaviour {
 
 			// Add a ton of power and hide the battery indicator.
 			// Disabling is generally a bad idea.
-			BatterySystem.AddPower(999999999);
+			//BatterySystem.AddPower(999999999);
 			GameObject.Find("BatteryIndicator").transform.localScale = Vector3.zero;
 
 			// Change back button functionality.

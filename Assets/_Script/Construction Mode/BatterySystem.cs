@@ -16,6 +16,11 @@ public class BatterySystem : MonoBehaviour
 		return batteryPower;
 	}
 
+	public static int SetPower(int power)
+	{
+		return batteryPower = power;
+	}
+
 	public static int AddPower(int power)
 	{
 		batteryPower += power;

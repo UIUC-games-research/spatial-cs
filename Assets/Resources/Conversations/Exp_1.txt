@@ -1,3 +1,3 @@
-Aha! There you are!
+Hello, what have we here? Looks like you crash landed.
 [CHOOSE]
 nowhere|Exp_2|Exp_1_Done

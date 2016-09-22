@@ -87,6 +87,7 @@ public class InventoryController : MonoBehaviour
 		LoadUtils.loadedScenes.Clear();							// Clear loaded scenes to account for all scene conditions.
 		ConversationTrigger.tokens.Clear();						// Clear tokens for sanity.
 		items.Clear();                                          // Clear items for safety.
+		BatterySystem.SetPower(10);								// Reset power.
 		levelName = "";
 		Destroy(GameObject.FindGameObjectWithTag("FullPlayer"));	// Must make sure the old player is properly deleted...
 		UnityEngine.SceneManagement.SceneManager.LoadScene("SimpleMenu");	// Reload, finally.
