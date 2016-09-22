@@ -78,6 +78,11 @@ public class InventoryController : MonoBehaviour
 
 	}
 
+	void OnEnable()
+	{
+		CloseInventory();
+	}
+
 	// Need this somewhere for the restart stuff.
 	// DEMO MODE ONLY
 	public static void RestartGame()
