@@ -40,7 +40,7 @@ public class SimpleData : MonoBehaviour
 	public static void CreateInitialFiles()
 	{
 		// Create the initial folder for this session.
-		folder = Application.persistentDataPath + "/" + "Player_at_time_" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second;
+		folder = Application.dataPath + "/" + "Player_at_time_" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second;
 		Directory.CreateDirectory(folder);
 
 		// Create initial position tracking file.

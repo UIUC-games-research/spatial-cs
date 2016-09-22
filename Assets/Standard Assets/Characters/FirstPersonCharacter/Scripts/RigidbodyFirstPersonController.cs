@@ -136,8 +136,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 		void OnEnable ()
 		{
-			Debug.Log("Enabled!");
+			//Debug.Log("Enabled!");
 			cam.transform.localPosition = new Vector3(0f, 0.6f, 0f);
+			Start();
 		}
 
 

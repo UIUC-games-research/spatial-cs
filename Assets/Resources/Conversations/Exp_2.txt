@@ -1,10 +1,5 @@
-Don't be afraid! It's just me, Dresha!
-I live here. Alone. But now you're here!
-And your spaceship is damaged. I'm guessing you didn't mean to crash-land here?
-...
-Don't worry, I can help you build a new one. I'm an engineer, you know!
-But first we need to find some parts for the new ship.
-There's sure to be some [color]880scrap metal[color] we can use lying around here somewhere. Go find some for me and then I'll see what I can do.
-Oh! Looks like you've already found a battery! Those will definitely come in handy later, see if you can find any more!
+But don't worry! I can help you build a new spaceship.
+First we need to find some parts for the new ship.
+There's sure to be some scrap metal we can use lying around here somewhere. Go find some for me and then I'll see what I can do.
 [CHOOSE]
 nowhere|nowhere|Exp_2_Done
