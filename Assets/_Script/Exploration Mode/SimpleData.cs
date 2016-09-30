@@ -24,7 +24,7 @@ public class SimpleData : MonoBehaviour
 	static List<Vector3> points_forPathLength = new List<Vector3>();
 
 	// Reading
-	public string fileToLoad;
+	public string fileToLoad = "PositionData_Canyon2.txt";
 	static StreamReader sr_Position;
 	static List<Vector3> points = new List<Vector3>();
 
@@ -94,7 +94,7 @@ public class SimpleData : MonoBehaviour
 
 		// Read all lines.
 		List<string> lines = new List<string>();
-		sr_Position = new StreamReader(Application.persistentDataPath + "/" + fileToLoad);
+		sr_Position = new StreamReader(Application.dataPath + "/" + fileToLoad);
 		while (!sr_Position.EndOfStream)
 		{
 			lines.Add(sr_Position.ReadLine());

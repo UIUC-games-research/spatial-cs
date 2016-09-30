@@ -151,9 +151,12 @@ public class InventoryController : MonoBehaviour
 			UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController.allowMovement = true;
 
 			// Player Settings.
-			player.mouseLook.SetCursorLock(true);
-			player.mouseLook.XSensitivity = sensitivityXTemp;
-			player.mouseLook.YSensitivity = sensitivityYTemp;
+			if (player != null)
+			{
+				player.mouseLook.SetCursorLock(true);
+				player.mouseLook.XSensitivity = sensitivityXTemp;
+				player.mouseLook.YSensitivity = sensitivityYTemp;
+			}
 
 			// Menus Inactive.
 			FakeActive(tabs, false);
