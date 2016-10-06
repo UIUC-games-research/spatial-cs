@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 962515c4d00ba784bbb3348cd2510d3c
+timeCreated: 1474740606
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Font_0
@@ -77,27 +79,32 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 1024
+  maxTextureSize: 4096
   textureSettings:
-    filterMode: 0
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -109,621 +116,1109 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
-        width: 8
-        height: 16
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 30}
+        - {x: -14, y: 29}
+        - {x: -14, y: -30}
+        - {x: 13, y: -30}
+        - {x: 14, y: -28}
+        - {x: 14, y: 26}
+        - {x: 13, y: 30}
     - name: Font_1
       rect:
         serializedVersion: 2
-        x: 8
-        y: 48
-        width: 8
-        height: 16
+        x: 32
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -28}
+        - {x: -12, y: -30}
+        - {x: 8, y: -30}
+        - {x: 14, y: -24}
+        - {x: 14, y: 24}
+        - {x: 11, y: 30}
     - name: Font_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 48
-        width: 8
-        height: 16
+        x: 64
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_3
       rect:
         serializedVersion: 2
-        x: 24
-        y: 48
-        width: 8
-        height: 16
+        x: 96
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -28}
+        - {x: -12, y: -30}
+        - {x: 8, y: -30}
+        - {x: 14, y: -24}
+        - {x: 14, y: 24}
+        - {x: 11, y: 30}
     - name: Font_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
-        width: 8
-        height: 16
+        x: 128
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_5
       rect:
         serializedVersion: 2
-        x: 40
-        y: 48
-        width: 8
-        height: 16
+        x: 160
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -28}
+        - {x: -12, y: -30}
+        - {x: 0, y: -30}
+        - {x: 14, y: -18}
+        - {x: 14, y: 30}
     - name: Font_6
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
-        width: 8
-        height: 16
+        x: 192
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: 0}
+        - {x: -2, y: -4}
+        - {x: -2, y: 16}
+        - {x: 12, y: 18}
+        - {x: 14, y: 20}
+        - {x: 14, y: 30}
+        - {x: -13, y: 30}
+        - {x: -14, y: 26}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 2}
+        - {x: -1, y: 4}
     - name: Font_7
       rect:
         serializedVersion: 2
-        x: 56
-        y: 48
-        width: 8
-        height: 16
+        x: 224
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_8
       rect:
         serializedVersion: 2
-        x: 64
-        y: 48
-        width: 8
-        height: 16
+        x: 256
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_9
       rect:
         serializedVersion: 2
-        x: 72
-        y: 48
-        width: 8
-        height: 16
+        x: 288
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 12, y: -30}
+        - {x: 14, y: -24}
+        - {x: 14, y: 30}
     - name: Font_10
       rect:
         serializedVersion: 2
-        x: 80
-        y: 48
-        width: 8
-        height: 16
+        x: 320
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_11
       rect:
         serializedVersion: 2
-        x: 88
-        y: 48
-        width: 8
-        height: 16
+        x: 352
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 14}
+        - {x: 10, y: 30}
+        - {x: -14, y: 30}
     - name: Font_12
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
-        width: 8
-        height: 16
+        x: 384
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_13
       rect:
         serializedVersion: 2
-        x: 104
-        y: 48
-        width: 8
-        height: 16
+        x: 416
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 30}
+        - {x: -14, y: 30}
+        - {x: -14, y: -28}
+        - {x: -12, y: -30}
+        - {x: 14, y: -30}
     - name: Font_14
       rect:
         serializedVersion: 2
-        x: 112
-        y: 48
-        width: 8
-        height: 16
+        x: 448
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 30}
+        - {x: -14, y: 24}
+        - {x: -14, y: -24}
+        - {x: -8, y: -30}
+        - {x: 8, y: -30}
+        - {x: 14, y: -24}
+        - {x: 14, y: 24}
+        - {x: 8, y: 30}
     - name: Font_15
       rect:
         serializedVersion: 2
-        x: 120
-        y: 48
-        width: 8
-        height: 16
+        x: 480
+        y: 192
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 30}
+        - {x: -14, y: 30}
+        - {x: -14, y: -28}
+        - {x: -12, y: -30}
+        - {x: -1, y: -30}
+        - {x: 11, y: -7}
+        - {x: 14, y: 0}
+        - {x: 14, y: 24}
     - name: Font_16
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 8
-        height: 16
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -32}
+        - {x: 16, y: -32}
+        - {x: 16, y: 30}
     - name: Font_17
       rect:
         serializedVersion: 2
-        x: 8
-        y: 32
-        width: 8
-        height: 16
+        x: 32
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -29}
+        - {x: -12, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 28}
+        - {x: 12, y: 30}
     - name: Font_18
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
-        width: 8
-        height: 16
+        x: 64
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 30}
+        - {x: -14, y: 24}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_19
       rect:
         serializedVersion: 2
-        x: 24
-        y: 32
-        width: 8
-        height: 16
+        x: 96
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -21}
+        - {x: -13, y: -30}
+        - {x: 6, y: -30}
+        - {x: 14, y: 20}
+        - {x: 14, y: 30}
     - name: Font_20
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 8
-        height: 16
+        x: 128
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -24}
+        - {x: -12, y: -30}
+        - {x: 8, y: -30}
+        - {x: 14, y: -29}
+        - {x: 14, y: 30}
     - name: Font_21
       rect:
         serializedVersion: 2
-        x: 40
-        y: 32
-        width: 8
-        height: 16
+        x: 160
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -12}
+        - {x: -6, y: -30}
+        - {x: 12, y: -30}
+        - {x: 14, y: -14}
+        - {x: 14, y: 30}
     - name: Font_22
       rect:
         serializedVersion: 2
-        x: 48
-        y: 32
-        width: 8
-        height: 16
+        x: 192
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 30}
+        - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 13, y: -30}
+        - {x: 14, y: -28}
     - name: Font_23
       rect:
         serializedVersion: 2
-        x: 56
-        y: 32
-        width: 8
-        height: 16
+        x: 224
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_24
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 8
-        height: 16
+        x: 256
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -7}
+        - {x: -5, y: -30}
+        - {x: 6, y: -30}
+        - {x: 14, y: 0}
+        - {x: 14, y: 30}
     - name: Font_25
       rect:
         serializedVersion: 2
-        x: 72
-        y: 32
-        width: 8
-        height: 16
+        x: 288
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_26
       rect:
         serializedVersion: 2
-        x: 80
-        y: 32
-        width: 8
-        height: 16
+        x: 320
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 11}
+        - {x: 11, y: 30}
+        - {x: -11, y: 30}
+        - {x: -14, y: 29}
     - name: Font_27
       rect:
         serializedVersion: 2
-        x: 88
-        y: 32
-        width: 8
-        height: 16
+        x: 352
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_28
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
-        width: 8
-        height: 16
+        x: 384
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_29
       rect:
         serializedVersion: 2
-        x: 104
-        y: 32
-        width: 8
-        height: 16
+        x: 416
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -8}
+        - {x: 1, y: -30}
+        - {x: 12, y: -30}
+        - {x: 14, y: -28}
+        - {x: 14, y: 30}
     - name: Font_30
       rect:
         serializedVersion: 2
-        x: 112
-        y: 32
-        width: 8
-        height: 16
+        x: 448
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 30}
+        - {x: -14, y: 30}
+        - {x: -14, y: -30}
+        - {x: 14, y: -30}
     - name: Font_31
       rect:
         serializedVersion: 2
-        x: 120
-        y: 32
-        width: 8
-        height: 16
+        x: 480
+        y: 128
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 18}
+        - {x: 14, y: 30}
+        - {x: -13, y: 30}
+        - {x: -14, y: 26}
+        - {x: -14, y: -26}
+        - {x: -10, y: -30}
+        - {x: 10, y: -30}
+        - {x: 14, y: -26}
+        - {x: 14, y: -2}
+        - {x: 10, y: 2}
     - name: Font_32
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
-        width: 8
-        height: 16
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: -18}
+        - {x: -13, y: -30}
+        - {x: 3, y: -30}
+        - {x: 14, y: 1}
+        - {x: 14, y: 30}
     - name: Font_33
       rect:
         serializedVersion: 2
-        x: 8
-        y: 16
-        width: 8
-        height: 16
+        x: 32
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 30}
+        - {x: -14, y: 24}
+        - {x: -14, y: -24}
+        - {x: -8, y: -30}
+        - {x: 8, y: -30}
+        - {x: 14, y: -24}
+        - {x: 14, y: 24}
+        - {x: 8, y: 30}
     - name: Font_34
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
-        width: 8
-        height: 16
+        x: 64
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 30}
+        - {x: -14, y: 29}
+        - {x: -14, y: -8}
+        - {x: 2, y: -30}
+        - {x: 12, y: -30}
+        - {x: 14, y: -28}
+        - {x: 14, y: 26}
+        - {x: 13, y: 30}
     - name: Font_35
       rect:
         serializedVersion: 2
-        x: 24
-        y: 16
-        width: 8
-        height: 16
+        x: 96
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 30}
+        - {x: -14, y: 26}
+        - {x: -14, y: -24}
+        - {x: -11, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_36
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
-        width: 8
-        height: 16
+        x: 128
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: -14}
+        - {x: -10, y: -18}
+        - {x: -10, y: -26}
+        - {x: -6, y: -30}
+        - {x: 6, y: -30}
+        - {x: 10, y: -26}
+        - {x: 10, y: -18}
+        - {x: 6, y: -14}
+      - - {x: 6, y: 30}
+        - {x: -6, y: 30}
+        - {x: -10, y: 26}
+        - {x: -10, y: -4}
+        - {x: -6, y: -12}
+        - {x: -4, y: -14}
+        - {x: 5, y: -14}
+        - {x: 9, y: -9}
+        - {x: 10, y: -4}
+        - {x: 10, y: 26}
     - name: Font_37
       rect:
         serializedVersion: 2
-        x: 40
-        y: 16
-        width: 8
-        height: 16
+        x: 160
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 30}
+        - {x: -14, y: 29}
+        - {x: -14, y: -29}
+        - {x: -12, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: 30}
     - name: Font_38
       rect:
         serializedVersion: 2
-        x: 48
-        y: 16
-        width: 8
-        height: 16
+        x: 192
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 22}
+        - {x: -14, y: 15}
+        - {x: -14, y: -16}
+        - {x: -13, y: -22}
+        - {x: 11, y: -22}
+        - {x: 14, y: -15}
+        - {x: 14, y: 16}
+        - {x: 13, y: 22}
     - name: Font_39
       rect:
         serializedVersion: 2
-        x: 56
-        y: 16
-        width: 8
-        height: 16
+        x: 224
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 32}
+        - {x: -14, y: 24}
+        - {x: -14, y: -32}
+        - {x: 12, y: -32}
+        - {x: 14, y: -24}
+        - {x: 14, y: 32}
     - name: Font_40
       rect:
         serializedVersion: 2
-        x: 64
-        y: 16
-        width: 8
-        height: 16
+        x: 256
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 30}
+        - {x: 2, y: 30}
+        - {x: -14, y: -10}
+        - {x: -14, y: -30}
+        - {x: -2, y: -30}
+        - {x: 1, y: -23}
+        - {x: 14, y: 20}
+        - {x: 14, y: 28}
+      - - {x: 6, y: -14}
+        - {x: 2, y: -18}
+        - {x: 2, y: -26}
+        - {x: 6, y: -30}
+        - {x: 10, y: -30}
+        - {x: 14, y: -26}
+        - {x: 14, y: -18}
+        - {x: 10, y: -14}
+      - - {x: -13, y: 30}
+        - {x: -14, y: 29}
+        - {x: -14, y: 18}
+        - {x: -13, y: 14}
+        - {x: -4, y: 14}
+        - {x: -2, y: 15}
+        - {x: -2, y: 28}
+        - {x: -6, y: 30}
     - name: Font_41
       rect:
         serializedVersion: 2
-        x: 72
-        y: 16
-        width: 8
-        height: 16
+        x: 288
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9, y: 30}
+        - {x: -14, y: 21}
+        - {x: -14, y: 10}
+        - {x: 12, y: 10}
+        - {x: 14, y: 11}
+        - {x: 14, y: 25}
+        - {x: 5, y: 30}
     - name: Font_42
       rect:
         serializedVersion: 2
-        x: 80
-        y: 16
-        width: 8
-        height: 16
+        x: 320
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 30}
+        - {x: -9, y: 30}
+        - {x: -10, y: 25}
+        - {x: -10, y: -23}
+        - {x: -7, y: -27}
+        - {x: -2, y: -30}
+        - {x: 6, y: -30}
+        - {x: 10, y: -23}
+        - {x: 10, y: 20}
+        - {x: 8, y: 28}
     - name: Font_43
       rect:
         serializedVersion: 2
-        x: 88
-        y: 16
-        width: 8
-        height: 16
+        x: 352
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 30}
+        - {x: -10, y: 10}
+        - {x: 10, y: 10}
+        - {x: 10, y: 30}
     - name: Font_44
       rect:
         serializedVersion: 2
-        x: 96
-        y: 16
-        width: 8
-        height: 16
+        x: 384
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 30}
+        - {x: -10, y: 28}
+        - {x: -10, y: -24}
+        - {x: -7, y: -30}
+        - {x: 10, y: -30}
+        - {x: 10, y: 30}
     - name: Font_45
       rect:
         serializedVersion: 2
-        x: 104
-        y: 16
-        width: 8
-        height: 16
+        x: 416
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 30}
+        - {x: -10, y: -30}
+        - {x: 10, y: -30}
+        - {x: 10, y: 25}
+        - {x: 9, y: 30}
     - name: Font_46
       rect:
         serializedVersion: 2
-        x: 112
-        y: 16
-        width: 8
-        height: 16
+        x: 448
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 28}
+        - {x: -10, y: -30}
+        - {x: 10, y: -30}
+        - {x: 10, y: 30}
+        - {x: -8, y: 30}
     - name: Font_47
       rect:
         serializedVersion: 2
-        x: 120
-        y: 16
-        width: 8
-        height: 16
+        x: 480
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 30}
+        - {x: -10, y: -30}
+        - {x: 10, y: -30}
+        - {x: 10, y: 30}
     - name: Font_48
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 16
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 30}
+        - {x: 2, y: 30}
+        - {x: -14, y: -10}
+        - {x: -14, y: -30}
+        - {x: -2, y: -30}
+        - {x: 1, y: -23}
+        - {x: 14, y: 20}
+        - {x: 14, y: 28}
     - name: Font_49
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_50
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_51
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_52
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 8
-        height: 16
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_53
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_54
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_55
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_56
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: 13}
+        - {x: 2, y: -30}
+        - {x: 14, y: -30}
+        - {x: 14, y: -3}
+        - {x: 0, y: 30}
+    - name: Font_50
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 8
-        height: 16
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_57
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_58
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_59
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Font_60
+      outline:
+      - - {x: -6, y: 14}
+        - {x: -14, y: 6}
+        - {x: -14, y: -6}
+        - {x: -6, y: -14}
+        - {x: 10, y: -14}
+        - {x: 14, y: -6}
+        - {x: 14, y: 10}
+        - {x: 7, y: 14}
+    - name: Font_51
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 8
-        height: 16
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 6}
+        - {x: -14, y: -4}
+        - {x: -12, y: -6}
+        - {x: 12, y: -6}
+        - {x: 14, y: -4}
+        - {x: 14, y: 6}
+    - name: Font_52
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: -2}
+        - {x: -14, y: -4}
+        - {x: -14, y: -12}
+        - {x: -12, y: -14}
+        - {x: 12, y: -14}
+        - {x: 14, y: -12}
+        - {x: 14, y: -4}
+        - {x: 12, y: -2}
+      - - {x: -14, y: 14}
+        - {x: -14, y: 2}
+        - {x: 14, y: 2}
+        - {x: 14, y: 14}
+    - name: Font_53
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: -18}
+        - {x: -6, y: -20}
+        - {x: -6, y: -28}
+        - {x: -4, y: -30}
+        - {x: 4, y: -30}
+        - {x: 6, y: -28}
+        - {x: 6, y: -20}
+        - {x: 4, y: -18}
+      - - {x: 13, y: 30}
+        - {x: -10, y: 30}
+        - {x: -14, y: 29}
+        - {x: -14, y: -3}
+        - {x: -7, y: -14}
+        - {x: 5, y: -14}
+        - {x: 14, y: -4}
+        - {x: 14, y: 26}
+    - name: Font_54
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: -19}
+        - {x: -6, y: -21}
+        - {x: -6, y: -29}
+        - {x: -4, y: -31}
+        - {x: 4, y: -31}
+        - {x: 6, y: -29}
+        - {x: 6, y: -21}
+        - {x: 4, y: -19}
+    - name: Font_55
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: -20}
+        - {x: -6, y: -28}
+        - {x: -4, y: -32}
+        - {x: 6, y: -32}
+        - {x: 6, y: -20}
+        - {x: 4, y: -18}
+        - {x: -4, y: -18}
+    - name: Font_56
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 30}
+        - {x: -6, y: 14}
+        - {x: 6, y: 14}
+        - {x: 6, y: 30}
+    - name: Font_57
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 30}
+        - {x: -14, y: 14}
+        - {x: -2, y: 14}
+        - {x: -2, y: 30}
+      - - {x: 2, y: 30}
+        - {x: 2, y: 19}
+        - {x: 5, y: 14}
+        - {x: 12, y: 14}
+        - {x: 14, y: 15}
+        - {x: 14, y: 30}
+    - name: Font_58
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: -6}
+        - {x: -6, y: -8}
+        - {x: -6, y: -16}
+        - {x: -4, y: -18}
+        - {x: 4, y: -18}
+        - {x: 6, y: -16}
+        - {x: 6, y: -8}
+        - {x: 4, y: -6}
+      - - {x: -6, y: 6}
+        - {x: 6, y: 6}
+        - {x: 6, y: 16}
+        - {x: 5, y: 18}
+        - {x: -6, y: 18}
+    - name: Font_59
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: -6}
+        - {x: -6, y: -7}
+        - {x: -6, y: -22}
+        - {x: 6, y: -22}
+        - {x: 6, y: -6}
+      - - {x: -6, y: 6}
+        - {x: 6, y: 6}
+        - {x: 6, y: 16}
+        - {x: 5, y: 18}
+        - {x: -6, y: 18}
+    - name: Font_60
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 30}
+        - {x: -6, y: -30}
+        - {x: 6, y: -30}
+        - {x: 6, y: 30}
     - name: Font_61
       rect:
         serializedVersion: 2
-        x: 104
+        x: 416
         y: 0
-        width: 8
-        height: 16
+        width: 32
+        height: 64
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
