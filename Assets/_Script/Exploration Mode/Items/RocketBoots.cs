@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -52,7 +53,7 @@ public class RocketBoots : ItemBase
 	
 	void FixedUpdate ()
 	{
-		if (bootsActive && selected)
+		if (bootsActive && selected && SceneManager.GetActiveScene().name != "CityVault")
 		{
 
 			if (Input.GetKey(KeyCode.Space) && charge > 0)

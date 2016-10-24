@@ -53,9 +53,9 @@ public class Lever : MonoBehaviour
 			foreach (GameObject gg in doors)
 			{
 				if (leverState)
-					gg.transform.Translate(0f, 0.3f, 0f);
+					gg.transform.Translate(0f, 0.55f, 0f);
 				else
-					gg.transform.Translate(0f, -0.3f, 0f);
+					gg.transform.Translate(0f, -0.55f, 0f);
 			}
 			yield return null;
 		}
