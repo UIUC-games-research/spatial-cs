@@ -15,7 +15,7 @@ public class SimpleData : MonoBehaviour
 	// This will likely never change, as the game will always begin in exploration mode.
 
 	// Folder name for this session. Set in Awake using system time.
-	static string folder;
+	public static string folder;
 
 	// Writing
 	public float dataInterval = 1f;
@@ -81,7 +81,7 @@ public class SimpleData : MonoBehaviour
 		{
 			if (standstillTimer > 5f)
 			{
-				WriteStringToFile("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + standstillTimer);
+				WriteStringToFile("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + SceneManager.GetActiveScene().name + "," + standstillTimer);
 			}
 			standstillTimer = 0f;
 		}
