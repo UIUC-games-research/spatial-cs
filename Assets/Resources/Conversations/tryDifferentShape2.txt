@@ -1,3 +1,0 @@
-Ok, now rotate this part-
-[CHOOSE]
-Dresha will now flash the selectedObj|nowhere|wrongFaceDreshaReadyToFlashObj

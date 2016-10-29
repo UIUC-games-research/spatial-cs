@@ -1,3 +1,0 @@
--with one that looks the same on this block.
-[CHOOSE]
-Send token to Tutorial1 saying to flash the box|nowhere|dreshaReadyToFlashBox

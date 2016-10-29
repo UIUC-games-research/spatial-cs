@@ -1,4 +1,0 @@
-Wow, you're getting really good at this!
-I'll bet you don't even need me to help you with the Rocket Boots.
-[CHOOSE]
-The Rocket Boots level will now load|nowhere|playerFinishedTutorial2

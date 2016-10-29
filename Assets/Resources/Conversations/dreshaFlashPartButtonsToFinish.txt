@@ -1,5 +1,0 @@
--select the two black regions you want to attach together-
--rotate the part to line them up-
--and then attach!
-[CHOOSE]
-Dresha will wait for next fuse attempt|nowhere

@@ -1,5 +1,0 @@
-It's going to be a little harder now because all of the black shapes look similar.
-But you're smart - I bet you can figure it out.
-Remember, same thing as before: choose a part down here-
-[CHOOSE]
-Dresha will now flash all part buttons|nowhere|dreshaReadyToFlashPartButtons

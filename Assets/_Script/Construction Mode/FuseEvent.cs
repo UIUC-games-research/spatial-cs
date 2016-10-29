@@ -855,17 +855,13 @@ public class FuseEvent : MonoBehaviour {
 				finishedImage.enabled = false;
 				GameObject.Find("Back Button").SetActive(false);
 
-				// tutorials wait to enable text till conversation is over
-				// tutorials wait to enable I'm ready button till conversation is over
-				if(mode != "tutorial1" && mode != "tutorial2") {
-					claimItem.gameObject.SetActive(true);
-					congrats.enabled = true;
-				}
+				claimItem.gameObject.SetActive(true);
+				congrats.enabled = true;
+
 				musicSource.Stop();
 				mainCam.transform.position = new Vector3(-90,80,-3.36f);
 				mainCam.transform.rotation = Quaternion.Euler(new Vector3(15,0,0));
 				source.Play ();
-				StartCoroutine(StartLoader());
 				StartCoroutine (FadeAudio (fadeTime, Fade.Out));
 			}
 
@@ -1110,27 +1106,7 @@ public class FuseEvent : MonoBehaviour {
 
 
 	}
-
-	IEnumerator StartLoader () 
-	{
-		yield return new WaitForSeconds(1);
-		victoryCounter++;
-		if(victoryCounter==5)
-		{
-			victoryFinished=true;
-		} else if(victoryCounter==3) {
-			getPassword.enabled = true;
-		}
-		if(!victoryFinished){
-			StartCoroutine(StartLoader());
-		}else{
-			if(mode.Equals ("intro")) {
-				//Application.LoadLevel(2);
-				SceneManager.LoadScene("construction");
-			} 
-		} 
-	}
-
+		
 
 	IEnumerator FadeAudio (float timer, Fade fadeType) {
 		float start = fadeType == Fade.In? 0.0F : 1.0F;

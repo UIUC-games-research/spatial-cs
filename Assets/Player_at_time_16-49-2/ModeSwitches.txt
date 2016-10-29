@@ -1,0 +1,1 @@
+35.69486,MODESWITCH_TO,SimpleMenu

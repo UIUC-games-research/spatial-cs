@@ -1,6 +1,0 @@
-This tells the Welder that it should attach the two black parts on each shape together.
-But wait! One last thing to do before we attach these two parts together!
-The two black shapes you've selected need to face each other so the Welder can push them together.
-You can use these controls-
-[CHOOSE]
-Dresha will now flash rotation gizmo|nowhere|dreshaReadyToFlashGizmo
