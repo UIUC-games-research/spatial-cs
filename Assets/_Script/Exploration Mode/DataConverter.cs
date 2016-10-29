@@ -119,7 +119,8 @@ public class DataConverter : MonoBehaviour {
 		string part1 = "", part2 = "", part3 = "", part4 = "", part5 = "", part6 = "";
 		//float timeConstruct = 0f;
 		//int xrot = 0, yrot = 0, zrot = 0, wrong_face = 0, wrong_rot = 0, avgRot = 0;
-		int p, m, c = 0;
+		// t : index for timespent; p : index for pickups; m : index for movement; c : index for construction
+		int t = 0, p = 0, m = 0, c = 0;
 		// hardcode final array length
 		ArrayList all = new ArrayList (129);
 		for (int i = 0; i < 129; i++) {
@@ -150,6 +151,7 @@ public class DataConverter : MonoBehaviour {
 			string temp = timeData [1].ToString ();
 			temp = temp.Substring(temp.LastIndexOf(",") + 1); 
 			timespent = float.Parse (temp);
+			t = 1;
 		}
 
 		// time of pickups of parts and batteries. Require timespent > 0 to work.
@@ -193,7 +195,7 @@ public class DataConverter : MonoBehaviour {
 			}
 		}
 
-		// construction
+		// canyon2 construction
 			// tutorial
 		/** contructData: [0] Time_spent [1] X_Rotation [2] Y_Rotation [3] Z_Rotation 
 						  [4] Total_Rotation [5] Total_fuse_attemps [6] Total_Fuse_Fails
@@ -202,64 +204,65 @@ public class DataConverter : MonoBehaviour {
 		float[] tutorial1Data = new float[10];
 		float[] tutorial2Data = new float[10];
 		float[] bootData = new float[10];
-		float[] sledgeData = new float[10];
+		float[] axeData = new float[10];
 		float[] key1Data = new float[10];
 
 		Debug.Log (construction.Count);
 		// Not sure whether two tutorials are available, can be optimized after confirmation
-		if (construction [0].ToString ().Contains ("tutorial1")) {
-			for (int i = 0; i < construction.Count; i++) {
-				string constrcuctTemp = construction [i].ToString ();
-				constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
-				tutorial1Data [i] = float.Parse (constrcuctTemp);
-				c = i;
-			}
-		}
-
-		if (construction [0].ToString ().Contains ("tutorial2")) {
-			for (int i = 0; i < construction.Count; i++) {
-				string constrcuctTemp = construction [i].ToString ();
-				constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
-				tutorial2Data [i] = float.Parse (constrcuctTemp);
-				c = i;
-			}
-		}
-
-		if (construction [0].ToString ().Contains ("boot")) {
-			for (int i = 0; i < construction.Count; i++) {
-				string constrcuctTemp = construction [i].ToString ();
-				constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
-				bootData [i] = float.Parse (constrcuctTemp);
-				c = i;
-			}
-		}
-
-		if (construction.Count > 10) {
-			if (construction [10].ToString ().Contains ("tutorial2")) {
-				for (int i = 10; i < construction.Count; i++) {
+		if (construction.Count > 0) {
+			if (construction [0].ToString ().Contains ("tutorial1")) {
+				for (int i = 0; i < tutorial1Data.Length; i++) {
 					string constrcuctTemp = construction [i].ToString ();
 					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
-					tutorial2Data [i-10] = float.Parse (constrcuctTemp);
-					c = i;
+					tutorial1Data [i] = float.Parse (constrcuctTemp);
+					c++;
+				}
+			}
+
+			if (construction [0].ToString ().Contains ("tutorial2")) {
+				for (int i = 0; i < tutorial2Data.Length; i++) {
+					string constrcuctTemp = construction [i].ToString ();
+					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
+					tutorial2Data [i] = float.Parse (constrcuctTemp);
+					c++;
+				}
+			}
+
+			if (construction [0].ToString ().Contains ("boot")) {
+				for (int i = 0; i < bootData.Length; i++) {
+					string constrcuctTemp = construction [i].ToString ();
+					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
+					bootData [i] = float.Parse (constrcuctTemp);
+					c++;
+				}
+			}
+		}
+		if (construction.Count > 10) {
+			if (construction [10].ToString ().Contains ("tutorial2")) {
+				for (int i = 0; i < tutorial2Data.Length; i++) {
+					string constrcuctTemp = construction [i+10].ToString ();
+					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
+					tutorial2Data [i] = float.Parse (constrcuctTemp);
+					c++;
 				}
 			}
 			if (construction [10].ToString ().Contains ("boot")) {
-				for (int i = 10; i < construction.Count; i++) {
-					string constrcuctTemp = construction [i].ToString ();
+				for (int i = 0; i < bootData.Length; i++) {
+					string constrcuctTemp = construction [i+10].ToString ();
 					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
-					bootData [i-10] = float.Parse (constrcuctTemp);
-					c = i;
+					bootData [i] = float.Parse (constrcuctTemp);
+					c++;
 				}
 			}
 		}
 
 		if (construction.Count > 20) {
 			if (construction [20].ToString ().Contains ("boot")) {
-				for (int i = 20; i < construction.Count; i++) {
-					string constrcuctTemp = construction [i].ToString ();
+				for (int i = 0; i < bootData.Length; i++) {
+					string constrcuctTemp = construction [i+20].ToString ();
 					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
-					bootData [i-20] = float.Parse (constrcuctTemp);
-					c = i;
+					bootData [i] = float.Parse (constrcuctTemp);
+					c++;
 				}
 			}
 		}
@@ -311,6 +314,94 @@ public class DataConverter : MonoBehaviour {
 		all [24] = part4;
 		all [25] = part5;
 		// Highland part
+			//Highland time
+		for (int i = t; i < timeDataCount; i++) {
+			string temp = timeData [i].ToString ();
+			if (temp.Contains ("Highland")) {
+				temp = temp.Substring(temp.LastIndexOf(",") + 1); 
+				timespent = float.Parse (temp);
+				t = i;
+			}
+		}
+
+			//Highland pickups
+			// part1 = trapezoid part2 = bottompoint part3 = toppoint part4 = haft
+			// part5 = head  part6 = shaft
+		batteries = 0;
+		for (int i = p; i < pickups.Count; i++) {
+			string name = pickups [i].ToString();
+			string time = name;
+			name = name.Substring (name.LastIndexOf (",")+1);
+			time = time.Substring (0, time.IndexOf (","));
+			if (float.Parse (time) > timespent) {
+				p = i - 1;
+				break;
+			}
+			if (name == "Sledgehammer Trapezoid") {
+				part1 = time;
+			} else if (name == "Sledgehammer Bottom Point") {
+				part2 = time;
+			} else if (name == "Sledgehammer Top Point") {
+				part3 = time;
+			} else if (name == "Sledgehammer Haft") {
+				part4 = time;
+			} else if (name == "Sledgehammer Head") {
+				part5 = time;
+			} else if (name == "Sledgehammer Shaft") {
+				part6 = time;
+			} else if (name == "Battery") {
+				batteries++;
+			}
+		} 
+
+		//Highland Stoodstill
+		NumStoodstill = 0;
+		TimeStoodstill = 0f;
+		for (int i = m; i < movementData.Count; i++) {
+			string name = movementData [i].ToString();
+			string time = name;
+			if (!name.Contains ("Highland")) {
+				m = i - 1;
+				break;
+			} else {
+				time = time.Substring (time.LastIndexOf (",") + 1);
+				NumStoodstill++;
+				TimeStoodstill += float.Parse (time);
+			}
+		}
+
+		//sledge construction
+		if (constructionData.Count > c) {
+			if (construction [c + 1].ToString ().Contains ("axe")) {
+				for (int i = 0; i < axeData.Length; i++) {
+					string constrcuctTemp = construction [i+c+1].ToString ();
+					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
+					axeData [i] = float.Parse (constrcuctTemp);
+					c++;
+				}
+			}
+		}
+		all [1] = timespent;
+		all [9] = NumStoodstill;
+		all [13] = TimeStoodstill;
+		all [5] = TimeStoodstill / NumStoodstill;
+		all [17] = batteries;
+		all [75] = part6;
+		all [76] = part1;
+		all [77] = part3;
+		all [78] = part2;
+		all [79] = part4;
+		all [80] = part5;
+
+		all [81] = axeData [0];
+		all [82] = axeData [1];
+		all [83] = axeData [2];
+		all [84] = axeData [3];
+		all [85] = axeData [4];
+		all [86] = axeData [7];
+		all [87] = axeData [8];
+		all [88] = axeData [6] + axeData [7] + axeData [8];
+		all [89] = axeData [9];
 		// Ruined City part
 		writeToCsv (all);
 

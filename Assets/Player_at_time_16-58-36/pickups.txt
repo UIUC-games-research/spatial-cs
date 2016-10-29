@@ -1,0 +1,9 @@
+24.36,PICKUP,Sledgehammer Head
+48.86,PICKUP,Sledgehammer Haft
+75.24,PICKUP,Sledgehammer Trapezoid
+108.94,PICKUP,Sledgehammer Top Point
+137.02,PICKUP,Battery
+141.68,PICKUP,Sledgehammer Bottom Point
+146.48,PICKUP,Battery
+147.08,PICKUP,Battery
+159.9,PICKUP,Sledgehammer Shaft

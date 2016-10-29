@@ -81,7 +81,11 @@ public class SimpleData : MonoBehaviour
 		{
 			if (standstillTimer > 5f)
 			{
-				WriteStringToFile("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + SceneManager.GetActiveScene().name + "," + standstillTimer);
+				if (transform.position.y > 33) {
+					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + "Highland" + "," + standstillTimer);
+				} else {
+					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + SceneManager.GetActiveScene ().name + "," + standstillTimer);
+				}
 			}
 			standstillTimer = 0f;
 		}

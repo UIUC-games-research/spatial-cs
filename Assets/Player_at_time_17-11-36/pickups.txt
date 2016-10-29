@@ -1,0 +1,6 @@
+0,PICKUP,Sledgehammer Bottom Point
+0,PICKUP,Sledgehammer Top Point
+0,PICKUP,Sledgehammer Trapezoid
+0,PICKUP,Sledgehammer Haft
+0,PICKUP,Sledgehammer Shaft
+0,PICKUP,Sledgehammer Head

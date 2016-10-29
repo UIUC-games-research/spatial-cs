@@ -1,0 +1,10 @@
+0,PICKUP,Sledgehammer Top Point
+0,PICKUP,Sledgehammer Bottom Point
+0,PICKUP,Sledgehammer Trapezoid
+0,PICKUP,Sledgehammer Haft
+0,PICKUP,Sledgehammer Head
+0,PICKUP,Sledgehammer Shaft
+8.035343,TIMESPENT_INLEVEL,Canyon2,8.055346
+0,TOTAL_DISTANCE,88.26086
+0,TOTAL_DISTANCE,88.26086
+0,TIMESPENT_INLEVEL,Highland,10.87351
