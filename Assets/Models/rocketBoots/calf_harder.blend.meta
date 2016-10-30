@@ -9,19 +9,29 @@ ModelImporter:
     100002: //RootNode
     100004: calf_trim_attach
     100006: calf_widening_attach
+    100008: calf_side1
+    100010: calf_side2
     400000: calf
     400002: //RootNode
     400004: calf_trim_attach
     400006: calf_widening_attach
+    400008: calf_side1
+    400010: calf_side2
     2300000: calf
     2300002: calf_trim_attach
     2300004: calf_widening_attach
+    2300006: calf_side1
+    2300008: calf_side2
     3300000: calf
     3300002: calf_trim_attach
     3300004: calf_widening_attach
+    3300006: calf_side1
+    3300008: calf_side2
     4300000: calf_widening_attach
     4300002: calf_trim_attach
     4300004: calf
+    4300006: calf_side2
+    4300008: calf_side1
     7400000: Default Take
     9500000: //RootNode
   materials:

@@ -29,6 +29,8 @@ ModelImporter:
     100042: widening
     100044: widening_calf_attach
     100046: widening_heel_attach
+    100048: calf_side1
+    100050: calf_side2
     400000: ballfoot
     400002: ballfoot_bottom
     400004: ballfoot_midfoot_attach
@@ -53,6 +55,8 @@ ModelImporter:
     400042: widening
     400044: widening_calf_attach
     400046: widening_heel_attach
+    400048: calf_side1
+    400050: calf_side2
     2300000: ballfoot
     2300002: ballfoot_bottom
     2300004: ballfoot_midfoot_attach
@@ -76,6 +80,8 @@ ModelImporter:
     2300040: widening
     2300042: widening_calf_attach
     2300044: widening_heel_attach
+    2300046: calf_side1
+    2300048: calf_side2
     3300000: ballfoot
     3300002: ballfoot_bottom
     3300004: ballfoot_midfoot_attach
@@ -99,6 +105,8 @@ ModelImporter:
     3300040: widening
     3300042: widening_calf_attach
     3300044: widening_heel_attach
+    3300046: calf_side1
+    3300048: calf_side2
     4300000: toe_bottom
     4300002: ballfoot_bottom
     4300004: midfoot_bottom
@@ -122,6 +130,8 @@ ModelImporter:
     4300040: heel
     4300042: calf
     4300044: widening
+    4300046: calf_side2
+    4300048: calf_side1
     7400000: Default Take
     9500000: //RootNode
   materials:
