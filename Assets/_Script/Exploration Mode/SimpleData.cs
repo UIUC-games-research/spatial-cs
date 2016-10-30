@@ -31,6 +31,7 @@ public class SimpleData : MonoBehaviour
 	// Internal data collection.
 	// IE stuff that may as well just be done in this script.
 	float standstillTimer = 0f;
+	float jumpTimer = 0f;
 
 	void Awake ()
 	{
@@ -75,6 +76,18 @@ public class SimpleData : MonoBehaviour
 			timer = 0f;
 		}
 
+		// Jump
+		jumpTimer += Time.deltaTime;
+		if (Input.GetKey(KeyCode.Space)){
+			if (jumpTimer > 1f){
+				if (transform.position.y > 33) {
+					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + "Highland" + "," + jumpTimer);
+				} else {
+					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + SceneManager.GetActiveScene ().name + "," + jumpTimer);
+				}
+				jumpTimer = 0f;
+			}
+		}
 		// Timer for standing still, based on keypresses.
 		standstillTimer += Time.deltaTime;
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Space) || Input.GetMouseButton(1))
@@ -126,7 +139,6 @@ public class SimpleData : MonoBehaviour
 	{
 		// Calculate path length.
 		WriteStringToFile("MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
-
 		// Close file.
 		sw_Position.Close();
 	}

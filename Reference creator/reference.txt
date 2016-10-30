@@ -1,4 +1,3 @@
-
 0 canyon_time
 1 highland_time
 2 ruinedcity_time
@@ -127,6 +126,11 @@
 125 key1_avg_btw_rot
 126 key1_avg_btw_fuse
 127 key1_avg_btw_switch
-128 num_jumps
-129 avg_btw_jump
-130 
+128 num_jumps_canyon2
+129 num_jumps_highland
+130 num_jumps_ruinedcity
+131 total_jumps
+132 avg_btw_jump_canyon2
+133 avg_btw_jump_highland
+134 avg_btw_jump_ruinedcity
+135 avg_btw_jump_total

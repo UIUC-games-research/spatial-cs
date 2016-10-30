@@ -18,7 +18,7 @@ public class DataConverter : MonoBehaviour {
 	ArrayList movementData;
 	ArrayList pickups;
 	ArrayList construction;
-	ArrayList all;
+	ArrayList jumps;
 
 	void Awake ()
 	{
@@ -67,7 +67,8 @@ public class DataConverter : MonoBehaviour {
 			"key1_xrot,key1_yrot,key1_zrot,key1_total_rot,key1_wrong_face,key1_wrong_rot," +
 			"key1_total_errors,key1_parts_switches,key1_cam_rot,key1_rot_per_attempt,key1_avg_angle,key1_sessions,"+
 			"key1_cam_zoom,key1_avg_btw_rot,key1_avg_btw_fuse,key1_avg_btw_switch,");
-			sb.Append ("num_jumps,avg_btw_jump,");
+			sb.Append ("num_jumps_canyon2,num_jumps_highland,num_jumps_ruinedcity,total_jumps,avg_btw_jump_canyon2,"+
+				"avg_btw_jump_highland,avg_btw_jump_ruinedcity,avg_btw_jump_total");
 			sw.WriteLine (sb);
 			sw.Write (playerID+",");
 			sw.Close ();
@@ -93,10 +94,13 @@ public class DataConverter : MonoBehaviour {
 		movementData = new ArrayList ();
 		pickups = new ArrayList ();
 		construction = new ArrayList ();
+		jumps = new ArrayList();
 
 		while (!sr.EndOfStream){
 			string temp = sr.ReadLine ();
-			if (temp.Contains ("PICKUP")) {
+			if (temp.Contains("JUMP")){
+				jumps.Add(temp);
+			} else if (temp.Contains ("PICKUP")) {
 				pickups.Add (temp);
 			} else if (temp.Contains ("TIMESPENT_INLEVEL")) {
 				timeData.Add (temp);
@@ -116,12 +120,14 @@ public class DataConverter : MonoBehaviour {
 		float part1 = 0f, part2 = 0f, part3 = 0f, part4 = 0f, part5 = 0f, part6 = 0f;
 		//float timeConstruct = 0f;
 		//int xrot = 0, yrot = 0, zrot = 0, wrong_face = 0, wrong_rot = 0, avgRot = 0;
-		// t : index for timespent; p : index for pickups; m : index for movement; c : index for construction
-		int t = 0, p = 0, m = 0, c = 0;
+		// t : index for timespent; p : index for pickups; m : index for movement; c : index for construction  j: index for jumps
+		int t = 0, p = 0, m = 0, c = 0, j = 0;
 		float totalTime = 0f;
+		int numJumps = 0;
+		float totalJumpTime = 0f;
 		// hardcode final array length
-		float[] all = new float[129];
-		for (int i = 0; i < 129; i++) {
+		float[] all = new float[136];
+		for (int i = 0; i < 136; i++) {
 			all [i] = 0;
 		}
 		// Canyon part. part1 = toesole, part2 = toe, part3 = body, part4 = calf, part5 = trim, part6 = sole.
@@ -139,20 +145,18 @@ public class DataConverter : MonoBehaviour {
 				b = movementData [movementData.Count - 1].ToString ();
 				b = b.Substring (0, b.IndexOf (","));
 			}
-			timespent = (float)Math.Max (Decimal.Parse(a), Decimal.Parse(b));
-		} else if (timeDataCount == 1) {
-			string temp = timeData [0].ToString ();
-			string temp2 = temp.Substring (0, temp.IndexOf (","));
-			temp = temp.Substring(temp.LastIndexOf(",") + 1); 
-			timespent = float.Parse (temp);
-			totalTime = float.Parse (temp2);
+			timespent = (float)Math.Max (Decimal.Parse (a), Decimal.Parse (b));
 		} else {
-			string temp = timeData [1].ToString ();
-			string temp2 = temp.Substring (0, temp.IndexOf (","));
-			temp = temp.Substring(temp.LastIndexOf(",") + 1); 
-			timespent = float.Parse (temp);
-			totalTime = float.Parse (temp2);
-			t = 1;
+			for (int i = 0; i < timeDataCount; i++) {
+				string temp = timeData [i].ToString ();
+				if (temp.Contains ("Canyon2")) {
+					string temp2 = temp.Substring (0, temp.IndexOf (","));
+					temp = temp.Substring(temp.LastIndexOf(",") + 1); 
+					totalTime = float.Parse (temp2);
+					timespent = float.Parse (temp);
+					t = i;
+				}
+			}
 		}
 		// time of pickups of parts and batteries. Require timespent > 0 to work.
 		for (int i = 0; i < pickups.Count; i++) {
@@ -266,8 +270,20 @@ public class DataConverter : MonoBehaviour {
 				}
 			}
 		}
-		Debug.Log ("c at end of canyon" + c);
-		Debug.Log (construction [c]);
+
+		//canyon2 jumps
+
+		for (int i = 0; i < jumps.Count; i++){
+			string name = jumps [i].ToString();
+			float time = float.Parse(name.Substring(0, name.IndexOf(",")));
+			if (time > totalTime) {
+				j = i;
+				break;
+			}
+			numJumps++;
+			totalJumpTime += float.Parse(name.Substring(name.LastIndexOf(",") + 1));
+		}
+
 
 		all [26] = tutorial1Data [0];
 		all [27] = tutorial1Data [1];
@@ -314,6 +330,8 @@ public class DataConverter : MonoBehaviour {
 		all [23] = part2;
 		all [24] = part4;
 		all [25] = part5;
+		all [128] = numJumps;
+		all [132] = totalJumpTime / numJumps;
 		// Highland part
 			//Highland time
 		for (int i = t; i < timeDataCount; i++) {
@@ -383,8 +401,21 @@ public class DataConverter : MonoBehaviour {
 				c += 10;
 			}
 		}
-		Debug.Log ("c at end of highland" + c);
-		Debug.Log (construction [c]);
+
+		//highland jump
+		numJumps = 0;
+		totalJumpTime = 0f;
+		for (int i = j; i < jumps.Count; i++){
+			string name = jumps [i].ToString();
+			float time = float.Parse(name.Substring(0, name.IndexOf(",")));
+			if (time > totalTime) {
+				j = i;
+				break;
+			}
+			numJumps++;
+			totalJumpTime += float.Parse(name.Substring(name.LastIndexOf(",") + 1));
+		}
+
 		all [1] = timespent;
 		all [9] = NumStoodstill;
 		all [13] = TimeStoodstill;
@@ -406,6 +437,9 @@ public class DataConverter : MonoBehaviour {
 		all [87] = axeData [8];
 		all [88] = axeData [6] + axeData [7] + axeData [8];
 		all [89] = axeData [9];
+
+		all [129] = numJumps;
+		all [133] = totalJumpTime / numJumps;
 		// Ruined City part
 			// timespent
 		for (int i = t; i < timeDataCount; i++) {
@@ -427,12 +461,13 @@ public class DataConverter : MonoBehaviour {
 		for (int i = p; i < pickups.Count; i++) {
 			string name = pickups [i].ToString();
 			float time = 0f;
-			time = float.Parse (name.Substring (0, name.IndexOf (",")));
-			name = name.Substring (name.LastIndexOf (",")+1);
-			if (time > totalTime) {
+			if (!name.Contains("RuinedCity")) {
 				p = i;
 				break;
 			}
+			time = float.Parse (name.Substring (0, name.IndexOf (",")));
+			name = name.Substring (name.LastIndexOf (",")+1);
+
 			if (name == "Battery") {
 				batteries++;
 			} else if (name == "Key 1 Upright L") {
@@ -495,6 +530,21 @@ public class DataConverter : MonoBehaviour {
 				c += 10;
 			}
 		}
+
+		//RuinedCity jumps
+		numJumps = 0;
+		totalJumpTime = 0f;
+		for (int i = j; i < jumps.Count; i++){
+			string name = jumps [i].ToString();
+			float time = float.Parse(name.Substring(0, name.IndexOf(",")));
+			if (!name.Contains("RuinedCity")) {
+				j = i;
+				break;
+			}
+			numJumps++;
+			totalJumpTime += float.Parse(name.Substring(name.LastIndexOf(",") + 1));
+		}
+
 		all [2] = timespent;
 		all [3] = all [0] + all [1] + all [2];
 		all [10] = NumStoodstill;
@@ -527,7 +577,10 @@ public class DataConverter : MonoBehaviour {
 		all [117] = key1Data [8];
 		all [118] = key1Data [6] + key1Data [7] + key1Data [8];
 		all [121] = key1Data [9];
-
+		all [130] = numJumps;
+		all [134] = totalJumpTime / numJumps;
+		all [131] = all [128] + all [129] + all [130];
+		all [135] = (all [132] + all [133] + all [134]) / 3;
 
 		writeToCsv (all);
 
