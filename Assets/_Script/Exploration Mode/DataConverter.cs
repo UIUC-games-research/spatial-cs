@@ -23,8 +23,6 @@ public class DataConverter : MonoBehaviour {
 	void Awake ()
 	{
 		CreateInitialFiles();
-		Debug.Log ("here");
-
 	}
 
 	public static void CreateInitialFiles()
@@ -32,7 +30,6 @@ public class DataConverter : MonoBehaviour {
 		// Create the csv file if not exist
 		playerID = "Player_at_time_" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second;
 		path = Application.dataPath + "/data.csv";
-		Debug.Log (path);
 		if (!File.Exists (path)) {
 			sw = File.CreateText (path);
 			StringBuilder sb = new StringBuilder();
@@ -116,17 +113,17 @@ public class DataConverter : MonoBehaviour {
 	void readVars(){
 		float timespent = 0f, TimeStoodstill = 0f; 
 		int NumStoodstill = 0, batteries = 0;
-		string part1 = "", part2 = "", part3 = "", part4 = "", part5 = "", part6 = "";
+		float part1 = 0f, part2 = 0f, part3 = 0f, part4 = 0f, part5 = 0f, part6 = 0f;
 		//float timeConstruct = 0f;
 		//int xrot = 0, yrot = 0, zrot = 0, wrong_face = 0, wrong_rot = 0, avgRot = 0;
 		// t : index for timespent; p : index for pickups; m : index for movement; c : index for construction
 		int t = 0, p = 0, m = 0, c = 0;
+		float totalTime = 0f;
 		// hardcode final array length
-		ArrayList all = new ArrayList (129);
+		float[] all = new float[129];
 		for (int i = 0; i < 129; i++) {
-			all.Add (0);
+			all [i] = 0;
 		}
-		Debug.Log (all.Count);
 		// Canyon part. part1 = toesole, part2 = toe, part3 = body, part4 = calf, part5 = trim, part6 = sole.
 
 		// hardcode canyon2 time. If no record, time = last time in ALLDATA.txt, if more than 2 records, take the second one.
@@ -145,23 +142,26 @@ public class DataConverter : MonoBehaviour {
 			timespent = (float)Math.Max (Decimal.Parse(a), Decimal.Parse(b));
 		} else if (timeDataCount == 1) {
 			string temp = timeData [0].ToString ();
+			string temp2 = temp.Substring (0, temp.IndexOf (","));
 			temp = temp.Substring(temp.LastIndexOf(",") + 1); 
 			timespent = float.Parse (temp);
+			totalTime = float.Parse (temp2);
 		} else {
 			string temp = timeData [1].ToString ();
+			string temp2 = temp.Substring (0, temp.IndexOf (","));
 			temp = temp.Substring(temp.LastIndexOf(",") + 1); 
 			timespent = float.Parse (temp);
+			totalTime = float.Parse (temp2);
 			t = 1;
 		}
-
 		// time of pickups of parts and batteries. Require timespent > 0 to work.
 		for (int i = 0; i < pickups.Count; i++) {
 			string name = pickups [i].ToString();
-			string time = name;
+			float time = 0f;
+			time = float.Parse (name.Substring (0, name.IndexOf (",")));
 			name = name.Substring (name.LastIndexOf (",")+1);
-			time = time.Substring (0, time.IndexOf (","));
-			if (float.Parse (time) > timespent) {
-				p = i - 1;
+			if (time > totalTime) {
+				p = i;
 				break;
 			}
 			if (name == "Rocket Boots Toe Sole") {
@@ -186,7 +186,7 @@ public class DataConverter : MonoBehaviour {
 			string name = movementData [i].ToString();
 			string time = name;
 			if (!name.Contains ("Canyon2")) {
-				m = i - 1;
+				m = i;
 				break;
 			} else {
 				time = time.Substring (time.LastIndexOf (",") + 1);
@@ -207,7 +207,6 @@ public class DataConverter : MonoBehaviour {
 		float[] axeData = new float[10];
 		float[] key1Data = new float[10];
 
-		Debug.Log (construction.Count);
 		// Not sure whether two tutorials are available, can be optimized after confirmation
 		if (construction.Count > 0) {
 			if (construction [0].ToString ().Contains ("tutorial1")) {
@@ -234,6 +233,7 @@ public class DataConverter : MonoBehaviour {
 					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
 					bootData [i] = float.Parse (constrcuctTemp);
 					c++;
+					Debug.Log (c);
 				}
 			}
 		}
@@ -266,7 +266,8 @@ public class DataConverter : MonoBehaviour {
 				}
 			}
 		}
-
+		Debug.Log ("c at end of canyon" + c);
+		Debug.Log (construction [c]);
 
 		all [26] = tutorial1Data [0];
 		all [27] = tutorial1Data [1];
@@ -318,23 +319,24 @@ public class DataConverter : MonoBehaviour {
 		for (int i = t; i < timeDataCount; i++) {
 			string temp = timeData [i].ToString ();
 			if (temp.Contains ("Highland")) {
+				string temp2 = temp.Substring (0, temp.IndexOf (","));
 				temp = temp.Substring(temp.LastIndexOf(",") + 1); 
+				totalTime = float.Parse (temp2);
 				timespent = float.Parse (temp);
 				t = i;
 			}
 		}
-
 			//Highland pickups
 			// part1 = trapezoid part2 = bottompoint part3 = toppoint part4 = haft
 			// part5 = head  part6 = shaft
 		batteries = 0;
 		for (int i = p; i < pickups.Count; i++) {
 			string name = pickups [i].ToString();
-			string time = name;
+			float time = 0f;
+			time = float.Parse (name.Substring (0, name.IndexOf (",")));
 			name = name.Substring (name.LastIndexOf (",")+1);
-			time = time.Substring (0, time.IndexOf (","));
-			if (float.Parse (time) > timespent) {
-				p = i - 1;
+			if (time > totalTime) {
+				p = i;
 				break;
 			}
 			if (name == "Sledgehammer Trapezoid") {
@@ -361,7 +363,7 @@ public class DataConverter : MonoBehaviour {
 			string name = movementData [i].ToString();
 			string time = name;
 			if (!name.Contains ("Highland")) {
-				m = i - 1;
+				m = i;
 				break;
 			} else {
 				time = time.Substring (time.LastIndexOf (",") + 1);
@@ -371,27 +373,29 @@ public class DataConverter : MonoBehaviour {
 		}
 
 		//sledge construction
-		if (constructionData.Count > c) {
-			if (construction [c + 1].ToString ().Contains ("axe")) {
+		if (construction.Count > c) {
+			if (construction [c].ToString ().Contains ("axe")) {
 				for (int i = 0; i < axeData.Length; i++) {
-					string constrcuctTemp = construction [i+c+1].ToString ();
+					string constrcuctTemp = construction [i+c].ToString ();
 					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
 					axeData [i] = float.Parse (constrcuctTemp);
-					c++;
 				}
+				c += 10;
 			}
 		}
+		Debug.Log ("c at end of highland" + c);
+		Debug.Log (construction [c]);
 		all [1] = timespent;
 		all [9] = NumStoodstill;
 		all [13] = TimeStoodstill;
 		all [5] = TimeStoodstill / NumStoodstill;
 		all [17] = batteries;
-		all [75] = part6;
-		all [76] = part1;
+		all [75] = part1;
+		all [76] = part2;
 		all [77] = part3;
-		all [78] = part2;
-		all [79] = part4;
-		all [80] = part5;
+		all [78] = part4;
+		all [79] = part5;
+		all [80] = part6;
 
 		all [81] = axeData [0];
 		all [82] = axeData [1];
@@ -403,13 +407,135 @@ public class DataConverter : MonoBehaviour {
 		all [88] = axeData [6] + axeData [7] + axeData [8];
 		all [89] = axeData [9];
 		// Ruined City part
+			// timespent
+		for (int i = t; i < timeDataCount; i++) {
+			string temp = timeData [i].ToString ();
+			if (temp.Contains ("RuinedCity")) {
+				Debug.Log (temp);
+				string temp2 = temp.Substring (0, temp.IndexOf (","));
+				temp = temp.Substring(temp.LastIndexOf(",") + 1);
+				timespent = float.Parse (temp);
+				totalTime = float.Parse (temp2);
+				t = i;
+			}
+		}
+		//pickup
+		// part1 = uprightL  part2 = danglyT part 3 = waluigi part 4 = walkingpants part 5 = uprightrect part 6 = uprightT
+		float clue1 = 0f, clue2 = 0f, clue3 = 0f, clue4 = 0f, clue5 = 0f, clue6 = 0f;
+		int cluesCollected = 0;
+		batteries = 0;
+		for (int i = p; i < pickups.Count; i++) {
+			string name = pickups [i].ToString();
+			float time = 0f;
+			time = float.Parse (name.Substring (0, name.IndexOf (",")));
+			name = name.Substring (name.LastIndexOf (",")+1);
+			if (time > totalTime) {
+				p = i;
+				break;
+			}
+			if (name == "Battery") {
+				batteries++;
+			} else if (name == "Key 1 Upright L") {
+				part1 = time;
+			} else if (name == "Key 1 Dangly T") {
+				part2 = time;
+			} else if (name == "Key 1 Waluigi") {
+				part3 = time;
+			} else if (name == "Key 1 Walking Pants") {
+				part4 = time;
+			} else if (name == "Key 1 Upright Rect") {
+				part5 = time;
+			} else if (name == "Key 1 Upright T") {
+				part6 = time;
+			} else if (name == "CityPart1") {
+				clue1 = time;
+				cluesCollected++;
+			} else if (name == "CityPart2") {
+				clue2 = time;
+				cluesCollected++;
+			} else if (name == "CityPart3") {
+				clue3 = time;
+				cluesCollected++;
+			} else if (name == "CityPart4") {
+				clue4 = time;
+				cluesCollected++;
+			} else if (name == "CityPart5") {
+				clue5 = time;
+				cluesCollected++;
+			} else if (name == "CityPart6") {
+				clue6 = time;
+				cluesCollected++;
+			}
+		} 
+
+		// RuinedCity Stoodstill
+		NumStoodstill = 0;
+		TimeStoodstill = 0f;
+		for (int i = m; i < movementData.Count; i++) {
+			string name = movementData [i].ToString();
+			string time = name;
+			if (!name.Contains ("RuinedCity")) {
+				m = i;
+				break;
+			} else {
+				time = time.Substring (time.LastIndexOf (",") + 1);
+				NumStoodstill++;
+				TimeStoodstill += float.Parse (time);
+			}
+		}
+
+		//RuinedCity Construction
+		if (construction.Count > c) {
+			if (construction [c].ToString ().Contains ("key1")) {
+				for (int i = 0; i < key1Data.Length; i++) {
+					string constrcuctTemp = construction [i+c].ToString ();
+					constrcuctTemp = constrcuctTemp.Substring (constrcuctTemp.LastIndexOf (",") + 1);
+					key1Data [i] = float.Parse (constrcuctTemp);
+				}
+				c += 10;
+			}
+		}
+		all [2] = timespent;
+		all [3] = all [0] + all [1] + all [2];
+		all [10] = NumStoodstill;
+		all [11] = all [8] + all [9] + all [10];
+		all [14] = TimeStoodstill;
+		all [15] = all [12] + all [13] + all [14];
+		all [6] = TimeStoodstill / NumStoodstill;
+		all [7] = all [15] / all [11];
+		all [18] = batteries;
+		all [19] = all [16] + all [17] + all [18];
+		all [98] = part1;
+		all [99] = part2;
+		all [100] = part3;
+		all [101] = part4;
+		all [102] = part5;
+		all [103] = part6;
+		all [104] = clue1;
+		all [105] = clue2;
+		all [106] = clue3;
+		all [107] = clue4;
+		all [108] = clue5;
+		all [109] = clue6;
+		all [110] = cluesCollected;
+		all [111] = key1Data [0];
+		all [112] = key1Data [1];
+		all [113] = key1Data [2];
+		all [114] = key1Data [3];
+		all [115] = key1Data [4];
+		all [116] = key1Data [7];
+		all [117] = key1Data [8];
+		all [118] = key1Data [6] + key1Data [7] + key1Data [8];
+		all [121] = key1Data [9];
+
+
 		writeToCsv (all);
 
 	}
-	void writeToCsv(ArrayList a){
+	void writeToCsv(float[] a){
 		sw = new StreamWriter (path, true);
-		for (int i = 0; i < a.Count; i++) {
-			sw.Write (a [i] + ",");
+		for (int i = 0; i < a.Length; i++) {
+			sw.Write (a[i] + ",");
 		}
 		sw.WriteLine ();
 		sw.Close ();
