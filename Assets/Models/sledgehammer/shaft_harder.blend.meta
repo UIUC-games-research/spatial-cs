@@ -11,27 +11,42 @@ ModelImporter:
     100006: shaft_small_trapezoid_attach
     100008: shaft_spike_attach
     100010: shaft_trapezoid_attach
+    100012: shaft_dec_bot
+    100014: shaft_dec_mid
+    100016: shaft_dec_top
     400000: shaft
     400002: shaft_haft_attach
     400004: //RootNode
     400006: shaft_small_trapezoid_attach
     400008: shaft_spike_attach
     400010: shaft_trapezoid_attach
+    400012: shaft_dec_bot
+    400014: shaft_dec_mid
+    400016: shaft_dec_top
     2300000: shaft
     2300002: shaft_haft_attach
     2300004: shaft_small_trapezoid_attach
     2300006: shaft_spike_attach
     2300008: shaft_trapezoid_attach
+    2300010: shaft_dec_bot
+    2300012: shaft_dec_mid
+    2300014: shaft_dec_top
     3300000: shaft
     3300002: shaft_haft_attach
     3300004: shaft_small_trapezoid_attach
     3300006: shaft_spike_attach
     3300008: shaft_trapezoid_attach
+    3300010: shaft_dec_bot
+    3300012: shaft_dec_mid
+    3300014: shaft_dec_top
     4300000: shaft_small_trapezoid_attach
     4300002: shaft_spike_attach
     4300004: shaft_trapezoid_attach
     4300006: shaft_haft_attach
     4300008: shaft
+    4300010: shaft_dec_bot
+    4300012: shaft_dec_mid
+    4300014: shaft_dec_top
     7400000: Default Take
     9500000: //RootNode
   materials:

@@ -40,6 +40,9 @@ ModelImporter:
     100064: trapezoid
     100066: trapezoid_head_attach
     100068: trapezoid_shaft_attach
+    100070: shaft_dec_bot
+    100072: shaft_dec_mid
+    100074: shaft_dec_top
     400000: //RootNode
     400002: bottom_point_left
     400004: bottom_point_left_head_attach
@@ -75,6 +78,9 @@ ModelImporter:
     400064: trapezoid
     400066: trapezoid_head_attach
     400068: trapezoid_shaft_attach
+    400070: shaft_dec_bot
+    400072: shaft_dec_mid
+    400074: shaft_dec_top
     2300000: bottom_point_left
     2300002: bottom_point_left_head_attach
     2300004: bottom_point_right
@@ -109,6 +115,9 @@ ModelImporter:
     2300062: trapezoid
     2300064: trapezoid_head_attach
     2300066: trapezoid_shaft_attach
+    2300068: shaft_dec_bot
+    2300070: shaft_dec_mid
+    2300072: shaft_dec_top
     3300000: bottom_point_left
     3300002: bottom_point_left_head_attach
     3300004: bottom_point_right
@@ -143,6 +152,9 @@ ModelImporter:
     3300062: trapezoid
     3300064: trapezoid_head_attach
     3300066: trapezoid_shaft_attach
+    3300068: shaft_dec_bot
+    3300070: shaft_dec_mid
+    3300072: shaft_dec_top
     4300000: shaft_small_trapezoid_attach
     4300002: small_trapezoid_shaft_attach
     4300004: small_tip_small_trapezoid_attach
@@ -177,6 +189,9 @@ ModelImporter:
     4300062: haft_shaft_attach
     4300064: shaft
     4300066: haft
+    4300068: shaft_dec_bot
+    4300070: shaft_dec_mid
+    4300072: shaft_dec_top
     7400000: Default Take
     9500000: //RootNode
   materials:

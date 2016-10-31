@@ -125,12 +125,19 @@ public class FuseEvent : MonoBehaviour {
 						break;
 					case "axe":
 						Sledgehammer.ActivateSledgehammer();
-						InventoryController.items.Remove("Sledgehammer Bottom Point");
+						InventoryController.items.Remove("Sledgehammer Bottom Point Left");
+						InventoryController.items.Remove("Sledgehammer Bottom Point Right");
 						InventoryController.items.Remove("Sledgehammer Haft");
 						InventoryController.items.Remove("Sledgehammer Head");
 						InventoryController.items.Remove("Sledgehammer Shaft");
-						InventoryController.items.Remove("Sledgehammer Top Point");
+						InventoryController.items.Remove("Sledgehammer Top Point Left");
+						InventoryController.items.Remove("Sledgehammer Top Point Right");
 						InventoryController.items.Remove("Sledgehammer Trapezoid");
+						InventoryController.items.Remove("Sledgehammer Small Tip");
+						InventoryController.items.Remove("Sledgehammer Small Trapezoid");
+						InventoryController.items.Remove("Sledgehammer Spike");
+						InventoryController.items.Remove("Sledgehammer Tip");
+
 						InventoryController.ConvertInventoryToTokens();
 						LoadUtils.LoadScene(InventoryController.levelName);
 						LoadUtils.UnloadScene("axe");
@@ -323,14 +330,52 @@ public class FuseEvent : MonoBehaviour {
 			HashSet<string> fuseToForHead = new HashSet<string>();
 			fuseToForHead.Add ("trapezoid_head_attach");
 			fuseMapping.Add ("head_trapezoid_attach", fuseToForHead);
+			fuseMapping.Add ("head_tip_attach", fuseToForHead);
 
-			HashSet<string> fuseToForBottomPoint = new HashSet<string>();
-			fuseToForBottomPoint.Add ("head_bottom_point_attach");
-			fuseMapping.Add ("bottom_point_head_attach", fuseToForBottomPoint);
+			HashSet<string> fuseToForBottomPointLeft1 = new HashSet<string>();
+			HashSet<string> fuseToForBottomPointLeft2 = new HashSet<string>();
+			fuseToForBottomPointLeft1.Add ("head_bottom_point_left_attach");
+			fuseToForBottomPointLeft2.Add ("bottom_point_right_left_attach");
+			fuseMapping.Add ("bottom_point_left_head_attach", fuseToForBottomPointLeft1);
+			fuseMapping.Add ("bottom_point_left_right_attach", fuseToForBottomPointLeft2);
 
-			HashSet<string> fuseToForTopPoint = new HashSet<string>();
-			fuseToForTopPoint.Add ("head_top_point_attach");
-			fuseMapping.Add ("top_point_head_attach", fuseToForTopPoint);
+			HashSet<string> fuseToForBottomPointRight1 = new HashSet<string>();
+			HashSet<string> fuseToForBottomPointRight2 = new HashSet<string>();
+			fuseToForBottomPointRight1.Add ("head_bottom_point_right_attach");
+			fuseToForBottomPointRight2.Add ("bottom_point_left_right_attach");
+			fuseMapping.Add ("bottom_point_right_head_attach", fuseToForBottomPointRight1);
+			fuseMapping.Add ("bottom_point_right_left_attach", fuseToForBottomPointRight2);
+
+			HashSet<string> fuseToForTopPointLeft1 = new HashSet<string>();
+			HashSet<string> fuseToForTopPointLeft2 = new HashSet<string>();
+			fuseToForTopPointLeft1.Add ("head_top_point_left_attach");
+			fuseToForTopPointLeft2.Add ("top_point_right_left_attach");
+			fuseMapping.Add ("top_point_left_head_attach", fuseToForTopPointLeft1);
+			fuseMapping.Add ("top_point_left_right_attach", fuseToForTopPointLeft2);
+
+			HashSet<string> fuseToForTopPointRight1 = new HashSet<string>();
+			HashSet<string> fuseToForTopPointRight2 = new HashSet<string>();
+			fuseToForTopPointRight1.Add ("head_top_point_right_attach");
+			fuseToForTopPointRight2.Add ("top_point_left_right_attach");
+			fuseMapping.Add ("top_point_right_head_attach", fuseToForTopPointRight1);
+			fuseMapping.Add ("top_point_right_left_attach", fuseToForTopPointRight2);
+
+			HashSet<string> fuseToForSmallTip = new HashSet<string>();
+			fuseToForSmallTip.Add ("small_trapezoid_small_tip_attach");
+			fuseMapping.Add ("small_tip_small_trapezoid_attach", fuseToForSmallTip);
+
+			HashSet<string> fuseToForSmallTrapezoid = new HashSet<string>();
+			fuseToForSmallTrapezoid.Add ("shaft_small_trapezoid_attach");
+			fuseMapping.Add ("small_trapezoid_shaft_attach", fuseToForSmallTrapezoid);
+
+			HashSet<string> fuseToForSpike = new HashSet<string>();
+			fuseToForSpike.Add ("shaft_spike_attach");
+			fuseMapping.Add ("spike_shaft_attach", fuseToForSpike);
+
+			HashSet<string> fuseToForTip = new HashSet<string>();
+			fuseToForTip.Add ("head_tip_attach");
+			fuseMapping.Add ("tip_head_attach", fuseToForTip);
+
 		} else if(mode.Equals ("hull")) {
 			HashSet<string> fuseToForBridgeCoverLeft = new HashSet<string>();
 			HashSet<string> fuseToForBridgeCoverRight = new HashSet<string>();
@@ -734,6 +779,28 @@ public class FuseEvent : MonoBehaviour {
 	//			fuseSet8.Add ("Toe_Side_Attach");
 	//			fuseMapping.Add ("Body_Side_Attach", fuseSet8);
 	//		}
+
+// 		Old, easy Axe level
+//		else if (mode.Equals ("axe")) {
+//			HashSet<string> fuseToForHaft = new HashSet<string>();
+//			fuseToForHaft.Add ("shaft_haft_attach");
+//			fuseMapping.Add ("haft_shaft_attach", fuseToForHaft);
+//
+//			HashSet<string> fuseToForTrapezoid = new HashSet<string>();
+//			fuseToForTrapezoid.Add ("shaft_trapezoid_attach");
+//			fuseMapping.Add ("trapezoid_shaft_attach", fuseToForTrapezoid);
+//
+//			HashSet<string> fuseToForHead = new HashSet<string>();
+//			fuseToForHead.Add ("trapezoid_head_attach");
+//			fuseMapping.Add ("head_trapezoid_attach", fuseToForHead);
+//
+//			HashSet<string> fuseToForBottomPoint = new HashSet<string>();
+//			fuseToForBottomPoint.Add ("head_bottom_point_attach");
+//			fuseMapping.Add ("bottom_point_head_attach", fuseToForBottomPoint);
+//
+//			HashSet<string> fuseToForTopPoint = new HashSet<string>();
+//			fuseToForTopPoint.Add ("head_top_point_attach");
+//			fuseMapping.Add ("top_point_head_attach", fuseToForTopPoint);
 		
 	}
 
@@ -957,18 +1024,31 @@ public class FuseEvent : MonoBehaviour {
 			uprightRect.transform.parent = group.transform;
 		} else if (mode.Equals ("axe")) {
 			GameObject shaft = GameObject.Find ("startObject");
-			GameObject head = GameObject.Find ("headPrefab(Clone)");
-			GameObject trapezoid = GameObject.Find ("trapezoidPrefab(Clone)");
-			GameObject topPoint = GameObject.Find ("top_pointPrefab(Clone)");
-			GameObject bottomPoint = GameObject.Find ("bottom_pointPrefab(Clone)");
-			GameObject haft = GameObject.Find ("haftPrefab(Clone)");
+			GameObject head = GameObject.Find ("head_harderPrefab(Clone)");
+			GameObject trapezoid = GameObject.Find ("trapezoid_harderPrefab(Clone)");
+			GameObject topPointLeft = GameObject.Find ("top_point_leftPrefab(Clone)");
+			GameObject topPointRight = GameObject.Find ("top_point_rightPrefab(Clone)");
+			GameObject bottomPointLeft = GameObject.Find ("bottom_point_leftPrefab(Clone)");
+			GameObject bottomPointRight = GameObject.Find ("bottom_point_rightPrefab(Clone)");
+			GameObject haft = GameObject.Find ("haft_harderPrefab(Clone)");
+			GameObject smallTip = GameObject.Find ("small_tipPrefab(Clone)");
+			GameObject smallTrapezoid = GameObject.Find ("small_trapezoidPrefab(Clone)");
+			GameObject spike = GameObject.Find ("spikePrefab(Clone)");
+			GameObject tip = GameObject.Find ("tipPrefab(Clone)");
 
 			shaft.transform.parent = group.transform;
 			head.transform.parent = group.transform;
 			trapezoid.transform.parent = group.transform;
-			topPoint.transform.parent = group.transform;
-			bottomPoint.transform.parent = group.transform;
+			topPointLeft.transform.parent = group.transform;
+			topPointRight.transform.parent = group.transform;
+			bottomPointLeft.transform.parent = group.transform;
+			bottomPointRight.transform.parent = group.transform;
 			haft.transform.parent = group.transform;
+			smallTip.transform.parent = group.transform;
+			smallTrapezoid.transform.parent = group.transform;
+			spike.transform.parent = group.transform;
+			tip.transform.parent = group.transform;
+
 		} else if (mode.Equals ("hull")) {
 			GameObject bridgeWhole = GameObject.Find ("bridgeWhole");
 			GameObject bridgeCover = GameObject.Find ("bridge_coverPrefab(Clone)");
@@ -1092,6 +1172,22 @@ public class FuseEvent : MonoBehaviour {
 //		toe.transform.parent = group.transform;
 //		trim.transform.parent = group.transform;
 //		calf.transform.parent = group.transform;
+
+// 		Old, easy Axe level
+//		else if (mode.Equals ("axe")) {
+//			GameObject shaft = GameObject.Find ("startObject");
+//			GameObject head = GameObject.Find ("headPrefab(Clone)");
+//			GameObject trapezoid = GameObject.Find ("trapezoidPrefab(Clone)");
+//			GameObject topPoint = GameObject.Find ("top_pointPrefab(Clone)");
+//			GameObject bottomPoint = GameObject.Find ("bottom_pointPrefab(Clone)");
+//			GameObject haft = GameObject.Find ("haftPrefab(Clone)");
+//
+//			shaft.transform.parent = group.transform;
+//			head.transform.parent = group.transform;
+//			trapezoid.transform.parent = group.transform;
+//			topPoint.transform.parent = group.transform;
+//			bottomPoint.transform.parent = group.transform;
+//			haft.transform.parent = group.transform;
 	}
 		
 
