@@ -1,3 +1,0 @@
-Hmm...Try selecting a different shape on the block or selecting a different part from the menu below.
-[CHOOSE]
-Dresha will now flash box|nowhere|wrongFaceDreshaReadyToFlashBox

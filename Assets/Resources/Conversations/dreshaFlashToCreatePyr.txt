@@ -1,4 +1,0 @@
--is what I'll be building.
-I can place parts around like so-
-[CHOOSE]
-this goes to next convo|nowhere|dreshaReadyToCreatePyr

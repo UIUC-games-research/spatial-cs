@@ -1,3 +1,0 @@
-Here, try building this!
-[CHOOSE]
-Dresha will now flash the finished image|nowhere|dreshaReadyToFlashFinishedImage2

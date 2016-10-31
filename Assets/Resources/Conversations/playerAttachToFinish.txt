@@ -1,5 +1,0 @@
-Wow, it worked!
-Looks like you're better at this than I am.
-Now try attaching the rest of the parts!
-[CHOOSE]
-Dresha will now wait for next fuse attempt|nowhere

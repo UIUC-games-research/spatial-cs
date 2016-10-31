@@ -1,4 +1,0 @@
--until the two black shapes are facing each other, like before.
-Then try attaching again.
-[CHOOSE]
-Dresha will now wait for next fuse attempt|nowhere|blockTryDifferentShape3
