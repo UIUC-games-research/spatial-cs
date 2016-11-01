@@ -27,9 +27,9 @@ public class RecipesDB : MonoBehaviour
 												  new int[] { 1, 1, 1, 1, 1, 1, 1 });
 
 	public static Recipe Sledgehammer = new Recipe("Sledgehammer",
-												   "axe",
-												   new string[] { "Sledgehammer Bottom Point", "Sledgehammer Haft", "Sledgehammer Head", "Sledgehammer Shaft", "Sledgehammer Top Point", "Sledgehammer Trapezoid" },
-												   new int[] { 1, 1, 1, 1, 1, 1 });
+												   "sledgehammer",
+												   new string[] { "Sledgehammer Bottom Point", "Sledgehammer Haft", "Sledgehammer Head", "Sledgehammer Shaft", "Sledgehammer Top Point", "Sledgehammer Trapezoid", "Sledgehammer Bottom Point Right", "Sledgehammer Top Point Right", "Sledgehammer Small Tip", "Sledgehammer Small Trap", "Sledgehammer Tip" },
+												   new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
 
 	public static Recipe Key1 = new Recipe("Key 1",
 										   "key1",
