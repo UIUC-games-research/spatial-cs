@@ -47,3 +47,5 @@ EditorBuildSettings:
     path: Assets/_Scene/Construction/spaceshipEngine.unity
   - enabled: 1
     path: Assets/_Scene/Construction/forceGloves.unity
+  - enabled: 1
+    path: Assets/_Scene/Construction/rocketBoots.unity

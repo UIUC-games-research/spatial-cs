@@ -111,11 +111,11 @@ public class FuseEvent : MonoBehaviour {
 						break;
 					case "boot":
 						RocketBoots.ActivateBoots();
-						InventoryController.items.Remove("Rocket Boots Heel");
-						InventoryController.items.Remove("Rocket Boots Ballfoot");
+						InventoryController.items.Remove("Rocket Boots Body");
 						InventoryController.items.Remove("Rocket Boots Calf");
-						InventoryController.items.Remove("Rocket Boots Midfoot");
+						InventoryController.items.Remove("Rocket Boots Sole");
 						InventoryController.items.Remove("Rocket Boots Toe");
+						InventoryController.items.Remove("Rocket Boots ToeSole");
 						InventoryController.items.Remove("Rocket Boots Trim");
 						InventoryController.items.Remove("Rocket Boots Widening");
 						InventoryController.ConvertInventoryToTokens();
