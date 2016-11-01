@@ -1,0 +1,3 @@
+One more tutorial before you build the Rocket Boots!
+[CHOOSE]
+|nowhere|finishedIntroTutorial2

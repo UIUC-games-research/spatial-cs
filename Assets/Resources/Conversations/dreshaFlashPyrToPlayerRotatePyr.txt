@@ -1,5 +1,0 @@
--until the black shapes are facing each other.
-Go ahead and rotate the part to where you think it should be.
-[CHOOSE]
-I'm done rotating|playerRotateToAttach
-Huh?|playerRotateToAttach

@@ -111,25 +111,33 @@ public class FuseEvent : MonoBehaviour {
 						break;
 					case "boot":
 						RocketBoots.ActivateBoots();
-						InventoryController.items.Remove("Rocket Boots Sole");
-						InventoryController.items.Remove("Rocket Boots Toe Sole");
+						InventoryController.items.Remove("Rocket Boots Heel");
+						InventoryController.items.Remove("Rocket Boots Ballfoot");
+						InventoryController.items.Remove("Rocket Boots Calf");
+						InventoryController.items.Remove("Rocket Boots Midfoot");
 						InventoryController.items.Remove("Rocket Boots Toe");
 						InventoryController.items.Remove("Rocket Boots Trim");
-						InventoryController.items.Remove("Rocket Boots Calf");
-						InventoryController.items.Remove("Rocket Boots Body");
+						InventoryController.items.Remove("Rocket Boots Widening");
 						InventoryController.ConvertInventoryToTokens();
 						//RecipesDB.unlockedRecipes.Remove(RecipesDB.RocketBoots);
 						LoadUtils.LoadScene(InventoryController.levelName);
-						LoadUtils.UnloadScene("construction");
+						LoadUtils.UnloadScene("rocketBoots");
 						break;
 					case "axe":
 						Sledgehammer.ActivateSledgehammer();
-						InventoryController.items.Remove("Sledgehammer Bottom Point");
+						InventoryController.items.Remove("Sledgehammer Bottom Point Left");
+						InventoryController.items.Remove("Sledgehammer Bottom Point Right");
 						InventoryController.items.Remove("Sledgehammer Haft");
 						InventoryController.items.Remove("Sledgehammer Head");
 						InventoryController.items.Remove("Sledgehammer Shaft");
-						InventoryController.items.Remove("Sledgehammer Top Point");
+						InventoryController.items.Remove("Sledgehammer Top Point Left");
+						InventoryController.items.Remove("Sledgehammer Top Point Right");
 						InventoryController.items.Remove("Sledgehammer Trapezoid");
+						InventoryController.items.Remove("Sledgehammer Small Tip");
+						InventoryController.items.Remove("Sledgehammer Small Trapezoid");
+						InventoryController.items.Remove("Sledgehammer Spike");
+						InventoryController.items.Remove("Sledgehammer Tip");
+
 						InventoryController.ConvertInventoryToTokens();
 						LoadUtils.LoadScene(InventoryController.levelName);
 						LoadUtils.UnloadScene("axe");
@@ -246,85 +254,51 @@ public class FuseEvent : MonoBehaviour {
 		// HashSets containing the names of all fused part ACs that a given active part AC can attach to.
 		// Thus, fuseMapping["blah"] = the set of all fused part ACs that the active part "blah" can
 		// attach to. Most of your HashSets will only contain one string.
-		if (mode.Equals("tutorial1")) {
-			HashSet<string> fuseSet2 = new HashSet<string>();
-			HashSet<string> fuseSet3 = new HashSet<string>();
-			fuseSet1.Add("box_pyr_attach");
-			fuseSet2.Add("box_tri_attach");
-			fuseSet3.Add("box_cone_attach");
-			fuseMapping.Add("pyr_box_attach", fuseSet1);
-			fuseMapping.Add("tri_box_attach", fuseSet2);
-			fuseMapping.Add("cone_box_attach", fuseSet3);
-		} else if (mode.Equals("tutorial2")) {
-			HashSet<string> fuseSet2 = new HashSet<string>();
-			HashSet<string> fuseSet3 = new HashSet<string>();
-			HashSet<string> fuseSet4 = new HashSet<string>();
-			fuseSet1.Add("longbox_smallbox_yellow_attach");
-			fuseSet2.Add("longbox_tallbox_attach");
-			fuseSet3.Add("longbox_bigbox_attach");
-			fuseSet4.Add("bigbox_smallbox_blue_attach");
-			fuseMapping.Add("smallbox_yellow_longbox_attach", fuseSet1);
-			fuseMapping.Add("tallbox_longbox_attach", fuseSet2);
-			fuseMapping.Add("bigbox_longbox_attach", fuseSet3);
-			fuseMapping.Add("smallbox_blue_bigbox_attach", fuseSet4);
-		} else if (mode.Equals("boot")) {
-			fuseSet1.Add ("Sole_Heel_Top_Attach");
-			fuseMapping.Add ("Body_Bottom_Attach",fuseSet1);
-			HashSet<string> fuseSet2 = new HashSet<string>();
-			fuseSet2.Add ("Sole_Heel_Side_Attach");
-			fuseMapping.Add ("Sole_Toe_Side_Attach", fuseSet2);
-			HashSet<string> fuseSet3 = new HashSet<string>();
-			fuseSet3.Add ("Toe_Bottom_Attach");
-			fuseMapping.Add ("Sole_Toe_Top_Attach", fuseSet3);
-			HashSet<string> fuseSet4 = new HashSet<string>();
-			fuseSet4.Add ("Sole_Toe_Top_Attach");
-			fuseMapping.Add ("Toe_Bottom_Attach", fuseSet4);
-			HashSet<string> fuseSet5 = new HashSet<string>();
-			fuseSet5.Add ("Body_Side_Attach");
-			fuseMapping.Add ("Toe_Side_Attach", fuseSet5);
-			HashSet<string> fuseSet6 = new HashSet<string>();
-			fuseSet6.Add ("Body_Top_Attach");
-			fuseMapping.Add ("Calf_Bottom_Attach", fuseSet6);
-			HashSet<string> fuseSet7 = new HashSet<string>();
-			fuseSet7.Add ("Calf_Top_Attach");
-			fuseMapping.Add ("Top_Trim_Attach", fuseSet7);
-			HashSet<string> fuseSet8 = new HashSet<string>();
-			fuseSet8.Add ("Toe_Side_Attach");
-			fuseMapping.Add ("Body_Side_Attach", fuseSet8);
 
-		} else if (mode.Equals("intro")) {
-			fuseSet1.Add ("bottom_attach");
-			fuseMapping.Add ("mid_bottom_attach", fuseSet1);
-			HashSet<string> fuseSet2 = new HashSet<string>();
-			fuseSet2.Add ("mid_attach");
-			fuseMapping.Add ("mid_top_attach", fuseSet2);
+		//fuseSets contain already fused attachments
+		//fuseMapping key = not yet fused (AC) attachments
+		if (mode.Equals ("tutorial1")) {
+			HashSet<string> fuseSet2 = new HashSet<string> ();
+			HashSet<string> fuseSet3 = new HashSet<string> ();
+			fuseSet1.Add ("box_pyr_attach");
+			fuseSet2.Add ("box_tri_attach");
+			fuseSet3.Add ("box_cone_attach");
+			fuseMapping.Add ("pyr_box_attach", fuseSet1);
+			fuseMapping.Add ("tri_box_attach", fuseSet2);
+			fuseMapping.Add ("cone_box_attach", fuseSet3);
 
-		} else if(mode.Equals ("ebg")) {
-			fuseSet1.Add ("base_grip_attach");
-			fuseMapping.Add ("grip_base_attach", fuseSet1);
-			fuseMapping.Add ("grip_body_attach", fuseSet1);
-			HashSet<string> fuseToForBody = new HashSet<string>();
-			fuseToForBody.Add ("grip_body_attach");
-			fuseToForBody.Add ("grip_base_attach");
-			fuseMapping.Add ("body_grip_attach", fuseToForBody);
-			HashSet<string> fuseToForStrutBodyAttach = new HashSet<string>();
-			fuseToForStrutBodyAttach.Add ("body_strut_left_attach");
-			fuseToForStrutBodyAttach.Add ("body_strut_right_attach");
-			fuseToForStrutBodyAttach.Add ("body_strut_top_attach");
-			fuseMapping.Add ("strut_top_body_attach", fuseToForStrutBodyAttach);
-			HashSet<string> fuseToForGenerator = new HashSet<string>();
-			fuseToForGenerator.Add ("strut_top_generator_attach");
-			fuseMapping.Add ("generator_strut_top_attach", fuseToForGenerator);
-			fuseMapping.Add ("generator_strut_left_attach", fuseToForGenerator);
-			fuseMapping.Add ("generator_strut_right_attach", fuseToForGenerator);
-			HashSet<string> fuseToForStrutGeneratorAttach = new HashSet<string>();
-			fuseToForStrutGeneratorAttach.Add ("generator_strut_top_attach");
-			fuseToForStrutGeneratorAttach.Add ("generator_strut_left_attach");
-			fuseToForStrutGeneratorAttach.Add ("generator_strut_right_attach");
-			fuseMapping.Add ("strut_top_generator_attach", fuseToForStrutGeneratorAttach);
-			HashSet<string> fuseToForPointy = new HashSet<string>();
-			fuseToForPointy.Add ("strut_top_pointy_attach");
-			fuseMapping.Add ("pointy_strut_top_attach", fuseToForPointy);
+		} else if (mode.Equals ("tutorial2")) {
+			HashSet<string> fuseSet2 = new HashSet<string> ();
+			HashSet<string> fuseSet3 = new HashSet<string> ();
+			HashSet<string> fuseSet4 = new HashSet<string> ();
+			fuseSet1.Add ("longbox_smallbox_yellow_attach");
+			fuseSet2.Add ("longbox_tallbox_attach");
+			fuseSet3.Add ("longbox_bigbox_attach");
+			fuseSet4.Add ("bigbox_smallbox_blue_attach");
+			fuseMapping.Add ("smallbox_yellow_longbox_attach", fuseSet1);
+			fuseMapping.Add ("tallbox_longbox_attach", fuseSet2);
+			fuseMapping.Add ("bigbox_longbox_attach", fuseSet3);
+			fuseMapping.Add ("smallbox_blue_bigbox_attach", fuseSet4);
+
+		} else if (mode.Equals ("boot")) {
+			fuseSet1.Add ("heel_widening_attach");
+			fuseMapping.Add ("widening_heel_attach", fuseSet1);
+			HashSet<string> fuseSet2 = new HashSet<string> ();
+			fuseSet2.Add ("heel_midfoot_attach");
+			fuseMapping.Add ("midfoot_heel_attach", fuseSet2);
+			HashSet<string> fuseSet3 = new HashSet<string> ();
+			fuseSet3.Add ("widening_calf_attach");
+			fuseMapping.Add ("calf_widening_attach", fuseSet3);
+			HashSet<string> fuseSet4 = new HashSet<string> ();
+			fuseSet4.Add ("calf_trim_attach");
+			fuseMapping.Add ("trim_calf_attach", fuseSet4);
+			HashSet<string> fuseSet5 = new HashSet<string> ();
+			fuseSet5.Add ("midfoot_ballfoot_attach");
+			fuseMapping.Add ("ballfoot_midfoot_attach", fuseSet5);
+			HashSet<string> fuseSet6 = new HashSet<string> ();
+			fuseSet6.Add ("ballfoot_toe_attach");
+			fuseMapping.Add ("toe_ballfoot_attach", fuseSet6);
+
 		} else if (mode.Equals ("key1")) {
 			HashSet<string> ULDTSet = new HashSet<string>();
 			ULDTSet.Add ("dangly_T_upright_L_attach");
@@ -356,14 +330,52 @@ public class FuseEvent : MonoBehaviour {
 			HashSet<string> fuseToForHead = new HashSet<string>();
 			fuseToForHead.Add ("trapezoid_head_attach");
 			fuseMapping.Add ("head_trapezoid_attach", fuseToForHead);
+			fuseMapping.Add ("head_tip_attach", fuseToForHead);
 
-			HashSet<string> fuseToForBottomPoint = new HashSet<string>();
-			fuseToForBottomPoint.Add ("head_bottom_point_attach");
-			fuseMapping.Add ("bottom_point_head_attach", fuseToForBottomPoint);
+			HashSet<string> fuseToForBottomPointLeft1 = new HashSet<string>();
+			HashSet<string> fuseToForBottomPointLeft2 = new HashSet<string>();
+			fuseToForBottomPointLeft1.Add ("head_bottom_point_left_attach");
+			fuseToForBottomPointLeft2.Add ("bottom_point_right_left_attach");
+			fuseMapping.Add ("bottom_point_left_head_attach", fuseToForBottomPointLeft1);
+			fuseMapping.Add ("bottom_point_left_right_attach", fuseToForBottomPointLeft2);
 
-			HashSet<string> fuseToForTopPoint = new HashSet<string>();
-			fuseToForTopPoint.Add ("head_top_point_attach");
-			fuseMapping.Add ("top_point_head_attach", fuseToForTopPoint);
+			HashSet<string> fuseToForBottomPointRight1 = new HashSet<string>();
+			HashSet<string> fuseToForBottomPointRight2 = new HashSet<string>();
+			fuseToForBottomPointRight1.Add ("head_bottom_point_right_attach");
+			fuseToForBottomPointRight2.Add ("bottom_point_left_right_attach");
+			fuseMapping.Add ("bottom_point_right_head_attach", fuseToForBottomPointRight1);
+			fuseMapping.Add ("bottom_point_right_left_attach", fuseToForBottomPointRight2);
+
+			HashSet<string> fuseToForTopPointLeft1 = new HashSet<string>();
+			HashSet<string> fuseToForTopPointLeft2 = new HashSet<string>();
+			fuseToForTopPointLeft1.Add ("head_top_point_left_attach");
+			fuseToForTopPointLeft2.Add ("top_point_right_left_attach");
+			fuseMapping.Add ("top_point_left_head_attach", fuseToForTopPointLeft1);
+			fuseMapping.Add ("top_point_left_right_attach", fuseToForTopPointLeft2);
+
+			HashSet<string> fuseToForTopPointRight1 = new HashSet<string>();
+			HashSet<string> fuseToForTopPointRight2 = new HashSet<string>();
+			fuseToForTopPointRight1.Add ("head_top_point_right_attach");
+			fuseToForTopPointRight2.Add ("top_point_left_right_attach");
+			fuseMapping.Add ("top_point_right_head_attach", fuseToForTopPointRight1);
+			fuseMapping.Add ("top_point_right_left_attach", fuseToForTopPointRight2);
+
+			HashSet<string> fuseToForSmallTip = new HashSet<string>();
+			fuseToForSmallTip.Add ("small_trapezoid_small_tip_attach");
+			fuseMapping.Add ("small_tip_small_trapezoid_attach", fuseToForSmallTip);
+
+			HashSet<string> fuseToForSmallTrapezoid = new HashSet<string>();
+			fuseToForSmallTrapezoid.Add ("shaft_small_trapezoid_attach");
+			fuseMapping.Add ("small_trapezoid_shaft_attach", fuseToForSmallTrapezoid);
+
+			HashSet<string> fuseToForSpike = new HashSet<string>();
+			fuseToForSpike.Add ("shaft_spike_attach");
+			fuseMapping.Add ("spike_shaft_attach", fuseToForSpike);
+
+			HashSet<string> fuseToForTip = new HashSet<string>();
+			fuseToForTip.Add ("head_tip_attach");
+			fuseMapping.Add ("tip_head_attach", fuseToForTip);
+
 		} else if(mode.Equals ("hull")) {
 			HashSet<string> fuseToForBridgeCoverLeft = new HashSet<string>();
 			HashSet<string> fuseToForBridgeCoverRight = new HashSet<string>();
@@ -741,6 +753,54 @@ public class FuseEvent : MonoBehaviour {
 
 		}
 		
+	// 		Old, difficult Rocket Boots level
+	//		else if (mode.Equals ("boot")) {
+	//			fuseSet1.Add ("Sole_Heel_Top_Attach");
+	//			fuseMapping.Add ("Body_Bottom_Attach", fuseSet1);
+	//			HashSet<string> fuseSet2 = new HashSet<string> ();
+	//			fuseSet2.Add ("Sole_Heel_Side_Attach");
+	//			fuseMapping.Add ("Sole_Toe_Side_Attach", fuseSet2);
+	//			HashSet<string> fuseSet3 = new HashSet<string> ();
+	//			fuseSet3.Add ("Toe_Bottom_Attach");
+	//			fuseMapping.Add ("Sole_Toe_Top_Attach", fuseSet3);
+	//			HashSet<string> fuseSet4 = new HashSet<string> ();
+	//			fuseSet4.Add ("Sole_Toe_Top_Attach");
+	//			fuseMapping.Add ("Toe_Bottom_Attach", fuseSet4);
+	//			HashSet<string> fuseSet5 = new HashSet<string> ();
+	//			fuseSet5.Add ("Body_Side_Attach");
+	//			fuseMapping.Add ("Toe_Side_Attach", fuseSet5);
+	//			HashSet<string> fuseSet6 = new HashSet<string> ();
+	//			fuseSet6.Add ("Body_Top_Attach");
+	//			fuseMapping.Add ("Calf_Bottom_Attach", fuseSet6);
+	//			HashSet<string> fuseSet7 = new HashSet<string> ();
+	//			fuseSet7.Add ("Calf_Top_Attach");
+	//			fuseMapping.Add ("Top_Trim_Attach", fuseSet7);
+	//			HashSet<string> fuseSet8 = new HashSet<string> ();
+	//			fuseSet8.Add ("Toe_Side_Attach");
+	//			fuseMapping.Add ("Body_Side_Attach", fuseSet8);
+	//		}
+
+// 		Old, easy Axe level
+//		else if (mode.Equals ("axe")) {
+//			HashSet<string> fuseToForHaft = new HashSet<string>();
+//			fuseToForHaft.Add ("shaft_haft_attach");
+//			fuseMapping.Add ("haft_shaft_attach", fuseToForHaft);
+//
+//			HashSet<string> fuseToForTrapezoid = new HashSet<string>();
+//			fuseToForTrapezoid.Add ("shaft_trapezoid_attach");
+//			fuseMapping.Add ("trapezoid_shaft_attach", fuseToForTrapezoid);
+//
+//			HashSet<string> fuseToForHead = new HashSet<string>();
+//			fuseToForHead.Add ("trapezoid_head_attach");
+//			fuseMapping.Add ("head_trapezoid_attach", fuseToForHead);
+//
+//			HashSet<string> fuseToForBottomPoint = new HashSet<string>();
+//			fuseToForBottomPoint.Add ("head_bottom_point_attach");
+//			fuseMapping.Add ("bottom_point_head_attach", fuseToForBottomPoint);
+//
+//			HashSet<string> fuseToForTopPoint = new HashSet<string>();
+//			fuseToForTopPoint.Add ("head_top_point_attach");
+//			fuseMapping.Add ("top_point_head_attach", fuseToForTopPoint);
 		
 	}
 
@@ -827,13 +887,13 @@ public class FuseEvent : MonoBehaviour {
 			source.PlayOneShot (failure);
 
 		} else if (!fuseMapping.ContainsKey (selectedObject.name)){
-			//print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
+			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
 			//display error on screen for 1 sec
 			StartCoroutine(errorWrongFace());
 
 		} else if(fuseMapping[selectedObject.name].Contains(selectedFuseTo.name) && positionMatches (selectedObject, selectedFuseTo)) {
 	
-			//print ("Successful fuse!");
+			print ("Successful fuse!");
 			fuseStatus="success";
 			source.PlayOneShot (success);
 			selectedObject.GetComponent<FuseBehavior>().fuse(selectedFuseTo.name, selectedFuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag);
@@ -845,9 +905,6 @@ public class FuseEvent : MonoBehaviour {
 			if(done ()) {
 				stopLevelTimer();
 				printLevelData();
-				if(mode != "intro") {
-					//GameObject.Find ("GlobalVariables").GetComponent<GlobalVariables>().setLevelCompleted(mode);
-				}
 				tutorialOn = false;
 				rotatePanelGroup.alpha = 0;
 				bottomPanelGroup.alpha = 0;
@@ -855,33 +912,29 @@ public class FuseEvent : MonoBehaviour {
 				finishedImage.enabled = false;
 				GameObject.Find("Back Button").SetActive(false);
 
-				// tutorials wait to enable text till conversation is over
-				// tutorials wait to enable I'm ready button till conversation is over
-				if(mode != "tutorial1" && mode != "tutorial2") {
-					claimItem.gameObject.SetActive(true);
-					congrats.enabled = true;
-				}
+				claimItem.gameObject.SetActive(true);
+				congrats.enabled = true;
+
 				musicSource.Stop();
 				mainCam.transform.position = new Vector3(-90,80,-3.36f);
 				mainCam.transform.rotation = Quaternion.Euler(new Vector3(15,0,0));
 				source.Play ();
-				StartCoroutine(StartLoader());
 				StartCoroutine (FadeAudio (fadeTime, Fade.Out));
 			}
 
 
 
 		} else if (!fuseMapping[selectedObject.name].Contains (selectedFuseTo.name)) {
-			//print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
+			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
 			StartCoroutine(errorWrongFace());
 
 		} else if (fuseMapping[selectedObject.name].Contains (selectedFuseTo.name) && !positionMatches (selectedObject, selectedFuseTo)){
 			//rotation isn't right - tell player this or let them figure it out themselves?
 			StartCoroutine(errorWrongRotation());
-			//print ("Invalid fuse: Correct fuse selection, but the orientation isn't right!");
+			print ("Invalid fuse: Correct fuse selection, but the orientation isn't right!");
 		} else {
 			//this shouldn't happen
-			//print ("MYSTERIOUS FUSE ERROR");
+			print ("MYSTERIOUS FUSE ERROR");
 		}
 
 
@@ -932,45 +985,29 @@ public class FuseEvent : MonoBehaviour {
 			tallbox.transform.parent = group.transform;
 			bigbox.transform.parent = group.transform;
 			smallboxBlue.transform.parent = group.transform;
-		} else if(mode.Equals ("intro")) {
-			GameObject bottom = GameObject.Find ("intro_bottom");
-			GameObject mid = GameObject.Find ("introMidPrefab(Clone)");
-			GameObject top = GameObject.Find ("introTopPrefab(Clone)");
-			bottom.transform.parent = group.transform;
-			mid.transform.parent = group.transform;
-			top.transform.parent = group.transform;
 		} else if (mode.Equals ("boot")) {
-			GameObject heel = GameObject.Find ("rocket_boots_start");
-			GameObject body = GameObject.Find ("BodyPrefab(Clone)");
-			GameObject toeSole = GameObject.Find ("ToeSolePrefab(Clone)");
-			GameObject toe = GameObject.Find ("ToePrefab(Clone)");
-			GameObject trim = GameObject.Find ("trimPrefab(Clone)");
-			GameObject calf = GameObject.Find ("calfPrefab(Clone)");
+			GameObject heel = GameObject.Find ("startObject");
+			GameObject ballfoot = GameObject.Find ("ballfootPrefab(Clone)");
+			GameObject calf = GameObject.Find ("calf_harderPrefab(Clone)");
+			GameObject midfoot = GameObject.Find ("midfootPrefab(Clone)");
+			GameObject trim = GameObject.Find ("trimHarderPrefab(Clone)");
+			GameObject toe = GameObject.Find ("toeHarderPrefab(Clone)");
+			GameObject widening = GameObject.Find ("wideningPrefab(Clone)");
+			print ("Heel: " + heel.name);
+			print ("ballfoot: " + ballfoot.name);
+			print ("calf: " + calf.name);
+			print ("midfoot: " + midfoot.name);
+			print ("trim: " + trim.name);
+			print ("toe: " + toe.name);
+			print ("widening: " + widening.name);
 
 			heel.transform.parent = group.transform;
-			body.transform.parent = group.transform;
-			toeSole.transform.parent = group.transform;
-			toe.transform.parent = group.transform;
-			trim.transform.parent = group.transform;
+			ballfoot.transform.parent = group.transform;
 			calf.transform.parent = group.transform;
-		} else if (mode.Equals ("ebg")) {
-			GameObject start = GameObject.Find ("base");
-			GameObject body = GameObject.Find ("ebg_bodyPrefab(Clone)");
-			GameObject grip = GameObject.Find ("gripPrefab(Clone)");
-			GameObject generator = GameObject.Find ("generatorPrefab(Clone)");
-			GameObject[] struts = GameObject.FindGameObjectsWithTag("strut");
-			GameObject[] pointys = GameObject.FindGameObjectsWithTag ("pointy");
-
-			start.transform.parent = group.transform;
-			body.transform.parent = group.transform;
-			grip.transform.parent = group.transform;
-			generator.transform.parent = group.transform;
-			for(int i = 0; i < struts.Length; i++) {
-				struts[i].transform.parent = group.transform;
-			}
-			for(int i = 0; i < struts.Length; i++) {
-				pointys[i].transform.parent = group.transform;
-			}
+			midfoot.transform.parent = group.transform;
+			trim.transform.parent = group.transform;
+			toe.transform.parent = group.transform;
+			widening.transform.parent = group.transform;
 		} else if (mode.Equals ("key1")) {
 			GameObject danglyT = GameObject.Find ("dangly_T_complete");
 			GameObject uprightL = GameObject.Find ("upright_LPrefab(Clone)");
@@ -987,18 +1024,31 @@ public class FuseEvent : MonoBehaviour {
 			uprightRect.transform.parent = group.transform;
 		} else if (mode.Equals ("axe")) {
 			GameObject shaft = GameObject.Find ("startObject");
-			GameObject head = GameObject.Find ("headPrefab(Clone)");
-			GameObject trapezoid = GameObject.Find ("trapezoidPrefab(Clone)");
-			GameObject topPoint = GameObject.Find ("top_pointPrefab(Clone)");
-			GameObject bottomPoint = GameObject.Find ("bottom_pointPrefab(Clone)");
-			GameObject haft = GameObject.Find ("haftPrefab(Clone)");
+			GameObject head = GameObject.Find ("head_harderPrefab(Clone)");
+			GameObject trapezoid = GameObject.Find ("trapezoid_harderPrefab(Clone)");
+			GameObject topPointLeft = GameObject.Find ("top_point_leftPrefab(Clone)");
+			GameObject topPointRight = GameObject.Find ("top_point_rightPrefab(Clone)");
+			GameObject bottomPointLeft = GameObject.Find ("bottom_point_leftPrefab(Clone)");
+			GameObject bottomPointRight = GameObject.Find ("bottom_point_rightPrefab(Clone)");
+			GameObject haft = GameObject.Find ("haft_harderPrefab(Clone)");
+			GameObject smallTip = GameObject.Find ("small_tipPrefab(Clone)");
+			GameObject smallTrapezoid = GameObject.Find ("small_trapezoidPrefab(Clone)");
+			GameObject spike = GameObject.Find ("spikePrefab(Clone)");
+			GameObject tip = GameObject.Find ("tipPrefab(Clone)");
 
 			shaft.transform.parent = group.transform;
 			head.transform.parent = group.transform;
 			trapezoid.transform.parent = group.transform;
-			topPoint.transform.parent = group.transform;
-			bottomPoint.transform.parent = group.transform;
+			topPointLeft.transform.parent = group.transform;
+			topPointRight.transform.parent = group.transform;
+			bottomPointLeft.transform.parent = group.transform;
+			bottomPointRight.transform.parent = group.transform;
 			haft.transform.parent = group.transform;
+			smallTip.transform.parent = group.transform;
+			smallTrapezoid.transform.parent = group.transform;
+			spike.transform.parent = group.transform;
+			tip.transform.parent = group.transform;
+
 		} else if (mode.Equals ("hull")) {
 			GameObject bridgeWhole = GameObject.Find ("bridgeWhole");
 			GameObject bridgeCover = GameObject.Find ("bridge_coverPrefab(Clone)");
@@ -1108,29 +1158,38 @@ public class FuseEvent : MonoBehaviour {
 
 		group.transform.Rotate (0,50*Time.deltaTime,0);
 
+//		Old, difficult Rocket Boots level
+//		GameObject heel = GameObject.Find ("rocket_boots_start");
+//		GameObject body = GameObject.Find ("BodyPrefab(Clone)");
+//		GameObject toeSole = GameObject.Find ("ToeSolePrefab(Clone)");
+//		GameObject toe = GameObject.Find ("ToePrefab(Clone)");
+//		GameObject trim = GameObject.Find ("trimPrefab(Clone)");
+//		GameObject calf = GameObject.Find ("calfPrefab(Clone)");
+//
+//		heel.transform.parent = group.transform;
+//		body.transform.parent = group.transform;
+//		toeSole.transform.parent = group.transform;
+//		toe.transform.parent = group.transform;
+//		trim.transform.parent = group.transform;
+//		calf.transform.parent = group.transform;
 
+// 		Old, easy Axe level
+//		else if (mode.Equals ("axe")) {
+//			GameObject shaft = GameObject.Find ("startObject");
+//			GameObject head = GameObject.Find ("headPrefab(Clone)");
+//			GameObject trapezoid = GameObject.Find ("trapezoidPrefab(Clone)");
+//			GameObject topPoint = GameObject.Find ("top_pointPrefab(Clone)");
+//			GameObject bottomPoint = GameObject.Find ("bottom_pointPrefab(Clone)");
+//			GameObject haft = GameObject.Find ("haftPrefab(Clone)");
+//
+//			shaft.transform.parent = group.transform;
+//			head.transform.parent = group.transform;
+//			trapezoid.transform.parent = group.transform;
+//			topPoint.transform.parent = group.transform;
+//			bottomPoint.transform.parent = group.transform;
+//			haft.transform.parent = group.transform;
 	}
-
-	IEnumerator StartLoader () 
-	{
-		yield return new WaitForSeconds(1);
-		victoryCounter++;
-		if(victoryCounter==5)
-		{
-			victoryFinished=true;
-		} else if(victoryCounter==3) {
-			getPassword.enabled = true;
-		}
-		if(!victoryFinished){
-			StartCoroutine(StartLoader());
-		}else{
-			if(mode.Equals ("intro")) {
-				//Application.LoadLevel(2);
-				SceneManager.LoadScene("construction");
-			} 
-		} 
-	}
-
+		
 
 	IEnumerator FadeAudio (float timer, Fade fadeType) {
 		float start = fadeType == Fade.In? 0.0F : 1.0F;
@@ -1156,82 +1215,14 @@ public class FuseEvent : MonoBehaviour {
 		disableConnectButton();
 		disableRotationButtons();
 	}
-
-	//hand coded: gross, avoid in the future. Avoid symmetry.
-	private Quaternion correctGeneratorRotation(string selectedObjName, string newFuseToName) {
-		if(newFuseToName.Equals ("strut_top_generator_attach_left")) {
-			if(selectedObjName.Equals ("generator_strut_left_attach")) {
-				return Quaternion.Euler (0, 180, 0);
-			} else if(selectedObjName.Equals ("generator_strut_right_attach")) {
-				return Quaternion.Euler (0, 180, 120);
-			} else if(selectedObjName.Equals ("generator_strut_top_attach")) {
-				return Quaternion.Euler (0, 180, 240);
-			} else {
-				//print("Invalid selected object name: " + selectedObjName);
-				return new Quaternion();
-			}
-		} else if(newFuseToName.Equals ("strut_top_generator_attach_right")) {
-			if(selectedObjName.Equals ("generator_strut_left_attach")) {
-				return Quaternion.Euler (0, 180, 240);
-			} else if(selectedObjName.Equals ("generator_strut_right_attach")) {
-				return Quaternion.Euler (0, 180, 0);
-			} else if(selectedObjName.Equals ("generator_strut_top_attach")) {
-				return Quaternion.Euler (0, 180, 120);
-			} else {
-				//print("Invalid selected object name: " + selectedObjName);
-				return new Quaternion();
-			}
-		} else if(newFuseToName.Equals ("strut_top_generator_attach_top")) {
-			if(selectedObjName.Equals ("generator_strut_left_attach")) {
-				return Quaternion.Euler (0, 180, 120);
-			} else if(selectedObjName.Equals ("generator_strut_right_attach")) {
-				return Quaternion.Euler (0, 180, 240);
-			} else if(selectedObjName.Equals ("generator_strut_top_attach")) {
-				return Quaternion.Euler (0, 180, 0);
-			} else {
-				//print("Invalid selected object name: " + selectedObjName);
-				return new Quaternion();
-			}
-		} else {
-			//print ("Invalid newFuseTo name: " + newFuseToName);
-			return new Quaternion();
-		}
-	}
-
-	//hand coded: gross, avoid in the future. Avoid symmetry.
-	private Quaternion[] correctGripRotation(string selectedObjName) {
-		Quaternion[] correctRotations = new Quaternion[2];
-		if(selectedObjName.Equals ("grip_base_attach")) {
-			correctRotations[0] = Quaternion.Euler (0, 180, 180);
-			correctRotations[1] = Quaternion.Euler (0, 180, 0);
-			return correctRotations;
-		} else if(selectedObjName.Equals ("grip_body_attach")) {
-			correctRotations[0] = Quaternion.Euler (0, 0, 180);
-			correctRotations[1] = Quaternion.Euler (0, 0, 0);
-			return correctRotations;
-		} else {
-			//print ("Invalid selectedObj name: " + selectedObjName);
-			return new Quaternion[0];
-		}
-	}
-
+		
 	public bool positionMatches(GameObject selectedObj, GameObject fuseTo) {
-		//we know: selectedObj can be fused to fuseTo
-		//need to know: fuseLocation and fuseRotation according to whether it's left, right, or top
-		//append "_left", "_right", or "_top" to name of fuseTo where relevant
 
 		string newFuseToName = fuseTo.name + fuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag;
 		//print ("Selected Obj: " + selectedObj + ": Get Acceptable Rotations(" + newFuseToName + "):  ");
 
 		Quaternion[] acceptedRotations = new Quaternion[2];
-		if(selectedObj.transform.parent.name.Equals ("generatorPrefab(Clone)")) {
-			acceptedRotations[0] = correctGeneratorRotation (selectedObj.name, newFuseToName);
-		} else if (selectedObj.transform.parent.name.Equals("gripPrefab(Clone)")) {
-			acceptedRotations = correctGripRotation(selectedObj.name);
-		} else {
-			acceptedRotations = selectedObj.GetComponent<FuseBehavior>().getAcceptableRotations(newFuseToName);
-		}
-		
+		acceptedRotations = selectedObj.GetComponent<FuseBehavior>().getAcceptableRotations(newFuseToName);
 
 		Quaternion currentRotation = selectedObj.transform.rotation;
 		bool acceptable = false;
@@ -1240,7 +1231,7 @@ public class FuseEvent : MonoBehaviour {
 			if (Mathf.Abs(angle) < 5.0f) {
 				acceptable = true;
 			}
-			//print ("Angle: " + angle + ", Current Rotation: " + currentRotation.eulerAngles + " accepted: " + acceptedRotations[i].eulerAngles);
+			print ("Angle: " + angle + ", Current Rotation: " + currentRotation.eulerAngles + " accepted: " + acceptedRotations[i].eulerAngles);
 		}
 		return acceptable;
 	}

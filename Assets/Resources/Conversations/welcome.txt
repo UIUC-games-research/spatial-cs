@@ -1,0 +1,5 @@
+Welcome to Build Mode!
+Before you build the Rocket Boots, let's do a short tutorial.
+Press the How To Build button to read about how to use Build Mode!
+[CHOOSE]
+|nowhere|finishedIntroTutorial1

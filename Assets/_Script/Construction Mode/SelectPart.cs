@@ -20,8 +20,6 @@ public class SelectPart : MonoBehaviour {
 
 	private Color prevColorSelectedFuseTo;
 
-	//tutorial variables
-	public bool tutorialOn;
 	public string mode;
 
 	public Button connectButton;
@@ -131,11 +129,9 @@ public class SelectPart : MonoBehaviour {
 					//print ("prevSelected: " + prevSelectedObject.name);
 
 				}
-				if(!tutorialOn && selectedObject != null && selectedFuseTo != null) {
+				if(selectedObject != null && selectedFuseTo != null) {
 					connectButton.interactable = true;
-				} else {
-					connectButton.interactable = false;
-				}
+				} 
 
 				//! PART MOVEMENT.
 				// We ALWAYS need the hitinfo of selecting a part on the static object.
@@ -193,11 +189,6 @@ public class SelectPart : MonoBehaviour {
 			StartCoroutine(SweepPosition(selectedObject.transform.parent.gameObject, properFuseToPos - properOffset + (10 * globalHitInfo.normal), 30));
 		}
 	}
-
-	public void setTutorialOn(bool isOn) {
-		tutorialOn = isOn;
-	}
-
 
 	public GameObject getSelectedObject() {
 		return selectedObject;

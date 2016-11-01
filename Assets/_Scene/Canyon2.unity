@@ -2993,31 +2993,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 448626, guid: 4a8b8d8023dd0264a85bad34d9396ea4, type: 2}
   m_PrefabInternal: {fileID: 218845245}
---- !u!1 &220863845 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 123770, guid: f24127071708ca244a4f0a24ef8d7d74, type: 2}
-  m_PrefabInternal: {fileID: 1752362249}
---- !u!114 &220863846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 220863845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameOfStarter: Dresha
-  conversationName: Exp_3
-  allowEscape: 0
-  oneShot: 1
-  trigger: 0
-  keyRequired: 0
-  tokenWhitelist:
-  - Exp_2_Done
-  tokenBlacklist:
-  - Exp_3_Done
 --- !u!1 &225232374 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100024, guid: 0ddd7dbfe94f1b04d9b1ab53a03676a8, type: 3}
@@ -5244,22 +5219,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 472312, guid: fedb2bd5519d9ed4d8a9dbbb21257ff3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 472312, guid: fedb2bd5519d9ed4d8a9dbbb21257ff3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 472312, guid: fedb2bd5519d9ed4d8a9dbbb21257ff3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 19890108, guid: fedb2bd5519d9ed4d8a9dbbb21257ff3, type: 2}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fedb2bd5519d9ed4d8a9dbbb21257ff3, type: 2}
   m_IsPrefabParent: 0
@@ -5807,7 +5766,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 408308, guid: 983408bcd471aa24fa08437a7ad3ac30, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 408308, guid: 983408bcd471aa24fa08437a7ad3ac30, type: 2}
       propertyPath: m_LocalScale.x
@@ -7140,7 +7099,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 433078, guid: de93e1cadc8b74e4da0e85bd2092a9e0, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 433078, guid: de93e1cadc8b74e4da0e85bd2092a9e0, type: 2}
       propertyPath: m_LocalScale.x
@@ -8291,7 +8250,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 494210, guid: 48c0e4f579541a441970d54c6f4bdfa1, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 494210, guid: 48c0e4f579541a441970d54c6f4bdfa1, type: 2}
       propertyPath: m_LocalScale.x
@@ -8636,31 +8595,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 641001272}
---- !u!1 &650823431 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 138088, guid: 203e3682ca283da4fad6c8ee8e200e48, type: 2}
-  m_PrefabInternal: {fileID: 2085104568}
---- !u!114 &650823432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 650823431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameOfStarter: Dresha
-  conversationName: Exp_3
-  allowEscape: 0
-  oneShot: 1
-  trigger: 0
-  keyRequired: 0
-  tokenWhitelist:
-  - Exp_2_Done
-  tokenBlacklist:
-  - Exp_3_Done
 --- !u!1001 &659895621
 Prefab:
   m_ObjectHideFlags: 0
@@ -8757,22 +8691,6 @@ Prefab:
     - target: {fileID: 463962, guid: 84e8546f078680a4b964f22317c90956, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463962, guid: 84e8546f078680a4b964f22317c90956, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 463962, guid: 84e8546f078680a4b964f22317c90956, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 463962, guid: 84e8546f078680a4b964f22317c90956, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 19824252, guid: 84e8546f078680a4b964f22317c90956, type: 2}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84e8546f078680a4b964f22317c90956, type: 2}
@@ -9110,31 +9028,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 681824880}
---- !u!1 &698951472 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 147908, guid: 0c074bab64edcba40929404f49b2a890, type: 2}
-  m_PrefabInternal: {fileID: 1705943130}
---- !u!114 &698951473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 698951472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameOfStarter: Dresha
-  conversationName: Exp_3
-  allowEscape: 0
-  oneShot: 1
-  trigger: 0
-  keyRequired: 0
-  tokenWhitelist:
-  - Exp_2_Done
-  tokenBlacklist:
-  - Exp_3_Done
 --- !u!1 &704809208
 GameObject:
   m_ObjectHideFlags: 0
@@ -10271,6 +10164,52 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 448626, guid: 4a8b8d8023dd0264a85bad34d9396ea4, type: 2}
   m_PrefabInternal: {fileID: 761942339}
+--- !u!1001 &769715847
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2088878050}
+    m_Modifications:
+    - target: {fileID: 466642, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -294.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 466642, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 46.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 466642, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 425.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 466642, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.4119346
+      objectReference: {fileID: 0}
+    - target: {fileID: 466642, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.19208825
+      objectReference: {fileID: 0}
+    - target: {fileID: 466642, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.19208822
+      objectReference: {fileID: 0}
+    - target: {fileID: 466642, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8697782
+      objectReference: {fileID: 0}
+    - target: {fileID: 466642, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &769715848 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 466642, guid: 5f913c4d4bb62a447bb525f57e8ecb44, type: 2}
+  m_PrefabInternal: {fileID: 769715847}
 --- !u!4 &771825959 stripped
 Transform:
   m_PrefabParentObject: {fileID: 447838, guid: ff56a7adcd9f00649a3e13ce01ff65f9, type: 2}
@@ -12748,7 +12687,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 455082, guid: 2765dbd8639451142880c055f202a64d, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 455082, guid: 2765dbd8639451142880c055f202a64d, type: 2}
       propertyPath: m_LocalScale.x
@@ -18875,31 +18814,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 495638, guid: 1de742af2dc868e43914c7309a944e5a, type: 2}
   m_PrefabInternal: {fileID: 1445126530}
---- !u!1 &1452396370 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 128944, guid: fedb2bd5519d9ed4d8a9dbbb21257ff3, type: 2}
-  m_PrefabInternal: {fileID: 413908782}
---- !u!114 &1452396371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1452396370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameOfStarter: Dresha
-  conversationName: Exp_3
-  allowEscape: 0
-  oneShot: 1
-  trigger: 0
-  keyRequired: 0
-  tokenWhitelist:
-  - Exp_2_Done
-  tokenBlacklist:
-  - Exp_3_Done
 --- !u!1001 &1456853475
 Prefab:
   m_ObjectHideFlags: 0
@@ -20627,22 +20541,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 447838, guid: ff56a7adcd9f00649a3e13ce01ff65f9, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 447838, guid: ff56a7adcd9f00649a3e13ce01ff65f9, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 447838, guid: ff56a7adcd9f00649a3e13ce01ff65f9, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 19887580, guid: ff56a7adcd9f00649a3e13ce01ff65f9, type: 2}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff56a7adcd9f00649a3e13ce01ff65f9, type: 2}
   m_IsPrefabParent: 0
@@ -21815,31 +21713,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: d40054d6cf5e5e8438c9eb852f5f8a4f, type: 3}
---- !u!1 &1681004562 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 119100, guid: 84e8546f078680a4b964f22317c90956, type: 2}
-  m_PrefabInternal: {fileID: 661566629}
---- !u!114 &1681004563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1681004562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameOfStarter: Dresha
-  conversationName: Exp_3
-  allowEscape: 0
-  oneShot: 1
-  trigger: 0
-  keyRequired: 0
-  tokenWhitelist:
-  - Exp_2_Done
-  tokenBlacklist:
-  - Exp_3_Done
 --- !u!1001 &1681497256
 Prefab:
   m_ObjectHideFlags: 0
@@ -22120,22 +21993,6 @@ Prefab:
     - target: {fileID: 413652, guid: 0c074bab64edcba40929404f49b2a890, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 413652, guid: 0c074bab64edcba40929404f49b2a890, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 413652, guid: 0c074bab64edcba40929404f49b2a890, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 413652, guid: 0c074bab64edcba40929404f49b2a890, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 19874350, guid: 0c074bab64edcba40929404f49b2a890, type: 2}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c074bab64edcba40929404f49b2a890, type: 2}
@@ -22712,22 +22569,6 @@ Prefab:
     - target: {fileID: 496792, guid: f24127071708ca244a4f0a24ef8d7d74, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 496792, guid: f24127071708ca244a4f0a24ef8d7d74, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 496792, guid: f24127071708ca244a4f0a24ef8d7d74, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 496792, guid: f24127071708ca244a4f0a24ef8d7d74, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 19814308, guid: f24127071708ca244a4f0a24ef8d7d74, type: 2}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f24127071708ca244a4f0a24ef8d7d74, type: 2}
@@ -26365,31 +26206,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 495638, guid: 1de742af2dc868e43914c7309a944e5a, type: 2}
   m_PrefabInternal: {fileID: 1950764200}
---- !u!1 &1950838348 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 111792, guid: ff56a7adcd9f00649a3e13ce01ff65f9, type: 2}
-  m_PrefabInternal: {fileID: 1577976416}
---- !u!114 &1950838349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1950838348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameOfStarter: Dresha
-  conversationName: Exp_3
-  allowEscape: 0
-  oneShot: 1
-  trigger: 0
-  keyRequired: 0
-  tokenWhitelist:
-  - Exp_2_Done
-  tokenBlacklist:
-  - Exp_3_Done
 --- !u!1001 &1958913843
 Prefab:
   m_ObjectHideFlags: 0
@@ -26485,7 +26301,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461870, guid: 254cba7b498626f43bfa022132f31d7b, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 461870, guid: 254cba7b498626f43bfa022132f31d7b, type: 2}
       propertyPath: m_LocalScale.x
@@ -28299,7 +28115,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 427298, guid: 1bb3f55df92b5f74ba71e30ac98bda1e, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 427298, guid: 1bb3f55df92b5f74ba71e30ac98bda1e, type: 2}
       propertyPath: m_LocalScale.x
@@ -28367,22 +28183,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 400468, guid: 203e3682ca283da4fad6c8ee8e200e48, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 400468, guid: 203e3682ca283da4fad6c8ee8e200e48, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 400468, guid: 203e3682ca283da4fad6c8ee8e200e48, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 19833146, guid: 203e3682ca283da4fad6c8ee8e200e48, type: 2}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 203e3682ca283da4fad6c8ee8e200e48, type: 2}
   m_IsPrefabParent: 0
@@ -28421,6 +28221,7 @@ Transform:
   - {fileID: 771825959}
   - {fileID: 2085104569}
   - {fileID: 1705943131}
+  - {fileID: 769715848}
   - {fileID: 628408068}
   - {fileID: 1965099783}
   - {fileID: 559271036}
