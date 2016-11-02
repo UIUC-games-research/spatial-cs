@@ -53,6 +53,11 @@ public class InventoryPopulator : MonoBehaviour
 		// Create Icon and clean it up... a lot.
 		// Icon only works currently in Camera Space, so I've added a
 		// dedicated UI camera.
+		if (iconBase == null)
+		{
+			Debug.LogError("Icon base prefab not found!");
+			return;
+		}
 		GameObject icon = Instantiate(iconBase);
 		icon.transform.SetParent(parent);
 		icon.transform.localPosition = new Vector3(0f, 4f, -10f);		// Arbitrary.
