@@ -111,11 +111,11 @@ public class FuseEvent : MonoBehaviour {
 						break;
 					case "boot":
 						RocketBoots.ActivateBoots();
-						InventoryController.items.Remove("Rocket Boots Heel");
-						InventoryController.items.Remove("Rocket Boots Ballfoot");
+						InventoryController.items.Remove("Rocket Boots Body");
 						InventoryController.items.Remove("Rocket Boots Calf");
-						InventoryController.items.Remove("Rocket Boots Midfoot");
+						InventoryController.items.Remove("Rocket Boots Sole");
 						InventoryController.items.Remove("Rocket Boots Toe");
+						InventoryController.items.Remove("Rocket Boots Toe Sole");
 						InventoryController.items.Remove("Rocket Boots Trim");
 						InventoryController.items.Remove("Rocket Boots Widening");
 						InventoryController.ConvertInventoryToTokens();
@@ -125,22 +125,22 @@ public class FuseEvent : MonoBehaviour {
 						break;
 					case "axe":
 						Sledgehammer.ActivateSledgehammer();
-						InventoryController.items.Remove("Sledgehammer Bottom Point Left");
-						InventoryController.items.Remove("Sledgehammer Bottom Point Right");
-						InventoryController.items.Remove("Sledgehammer Haft");
-						InventoryController.items.Remove("Sledgehammer Head");
-						InventoryController.items.Remove("Sledgehammer Shaft");
-						InventoryController.items.Remove("Sledgehammer Top Point Left");
-						InventoryController.items.Remove("Sledgehammer Top Point Right");
 						InventoryController.items.Remove("Sledgehammer Trapezoid");
+						InventoryController.items.Remove("Sledgehammer Top Point");
+						InventoryController.items.Remove("Sledgehammer Shaft");
+						InventoryController.items.Remove("Sledgehammer Head");
+						InventoryController.items.Remove("Sledgehammer Haft");
+						InventoryController.items.Remove("Sledgehammer Bottom Point");
+						InventoryController.items.Remove("Sledgehammer Bottom Point Right");
+						InventoryController.items.Remove("Sledgehammer Trapezoid");
+						InventoryController.items.Remove("Sledgehammer Top Point Right");
 						InventoryController.items.Remove("Sledgehammer Small Tip");
-						InventoryController.items.Remove("Sledgehammer Small Trapezoid");
-						InventoryController.items.Remove("Sledgehammer Spike");
+						InventoryController.items.Remove("Sledgehammer Small Trap");
 						InventoryController.items.Remove("Sledgehammer Tip");
 
 						InventoryController.ConvertInventoryToTokens();
 						LoadUtils.LoadScene(InventoryController.levelName);
-						LoadUtils.UnloadScene("axe");
+						LoadUtils.UnloadScene("sledgehammer");
 						break;
 					case "key1":
 						ConversationTrigger.AddToken("player_has_key1");
