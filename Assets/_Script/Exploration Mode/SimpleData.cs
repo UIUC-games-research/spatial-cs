@@ -15,7 +15,7 @@ public class SimpleData : MonoBehaviour
 	// This will likely never change, as the game will always begin in exploration mode.
 
 	// Folder name for this session. Set in Awake using system time.
-	static string folder;
+	public static string folder;
 
 	// Writing
 	public float dataInterval = 1f;
@@ -31,6 +31,7 @@ public class SimpleData : MonoBehaviour
 	// Internal data collection.
 	// IE stuff that may as well just be done in this script.
 	float standstillTimer = 0f;
+	float jumpTimer = 0f;
 
 	void Awake ()
 	{
@@ -75,13 +76,29 @@ public class SimpleData : MonoBehaviour
 			timer = 0f;
 		}
 
+		// Jump
+		jumpTimer += Time.deltaTime;
+		if (Input.GetKey(KeyCode.Space)){
+			if (jumpTimer > 1f){
+				if (transform.position.y > 33) {
+					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + "Highland" + "," + jumpTimer);
+				} else {
+					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + SceneManager.GetActiveScene ().name + "," + jumpTimer);
+				}
+				jumpTimer = 0f;
+			}
+		}
 		// Timer for standing still, based on keypresses.
 		standstillTimer += Time.deltaTime;
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Space) || Input.GetMouseButton(1))
 		{
 			if (standstillTimer > 5f)
 			{
-				WriteStringToFile("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + standstillTimer);
+				if (transform.position.y > 33) {
+					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + "Highland" + "," + standstillTimer);
+				} else {
+					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + SceneManager.GetActiveScene ().name + "," + standstillTimer);
+				}
 			}
 			standstillTimer = 0f;
 		}
@@ -122,7 +139,6 @@ public class SimpleData : MonoBehaviour
 	{
 		// Calculate path length.
 		WriteStringToFile("MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
-
 		// Close file.
 		sw_Position.Close();
 	}
