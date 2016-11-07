@@ -65,6 +65,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 499014}
   - 95: {fileID: 9518152}
+  - 114: {fileID: 11403392}
   m_Layer: 0
   m_Name: right_tri_chunkPrefab
   m_TagString: Untagged
@@ -352,6 +353,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11403392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7665d6cceb2248499153f3484da570e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFused: 0
+  locationTag: 
 --- !u!114 &11449542
 MonoBehaviour:
   m_ObjectHideFlags: 1

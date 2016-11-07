@@ -10,23 +10,28 @@ ModelImporter:
     100004: ring_small_part_center_box_attach
     100006: ring_small_part_ring_large_part_attach
     100008: ring_small_part_ring_long_part_attach
+    100010: ring_small_part_right_tri_attach
     400000: //RootNode
     400002: ring_small_part
     400004: ring_small_part_center_box_attach
     400006: ring_small_part_ring_large_part_attach
     400008: ring_small_part_ring_long_part_attach
+    400010: ring_small_part_right_tri_attach
     2300000: ring_small_part
     2300002: ring_small_part_center_box_attach
     2300004: ring_small_part_ring_large_part_attach
     2300006: ring_small_part_ring_long_part_attach
+    2300008: ring_small_part_right_tri_attach
     3300000: ring_small_part
     3300002: ring_small_part_center_box_attach
     3300004: ring_small_part_ring_large_part_attach
     3300006: ring_small_part_ring_long_part_attach
+    3300008: ring_small_part_right_tri_attach
     4300000: ring_small_part_ring_large_part_attach
     4300002: ring_small_part_center_box_attach
     4300004: ring_small_part_ring_long_part_attach
     4300006: ring_small_part
+    4300008: ring_small_part_right_tri_attach
     7400000: Default Take
     9500000: //RootNode
   materials:

@@ -11,27 +11,32 @@ ModelImporter:
     100006: right_tri_right_tri_chunk_back_attach
     100008: right_tri_right_tri_chunk_side_attach
     100010: right_tri_ring_large_part_attach
+    100012: right_tri_ring_small_part_attach
     400000: right_tri
     400002: //RootNode
     400004: right_tri_right_tri_chunk_angle_attach
     400006: right_tri_right_tri_chunk_back_attach
     400008: right_tri_right_tri_chunk_side_attach
     400010: right_tri_ring_large_part_attach
+    400012: right_tri_ring_small_part_attach
     2300000: right_tri
     2300002: right_tri_right_tri_chunk_angle_attach
     2300004: right_tri_right_tri_chunk_back_attach
     2300006: right_tri_right_tri_chunk_side_attach
     2300008: right_tri_ring_large_part_attach
+    2300010: right_tri_ring_small_part_attach
     3300000: right_tri
     3300002: right_tri_right_tri_chunk_angle_attach
     3300004: right_tri_right_tri_chunk_back_attach
     3300006: right_tri_right_tri_chunk_side_attach
     3300008: right_tri_ring_large_part_attach
+    3300010: right_tri_ring_small_part_attach
     4300000: right_tri_right_tri_chunk_side_attach
     4300002: right_tri_right_tri_chunk_back_attach
     4300004: right_tri_right_tri_chunk_angle_attach
     4300006: right_tri_ring_large_part_attach
     4300008: right_tri
+    4300010: right_tri_ring_small_part_attach
     7400000: Default Take
     9500000: //RootNode
   materials:

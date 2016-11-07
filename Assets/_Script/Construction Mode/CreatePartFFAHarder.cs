@@ -107,25 +107,45 @@ public class CreatePartFFAHarder : MonoBehaviour {
 
 	}
 
-	public FuseAttributes centerTriFuses() {
-		//fuseLocations: 1
+	public FuseAttributes ringLongPartFuses() {
+		//fuseLocations for ring: center box ring left
+		//						  center box ring right
+		//						  center box ring back
+		//						  center box ring forward
 		//acceptable rotations: 2
+
 		GameObject centerBox = startObject;
+		GameObject ringLargePart = GameObject.Find("ring_large_partPrefab(Clone)");
+		GameObject ringSmallPart = GameObject.Find("ring_small_partPrefab(Clone)");
+		GameObject centerTri = GameObject.Find("center_tri_harderPrefab(Clone)");
+
+		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
 		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
 
 		Vector3 centerBoxPos = centerBox.transform.position;
-		Vector3 fuseLocation = new Vector3 (centerBoxPos.x + 18, centerBoxPos.y, centerBoxPos.z);
-		fuseLocations.Add ("ring_center_tri_attach", fuseLocation);
-		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
-		fuseRotations.Add ("ring_center_tri_attach", fuseRotation);
+		Vector3 fuseLocation = new Vector3 (centerBoxPos.x, centerBoxPos.y, centerBoxPos.z);
+		fuseLocations.Add ("center_box_ring_long_part_attach", fuseLocation);
+		fuseRotations.Add ("center_box_ring_long_part_attach", fuseRotation);
 
-		Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
-		Quaternion acceptableRotation2 = Quaternion.Euler (90,0,0);
-		Quaternion[] acceptableRotations = {acceptableRotation1, acceptableRotation2};
-		fusePositions = new Dictionary<string, Quaternion[]>();
-		fusePositions.Add ("ring_center_tri_attach", acceptableRotations);
+		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
+		Quaternion[] acceptableRotations = {acceptableRotation1};
+		fusePositions.Add ("center_box_ring_long_part_attach", acceptableRotations);
+
+		if (ringLargePart != null) {
+			fuseLocations.Add ("ring_large_part_ring_long_part_attach", fuseLocation);
+			fuseRotations.Add ("ring_large_part_ring_long_part_attach", fuseRotation);
+			fusePositions.Add ("ring_large_part_ring_long_part_attach", acceptableRotations);
+
+		}
+
+		if (ringSmallPart != null) {
+			fuseLocations.Add("ring_small_part_ring_long_part_attach", fuseLocation);
+			fuseRotations.Add("ring_small_part_ring_long_part_attach", fuseRotation);
+			fusePositions.Add ("ring_small_part_ring_long_part_attach", acceptableRotations);
+
+		}
 
 		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
 
@@ -133,11 +153,118 @@ public class CreatePartFFAHarder : MonoBehaviour {
 
 	}
 
-	public FuseAttributes ffaHandleFuses() {
+	public FuseAttributes ringSmallPartFuses() {
+		//fuseLocations for ring: center box ring left
+		//						  center box ring right
+		//						  center box ring back
+		//						  center box ring forward
+		//acceptable rotations: 2
+
+		GameObject centerBox = startObject;
+		GameObject ringLargePart = GameObject.Find("ring_large_partPrefab(Clone)");
+		GameObject ringLongPart = GameObject.Find("ring_long_partPrefab(Clone)");
+
+		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
+		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
+		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
+		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
+
+		Vector3 centerBoxPos = centerBox.transform.position;
+		Vector3 fuseLocation = new Vector3 (centerBoxPos.x, centerBoxPos.y, centerBoxPos.z);
+		fuseLocations.Add ("center_box_ring_small_part_attach", fuseLocation);
+		fuseRotations.Add ("center_box_ring_small_part_attach", fuseRotation);
+
+		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
+		Quaternion[] acceptableRotations = {acceptableRotation1};
+		fusePositions.Add ("center_box_ring_small_part_attach", acceptableRotations);
+
+		if (ringLargePart != null) {
+			fuseLocations.Add ("ring_large_part_ring_small_part_attach", fuseLocation);
+			fuseRotations.Add ("ring_large_part_ring_small_part_attach", fuseRotation);
+			fusePositions.Add ("ring_large_part_ring_small_part_attach", acceptableRotations);
+
+		}
+
+		if (ringLongPart != null) {
+			fuseLocations.Add("ring_long_part_ring_small_part_attach", fuseLocation);
+			fuseRotations.Add("ring_long_part_ring_small_part_attach", fuseRotation);
+			fusePositions.Add ("ring_long_part_ring_small_part_attach", acceptableRotations);
+
+		}
+
+		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
+
+		return newAttributes;
+
+	}
+
+	public FuseAttributes centerTriFuses() {
+		//fuseLocations: 1
+		//acceptable rotations: 2
+		GameObject ringLongPart = GameObject.Find("ring_long_partPrefab(Clone)");
+		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
+		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
+		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
+
+		if (ringLongPart != null) {
+			Vector3 ringLongPartPos = ringLongPart.transform.position;
+			Vector3 fuseLocation = new Vector3 (ringLongPartPos.x + 18, ringLongPartPos.y, ringLongPartPos.z);
+			fuseLocations.Add ("ring_long_part_center_tri_attach", fuseLocation);
+			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
+			fuseRotations.Add ("ring_long_part_center_tri_attach", fuseRotation);
+
+			Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
+			Quaternion acceptableRotation2 = Quaternion.Euler (90,0,0);
+			Quaternion[] acceptableRotations = {acceptableRotation1, acceptableRotation2};
+			fusePositions = new Dictionary<string, Quaternion[]>();
+			fusePositions.Add ("ring_long_part_center_tri_attach", acceptableRotations);
+		}
+
+		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
+
+		return newAttributes;
+
+	}
+
+	public FuseAttributes handleTopFuses() {
 		// fuse locations: 2 
 		// acceptable rotations: 1
 		GameObject centerBox = startObject;
+		GameObject handleBottom = GameObject.Find ("handle_bottomPrefab(Clone)");
+		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
+		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
+		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
 
+		Vector3 centerBoxPos = centerBox.transform.position;
+		Vector3 fuseLocation = new Vector3 (centerBoxPos.x - 15, centerBoxPos.y, centerBoxPos.z);
+
+		fuseLocations.Add("center_box_handle_top_attach", fuseLocation);
+
+		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
+		fuseRotations.Add ("center_box_handle_top_attach", fuseRotation);
+
+		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
+		Quaternion[] acceptableRotations = {acceptableRotation1};
+
+		fusePositions.Add ("center_box_handle_top_attach", acceptableRotations);
+
+		if (handleBottom != null) {
+			fuseLocations.Add("handle_bottom_handle_top_attach", fuseLocation);
+			fuseRotations.Add ("handle_bottom_handle_top_attach", fuseRotation);
+			fusePositions.Add ("handle_bottom_handle_top_attach", acceptableRotations);
+		}
+
+		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
+
+		return newAttributes;
+
+	}
+
+	public FuseAttributes handleBottomFuses() {
+		// fuse locations: 2 
+		// acceptable rotations: 1
+		GameObject centerBox = startObject;
+		GameObject handleTop = GameObject.Find ("handle_topPrefab(Clone)");
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
 		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
@@ -146,17 +273,20 @@ public class CreatePartFFAHarder : MonoBehaviour {
 		Vector3 fuseLocation = new Vector3 (centerBoxPos.x - 15, centerBoxPos.y, centerBoxPos.z);
 
 		fuseLocations.Add("center_box_handle_bottom_attach", fuseLocation);
-		fuseLocations.Add("center_box_handle_top_attach", fuseLocation);
 
 		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 		fuseRotations.Add ("center_box_handle_bottom_attach", fuseRotation);
-		fuseRotations.Add ("center_box_handle_top_attach", fuseRotation);
 
 		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
 		Quaternion[] acceptableRotations = {acceptableRotation1};
 
 		fusePositions.Add ("center_box_handle_bottom_attach", acceptableRotations);
-		fusePositions.Add ("center_box_handle_top_attach", acceptableRotations);
+
+		if (handleTop != null) {
+			fuseLocations.Add ("handle_top_handle_bottom_attach", fuseLocation);
+			fuseRotations.Add ("handle_top_handle_bottom_attach", fuseRotation);
+			fusePositions.Add ("handle_top_handle_bottom_attach", acceptableRotations);
+		}
 
 		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
 
@@ -164,27 +294,28 @@ public class CreatePartFFAHarder : MonoBehaviour {
 
 	}
 
+
 	public FuseAttributes leftTriFuses() {
 		//fuse locations: 1
 		//acceptable rotations: 1
-		GameObject ring = GameObject.Find("ringPrefab(Clone)");
+		GameObject ringLargePart = GameObject.Find("ring_large_partPrefab(Clone)");
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
 		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
 		Vector3 fuseLocation = new Vector3(0,0,0);
 
-		if(ring != null) {
-			Vector3 ringPos = ring.transform.position;
+		if(ringLargePart != null) {
+			Vector3 ringPos = ringLargePart.transform.position;
 			fuseLocation = new Vector3 (ringPos.x, ringPos.y, ringPos.z + 26);
 		}
 
 		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 
-		fuseLocations.Add ("ring_left_tri_attach", fuseLocation);
-		fuseRotations.Add ("ring_left_tri_attach", fuseRotation);
+		fuseLocations.Add ("ring_large_part_tri_attach", fuseLocation);
+		fuseRotations.Add ("ring_large_part_tri_attach", fuseRotation);
 		Quaternion acceptableRotation1 = Quaternion.Euler (90,0,0);
 		Quaternion[] acceptableRotations = {acceptableRotation1};
-		fusePositions.Add ("ring_left_tri_attach", acceptableRotations);
+		fusePositions.Add ("ring_large_part_tri_attach", acceptableRotations);
 
 		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
 
@@ -195,25 +326,120 @@ public class CreatePartFFAHarder : MonoBehaviour {
 	public FuseAttributes rightTriFuses() {
 		//fuse locations: 1
 		//acceptable rotations: 1
-		GameObject ring = GameObject.Find("ringPrefab(Clone)");
+		GameObject ringSmallPart = GameObject.Find("ring_small_partPrefab(Clone)");
 
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
 		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
 		Vector3 fuseLocation = new Vector3(0,0,0);
 
-		if(ring != null) {
-			Vector3 ringPos = ring.transform.position;
+		if(ringSmallPart != null) {
+			Vector3 ringPos = ringSmallPart.transform.position;
 			fuseLocation = new Vector3(ringPos.x, ringPos.y, ringPos.z - 25);
+			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
+
+			fuseLocations.Add ("ring_small_part_right_tri_attach", fuseLocation);
+			fuseRotations.Add ("ring_small_part_right_tri_attach", fuseRotation);
+			Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
+			Quaternion[] acceptableRotations = {acceptableRotation1};
+			fusePositions.Add ("ring_small_part_right_tri_attach", acceptableRotations);
+		}
+			
+		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
+
+		return newAttributes;
+
+	}
+
+	public FuseAttributes rightTriChunkFuses() {
+		//fuse locations: 1
+		//acceptable rotations: 1
+		GameObject rightTri = GameObject.Find("right_tri_harderPrefab(Clone)");
+
+		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
+		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
+		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
+		Vector3 fuseLocation = new Vector3(0,0,0);
+
+		if(rightTri != null) {
+			Vector3 rightTriPos = rightTri.transform.position;
+			fuseLocation = new Vector3(rightTriPos.x, rightTriPos.y, rightTriPos.z);
+			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
+
+			fuseLocations.Add ("right_tri_right_tri_chunk_angle_attach", fuseLocation);
+			fuseLocations.Add ("right_tri_right_tri_chunk_back_attach", fuseLocation);
+			fuseLocations.Add ("right_tri_right_tri_chunk_side_attach", fuseLocation);
+			fuseRotations.Add ("right_tri_right_tri_chunk_angle_attach", fuseRotation);
+			fuseRotations.Add ("right_tri_right_tri_chunk_back_attach", fuseRotation);
+			fuseRotations.Add ("right_tri_right_tri_chunk_side_attach", fuseRotation);
+			Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
+			Quaternion[] acceptableRotations = {acceptableRotation1};
+			fusePositions.Add ("right_tri_right_tri_chunk_angle_attach", acceptableRotations);
+			fusePositions.Add ("right_tri_right_tri_chunk_back_attach", acceptableRotations);
+			fusePositions.Add ("right_tri_right_tri_chunk_side_attach", acceptableRotations);
 		}
 
-		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
+		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
 
-		fuseLocations.Add ("ring_right_tri_attach", fuseLocation);
-		fuseRotations.Add ("ring_right_tri_attach", fuseRotation);
-		Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
-		Quaternion[] acceptableRotations = {acceptableRotation1};
-		fusePositions.Add ("ring_right_tri_attach", acceptableRotations);
+		return newAttributes;
+
+	}
+
+	public FuseAttributes scaleneFuses() {
+		//fuse locations: 1
+		//acceptable rotations: 1
+		GameObject leftTri = GameObject.Find("left_tri_harderPrefab(Clone)");
+
+		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
+		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
+		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
+		Vector3 fuseLocation = new Vector3(0,0,0);
+
+		if(leftTri != null) {
+			Vector3 leftTriPos = leftTri.transform.position;
+			fuseLocation = new Vector3(leftTriPos.x, leftTriPos.y, leftTriPos.z);
+			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
+
+			fuseLocations.Add ("left_tri_scalene_back_attach", fuseLocation);
+			fuseLocations.Add ("left_tri_scalene_side_attach", fuseLocation);
+			fuseRotations.Add ("left_tri_scalene_back_attach", fuseRotation);
+			fuseRotations.Add ("left_tri_scalene_side_attach", fuseRotation);
+			Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
+			Quaternion[] acceptableRotations = {acceptableRotation1};
+			fusePositions.Add ("left_tri_scalene_back_attach", acceptableRotations);
+			fusePositions.Add ("left_tri_scalene_side_attach", acceptableRotations);
+		}
+
+		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
+
+		return newAttributes;
+
+	}
+
+	public FuseAttributes blueTriFuses() {
+		//fuse locations: 1
+		//acceptable rotations: 1
+		GameObject centerTri = GameObject.Find("center_tri_harderPrefab(Clone)");
+
+		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
+		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
+		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
+		Vector3 fuseLocation = new Vector3(0,0,0);
+
+		if(centerTri != null) {
+			Vector3 centerTriPos = centerTri.transform.position;
+			fuseLocation = new Vector3(centerTriPos.x, centerTriPos.y, centerTriPos.z);
+			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
+
+			fuseLocations.Add ("center_tri_blue_tri_back_attach", fuseLocation);
+			fuseLocations.Add ("center_tri_blue_tri_side_attach", fuseLocation);
+			fuseRotations.Add ("center_tri_blue_tri_back_attach", fuseRotation);
+			fuseRotations.Add ("center_tri_blue_tri_side_attach", fuseRotation);
+			Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
+			Quaternion[] acceptableRotations = {acceptableRotation1};
+			fusePositions.Add ("center_tri_blue_tri_back_attach", acceptableRotations);
+			fusePositions.Add ("center_tri_blue_tri_side_attach", acceptableRotations);
+		}
 
 		FuseAttributes newAttributes = new FuseAttributes(fuseLocations, fuseRotations, fusePositions);
 
@@ -245,64 +471,160 @@ public class CreatePartFFAHarder : MonoBehaviour {
 	}
 
 
-	public void createRing() {
+	public void createRingLargePart() {
 		if(!partCreated[0]) {
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
-			GameObject newRing = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
+			GameObject newRingLargePart = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 
-			Transform ringCenterBoxLeftAttach = newRing.transform.FindChild("ring_center_box_left_attach");
-			Transform ringCenterBoxRightAttach = newRing.transform.FindChild("ring_center_box_right_attach");
-			Transform ringCenterBoxBackAttach = newRing.transform.FindChild("ring_center_box_back_attach");
-			Transform ringCenterBoxForwardAttach = newRing.transform.FindChild("ring_center_box_forward_attach");
+			Transform ringLargePartCenterBoxSideAttach = newRingLargePart.transform.FindChild("ring_large_part_center_box_side_attach");
+			Transform ringLargePartRingLongPartAttach = newRingLargePart.transform.FindChild("ring_large_part_ring_long_part_attach");
+			Transform ringLargePartCenterBoxBackAttach = newRingLargePart.transform.FindChild("ring_large_part_center_box_back_attach");
+			Transform ringLargePartRingSmallPartAttach = newRingLargePart.transform.FindChild("ring_large_part_ring_small_part_attach");
+			Transform ringLargePartLeftTriAttach = newRingLargePart.transform.FindChild("ring_large_part_tri_attach");
 
 			FuseAttributes fuseAtts = ringLargePartFuses ();
 
-			ringCenterBoxLeftAttach.gameObject.AddComponent<FuseBehavior>();
-			ringCenterBoxLeftAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
-			ringCenterBoxLeftAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("Ring"));
+			ringLargePartCenterBoxSideAttach.gameObject.AddComponent<FuseBehavior>();
+			ringLargePartCenterBoxSideAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringLargePartCenterBoxSideAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingLargePart"));
 
-			ringCenterBoxRightAttach.gameObject.AddComponent<FuseBehavior>();
-			ringCenterBoxRightAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
-			ringCenterBoxRightAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("Ring"));
+			ringLargePartRingLongPartAttach.gameObject.AddComponent<FuseBehavior>();
+			ringLargePartRingLongPartAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringLargePartRingLongPartAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingLargePart"));
 
-			ringCenterBoxBackAttach.gameObject.AddComponent<FuseBehavior>();
-			ringCenterBoxBackAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
-			ringCenterBoxBackAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("Ring"));
+			ringLargePartCenterBoxBackAttach.gameObject.AddComponent<FuseBehavior>();
+			ringLargePartCenterBoxBackAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringLargePartCenterBoxBackAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingLargePart"));
 
-			ringCenterBoxForwardAttach.gameObject.AddComponent<FuseBehavior>();
-			ringCenterBoxForwardAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
-			ringCenterBoxForwardAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("Ring"));
+			ringLargePartRingSmallPartAttach.gameObject.AddComponent<FuseBehavior>();
+			ringLargePartRingSmallPartAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringLargePartRingSmallPartAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingLargePart"));
 
-			instantiated[0] = newRing;
+			ringLargePartLeftTriAttach.gameObject.AddComponent<FuseBehavior>();
+			ringLargePartLeftTriAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringLargePartLeftTriAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingLargePart"));
+
+			instantiated[0] = newRingLargePart;
 			partCreated[0] = true;
-			selectionManager.newPartCreated("ringPrefab(Clone)");
+			selectionManager.newPartCreated("ring_large_partPrefab(Clone)");
 
-			enableManipulationButtons(newRing);
+			enableManipulationButtons(newRingLargePart);
 
 
 		}
 	}
 
+	public void createRingLongPart() {
+		if(!partCreated[1]) {
+			clearPartsCreated();
+			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
+			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
+			GameObject newRingLongPart = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
+
+			Transform ringLongPartCenterBoxAttach = newRingLongPart.transform.FindChild("ring_long_part_center_box_attach");
+			Transform ringLongPartCenterTriAttach = newRingLongPart.transform.FindChild("ring_long_part_center_tri_attach");
+			Transform ringLongPartRingLargePartAttach = newRingLongPart.transform.FindChild("ring_long_part_ring_large_part_attach");
+			Transform ringLongPartRingSmallPartAttach = newRingLongPart.transform.FindChild("ring_long_part_ring_small_part_attach");
+
+			FuseAttributes fuseAtts = ringLongPartFuses ();
+
+			ringLongPartCenterBoxAttach.gameObject.AddComponent<FuseBehavior>();
+			ringLongPartCenterBoxAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringLongPartCenterBoxAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingLongPart"));
+
+			ringLongPartCenterTriAttach.gameObject.AddComponent<FuseBehavior>();
+			ringLongPartCenterTriAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringLongPartCenterTriAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingLongPart"));
+
+			ringLongPartRingLargePartAttach.gameObject.AddComponent<FuseBehavior>();
+			ringLongPartRingLargePartAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringLongPartRingLargePartAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingLongPart"));
+
+			ringLongPartRingSmallPartAttach.gameObject.AddComponent<FuseBehavior>();
+			ringLongPartRingSmallPartAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringLongPartRingSmallPartAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingLongPart"));
+
+			instantiated[1] = newRingLongPart;
+			partCreated[1] = true;
+			selectionManager.newPartCreated("ring_long_partPrefab(Clone)");
+
+			enableManipulationButtons(newRingLongPart);
+
+
+		}
+	}
+
+	public void createRingSmallPart() {
+		if(!partCreated[2]) {
+			clearPartsCreated();
+			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated		
+			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
+			GameObject newRingSmallPart = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));
+
+			Transform ringSmallPartCenterBoxAttach = newRingSmallPart.transform.FindChild("ring_small_part_center_box_attach");
+			Transform ringSmallPartRightTriAttach = newRingSmallPart.transform.FindChild("ring_small_part_right_tri_attach");
+			Transform ringSmallPartRingLargePartAttach = newRingSmallPart.transform.FindChild("ring_small_part_ring_large_part_attach");
+			Transform ringSmallPartRingLongPartAttach = newRingSmallPart.transform.FindChild("ring_small_part_ring_long_part_attach");
+
+			FuseAttributes fuseAtts = ringSmallPartFuses ();
+
+			ringSmallPartCenterBoxAttach.gameObject.AddComponent<FuseBehavior>();
+			ringSmallPartCenterBoxAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringSmallPartCenterBoxAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingSmallPart"));
+
+			ringSmallPartRightTriAttach.gameObject.AddComponent<FuseBehavior>();
+			ringSmallPartRightTriAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringSmallPartRightTriAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingSmallPart"));
+
+			ringSmallPartRingLargePartAttach.gameObject.AddComponent<FuseBehavior>();
+			ringSmallPartRingLargePartAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringSmallPartRingLargePartAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingSmallPart"));
+
+			ringSmallPartRingLongPartAttach.gameObject.AddComponent<FuseBehavior>();
+			ringSmallPartRingLongPartAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			ringSmallPartRingLongPartAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RingSmallPart"));
+
+			instantiated[2] = newRingSmallPart;
+			partCreated[2] = true;
+			selectionManager.newPartCreated("ring_small_partPrefab(Clone)");
+
+			enableManipulationButtons(newRingSmallPart);
+
+
+		}
+	}
+
+
 	public void createCenterTri() {
-		if(!partCreated[1]){
+		if(!partCreated[3]){
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,270);
-			GameObject newCenterTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
+			GameObject newCenterTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 
-			Transform centerTriRingAttach = newCenterTri.transform.FindChild("center_tri_ring_attach");
+			Transform centerTriRingLongPartAttach = newCenterTri.transform.FindChild("center_tri_ring_long_part_attach");
+			Transform centerTriBlueTriBackAttach = newCenterTri.transform.FindChild("center_tri_blue_tri_back_attach");
+			Transform centerTriBlueTriSideAttach = newCenterTri.transform.FindChild("center_tri_blue_tri_side_attach");
 
 			FuseAttributes fuseAtts = centerTriFuses ();
 
-			centerTriRingAttach.gameObject.AddComponent<FuseBehavior>();
-			centerTriRingAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
-			centerTriRingAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("CenterTri"));
+			centerTriRingLongPartAttach.gameObject.AddComponent<FuseBehavior>();
+			centerTriRingLongPartAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			centerTriRingLongPartAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("CenterTri"));
 
-			instantiated[1] = newCenterTri;
-			partCreated[1] = true;
-			selectionManager.newPartCreated("center_triPrefab(Clone)");
+			centerTriBlueTriBackAttach.gameObject.AddComponent<FuseBehavior>();
+			centerTriBlueTriBackAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			centerTriBlueTriBackAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("CenterTri"));
+
+			centerTriBlueTriSideAttach.gameObject.AddComponent<FuseBehavior>();
+			centerTriBlueTriSideAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			centerTriBlueTriSideAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("CenterTri"));
+
+			instantiated[3] = newCenterTri;
+			partCreated[3] = true;
+			selectionManager.newPartCreated("center_tri_harderPrefab(Clone)");
 
 			enableManipulationButtons(newCenterTri);
 
@@ -311,23 +633,34 @@ public class CreatePartFFAHarder : MonoBehaviour {
 	}
 
 	public void createLeftTri() {
-		if(!partCreated[2]){
+		if(!partCreated[4]){
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (90,90,0);
-			GameObject newLeftTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
+			GameObject newLeftTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));	
 
-			Transform leftTriRingAttach = newLeftTri.transform.FindChild("left_tri_ring_attach");
+			Transform leftTriRingLargePartAttach = newLeftTri.transform.FindChild("left_tri_ring_large_part_attach");
+			Transform leftTriScaleneBackAttach = newLeftTri.transform.FindChild("left_tri_scalene_back_attach");
+			Transform leftTriScaleneSideAttach = newLeftTri.transform.FindChild("left_tri_scalene_side_attach");
 
 			FuseAttributes fuseAtts = leftTriFuses ();
 
-			leftTriRingAttach.gameObject.AddComponent<FuseBehavior>();
-			leftTriRingAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
-			leftTriRingAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("LeftTri"));
+			leftTriRingLargePartAttach.gameObject.AddComponent<FuseBehavior>();
+			leftTriRingLargePartAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			leftTriRingLargePartAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("LeftTri"));
 
-			instantiated[2] = newLeftTri;	
-			partCreated[2] = true;
-			selectionManager.newPartCreated("left_triPrefab(Clone)");
+			leftTriScaleneBackAttach.gameObject.AddComponent<FuseBehavior>();
+			leftTriScaleneBackAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			leftTriScaleneBackAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("LeftTri"));
+
+			leftTriScaleneSideAttach.gameObject.AddComponent<FuseBehavior>();
+			leftTriScaleneSideAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			leftTriScaleneSideAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("LeftTri"));
+
+
+			instantiated[4] = newLeftTri;	
+			partCreated[4] = true;
+			selectionManager.newPartCreated("left_tri_harderPrefab(Clone)");
 
 			enableManipulationButtons(newLeftTri);
 
@@ -336,23 +669,38 @@ public class CreatePartFFAHarder : MonoBehaviour {
 	}
 
 	public void createRightTri() {
-		if(!partCreated[3]){
+		if(!partCreated[5]){
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = new Quaternion();
-			GameObject newRightTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
+			GameObject newRightTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[5], pos, fuseToRotation)));
 
-			Transform rightTriRingAttach = newRightTri.transform.FindChild("right_tri_ring_attach");
+			Transform rightTriRingSmallPartAttach = newRightTri.transform.FindChild("right_tri_ring_small_part_attach");
+			Transform rightTriRightTriChunkBackAttach = newRightTri.transform.FindChild("right_tri_right_tri_chunk_back_attach");
+			Transform rightTriRightTriChunkSideAttach = newRightTri.transform.FindChild("right_tri_right_tri_chunk_side_attach");
+			Transform rightTriRightTriChunkAngleAttach = newRightTri.transform.FindChild("right_tri_right_tri_chunk_angle_attach");
 
 			FuseAttributes fuseAtts = rightTriFuses();
 
-			rightTriRingAttach.gameObject.AddComponent<FuseBehavior>();
-			rightTriRingAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
-			rightTriRingAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RightTri"));
+			rightTriRingSmallPartAttach.gameObject.AddComponent<FuseBehavior>();
+			rightTriRingSmallPartAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			rightTriRingSmallPartAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RightTri"));
 
-			instantiated[3] = newRightTri;
-			partCreated[3] = true;
-			selectionManager.newPartCreated("right_triPrefab(Clone)");
+			rightTriRightTriChunkBackAttach.gameObject.AddComponent<FuseBehavior>();
+			rightTriRightTriChunkBackAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			rightTriRightTriChunkBackAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RightTri"));
+
+			rightTriRightTriChunkSideAttach.gameObject.AddComponent<FuseBehavior>();
+			rightTriRightTriChunkSideAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			rightTriRightTriChunkSideAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RightTri"));
+
+			rightTriRightTriChunkAngleAttach.gameObject.AddComponent<FuseBehavior>();
+			rightTriRightTriChunkAngleAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			rightTriRightTriChunkAngleAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RightTri"));
+
+			instantiated[5] = newRightTri;
+			partCreated[5] = true;
+			selectionManager.newPartCreated("right_tri_harderPrefab(Clone)");
 
 			enableManipulationButtons(newRightTri);
 
@@ -360,35 +708,162 @@ public class CreatePartFFAHarder : MonoBehaviour {
 		}
 	}
 
-	public void createHandle() {
-		if(!partCreated[4]){
+	public void createHandleTop() {
+		if(!partCreated[6]){
 			clearPartsCreated();
 			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);		
-			GameObject newHandle = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
+			GameObject newHandleTop = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[6], pos, fuseToRotation)));
 
-			Transform handleCenterBoxTopAttach = newHandle.transform.FindChild("handle_center_box_top_attach");
-			Transform handleCenterBoxBottomAttach = newHandle.transform.FindChild("handle_center_box_bottom_attach");
+			Transform handleTopCenterBoxAttach = newHandleTop.transform.FindChild("handle_top_center_box_attach");
+			Transform handleTopHandleBottomAttach = newHandleTop.transform.FindChild("handle_top_handle_bottom_attach");
 
-			FuseAttributes fuseAtts = ffaHandleFuses();
+			FuseAttributes fuseAtts = handleTopFuses();
 
-			handleCenterBoxTopAttach.gameObject.AddComponent<FuseBehavior>();
-			handleCenterBoxTopAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
-			handleCenterBoxTopAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("Handle"));
+			handleTopCenterBoxAttach.gameObject.AddComponent<FuseBehavior>();
+			handleTopCenterBoxAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			handleTopCenterBoxAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("HandleTop"));
 
-			handleCenterBoxBottomAttach.gameObject.AddComponent<FuseBehavior>();
-			handleCenterBoxBottomAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
-			handleCenterBoxBottomAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("Handle"));
+			handleTopHandleBottomAttach.gameObject.AddComponent<FuseBehavior>();
+			handleTopHandleBottomAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			handleTopHandleBottomAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("HandleTop"));
 
-			instantiated[4] = newHandle;
-			partCreated[4] = true;
-			selectionManager.newPartCreated("ffa_handlePrefab(Clone)");
+			instantiated[6] = newHandleTop;
+			partCreated[6] = true;
+			selectionManager.newPartCreated("handle_topPrefab(Clone)");
 
-			enableManipulationButtons(newHandle);
+			enableManipulationButtons(newHandleTop);
 
 
 		}
 	}
+
+	public void createHandleBottom() {
+		if(!partCreated[7]){
+			clearPartsCreated();
+			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
+			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);		
+			GameObject newHandleBottom = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[7], pos, fuseToRotation)));
+
+			Transform handleBottomCenterBoxAttach = newHandleBottom.transform.FindChild("handle_bottom_center_box_attach");
+			Transform handleBottomHandleTopAttach = newHandleBottom.transform.FindChild("handle_bottom_handle_top_attach");
+
+			FuseAttributes fuseAtts = handleBottomFuses();
+
+			handleBottomCenterBoxAttach.gameObject.AddComponent<FuseBehavior>();
+			handleBottomCenterBoxAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			handleBottomCenterBoxAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("HandleBottom"));
+
+			handleBottomHandleTopAttach.gameObject.AddComponent<FuseBehavior>();
+			handleBottomHandleTopAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			handleBottomHandleTopAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("HandleBottom"));
+
+			instantiated[7] = newHandleBottom;
+			partCreated[7] = true;
+			selectionManager.newPartCreated("handle_bottomPrefab(Clone)");
+
+			enableManipulationButtons(newHandleBottom);
+
+
+		}
+	}
+
+	public void createBlueTri() {
+		if(!partCreated[8]){
+			clearPartsCreated();
+			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
+			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);		
+			GameObject newBlueTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[8], pos, fuseToRotation)));
+
+			Transform blueTriCenterTriBackAttach = newBlueTri.transform.FindChild("blue_tri_center_tri_back_attach");
+			Transform blueTriCenterTriSideAttach = newBlueTri.transform.FindChild("blue_tri_center_tri_side_attach");
+
+			FuseAttributes fuseAtts = blueTriFuses();
+
+			blueTriCenterTriBackAttach.gameObject.AddComponent<FuseBehavior>();
+			blueTriCenterTriBackAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			blueTriCenterTriBackAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("BlueTri"));
+
+			blueTriCenterTriSideAttach.gameObject.AddComponent<FuseBehavior>();
+			blueTriCenterTriSideAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			blueTriCenterTriSideAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("BlueTri"));
+
+			instantiated[8] = newBlueTri;
+			partCreated[8] = true;
+			selectionManager.newPartCreated("blue_triPrefab(Clone)");
+
+			enableManipulationButtons(newBlueTri);
+
+
+		}
+	}
+
+	public void createRightTriChunk() {
+		if(!partCreated[9]){
+			clearPartsCreated();
+			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
+			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);		
+			GameObject newRightTriChunk = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[9], pos, fuseToRotation)));
+
+			Transform rightTriChunkRightTriBackAttach = newRightTriChunk.transform.FindChild("right_tri_chunk_right_tri_back_attach");
+			Transform rightTriChunkRightTriSideAttach = newRightTriChunk.transform.FindChild("right_tri_chunk_right_tri_side_attach");
+			Transform rightTriChunkRightTriAngleAttach = newRightTriChunk.transform.FindChild("right_tri_chunk_right_tri_angle_attach");
+
+			FuseAttributes fuseAtts = rightTriChunkFuses();
+
+			rightTriChunkRightTriBackAttach.gameObject.AddComponent<FuseBehavior>();
+			rightTriChunkRightTriBackAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			rightTriChunkRightTriBackAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RightTriChunk"));
+
+			rightTriChunkRightTriSideAttach.gameObject.AddComponent<FuseBehavior>();
+			rightTriChunkRightTriSideAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			rightTriChunkRightTriSideAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RightTriChunk"));
+
+			rightTriChunkRightTriAngleAttach.gameObject.AddComponent<FuseBehavior>();
+			rightTriChunkRightTriAngleAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			rightTriChunkRightTriAngleAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("RightTriChunk"));
+
+			instantiated[9] = newRightTriChunk;
+			partCreated[9] = true;
+			selectionManager.newPartCreated("right_tri_chunkPrefab(Clone)");
+
+			enableManipulationButtons(newRightTriChunk);
+
+
+		}
+	}
+
+	public void createScalene() {
+		if(!partCreated[10]){
+			clearPartsCreated();
+			Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
+			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);		
+			GameObject newScalene = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[10], pos, fuseToRotation)));
+
+			Transform scaleneLeftTriBackAttach = newScalene.transform.FindChild("scalene_left_tri_back_attach");
+			Transform scaleneLeftTriSideAttach = newScalene.transform.FindChild("scalene_left_tri_side_attach");
+
+			FuseAttributes fuseAtts = scaleneFuses();
+
+			scaleneLeftTriBackAttach.gameObject.AddComponent<FuseBehavior>();
+			scaleneLeftTriBackAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			scaleneLeftTriBackAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("Scalene"));
+
+			scaleneLeftTriSideAttach.gameObject.AddComponent<FuseBehavior>();
+			scaleneLeftTriSideAttach.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
+			scaleneLeftTriSideAttach.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find ("Scalene"));
+
+			instantiated[10] = newScalene;
+			partCreated[10] = true;
+			selectionManager.newPartCreated("scalenePrefab(Clone)");
+
+			enableManipulationButtons(newScalene);
+
+
+		}
+	}
+
+
 
 	//checks to see if an object has been fused already
 	public bool alreadyFused(string part) {

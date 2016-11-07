@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 456638}
   - 95: {fileID: 9598274}
+  - 114: {fileID: 11444024}
   m_Layer: 0
   m_Name: center_tri_harderPrefab
   m_TagString: Untagged
@@ -378,6 +379,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unhighTex: {fileID: 2800000, guid: 3b628ed51dbe2c54a9a702de0cccd9ca, type: 3}
   highTex: {fileID: 2800000, guid: 96aa91f1b3c5db244aed051356faa8cf, type: 3}
+--- !u!114 &11444024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7665d6cceb2248499153f3484da570e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFused: 0
+  locationTag: 
 --- !u!114 &11480726
 MonoBehaviour:
   m_ObjectHideFlags: 1
