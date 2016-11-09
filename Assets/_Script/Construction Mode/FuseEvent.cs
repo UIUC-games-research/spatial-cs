@@ -418,44 +418,129 @@ public class FuseEvent : MonoBehaviour {
 			fuseMapping.Add ("right_cover_back_attach", fuseToForRightCoverBack);
 			fuseMapping.Add ("right_cover_back_slope_attach", fuseToForRightCoverSlope);
 		} else if (mode.Equals ("ffa")) {
-			//ring, handle, centerTri, leftTri, rightTri
 
-			//ring
-			HashSet<string> fuseToForRingLeft = new HashSet<string>();
-			HashSet<string> fuseToForRingRight = new HashSet<string>();
-			HashSet<string> fuseToForRingBack = new HashSet<string>();
-			HashSet<string> fuseToForRingForward = new HashSet<string>();
-			fuseToForRingLeft.Add ("center_box_ring_left_attach");
-			fuseToForRingRight.Add ("center_box_ring_right_attach");
-			fuseToForRingBack.Add ("center_box_ring_back_attach");
-			fuseToForRingForward.Add ("center_box_ring_forward_attach");
-			fuseMapping.Add ("ring_center_box_left_attach", fuseToForRingLeft);
-			fuseMapping.Add ("ring_center_box_right_attach", fuseToForRingRight);
-			fuseMapping.Add ("ring_center_box_back_attach", fuseToForRingBack);
-			fuseMapping.Add ("ring_center_box_forward_attach", fuseToForRingForward);
+			//ring large part
+			HashSet<string> fuseToForRingLargePartSide = new HashSet<string>();
+			HashSet<string> fuseToForRingLargePartBack = new HashSet<string>();
+			HashSet<string> fuseToForRingLargePartLong = new HashSet<string>();
+			HashSet<string> fuseToForRingLargePartSmall = new HashSet<string>();
+			fuseToForRingLargePartSide.Add ("center_box_ring_large_part_left_attach");
+			fuseToForRingLargePartBack.Add ("center_box_ring_large_part_attach");
+			fuseToForRingLargePartLong.Add ("ring_long_part_ring_large_part_attach");
+			fuseToForRingLargePartSmall.Add ("ring_small_part_ring_large_part_attach");
+			fuseMapping.Add ("ring_large_part_center_box_side_attach", fuseToForRingLargePartSide);
+			fuseMapping.Add ("ring_large_part_center_box_back_attach", fuseToForRingLargePartBack);
+			fuseMapping.Add ("ring_large_part_ring_long_part_attach", fuseToForRingLargePartLong);
+			fuseMapping.Add ("ring_large_part_ring_small_part_attach", fuseToForRingLargePartSmall);
 
-			//handle
-			HashSet<string> fuseToForHandleTop = new HashSet<string>();
-			HashSet<string> fuseToForHandleBottom = new HashSet<string>();
-			fuseToForHandleTop.Add ("center_box_handle_top_attach");
-			fuseToForHandleBottom.Add ("center_box_handle_bottom_attach");
-			fuseMapping.Add ("handle_center_box_top_attach", fuseToForHandleTop);
-			fuseMapping.Add ("handle_center_box_bottom_attach", fuseToForHandleBottom);
+			//ring long part
+			HashSet<string> fuseToLongPart1 = new HashSet<string>();
+			HashSet<string> fuseToLongPart2 = new HashSet<string>();
+			HashSet<string> fuseToLongPart3 = new HashSet<string>();
+			HashSet<string> fuseToLongPart4 = new HashSet<string>();
+			fuseToLongPart1.Add ("center_box_ring_long_part_attach");
+			fuseToLongPart2.Add ("center_tri_ring_long_part_attach");
+			fuseToLongPart3.Add ("ring_large_part_ring_long_part_attach");
+			fuseToLongPart4.Add ("ring_small_part_ring_long_part_attach");
+			fuseMapping.Add ("ring_long_part_center_box_attach", fuseToLongPart1);
+			fuseMapping.Add ("ring_long_part_center_tri_attach", fuseToLongPart2);
+			fuseMapping.Add ("ring_long_part_ring_large_part_attach", fuseToLongPart3);
+			fuseMapping.Add ("ring_long_part_ring_small_part_attach", fuseToLongPart4);
+
+			//ring small part
+			HashSet<string> fuseToSmallPart1 = new HashSet<string>();
+			HashSet<string> fuseToSmallPart2 = new HashSet<string>();
+			HashSet<string> fuseToSmallPart3 = new HashSet<string>();
+			HashSet<string> fuseToSmallPart4 = new HashSet<string>();
+			fuseToSmallPart1.Add ("center_box_ring_small_part_attach");
+			fuseToSmallPart2.Add ("right_tri_ring_small_part_attach");
+			fuseToSmallPart3.Add ("ring_large_part_ring_small_part_attach");
+			fuseToSmallPart4.Add ("ring_long_part_ring_small_part_attach");
+			fuseMapping.Add ("ring_small_part_center_box_attach", fuseToSmallPart1);
+			fuseMapping.Add ("ring_small_part_right_tri_attach", fuseToSmallPart2);
+			fuseMapping.Add ("ring_small_part_ring_large_part_attach", fuseToSmallPart3);
+			fuseMapping.Add ("ring_small_part_ring_long_part_attach", fuseToSmallPart4);
+
+			//handle top
+			HashSet<string> fuseToForHandleTop1 = new HashSet<string>();
+			HashSet<string> fuseToForHandleTop2 = new HashSet<string>();
+			fuseToForHandleTop1.Add ("center_box_handle_top_attach");
+			fuseToForHandleTop2.Add ("handle_bottom_handle_top_attach");
+			fuseMapping.Add ("handle_top_center_box_attach", fuseToForHandleTop1);
+			fuseMapping.Add ("handle_top_handle_bottom_attach", fuseToForHandleTop2);
+
+			//handle bottom
+			HashSet<string> fuseToForHandleBottom1 = new HashSet<string>();
+			HashSet<string> fuseToForHandleBottom2 = new HashSet<string>();
+			fuseToForHandleBottom1.Add ("center_box_handle_bottom_attach");
+			fuseToForHandleBottom2.Add ("handle_top_handle_bottom_attach");
+			fuseMapping.Add ("handle_bottom_center_box_attach", fuseToForHandleBottom1);
+			fuseMapping.Add ("handle_bottom_handle_top_attach", fuseToForHandleBottom2);
 
 			//centerTri
-			HashSet<string> fuseToForCenterTri = new HashSet<string>();
-			fuseToForCenterTri.Add ("ring_center_tri_attach");
-			fuseMapping.Add ("center_tri_ring_attach", fuseToForCenterTri);
+			HashSet<string> fuseToForCenterTri1 = new HashSet<string>();
+			HashSet<string> fuseToForCenterTri2 = new HashSet<string>();
+			HashSet<string> fuseToForCenterTri3 = new HashSet<string>();
+			fuseToForCenterTri1.Add ("ring_long_part_center_tri_attach");
+			fuseToForCenterTri2.Add ("blue_tri_back_center_tri_attach");
+			fuseToForCenterTri3.Add ("blue_tri_side_center_tri_attach");
+			fuseMapping.Add ("center_tri_ring_long_part_attach", fuseToForCenterTri1);
+			fuseMapping.Add ("center_tri_blue_tri_back_attach", fuseToForCenterTri2);
+			fuseMapping.Add ("center_tri_blue_tri_side_attach", fuseToForCenterTri3);
 
 			//leftTri
-			HashSet<string> fuseToForLeftTri = new HashSet<string>();
-			fuseToForLeftTri.Add ("ring_left_tri_attach");
-			fuseMapping.Add ("left_tri_ring_attach", fuseToForLeftTri);
+			HashSet<string> fuseToForLeftTri1 = new HashSet<string>();
+			HashSet<string> fuseToForLeftTri2 = new HashSet<string>();
+			HashSet<string> fuseToForLeftTri3 = new HashSet<string>();
+			fuseToForLeftTri1.Add ("ring_large_part_tri_attach");
+			fuseToForLeftTri2.Add ("scalene_left_tri_back_attach");
+			fuseToForLeftTri3.Add ("scalene_left_tri_side_attach");
+			fuseMapping.Add ("left_tri_ring_large_part_attach", fuseToForLeftTri1);
+			fuseMapping.Add ("left_tri_scalene_back_attach", fuseToForLeftTri2);
+			fuseMapping.Add ("left_tri_scalene_side_attach", fuseToForLeftTri3);
 
 			//rightTri
-			HashSet<string> fuseToForRightTri = new HashSet<string>();
-			fuseToForRightTri.Add ("ring_right_tri_attach");
-			fuseMapping.Add ("right_tri_ring_attach", fuseToForRightTri);
+			HashSet<string> fuseToForRightTri1 = new HashSet<string>();
+			HashSet<string> fuseToForRightTri2 = new HashSet<string>();
+			HashSet<string> fuseToForRightTri3 = new HashSet<string>();
+			HashSet<string> fuseToForRightTri4 = new HashSet<string>();
+
+			fuseToForRightTri1.Add ("ring_small_part_right_tri_attach");
+			fuseToForRightTri2.Add ("right_tri_chunk_right_tri_angle_attach");
+			fuseToForRightTri3.Add ("right_tri_chunk_right_tri_back_attach");
+			fuseToForRightTri4.Add ("right_tri_chunk_right_tri_side_attach");
+			fuseMapping.Add ("right_tri_ring_small_part_attach", fuseToForRightTri1);
+			fuseMapping.Add ("right_tri_right_tri_chunk_angle_attach", fuseToForRightTri2);
+			fuseMapping.Add ("right_tri_right_tri_chunk_back_attach", fuseToForRightTri3);
+			fuseMapping.Add ("right_tri_right_tri_chunk_side_attach", fuseToForRightTri4);
+
+			//blueTri
+			HashSet<string> fuseToForBlueTri1 = new HashSet<string>();
+			HashSet<string> fuseToForBlueTri2 = new HashSet<string>();
+			fuseToForBlueTri1.Add ("center_tri_blue_tri_back_attach");
+			fuseToForBlueTri2.Add ("center_tri_blue_tri_side_attach");
+			fuseMapping.Add ("blue_tri_center_tri_back_attach", fuseToForBlueTri1);
+			fuseMapping.Add ("blue_tri_center_tri_side_attach", fuseToForBlueTri2);
+
+			//rightTriChunk
+			HashSet<string> fuseToForRightTriChunk1 = new HashSet<string>();
+			HashSet<string> fuseToForRightTriChunk2 = new HashSet<string>();
+			HashSet<string> fuseToForRightTriChunk3 = new HashSet<string>();
+			fuseToForRightTriChunk1.Add ("right_tri_right_tri_chunk_back_attach");
+			fuseToForRightTriChunk2.Add ("right_tri_right_tri_chunk_side_attach");
+			fuseToForRightTriChunk3.Add ("right_tri_right_tri_chunk_angle_attach");
+			fuseMapping.Add ("right_tri_chunk_right_tri_back_attach", fuseToForRightTriChunk1);
+			fuseMapping.Add ("right_tri_chunk_right_tri_side_attach", fuseToForRightTriChunk2);
+			fuseMapping.Add ("right_tri_chunk_right_tri_angle_attach", fuseToForRightTriChunk3);
+
+			//Scalene
+			HashSet<string> fuseToForScalene1 = new HashSet<string>();
+			HashSet<string> fuseToForScalene2 = new HashSet<string>();
+			fuseToForScalene1.Add ("left_tri_scalene_back_attach");
+			fuseToForScalene2.Add ("left_tri_scalene_side_attach");
+			fuseMapping.Add ("scalene_left_tri_back_attach", fuseToForScalene1);
+			fuseMapping.Add ("scalene_left_tri_side_attach", fuseToForScalene2);
+
 		} else if (mode.Equals ("gloves")) {
 			//palm, fingers, thumb, armDec, palmDec
 			
@@ -801,6 +886,46 @@ public class FuseEvent : MonoBehaviour {
 //			HashSet<string> fuseToForTopPoint = new HashSet<string>();
 //			fuseToForTopPoint.Add ("head_top_point_attach");
 //			fuseMapping.Add ("top_point_head_attach", fuseToForTopPoint);
+
+//		Old, easier FFA level
+//		//ring, handle, centerTri, leftTri, rightTri
+//
+//		//ring
+//		HashSet<string> fuseToForRingLeft = new HashSet<string>();
+//		HashSet<string> fuseToForRingRight = new HashSet<string>();
+//		HashSet<string> fuseToForRingBack = new HashSet<string>();
+//		HashSet<string> fuseToForRingForward = new HashSet<string>();
+//		fuseToForRingLeft.Add ("center_box_ring_left_attach");
+//		fuseToForRingRight.Add ("center_box_ring_right_attach");
+//		fuseToForRingBack.Add ("center_box_ring_back_attach");
+//		fuseToForRingForward.Add ("center_box_ring_forward_attach");
+//		fuseMapping.Add ("ring_center_box_left_attach", fuseToForRingLeft);
+//		fuseMapping.Add ("ring_center_box_right_attach", fuseToForRingRight);
+//		fuseMapping.Add ("ring_center_box_back_attach", fuseToForRingBack);
+//		fuseMapping.Add ("ring_center_box_forward_attach", fuseToForRingForward);
+//
+//		//handle
+//		HashSet<string> fuseToForHandleTop = new HashSet<string>();
+//		HashSet<string> fuseToForHandleBottom = new HashSet<string>();
+//		fuseToForHandleTop.Add ("center_box_handle_top_attach");
+//		fuseToForHandleBottom.Add ("center_box_handle_bottom_attach");
+//		fuseMapping.Add ("handle_center_box_top_attach", fuseToForHandleTop);
+//		fuseMapping.Add ("handle_center_box_bottom_attach", fuseToForHandleBottom);
+//
+//		//centerTri
+//		HashSet<string> fuseToForCenterTri = new HashSet<string>();
+//		fuseToForCenterTri.Add ("ring_center_tri_attach");
+//		fuseMapping.Add ("center_tri_ring_attach", fuseToForCenterTri);
+//
+//		//leftTri
+//		HashSet<string> fuseToForLeftTri = new HashSet<string>();
+//		fuseToForLeftTri.Add ("ring_left_tri_attach");
+//		fuseMapping.Add ("left_tri_ring_attach", fuseToForLeftTri);
+//
+//		//rightTri
+//		HashSet<string> fuseToForRightTri = new HashSet<string>();
+//		fuseToForRightTri.Add ("ring_right_tri_attach");
+//		fuseMapping.Add ("right_tri_ring_attach", fuseToForRightTri);
 		
 	}
 
@@ -1065,19 +1190,32 @@ public class FuseEvent : MonoBehaviour {
 			rightCover.transform.parent = group.transform;
 
 		} else if(mode.Equals ("ffa")) {
-			GameObject centerBoxWhole = GameObject.Find ("centerBoxWhole");
-			GameObject ring = GameObject.Find ("ringPrefab(Clone)");
-			GameObject centerTri = GameObject.Find ("center_triPrefab(Clone)");
-			GameObject handle = GameObject.Find ("ffa_handlePrefab(Clone)");
-			GameObject leftTri = GameObject.Find ("left_triPrefab(Clone)");
-			GameObject rightTri = GameObject.Find ("right_triPrefab(Clone)");
-			
-			centerBoxWhole.transform.parent = group.transform;
-			ring.transform.parent = group.transform;
+			GameObject centerBox = GameObject.Find ("startObject");
+			GameObject ringLargePart = GameObject.Find ("ring_large_partPrefab(Clone)");
+			GameObject ringLongPart = GameObject.Find ("ring_long_partPrefab(Clone)");
+			GameObject ringSmallPart = GameObject.Find ("ring_small_partPrefab(Clone)");
+			GameObject centerTri = GameObject.Find ("center_tri_harderPrefab(Clone)");
+			GameObject handleTop = GameObject.Find ("handle_topPrefab(Clone)");
+			GameObject handleBottom = GameObject.Find ("handle_bottomPrefab(Clone)");
+			GameObject leftTri = GameObject.Find ("left_tri_harderPrefab(Clone)");
+			GameObject rightTri = GameObject.Find ("right_tri_harderPrefab(Clone)");
+			GameObject rightTriChunk = GameObject.Find ("right_tri_chunkPrefab(Clone)");
+			GameObject scalene = GameObject.Find ("scalenePrefab(Clone)");
+			GameObject blueTri = GameObject.Find ("blue_triPrefab(Clone)");
+
+			centerBox.transform.parent = group.transform;
+			ringLargePart.transform.parent = group.transform;
+			ringLongPart.transform.parent = group.transform;
+			ringSmallPart.transform.parent = group.transform;
 			centerTri.transform.parent = group.transform;
-			handle.transform.parent = group.transform;
+			handleTop.transform.parent = group.transform;
+			handleBottom.transform.parent = group.transform;
 			leftTri.transform.parent = group.transform;
 			rightTri.transform.parent = group.transform;
+			rightTriChunk.transform.parent = group.transform;
+			scalene.transform.parent = group.transform;
+			blueTri.transform.parent = group.transform;
+
 		} else if(mode.Equals ("gloves")) {
 			GameObject armWhole = GameObject.Find ("armWhole");
 			GameObject palm = GameObject.Find ("palmPrefab(Clone)");
@@ -1188,6 +1326,21 @@ public class FuseEvent : MonoBehaviour {
 //			topPoint.transform.parent = group.transform;
 //			bottomPoint.transform.parent = group.transform;
 //			haft.transform.parent = group.transform;
+
+// old, easier FFA level
+//		GameObject centerBoxWhole = GameObject.Find ("centerBoxWhole");
+//		GameObject ring = GameObject.Find ("ringPrefab(Clone)");
+//		GameObject centerTri = GameObject.Find ("center_triPrefab(Clone)");
+//		GameObject handle = GameObject.Find ("ffa_handlePrefab(Clone)");
+//		GameObject leftTri = GameObject.Find ("left_triPrefab(Clone)");
+//		GameObject rightTri = GameObject.Find ("right_triPrefab(Clone)");
+//
+//		centerBoxWhole.transform.parent = group.transform;
+//		ring.transform.parent = group.transform;
+//		centerTri.transform.parent = group.transform;
+//		handle.transform.parent = group.transform;
+//		leftTri.transform.parent = group.transform;
+//		rightTri.transform.parent = group.transform;
 	}
 		
 
