@@ -82,7 +82,7 @@ public class CreatePartFFAHarder : MonoBehaviour {
 		fuseRotations.Add ("center_box_ring_large_part_attach", fuseRotation);
 		fuseRotations.Add("center_box_ring_large_part_left_attach", fuseRotation);
 
-		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
+		Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
 		Quaternion[] acceptableRotations = {acceptableRotation1};
 		fusePositions.Add ("center_box_ring_large_part_attach", acceptableRotations);
 		fusePositions.Add ("center_box_ring_large_part_left_attach", acceptableRotations);
@@ -125,11 +125,11 @@ public class CreatePartFFAHarder : MonoBehaviour {
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
 
 		Vector3 centerBoxPos = centerBox.transform.position;
-		Vector3 fuseLocation = new Vector3 (centerBoxPos.x, centerBoxPos.y, centerBoxPos.z);
+		Vector3 fuseLocation = new Vector3 (centerBoxPos.x + 7.5f, centerBoxPos.y, centerBoxPos.z);
 		fuseLocations.Add ("center_box_ring_long_part_attach", fuseLocation);
 		fuseRotations.Add ("center_box_ring_long_part_attach", fuseRotation);
 
-		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
+		Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
 		Quaternion[] acceptableRotations = {acceptableRotation1};
 		fusePositions.Add ("center_box_ring_long_part_attach", acceptableRotations);
 
@@ -170,11 +170,11 @@ public class CreatePartFFAHarder : MonoBehaviour {
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
 
 		Vector3 centerBoxPos = centerBox.transform.position;
-		Vector3 fuseLocation = new Vector3 (centerBoxPos.x, centerBoxPos.y, centerBoxPos.z);
+		Vector3 fuseLocation = new Vector3 (centerBoxPos.x, centerBoxPos.y, centerBoxPos.z - 12.5f);
 		fuseLocations.Add ("center_box_ring_small_part_attach", fuseLocation);
 		fuseRotations.Add ("center_box_ring_small_part_attach", fuseRotation);
 
-		Quaternion acceptableRotation1 = Quaternion.Euler (0,0,0);
+		Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
 		Quaternion[] acceptableRotations = {acceptableRotation1};
 		fusePositions.Add ("center_box_ring_small_part_attach", acceptableRotations);
 
@@ -208,7 +208,7 @@ public class CreatePartFFAHarder : MonoBehaviour {
 
 		if (ringLongPart != null) {
 			Vector3 ringLongPartPos = ringLongPart.transform.position;
-			Vector3 fuseLocation = new Vector3 (ringLongPartPos.x + 18, ringLongPartPos.y, ringLongPartPos.z);
+			Vector3 fuseLocation = new Vector3 (ringLongPartPos.x + 7.5f, ringLongPartPos.y, ringLongPartPos.z);
 			fuseLocations.Add ("ring_long_part_center_tri_attach", fuseLocation);
 			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 			fuseRotations.Add ("ring_long_part_center_tri_attach", fuseRotation);
@@ -236,7 +236,7 @@ public class CreatePartFFAHarder : MonoBehaviour {
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
 
 		Vector3 centerBoxPos = centerBox.transform.position;
-		Vector3 fuseLocation = new Vector3 (centerBoxPos.x - 15, centerBoxPos.y, centerBoxPos.z);
+		Vector3 fuseLocation = new Vector3 (centerBoxPos.x - 15, centerBoxPos.y + 7.5f, centerBoxPos.z -1);
 
 		fuseLocations.Add("center_box_handle_top_attach", fuseLocation);
 
@@ -270,7 +270,7 @@ public class CreatePartFFAHarder : MonoBehaviour {
 		Dictionary<string, Quaternion[]> fusePositions = new Dictionary<string, Quaternion[]>();
 
 		Vector3 centerBoxPos = centerBox.transform.position;
-		Vector3 fuseLocation = new Vector3 (centerBoxPos.x - 15, centerBoxPos.y, centerBoxPos.z);
+		Vector3 fuseLocation = new Vector3 (centerBoxPos.x - 15, centerBoxPos.y - 7.5f, centerBoxPos.z - 1);
 
 		fuseLocations.Add("center_box_handle_bottom_attach", fuseLocation);
 
@@ -306,7 +306,7 @@ public class CreatePartFFAHarder : MonoBehaviour {
 
 		if(ringLargePart != null) {
 			Vector3 ringPos = ringLargePart.transform.position;
-			fuseLocation = new Vector3 (ringPos.x, ringPos.y, ringPos.z + 26);
+			fuseLocation = new Vector3 (ringPos.x - 3.1f, ringPos.y, ringPos.z + 22);
 		}
 
 		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
@@ -335,7 +335,7 @@ public class CreatePartFFAHarder : MonoBehaviour {
 
 		if(ringSmallPart != null) {
 			Vector3 ringPos = ringSmallPart.transform.position;
-			fuseLocation = new Vector3(ringPos.x, ringPos.y, ringPos.z - 25);
+			fuseLocation = new Vector3(ringPos.x, ringPos.y, ringPos.z - 12.5f);
 			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 
 			fuseLocations.Add ("ring_small_part_right_tri_attach", fuseLocation);
@@ -363,7 +363,7 @@ public class CreatePartFFAHarder : MonoBehaviour {
 
 		if(rightTri != null) {
 			Vector3 rightTriPos = rightTri.transform.position;
-			fuseLocation = new Vector3(rightTriPos.x, rightTriPos.y, rightTriPos.z);
+			fuseLocation = new Vector3(rightTriPos.x - 7.3f, rightTriPos.y, rightTriPos.z - 0.2f);
 			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 
 			fuseLocations.Add ("right_tri_right_tri_chunk_angle_attach", fuseLocation);
@@ -397,14 +397,14 @@ public class CreatePartFFAHarder : MonoBehaviour {
 
 		if(leftTri != null) {
 			Vector3 leftTriPos = leftTri.transform.position;
-			fuseLocation = new Vector3(leftTriPos.x, leftTriPos.y, leftTriPos.z);
+			fuseLocation = new Vector3(leftTriPos.x + 2.4f, leftTriPos.y, leftTriPos.z + 6.5f);
 			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 
 			fuseLocations.Add ("left_tri_scalene_back_attach", fuseLocation);
 			fuseLocations.Add ("left_tri_scalene_side_attach", fuseLocation);
 			fuseRotations.Add ("left_tri_scalene_back_attach", fuseRotation);
 			fuseRotations.Add ("left_tri_scalene_side_attach", fuseRotation);
-			Quaternion acceptableRotation1 = Quaternion.Euler (270,0,0);
+			Quaternion acceptableRotation1 = Quaternion.Euler (90,0,0);
 			Quaternion[] acceptableRotations = {acceptableRotation1};
 			fusePositions.Add ("left_tri_scalene_back_attach", acceptableRotations);
 			fusePositions.Add ("left_tri_scalene_side_attach", acceptableRotations);
@@ -428,7 +428,7 @@ public class CreatePartFFAHarder : MonoBehaviour {
 
 		if(centerTri != null) {
 			Vector3 centerTriPos = centerTri.transform.position;
-			fuseLocation = new Vector3(centerTriPos.x, centerTriPos.y, centerTriPos.z);
+			fuseLocation = new Vector3(centerTriPos.x + 8.2f, centerTriPos.y, centerTriPos.z + 2.4f);
 			Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 
 			fuseLocations.Add ("center_tri_blue_tri_back_attach", fuseLocation);
