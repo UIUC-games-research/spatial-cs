@@ -35,4 +35,9 @@ public class RecipesDB : MonoBehaviour
 										   "key1",
 										   new string[] { "Key 1 Dangly T", "Key 1 Upright L", "Key 1 Upright Rect", "Key 1 Upright T", "Key 1 Walking Pants", "Key 1 Waluigi" },
 										   new int[] { 1, 1, 1, 1, 1, 1 });
+
+	public static Recipe FFA = new Recipe("FFA",
+										  "ffaHarder",
+										  new string[] { "FFA Blue Tri", "FFA Center Box", "FFA Center Tri", "FFA Handle Bottom", "FFA Handle Top", "FFA Left Tri", "FFA Right Tri", "FFA Right Tri Chunk", "FFA Ring Large", "FFA Ring Long", "FFA Ring Small", "FFA Scalene"},
+										  new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
 }
