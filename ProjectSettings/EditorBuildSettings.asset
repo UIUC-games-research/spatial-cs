@@ -53,3 +53,5 @@ EditorBuildSettings:
     path: Assets/_Scene/Construction/sledgehammer.unity
   - enabled: 1
     path: Assets/_Scene/Construction/ffaHarder.unity
+  - enabled: 1
+    path: Assets/_Scene/EmptyScene.unity
