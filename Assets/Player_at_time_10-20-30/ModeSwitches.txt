@@ -1,1 +1,0 @@
-23.96628,MODESWITCH_TO,SimpleMenu

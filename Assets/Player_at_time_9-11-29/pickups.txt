@@ -1,3 +1,0 @@
-71.52,PICKUP,Rocket Boots Toe Sole
-88.66,PICKUP,Battery
-93.86,PICKUP,Rocket Boots Body
