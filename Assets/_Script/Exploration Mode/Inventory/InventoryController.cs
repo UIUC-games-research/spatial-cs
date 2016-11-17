@@ -49,6 +49,8 @@ public class InventoryController : MonoBehaviour
 			RecipesDB.unlockedRecipes.Add(RecipesDB.Sledgehammer);
 		if (!RecipesDB.unlockedRecipes.Contains(RecipesDB.Key1))
 			RecipesDB.unlockedRecipes.Add(RecipesDB.Key1);
+		if (!RecipesDB.unlockedRecipes.Contains(RecipesDB.FFA))
+			RecipesDB.unlockedRecipes.Add(RecipesDB.FFA);
 
 		// Load save when inventory controller activates. Has to happen somewhere!
 		SaveController.Load();

@@ -154,6 +154,25 @@ public class FuseEvent : MonoBehaviour {
 						LoadUtils.LoadScene(InventoryController.levelName);
 						LoadUtils.UnloadScene("key1");
 						break;
+					case "ffa":
+						ConversationTrigger.AddToken("player_has_ffa");
+						InventoryController.items.Remove("FFA Blue Tri");
+						InventoryController.items.Remove("FFA Center Box");
+						InventoryController.items.Remove("FFA Center Tri");
+						InventoryController.items.Remove("FFA Handle Bottom");
+						InventoryController.items.Remove("FFA Handle Top");
+						InventoryController.items.Remove("FFA Left Tri");
+						InventoryController.items.Remove("FFA Right Tri");
+						InventoryController.items.Remove("FFA Right Tri Chunk");
+						InventoryController.items.Remove("FFA Ring Large");
+						InventoryController.items.Remove("FFA Ring Long");
+						InventoryController.items.Remove("FFA Ring Small");
+						InventoryController.items.Remove("FFA Scalene");
+						InventoryController.ConvertInventoryToTokens();
+						LoadUtils.LoadScene(InventoryController.levelName);
+						LoadUtils.UnloadScene("ffaHarder");
+						break;
+
 					default:
 						Debug.Log("Not Yet Implemented: " + mode);
 						break;
