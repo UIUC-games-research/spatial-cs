@@ -1,0 +1,17 @@
+588.3,PICKUP,Rocket Boots Toe Sole
+620.36,PICKUP,Battery
+645.94,PICKUP,Battery
+686.36,PICKUP,Battery
+699.04,PICKUP,Battery
+710.48,PICKUP,Rocket Boots Widening
+735.8,PICKUP,Battery
+738.22,PICKUP,Battery
+811.4,PICKUP,Rocket Boots Calf
+841.44,PICKUP,Rocket Boots Sole
+848.16,PICKUP,Rocket Boots Trim
+849.8,PICKUP,Battery
+855.16,PICKUP,Battery
+859.84,PICKUP,Battery
+881,PICKUP,Rocket Boots Body
+895.94,PICKUP,Battery
+969.52,PICKUP,Rocket Boots Toe
