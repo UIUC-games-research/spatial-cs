@@ -1,0 +1,5 @@
+1347.94,PICKUP,Rocket Boots Toe Sole
+1366.08,PICKUP,Battery
+1370.08,PICKUP,Rocket Boots Toe
+1379.2,PICKUP,Battery
+1381.28,PICKUP,Rocket Boots Body
