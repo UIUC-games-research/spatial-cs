@@ -90,7 +90,7 @@ public class InventoryController : MonoBehaviour
 	public static void RestartGame()
 	{
 		Debug.Log("Restarting!");
-		System.IO.File.Delete(Application.persistentDataPath + "/Save.dat");	// Delete save.
+		//System.IO.File.Delete(Application.persistentDataPath + "/Save.dat");	// Delete save.
 		LoadUtils.loadedScenes.Clear();							// Clear loaded scenes to account for all scene conditions.
 		ConversationTrigger.tokens.Clear();						// Clear tokens for sanity.
 		items.Clear();                                          // Clear items for safety.
