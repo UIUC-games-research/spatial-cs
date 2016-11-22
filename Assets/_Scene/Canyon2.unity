@@ -2769,7 +2769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &257153002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8487,6 +8487,185 @@ MonoBehaviour:
   levelName: RuinedCity
   tokenRequired: 
   spawnPosition: {x: 0, y: 5, z: 0}
+--- !u!1 &787151961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 787151962}
+  - 114: {fileID: 787151963}
+  - 114: {fileID: 787151964}
+  - 114: {fileID: 787151967}
+  - 114: {fileID: 787151965}
+  - 114: {fileID: 787151966}
+  - 114: {fileID: 787151969}
+  - 114: {fileID: 787151968}
+  m_Layer: 0
+  m_Name: TutTrigger_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &787151962
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787151961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 125.83104, y: 127.350426, z: 122.849304}
+  m_LocalScale: {x: 1.6666667, y: 1.6666667, z: 1.6666667}
+  m_Children: []
+  m_Father: {fileID: 851006030}
+  m_RootOrder: 14
+--- !u!114 &787151963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787151961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: MovementTutorial
+  allowEscape: 0
+  oneShot: 1
+  trigger: 2
+  keyRequired: 0
+  tokenWhitelist: []
+  tokenBlacklist: []
+--- !u!114 &787151964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787151961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: Exp_new_1
+  allowEscape: 0
+  oneShot: 1
+  trigger: 2
+  keyRequired: 0
+  tokenWhitelist:
+  - picked_up_a_battery
+  tokenBlacklist: []
+--- !u!114 &787151965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787151961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: Exp_new_3
+  allowEscape: 0
+  oneShot: 1
+  trigger: 2
+  keyRequired: 0
+  tokenWhitelist:
+  - autodelete_Rocket Boots Sole
+  - autodelete_Rocket Boots Calf
+  - autodelete_Rocket Boots Body
+  - autodelete_Rocket Boots Toe
+  - autodelete_Rocket Boots Toe Sole
+  - autodelete_Rocket Boots Trim
+  - autodelete_Rocket Boots Widening
+  tokenBlacklist: []
+--- !u!114 &787151966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787151961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: Exp_new_4
+  allowEscape: 0
+  oneShot: 1
+  trigger: 3
+  keyRequired: 0
+  tokenWhitelist:
+  - gear_rocketboots
+  tokenBlacklist: []
+--- !u!114 &787151967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787151961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: Exp_new_2
+  allowEscape: 0
+  oneShot: 1
+  trigger: 2
+  keyRequired: 0
+  tokenWhitelist:
+  - picked_up_a_boots_piece
+  tokenBlacklist: []
+--- !u!114 &787151968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787151961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: Exp_new_6
+  allowEscape: 0
+  oneShot: 1
+  trigger: 3
+  keyRequired: 0
+  tokenWhitelist:
+  - gear_sledgehammer
+  tokenBlacklist: []
+--- !u!114 &787151969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787151961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: Exp_new_5
+  allowEscape: 0
+  oneShot: 1
+  trigger: 2
+  keyRequired: 0
+  tokenWhitelist:
+  - picked_up_a_sledge_piece
+  tokenBlacklist: []
 --- !u!1001 &793532740
 Prefab:
   m_ObjectHideFlags: 0
@@ -9073,6 +9252,7 @@ Transform:
   - {fileID: 1849822607}
   - {fileID: 257153004}
   - {fileID: 1924699448}
+  - {fileID: 787151962}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1001 &855146918
@@ -12832,6 +13012,38 @@ Prefab:
     - target: {fileID: 22491642, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_SizeDelta.y
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 112786, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 188236, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22477830, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 22477830, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 22419400, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 22477830, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -142.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 22497618, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22497618, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 68.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
@@ -20961,7 +21173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1924699443
 MonoBehaviour:
   m_ObjectHideFlags: 0

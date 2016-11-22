@@ -1,0 +1,1 @@
+[color]880Battery[color] - Recharges Build Mode when you run out of battery power! Press [color]880I[color] to see how much battery power you have so far.
