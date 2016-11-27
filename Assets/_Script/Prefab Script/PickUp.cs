@@ -86,6 +86,7 @@ public class PickUp : MonoBehaviour
 				case PickupType.Clue:
 					CluePopulator.AddClue(pickupName, clueSprite);
 					ConversationTrigger.AddToken("clue_" + pickupName);
+					ConversationTrigger.AddToken("picked_up_a_clue");
 					Destroy(gameObject);
 					break;
 			}
