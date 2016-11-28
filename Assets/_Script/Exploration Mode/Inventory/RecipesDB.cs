@@ -22,7 +22,7 @@ public class RecipesDB : MonoBehaviour
 												  new int[] { 2 } );
 
 	public static Recipe RocketBoots = new Recipe("Rocket Boots",
-												  "rocketBoots",
+												  "tutorial1",
 												  new string[] { "Rocket Boots Sole", "Rocket Boots Toe Sole", "Rocket Boots Toe", "Rocket Boots Trim", "Rocket Boots Calf", "Rocket Boots Body", "Rocket Boots Widening" },
 												  new int[] { 1, 1, 1, 1, 1, 1, 1 });
 

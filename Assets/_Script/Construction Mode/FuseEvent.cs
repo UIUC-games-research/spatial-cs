@@ -106,7 +106,7 @@ public class FuseEvent : MonoBehaviour {
 						break;
 					case "tutorial2":
 						ConversationTrigger.AddToken("done_with_tutorial_2");
-						LoadUtils.LoadScene("construction");
+						LoadUtils.LoadScene("rocketBoots");
 						LoadUtils.UnloadScene("tutorial2");
 						break;
 					case "boot":
