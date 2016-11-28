@@ -59,6 +59,16 @@ public class PickUp : MonoBehaviour
 					// Add the item and update the tokens.
 					InventoryController.Add(this, 1);
 					InventoryController.ConvertInventoryToTokens();
+
+					if (pickupName.Contains("Rocket"))
+					{
+						ConversationTrigger.AddToken("picked_up_a_boots_piece");
+					}
+					if (pickupName.Contains("Sledge"))
+					{
+						ConversationTrigger.AddToken("picked_up_a_sledge_piece");
+					}
+
 					// Object still needs to exist for the icon to work.
 					// Silly, but let's just shove it into a corner and forget about it.
 					// Also parents to the scene manager object so it rejects deletion as much as possible.
@@ -69,12 +79,14 @@ public class PickUp : MonoBehaviour
 				case PickupType.Battery:
 					BatterySystem.AddPower(2);
 					BatterySystem.PowerToTokens();
+					ConversationTrigger.AddToken("picked_up_a_battery");
 					RespawnBattery();
 					break;
 
 				case PickupType.Clue:
 					CluePopulator.AddClue(pickupName, clueSprite);
 					ConversationTrigger.AddToken("clue_" + pickupName);
+					ConversationTrigger.AddToken("picked_up_a_clue");
 					Destroy(gameObject);
 					break;
 			}

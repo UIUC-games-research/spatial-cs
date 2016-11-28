@@ -8,6 +8,9 @@ using System.Reflection;
 
 public class SaveController : MonoBehaviour
 {
+	// Filename for save. Allow loading of any string name.
+	public static string filename = "Save";
+
 	// Saves a file containing all game options which are in the above. 
 	public static void Save()
 	{
@@ -73,7 +76,7 @@ public class SaveController : MonoBehaviour
 	// Returns the path to the options file.
 	public static string WhereIsData()
 	{
-		return Application.persistentDataPath + "/Save.dat";
+		return Application.persistentDataPath + "/" + filename + ".dat";
 	}
 
 }

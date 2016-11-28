@@ -11,9 +11,13 @@ public class LoadTrigger : MonoBehaviour
 		if (other.tag == "Player")
 		{
 			if (tokenRequired == "")
+			{
+				ConversationTrigger.AddToken("reachedLevel_" + levelName);
 				LoadUtils.LoadNewExplorationLevel(levelName, spawnPosition);
+			}
 			else if (ConversationTrigger.GetToken(tokenRequired))
 			{
+				ConversationTrigger.AddToken("reachedLevel_" + levelName);
 				LoadUtils.LoadNewExplorationLevel(levelName, spawnPosition);
 			}
 		}
