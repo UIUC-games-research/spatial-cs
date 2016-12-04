@@ -114,7 +114,7 @@ public class ConversationsDB : MonoBehaviour
 			if (!convos.ContainsKey(ii.name))
 				convos.Add(ii.name, ii.text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries));
 			else
-				Debug.LogError("Attempting to add a key which already exists. This is usually a bad thing.");
+				Debug.LogError("Attempting to add a key which already exists: " + ii.name + ". This is usually a bad thing.");
 		}
 	}
 }

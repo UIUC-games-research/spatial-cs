@@ -108,7 +108,7 @@ public class RecipeButtonBridge : MonoBehaviour
 				{
 					if (ConversationTrigger.GetToken("done_with_tutorial_2"))
 					{
-						LoadUtils.LoadScene("construction");
+						LoadUtils.LoadScene("rocketBoots");
 					}
 					else if (ConversationTrigger.GetToken("done_with_tutorial_1"))
 					{
