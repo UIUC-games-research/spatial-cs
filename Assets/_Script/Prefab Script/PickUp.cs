@@ -60,6 +60,9 @@ public class PickUp : MonoBehaviour
 					InventoryController.Add(this, 1);
 					InventoryController.ConvertInventoryToTokens();
 
+					// Poke the build button so it can check if it needs to update.
+					BuildButton.CheckRecipes();
+
 					if (pickupName.Contains("Rocket"))
 					{
 						ConversationTrigger.AddToken("picked_up_a_boots_piece");

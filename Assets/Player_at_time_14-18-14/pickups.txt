@@ -1,8 +1,0 @@
-9.32,PICKUP,Rocket Boots Toe Sole
-15.98,PICKUP,Rocket Boots Toe
-19.94,PICKUP,Battery
-23.04,PICKUP,Rocket Boots Body
-32.22,PICKUP,Rocket Boots Widening
-44.1,PICKUP,Rocket Boots Calf
-55.56,PICKUP,Rocket Boots Trim
-58.28,PICKUP,Rocket Boots Sole
