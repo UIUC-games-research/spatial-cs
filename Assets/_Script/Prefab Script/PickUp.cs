@@ -71,6 +71,14 @@ public class PickUp : MonoBehaviour
 					{
 						ConversationTrigger.AddToken("picked_up_a_sledge_piece");
 					}
+					if (pickupName.Contains("Key1"))
+					{
+						ConversationTrigger.AddToken("picked_up_a_key1_piece");
+					}
+					if (pickupName.Contains("FFA"))
+					{
+						ConversationTrigger.AddToken("picked_up_a_ffa_piece");
+					}
 
 					// Object still needs to exist for the icon to work.
 					// Silly, but let's just shove it into a corner and forget about it.
