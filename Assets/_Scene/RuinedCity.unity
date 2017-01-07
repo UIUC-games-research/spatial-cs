@@ -16716,6 +16716,10 @@ Prefab:
       propertyPath: deleteToken
       value: clue_CityPart6
       objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Waluigi
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
   m_IsPrefabParent: 0
@@ -24747,6 +24751,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 03fdbc44f17ede74599ba473c5d6432b,
         type: 3}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Dangly T
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
   m_IsPrefabParent: 0
@@ -25320,7 +25328,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: pickupDesc
-      value: 
+      value: Key 1 Upright Rect
       objectReference: {fileID: 0}
     - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: pickupName
@@ -45613,6 +45621,10 @@ Prefab:
       propertyPath: deleteToken
       value: clue_CityPart5
       objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Walking Pants
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
   m_IsPrefabParent: 0
@@ -48731,7 +48743,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22491642, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 252
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 22491642, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -55341,6 +55353,10 @@ Prefab:
       propertyPath: deleteToken
       value: clue_CityPart2
       objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Upright L
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
   m_IsPrefabParent: 0
@@ -58125,6 +58141,10 @@ Prefab:
     - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: deleteToken
       value: clue_CityPart4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Upright T
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
