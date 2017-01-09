@@ -10566,8 +10566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfStarter: 
   conversationName: Exp_new_11
-  allowEscape: 1
-  oneShot: 0
+  allowEscape: 0
+  oneShot: 1
   trigger: 2
   keyRequired: 0
   tokenWhitelist:
@@ -18046,7 +18046,7 @@ Prefab:
     - target: {fileID: 11433396, guid: 322107c21b7057143b3bd601b5108d1d, type: 2}
       propertyPath: doors.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1520295839}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 322107c21b7057143b3bd601b5108d1d, type: 2}
   m_IsPrefabParent: 0
@@ -19233,7 +19233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfStarter: Dresha
+  nameOfStarter: 
   conversationName: Vault_NoBoots
   allowEscape: 0
   oneShot: 1
@@ -41696,7 +41696,7 @@ Prefab:
     - target: {fileID: 11433396, guid: 322107c21b7057143b3bd601b5108d1d, type: 2}
       propertyPath: doors.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1813793184}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 322107c21b7057143b3bd601b5108d1d, type: 2}
   m_IsPrefabParent: 0
@@ -42988,6 +42988,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e98a8813d9d427a4e9489ddf9f8d70ae, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1520295839 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 161518, guid: e98a8813d9d427a4e9489ddf9f8d70ae, type: 2}
+  m_PrefabInternal: {fileID: 1520295838}
 --- !u!1001 &1520551548
 Prefab:
   m_ObjectHideFlags: 0
@@ -53834,6 +53838,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e98a8813d9d427a4e9489ddf9f8d70ae, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1813793184 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 161518, guid: e98a8813d9d427a4e9489ddf9f8d70ae, type: 2}
+  m_PrefabInternal: {fileID: 1813793183}
 --- !u!1001 &1818013384
 Prefab:
   m_ObjectHideFlags: 0
@@ -56717,7 +56725,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22491642, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 252
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 22491642, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_AnchoredPosition.y
