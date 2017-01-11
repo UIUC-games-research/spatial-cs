@@ -56789,6 +56789,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 102856, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 118564, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
   m_IsPrefabParent: 0
@@ -62997,6 +63005,7 @@ MonoBehaviour:
   - {fileID: 1178080661}
   thisCollider: {fileID: 954904626}
   leverObject: {fileID: 2007691290}
+  player: {fileID: 0}
 --- !u!95 &2072601633
 Animator:
   serializedVersion: 3
