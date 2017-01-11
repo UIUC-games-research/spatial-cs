@@ -126,12 +126,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-
+		bool mouseInit = false;
         private void Start()
         {
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
-            mouseLook.Init (transform, cam.transform);
+			if (!mouseInit)
+			{
+				mouseLook.Init(transform, cam.transform);
+				mouseInit = true;
+			}
         }
 
 		void OnEnable ()

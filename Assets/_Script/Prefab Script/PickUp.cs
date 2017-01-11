@@ -60,6 +60,9 @@ public class PickUp : MonoBehaviour
 					InventoryController.Add(this, 1);
 					InventoryController.ConvertInventoryToTokens();
 
+					// Poke the build button so it can check if it needs to update.
+					BuildButton.CheckRecipes();
+
 					if (pickupName.Contains("Rocket"))
 					{
 						ConversationTrigger.AddToken("picked_up_a_boots_piece");
@@ -67,6 +70,14 @@ public class PickUp : MonoBehaviour
 					if (pickupName.Contains("Sledge"))
 					{
 						ConversationTrigger.AddToken("picked_up_a_sledge_piece");
+					}
+					if (pickupName.Contains("Key1"))
+					{
+						ConversationTrigger.AddToken("picked_up_a_key1_piece");
+					}
+					if (pickupName.Contains("FFA"))
+					{
+						ConversationTrigger.AddToken("picked_up_a_ffa_piece");
 					}
 
 					// Object still needs to exist for the icon to work.

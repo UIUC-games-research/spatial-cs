@@ -3867,6 +3867,75 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 137798437}
   m_Mesh: {fileID: 4300000, guid: a2e7699a5fecc584688fe3a1b9afb2ee, type: 3}
+--- !u!1 &140218865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 140218867}
+  - 114: {fileID: 140218866}
+  - 114: {fileID: 140218868}
+  m_Layer: 0
+  m_Name: TutTrigger_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &140218866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140218865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: Exp_new_10
+  allowEscape: 0
+  oneShot: 1
+  trigger: 2
+  keyRequired: 0
+  tokenWhitelist:
+  - picked_up_a_key1_piece
+  tokenBlacklist: []
+--- !u!4 &140218867
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140218865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -135.88559, y: 135.22867, z: -223.35123}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+--- !u!114 &140218868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140218865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be138e1344296904cab08901f0cf1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfStarter: 
+  conversationName: Exp_new_12
+  allowEscape: 0
+  oneShot: 1
+  trigger: 2
+  keyRequired: 0
+  tokenWhitelist:
+  - player_has_key1
+  tokenBlacklist: []
 --- !u!1 &144080008
 GameObject:
   m_ObjectHideFlags: 0
@@ -8164,7 +8233,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -16647,6 +16716,10 @@ Prefab:
       propertyPath: deleteToken
       value: clue_CityPart6
       objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Waluigi
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
   m_IsPrefabParent: 0
@@ -24678,6 +24751,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 03fdbc44f17ede74599ba473c5d6432b,
         type: 3}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Dangly T
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
   m_IsPrefabParent: 0
@@ -25251,7 +25328,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: pickupDesc
-      value: 
+      value: Key 1 Upright Rect
       objectReference: {fileID: 0}
     - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: pickupName
@@ -30123,6 +30200,52 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1034542673}
   m_Mesh: {fileID: 4300000, guid: 7e84a70fa7617814cb5da4d30f5d8b1b, type: 3}
+--- !u!1001 &1037668791
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 486412, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -175.0851
+      objectReference: {fileID: 0}
+    - target: {fileID: 486412, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 15.653557
+      objectReference: {fileID: 0}
+    - target: {fileID: 486412, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 152.26303
+      objectReference: {fileID: 0}
+    - target: {fileID: 486412, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 486412, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 486412, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 486412, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 486412, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8203772, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f21a66f4969fd2418fbc725b5cee6cc, type: 3}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 61dfd5f4edda20642978fd59b5d29e73, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1038376665
 GameObject:
   m_ObjectHideFlags: 0
@@ -45544,6 +45667,10 @@ Prefab:
       propertyPath: deleteToken
       value: clue_CityPart5
       objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Walking Pants
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
   m_IsPrefabParent: 0
@@ -48662,7 +48789,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22491642, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 252
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 22491642, guid: 140be3eba7ad269438afafd82ee2bae4, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -55272,6 +55399,10 @@ Prefab:
       propertyPath: deleteToken
       value: clue_CityPart2
       objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Upright L
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
   m_IsPrefabParent: 0
@@ -58056,6 +58187,10 @@ Prefab:
     - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
       propertyPath: deleteToken
       value: clue_CityPart4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450374, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
+      propertyPath: pickupDesc
+      value: Key 1 Upright T
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12f931464d33e524e9605e142bce3f57, type: 2}
@@ -65027,7 +65162,7 @@ Transform:
   - {fileID: 112394155}
   - {fileID: 220264668}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1 &2117637933
 GameObject:
   m_ObjectHideFlags: 0

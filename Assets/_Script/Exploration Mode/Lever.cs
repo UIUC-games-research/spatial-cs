@@ -8,7 +8,7 @@ public class Lever : MonoBehaviour
 	public Collider thisCollider;   // Set in inspector.
 	public GameObject leverObject;  // Set in inspector.
 
-	GameObject player;
+	public GameObject player;
 	bool leverState = false;
 	bool rotating = false;
 
@@ -22,10 +22,13 @@ public class Lever : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hitInfo = new RaycastHit();
+			Debug.DrawLine(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).origin + (100 * Camera.main.ScreenPointToRay(Input.mousePosition).direction), Color.green, 10f);
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo))
 			{
+				Debug.Log(hitInfo.collider.gameObject.name);
 				if (hitInfo.collider == thisCollider && Vector3.Distance(player.transform.position, transform.position) < 4f)
 				{
+					Debug.Log("LEVER PULLED");
 					if (!rotating)
 						StartCoroutine(SwitchLever());
 				}

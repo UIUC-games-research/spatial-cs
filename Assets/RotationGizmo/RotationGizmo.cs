@@ -8,6 +8,7 @@ public class RotationGizmo : MonoBehaviour
 	public GameObject toRotate;
 	public bool tutorialOn;
 	public SelectPart adjuster;
+	public GameObject batteryIndicator;
 
 	public GameObject xGizmo;
 	public GameObject yGizmo;
@@ -23,6 +24,7 @@ public class RotationGizmo : MonoBehaviour
 		//adjuster = EventSystem.current.gameObject.GetComponent<SelectPart>();
 		//adjuster = GameObject.Find("EventSystem").GetComponent<SelectPart>();
 		Disable();
+		batteryIndicator = GameObject.Find("BatteryIndicator");
 	}
 
 	void OnEnable()
@@ -120,12 +122,14 @@ public class RotationGizmo : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hitInfo = new RaycastHit();
-			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) && (tutorialOn || BatterySystem.GetPower() > 0 || FuseEvent.runningJustConstructionMode) )
+			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo))
 			{
 				//Debug.Log(hitInfo.transform.name);
 				switch(hitInfo.transform.name)
 				{
 					case "XUp":
+						if (!CheckBattery())
+							break;
 						xRots++;
 						if (Mathf.Approximately(xGizmo.transform.localEulerAngles.y, 180f))
 							StartCoroutine(Rotate(90f, 0f, 0f));
@@ -134,6 +138,8 @@ public class RotationGizmo : MonoBehaviour
 						break;
 
 					case "XDown":
+						if (!CheckBattery())
+							break;
 						xRots++;
 						if (Mathf.Approximately(xGizmo.transform.localEulerAngles.y, 180f))
 							StartCoroutine(Rotate(-90f, 0f, 0f));
@@ -142,16 +148,22 @@ public class RotationGizmo : MonoBehaviour
 						break;
 
 					case "YLeft":
+						if (!CheckBattery())
+							break;
 						yRots++;
 						StartCoroutine(Rotate(0f, 90f, 0f));
 						break;
 
 					case "YRight":
+						if (!CheckBattery())
+							break;
 						yRots++;
 						StartCoroutine(Rotate(0f, -90f, 0f));
 						break;
 
 					case "ZUp":
+						if (!CheckBattery())
+							break;
 						zRots++;
 						if (Mathf.Approximately(zGizmo.transform.localEulerAngles.y, 270f))
 							StartCoroutine(Rotate(0f, 0f, -90f));
@@ -160,6 +172,8 @@ public class RotationGizmo : MonoBehaviour
 						break;
 
 					case "ZDown":
+						if (!CheckBattery())
+							break;
 						zRots++;
 						if (Mathf.Approximately(zGizmo.transform.localEulerAngles.y, 270f))
 							StartCoroutine(Rotate(0f, 0f, 90f));
@@ -181,7 +195,7 @@ public class RotationGizmo : MonoBehaviour
 		adjuster.AdjustPartAlignment(x, y, z);
 
 		// Integration for battery power.
-		if(!tutorialOn) {
+		if(!tutorialOn && !rotating) {
 			BatterySystem.SubPower(1);
 		}
 
@@ -275,6 +289,47 @@ public class RotationGizmo : MonoBehaviour
 		toRotate = objectToRotate;
 		transform.position = toRotate.transform.position;
 		return objectToRotate;
+	}
+
+	// Checks battery, returns whether this rotation can happen. If it cannot, shows error.
+	bool CheckBattery()
+	{
+		// Check if we're in the standard game mode and have no power.
+		if (BatterySystem.GetPower() == 0 && !tutorialOn && !FuseEvent.runningJustConstructionMode)
+		{
+			StartCoroutine(FlashBattery());
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+	bool flashing = false;
+	IEnumerator FlashBattery()
+	{
+		if (flashing)
+		{
+			yield break;
+		}
+		flashing = true;
+
+		batteryIndicator.transform.localScale = 2f * batteryIndicator.transform.localScale;
+
+		for (int ii = 0; ii < 8; ii++)
+		{
+			batteryIndicator.transform.Rotate(0f, 90f, 0f);
+
+			// Wait a few frames.
+			for (int jj = 0; jj < 8; jj++)
+			{
+				yield return null;
+			}
+		}
+
+		batteryIndicator.transform.localScale = 0.5f * batteryIndicator.transform.localScale;
+		flashing = false;
 	}
 
 

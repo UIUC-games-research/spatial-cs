@@ -59,6 +59,18 @@ public class CluePopulator : MonoBehaviour
 			instance.transform.SetParent(this.transform, false);
 			instance.GetComponent<Image>().sprite = ii.Value;
 
+			// Check if the clue has already been solved.
+			// Hardcoding this for the sake of sanity.
+			if (ConversationTrigger.GetToken("autodelete_Key 1 Dangly T") && ii.Key == "CityPart1" ||
+				ConversationTrigger.GetToken("autodelete_Key 1 Upright L") && ii.Key == "CityPart2" ||
+				ConversationTrigger.GetToken("autodelete_Key 1 Upright Rect") && ii.Key == "CityPart3" ||
+				ConversationTrigger.GetToken("autodelete_Key 1 Upright T") && ii.Key == "CityPart4" ||
+				ConversationTrigger.GetToken("autodelete_Key 1 Walking Pants") && ii.Key == "CityPart5" ||
+				ConversationTrigger.GetToken("autodelete_Key 1 Waluigi") && ii.Key == "CityPart6")
+			{
+				instance.GetComponent<Image>().color = new Color(0.25f, 0.25f, 0.25f);
+			}
+
 			// Add to object list.
 			cluesInList.Add(instance);
 		}

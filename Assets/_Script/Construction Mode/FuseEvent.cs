@@ -177,7 +177,8 @@ public class FuseEvent : MonoBehaviour {
 						Debug.Log("Not Yet Implemented: " + mode);
 						break;
 				}
-
+				// Update the build button based on the now-removed parts.
+				BuildButton.CheckRecipes();
 
 			});
 			Debug.Log("Made it to this point");

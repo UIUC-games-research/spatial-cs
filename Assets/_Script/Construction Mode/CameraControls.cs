@@ -29,6 +29,11 @@ public class CameraControls : MonoBehaviour
 	{
 		//distance = Vector3.Distance(transform.position, Vector3.zero);
 		distance = Vector3.Distance(transform.position, orbitPoint);
+
+		Light spot = gameObject.AddComponent<Light>();
+		spot.type = LightType.Spot;
+		spot.spotAngle = 75f;
+		spot.range = 300f;
 	}
 
 	void LateUpdate()

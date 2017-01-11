@@ -1,9 +1,0 @@
-0,PICKUP,Rocket Boots Trim
-0,PICKUP,Rocket Boots Calf
-0,PICKUP,Rocket Boots Widening
-0,PICKUP,Rocket Boots Body
-0,PICKUP,Rocket Boots Toe
-0,PICKUP,Rocket Boots Toe Sole
-0,PICKUP,Rocket Boots Sole
-26.22,PICKUP,Battery
-49.64,PICKUP,Battery
