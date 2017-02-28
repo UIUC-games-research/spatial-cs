@@ -156,13 +156,46 @@ public class SimpleData : MonoBehaviour
 	// Static functions for easy data storage.
 	// Here's a catch-all! Appends a line to a file by name.
 	// Also appends to the master file.
+	// DEPRECATED.
 	public static void WriteStringToFile(string filename, string toWrite)
 	{
+		/*
 		StreamWriter sw_temp = new StreamWriter(folder + "/" + filename, true);
 		StreamWriter sw_master = new StreamWriter(folder + "/ALLDATA.txt", true);
 		sw_temp.WriteLine(toWrite);
 		sw_master.WriteLine(toWrite);
 		sw_temp.Close();
 		sw_master.Close();
+		*/
+	}
+
+	// New data code February 2017
+	// Write format:
+	// // IsInBuiltExecutable, Timestamp, NameOfSaveGame, OriginScene, DataIdentifier, Modifier, Modifier, Modifier, Modifier, Value
+	public static void WriteDataPoint(string data_identifier, string modifier_a, string modifier_b, string modifier_c, string modifier_d, string value)
+	{
+		StreamWriter sw = new StreamWriter(Application.dataPath, true);
+
+		// Setup first piece of information.
+		string isInBuiltExecutable = "True";
+		if (Application.isEditor)
+			isInBuiltExecutable = "False";
+
+		// Setup timestamp.
+		string timestamp = Time.time.ToString();
+
+		// Setup name of save.
+		string nameOfSaveGame = SaveController.filename;
+
+		// Setup scene name.
+		string originScene = LoadUtils.currentSceneName;
+
+		// Combine entire string
+		string datapoint = isInBuiltExecutable + "," + timestamp + "," + nameOfSaveGame + "," + 
+						   originScene + "," + data_identifier + "," + modifier_a + "," + modifier_b +
+						   "," + modifier_c + "," + modifier_d + "," + value;
+
+		sw.WriteLine(datapoint);
+		sw.Close();
 	}
 }

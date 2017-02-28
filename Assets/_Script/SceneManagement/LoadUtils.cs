@@ -14,6 +14,10 @@ public class LoadUtils : MonoBehaviour
 	// Stores all scenes which have been loaded. Added to in BundleScene whenever a new bundle is created.
 	public static Dictionary<string, GameObject> loadedScenes = new Dictionary<string, GameObject>();
 
+	// Keep track of the name of the scene the player currently has active.
+	// This system makes this slightly more difficult to check, so we'll just keep track of it here.
+	public static string currentSceneName = "";
+
 	void Awake()
 	{
 		selfRef = this;
@@ -107,6 +111,7 @@ public class LoadUtils : MonoBehaviour
 		// Activate the scene we just loaded
 		loadedScenes[sceneName].SetActive(true);
 		currentSceneObject = loadedScenes[sceneName];
+		currentSceneName = sceneName;
 
 		// Give cursor back.
 		//! This might actually cause problems in the future if we have a scene change which
@@ -126,6 +131,7 @@ public class LoadUtils : MonoBehaviour
 		// Activate the scene we want.
 		loadedScenes[sceneName].SetActive(true);
 		currentSceneObject = loadedScenes[sceneName];
+		currentSceneName = sceneName;
 	}
 
 	// This can be a good idea to save memory. Sometimes it may be worth unloading a scene completely,
@@ -153,6 +159,7 @@ public class LoadUtils : MonoBehaviour
 		// Then load the new scene and position the player.
 		SceneManager.LoadScene(sceneName);
 		player.transform.position = spawnPos;
+		currentSceneName = sceneName;
 
 		// And setup a new position tracking file for the new scene.
 		SimpleData.CreateNewPositionFile(sceneName);
