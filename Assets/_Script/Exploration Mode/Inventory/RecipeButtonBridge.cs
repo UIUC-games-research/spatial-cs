@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
+
+// DEPRECATED CLASS. IS NOT IN USE.
+
 // This class unfortunately has to exist because AddListener is not persistent.
 public class RecipeButtonBridge : MonoBehaviour
 {
@@ -99,7 +102,7 @@ public class RecipeButtonBridge : MonoBehaviour
 				//Cursor.lockState = CursorLockMode.None;
 
 				// Record data.
-				SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + myRecipe.recipeDesc);
+				//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + myRecipe.recipeDesc);
 
 				// Enter.
 

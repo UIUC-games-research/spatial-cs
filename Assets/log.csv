@@ -1,0 +1,123 @@
+False,15.74665,testnewdata,,Stood_Still,,,,,15.76374
+False,16.16788,testnewdata,,Jump,,,,,16.18497
+False,19.17149,testnewdata,,Pickup_Item,,,,,Battery
+False,21.73149,testnewdata,,Pickup_Item,,,,,Rocket Boots Toe Sole
+False,23.15866,testnewdata,,Jump,,,,,6.872226
+False,24.85149,testnewdata,,Pickup_Item,,,,,Battery
+False,26.49149,testnewdata,,Pickup_Item,,,,,Rocket Boots Toe
+False,27.74474,testnewdata,,Jump,,,,,4.451487
+False,30.01149,testnewdata,,Pickup_Item,,,,,Battery
+False,31.91149,testnewdata,,Pickup_Item,,,,,Rocket Boots Body
+False,34.28015,testnewdata,,Jump,,,,,6.417639
+False,35.79575,testnewdata,,Jump,,,,,1.179441
+False,37.11026,testnewdata,,Jump,,,,,1.162875
+False,38.6938,testnewdata,,Jump,,,,,1.465877
+False,39.37149,testnewdata,,Pickup_Item,,,,,Battery
+False,41.25149,testnewdata,,Pickup_Item,,,,,Battery
+False,41.89514,testnewdata,,Jump,,,,,3.066546
+False,43.90019,testnewdata,,Jump,,,,,1.887105
+False,44.59149,testnewdata,,Pickup_Item,,,,,Battery
+False,44.59149,testnewdata,,Pickup_Item,,,,,Battery
+False,45.15828,testnewdata,,Jump,,,,,1.005079
+False,46.47149,testnewdata,,Pickup_Item,,,,,Rocket Boots Calf
+False,47.86476,testnewdata,,Jump,,,,,2.403196
+False,50.072,testnewdata,,Jump,,,,,2.038464
+False,51.75149,testnewdata,,Pickup_Item,,,,,Rocket Boots Trim
+False,52.25149,testnewdata,,Pickup_Item,,,,,Battery
+False,52.29149,testnewdata,,Pickup_Item,,,,,Battery
+False,55.17149,testnewdata,,Pickup_Item,,,,,Rocket Boots Sole
+False,56.63768,testnewdata,,Jump,,,,,6.464589
+False,58.87873,testnewdata,,Jump,,,,,2.089402
+False,61.05149,testnewdata,,Pickup_Item,,,,,Battery
+False,61.28849,testnewdata,,Jump,,,,,2.308751
+False,64.09149,testnewdata,,Pickup_Item,,,,,Rocket Boots Widening
+False,66.4952,testnewdata,,Jump,,,,,5.089013
+False,70.96994,testnewdata,,Jump,,,,,3.211054
+False,72.65532,testnewdata,,Jump,,,,,1.533739
+False,94.77779,testnewdata,,Constructing_Item,,,,,tutorial1
+False,94.79947,testnewdata,,Left_Scene,,,,,
+False,107.1462,testnewdata,tutorial1,Rotate_Object,,,,,Y
+False,107.9045,testnewdata,tutorial1,Rotate_Object,,,,,Y
+False,108.6798,testnewdata,tutorial1,Fuse_Attempt,,,,,Success
+False,114.4401,testnewdata,tutorial1,Rotate_Object,,,,,Z
+False,115.4516,testnewdata,tutorial1,Fuse_Attempt,,,,,Success
+False,117.0846,testnewdata,tutorial1,Rotate_Object,,,,,X
+False,119.6794,testnewdata,tutorial1,Fuse_Attempt,,,,,Success
+False,127.3259,testnewdata,tutorial2,Rotate_Object,,,,,Y
+False,129.6013,testnewdata,tutorial2,Fuse_Attempt,,,,,Success
+False,131.0509,testnewdata,tutorial2,Rotate_Object,,,,,Z
+False,132.1802,testnewdata,tutorial2,Rotate_Object,,,,,X
+False,135.0443,testnewdata,tutorial2,Fuse_Attempt,,,,,Success
+False,139.7816,testnewdata,tutorial2,Rotate_Object,,,,,Y
+False,140.691,testnewdata,tutorial2,Rotate_Object,,,,,Y
+False,141.5672,testnewdata,tutorial2,Fuse_Attempt,,,,,Success
+False,143.5017,testnewdata,tutorial2,Rotate_Object,,,,,Y
+False,144.4116,testnewdata,tutorial2,Rotate_Object,,,,,Y
+False,146.8376,testnewdata,tutorial2,Rotate_Object,,,,,Y
+False,147.7643,testnewdata,tutorial2,Fuse_Attempt,,,,,Success
+False,160.6643,testnewdata,rocketBoots,Rotate_Object,,,,,Z
+False,163.1241,testnewdata,rocketBoots,Rotate_Object,,,,,Y
+False,166.8002,testnewdata,rocketBoots,Fuse_Attempt,,,,,Success
+False,174.1011,testnewdata,rocketBoots,Rotate_Object,,,,,Y
+False,175.0114,testnewdata,rocketBoots,Fuse_Attempt,,,,,Success
+False,178.39,testnewdata,rocketBoots,Rotate_Object,,,,,Y
+False,179.0305,testnewdata,rocketBoots,Rotate_Object,,,,,Y
+False,181.0862,testnewdata,rocketBoots,Fuse_Attempt,,,,,Success
+False,184.9059,testnewdata,rocketBoots,Rotate_Object,,,,,Z
+False,187.1131,testnewdata,rocketBoots,Rotate_Object,,,,,Y
+False,187.7029,testnewdata,rocketBoots,Rotate_Object,,,,,Y
+False,188.4986,testnewdata,rocketBoots,Fuse_Attempt,,,,,Success
+False,192.2318,testnewdata,rocketBoots,Rotate_Object,,,,,Y
+False,192.9054,testnewdata,rocketBoots,Rotate_Object,,,,,Z
+False,193.8152,testnewdata,rocketBoots,Fuse_Attempt,,,,,Success
+False,196.6817,testnewdata,rocketBoots,Rotate_Object,,,,,Z
+False,197.2206,testnewdata,rocketBoots,Rotate_Object,,,,,Y
+False,197.4396,testnewdata,rocketBoots,Rotate_Object,,,,,Y
+False,202.7976,testnewdata,rocketBoots,Fuse_Attempt,,,,,Success
+False,204.2675,testnewdata,rocketBoots,Left_Scene,Complete_Construction,,,,
+False,206.1906,testnewdata,Canyon2,Stood_Still,,,,,20.14527
+False,207.2858,testnewdata,Canyon2,Jump,,,,,24.8968
+False,209.8809,testnewdata,Canyon2,Jump,,,,,2.42659
+False,212.3574,testnewdata,Canyon2,Jump,,,,,1.549839
+False,212.5764,testnewdata,Canyon2,Left_Scene,,,,,
+False,214.6657,testnewdata,Highland,Jump,,,,,1.651217
+False,216.9575,testnewdata,Highland,Jump,,,,,1.752535
+False,218.5916,testnewdata,Highland,Jump,,,,,1.02745
+False,224.9103,testnewdata,Highland,Jump,,,,,1.566972
+False,231.2962,testnewdata,Highland,Jump,,,,,4.245987
+False,231.5115,testnewdata,Highland,Pickup_Item,,,,,Battery
+False,235.5927,testnewdata,Highland,Jump,,,,,1.229959
+False,239.656,testnewdata,Highland,Jump,,,,,3.034988
+False,244.1883,testnewdata,Highland,Jump,,,,,1.347778
+False,247.5715,testnewdata,Highland,Pickup_Item,,,,,Sledgehammer Head
+False,249.0779,testnewdata,Highland,Jump,,,,,3.861729
+False,251.9096,testnewdata,Highland,Jump,,,,,1.802859
+False,254.6564,testnewdata,Highland,Jump,,,,,2.376124
+False,257.1328,testnewdata,Highland,Jump,,,,,1.802863
+False,259.5928,testnewdata,Highland,Jump,,,,,2.038748
+False,263.5715,testnewdata,Highland,Pickup_Item,,,,,Sledgehammer Small Tip
+False,264.3952,testnewdata,Highland,Jump,,,,,4.044164
+False,266.9225,testnewdata,Highland,Jump,,,,,1.617518
+False,271.0674,testnewdata,Highland,Jump,,,,,2.106144
+False,274.6915,testnewdata,Highland,Pickup_Item,,,,,Sledgehammer Trapezoid
+False,275.6018,testnewdata,Highland,Jump,,,,,3.017913
+False,279.2749,testnewdata,Highland,Jump,,,,,2.308026
+False,283.184,testnewdata,Highland,Jump,,,,,2.999176
+False,285.5596,testnewdata,Highland,Jump,,,,,2.122498
+False,288.2515,testnewdata,Highland,Pickup_Item,,,,,Battery
+False,294.5407,testnewdata,Highland,Stood_Still,,,,,5.543649
+False,294.6753,testnewdata,Highland,Jump,,,,,8.306634
+False,297.1855,testnewdata,Highland,Jump,,,,,2.342032
+False,300.8081,testnewdata,Highland,Jump,,,,,1.870256
+False,316.124,testnewdata,Highland,Jump,,,,,15.21478
+False,316.124,testnewdata,Highland,Stood_Still,,,,,15.21478
+False,318.3986,testnewdata,Highland,Jump,,,,,2.106143
+False,321.6168,testnewdata,Highland,Jump,,,,,2.628468
+False,324.3469,testnewdata,Highland,Jump,,,,,1.583433
+False,326.015,testnewdata,Highland,Jump,,,,,1.516424
+False,332.0715,testnewdata,Highland,Pickup_Item,,,,,Sledgehammer Haft
+False,332.7368,testnewdata,Highland,Jump,,,,,3.183417
+False,337.3209,testnewdata,Highland,Jump,,,,,1.112044
+False,343.6061,testnewdata,Highland,Jump,,,,,1.297318
+False,345.51,testnewdata,Highland,Jump,,,,,1.668066
+False,-4.98851,testnewdata,Highland,Left_Scene,,,,,

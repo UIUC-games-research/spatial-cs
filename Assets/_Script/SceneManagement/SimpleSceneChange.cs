@@ -5,10 +5,18 @@ using System.Collections;
 
 public class SimpleSceneChange : MonoBehaviour
 {
+	public static float startTime = 0f;
+
 	void Start ()
 	{
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.None;
+	}
+
+	public void StartGameSwitch(string sceneName)
+	{
+		startTime = Time.time;
+		SceneManager.LoadScene(sceneName);
 	}
 
 	public void SceneSwitch(string sceneName)

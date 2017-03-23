@@ -52,7 +52,8 @@ public class PickUp : MonoBehaviour
 		if (other.tag == "Player")
         {
 			AudioSource.PlayClipAtPoint(pickupClip, transform.position);
-			SimpleData.WriteStringToFile("pickups.txt", Time.time + ",PICKUP," + pickupName);
+			SimpleData.WriteDataPoint("Pickup_Item", "", "", "", "", pickupName);
+			//SimpleData.WriteStringToFile("pickups.txt", Time.time + ",PICKUP," + pickupName);
 			switch (type)
 			{
 				case PickupType.Item:

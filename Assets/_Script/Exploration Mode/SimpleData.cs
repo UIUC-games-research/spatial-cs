@@ -52,7 +52,8 @@ public class SimpleData : MonoBehaviour
 	public static void CreateNewPositionFile(string sceneName)
 	{
 		// Calculate path length.
-		WriteStringToFile( "MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
+		WriteDataPoint("Total_Distance", "", "", "", "", CalculatePathLength().ToString());
+		//WriteStringToFile( "MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
 
 		// Close and make a new file.
 		sw_Position.Close();
@@ -78,15 +79,14 @@ public class SimpleData : MonoBehaviour
 
 		// Jump
 		jumpTimer += Time.deltaTime;
-		if (Input.GetKey(KeyCode.Space)){
-			if (jumpTimer > 1f){
-				if (transform.position.y > 33) {
-					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + "Highland" + "," + jumpTimer);
-				} else {
-					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + SceneManager.GetActiveScene ().name + "," + jumpTimer);
-				}
-				jumpTimer = 0f;
+		if (Input.GetKey(KeyCode.Space))
+		{
+			if (jumpTimer > 1f)
+			{
+				WriteDataPoint("Jump", "", "", "", "", jumpTimer.ToString());
+				//WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + SceneManager.GetActiveScene ().name + "," + jumpTimer);
 			}
+			jumpTimer = 0f;
 		}
 		// Timer for standing still, based on keypresses.
 		standstillTimer += Time.deltaTime;
@@ -94,11 +94,8 @@ public class SimpleData : MonoBehaviour
 		{
 			if (standstillTimer > 5f)
 			{
-				if (transform.position.y > 33) {
-					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + "Highland" + "," + standstillTimer);
-				} else {
-					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + SceneManager.GetActiveScene ().name + "," + standstillTimer);
-				}
+				WriteDataPoint("Stood_Still", "", "", "", "", standstillTimer.ToString());
+				//WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + SceneManager.GetActiveScene ().name + "," + standstillTimer);
 			}
 			standstillTimer = 0f;
 		}
@@ -138,7 +135,8 @@ public class SimpleData : MonoBehaviour
 	void OnDestroy ()
 	{
 		// Calculate path length.
-		WriteStringToFile("MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
+		WriteDataPoint("Total_Distance", "", "", "", "", CalculatePathLength().ToString());
+		//WriteStringToFile("MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
 		// Close file.
 		sw_Position.Close();
 	}
@@ -174,7 +172,7 @@ public class SimpleData : MonoBehaviour
 	// // IsInBuiltExecutable, Timestamp, NameOfSaveGame, OriginScene, DataIdentifier, Modifier, Modifier, Modifier, Modifier, Value
 	public static void WriteDataPoint(string data_identifier, string modifier_a, string modifier_b, string modifier_c, string modifier_d, string value)
 	{
-		StreamWriter sw = new StreamWriter(Application.dataPath, true);
+		StreamWriter sw = new StreamWriter(Application.dataPath + "/log.csv", true);
 
 		// Setup first piece of information.
 		string isInBuiltExecutable = "True";
@@ -182,13 +180,16 @@ public class SimpleData : MonoBehaviour
 			isInBuiltExecutable = "False";
 
 		// Setup timestamp.
-		string timestamp = Time.time.ToString();
+		string timestamp = (Time.time - SimpleSceneChange.startTime).ToString();
 
 		// Setup name of save.
 		string nameOfSaveGame = SaveController.filename;
 
 		// Setup scene name.
 		string originScene = LoadUtils.currentSceneName;
+		// Special case.
+		if (originScene == "Canyon2" && SceneTimer.highland)
+			originScene = "Highland";
 
 		// Combine entire string
 		string datapoint = isInBuiltExecutable + "," + timestamp + "," + nameOfSaveGame + "," + 
