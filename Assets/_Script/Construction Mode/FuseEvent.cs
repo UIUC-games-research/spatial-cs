@@ -112,6 +112,10 @@ public class FuseEvent : MonoBehaviour {
 						LoadUtils.UnloadScene("tutorial2");
 						break;
 					case "boot":
+						// THIS LINE HAS BEEN ADDED FOR THE APRIL 2017 STUDY
+						SceneManager.LoadScene("SimpleMenu");
+						// !!!
+
 						RocketBoots.ActivateBoots();
 						InventoryController.items.Remove("Rocket Boots Body");
 						InventoryController.items.Remove("Rocket Boots Calf");
@@ -196,7 +200,7 @@ public class FuseEvent : MonoBehaviour {
 			SimpleData.CreateInitialFiles();
 
 			//! Is this a really bad idea?
-			SaveController.filename += "_CONSTRUCTION-ONLY";
+			//SaveController.filename += "_CONSTRUCTION-ONLY";
 
 			// This works because levelName will be "" when we aren't coming from any specific level.
 
@@ -206,6 +210,8 @@ public class FuseEvent : MonoBehaviour {
 			GameObject.Find("BatteryIndicator").transform.localScale = Vector3.zero;
 
 			// Change back button functionality.
+			// THESE LINES HAVE BEEN REMOVED FOR THE APRIL 2017 STUDY.
+			/*
 			backButton.onClick.RemoveAllListeners();
 			backButton.onClick.AddListener(() =>
 			{
@@ -217,6 +223,7 @@ public class FuseEvent : MonoBehaviour {
 			});
 
 
+
 			// Change Claim Item functionality.
 			if (claimItem != null)
 			{
@@ -225,12 +232,13 @@ public class FuseEvent : MonoBehaviour {
 				claimItem.onClick.AddListener(() =>
 				{
 					SimpleData.WriteDataPoint("Left_Scene", "Construction_Only", "", "", "", "");
-					//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO,SimpleMenu");
-					//stopLevelTimer();
-					//printLevelDataFail();
-					SceneManager.LoadScene("SimpleMenu");
+				//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO,SimpleMenu");
+				//stopLevelTimer();
+				//printLevelDataFail();
+				SceneManager.LoadScene("SimpleMenu");
 				});
 			}
+			*/
 		}
 		else runningJustConstructionMode = false;
 
