@@ -131,7 +131,7 @@ public class RotationGizmo : MonoBehaviour
 						if (!CheckBattery())
 							break;
 						xRots++;
-						SimpleData.WriteDataPoint("Rotate_Object", "", "", "", "", "X");
+						SimpleData.WriteDataPoint("Rotate_Object", toRotate.name, "", "", "", "X");
 						if (Mathf.Approximately(xGizmo.transform.localEulerAngles.y, 180f))
 							StartCoroutine(Rotate(90f, 0f, 0f));
 						else
@@ -142,7 +142,7 @@ public class RotationGizmo : MonoBehaviour
 						if (!CheckBattery())
 							break;
 						xRots++;
-						SimpleData.WriteDataPoint("Rotate_Object", "", "", "", "", "X");
+						SimpleData.WriteDataPoint("Rotate_Object", toRotate.name, "", "", "", "X");
 						if (Mathf.Approximately(xGizmo.transform.localEulerAngles.y, 180f))
 							StartCoroutine(Rotate(-90f, 0f, 0f));
 						else
@@ -153,7 +153,7 @@ public class RotationGizmo : MonoBehaviour
 						if (!CheckBattery())
 							break;
 						yRots++;
-						SimpleData.WriteDataPoint("Rotate_Object", "", "", "", "", "Y");
+						SimpleData.WriteDataPoint("Rotate_Object", toRotate.name, "", "", "", "Y");
 						StartCoroutine(Rotate(0f, 90f, 0f));
 						break;
 
@@ -161,7 +161,7 @@ public class RotationGizmo : MonoBehaviour
 						if (!CheckBattery())
 							break;
 						yRots++;
-						SimpleData.WriteDataPoint("Rotate_Object", "", "", "", "", "Y");
+						SimpleData.WriteDataPoint("Rotate_Object", toRotate.name, "", "", "", "Y");
 						StartCoroutine(Rotate(0f, -90f, 0f));
 						break;
 
@@ -169,7 +169,7 @@ public class RotationGizmo : MonoBehaviour
 						if (!CheckBattery())
 							break;
 						zRots++;
-						SimpleData.WriteDataPoint("Rotate_Object", "", "", "", "", "Z");
+						SimpleData.WriteDataPoint("Rotate_Object", toRotate.name, "", "", "", "Z");
 						if (Mathf.Approximately(zGizmo.transform.localEulerAngles.y, 270f))
 							StartCoroutine(Rotate(0f, 0f, -90f));
 						else
@@ -180,7 +180,7 @@ public class RotationGizmo : MonoBehaviour
 						if (!CheckBattery())
 							break;
 						zRots++;
-						SimpleData.WriteDataPoint("Rotate_Object", "", "", "", "", "Z");
+						SimpleData.WriteDataPoint("Rotate_Object", toRotate.name, "", "", "", "Z");
 						if (Mathf.Approximately(zGizmo.transform.localEulerAngles.y, 270f))
 							StartCoroutine(Rotate(0f, 0f, 90f));
 						else

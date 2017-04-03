@@ -30,12 +30,14 @@ public class SimpleData : MonoBehaviour
 
 	// Internal data collection.
 	// IE stuff that may as well just be done in this script.
+	UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController player;
 	float standstillTimer = 0f;
 	float jumpTimer = 0f;
 
 	void Awake ()
 	{
 		CreateInitialFiles();
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>();
 	}
 
 	public static void CreateInitialFiles()
@@ -78,8 +80,11 @@ public class SimpleData : MonoBehaviour
 		}
 
 		// Jump
-		jumpTimer += Time.deltaTime;
-		if (Input.GetKey(KeyCode.Space))
+		if (player.Jumping)
+		{
+			jumpTimer += Time.deltaTime;
+		}
+		else
 		{
 			if (jumpTimer > 1f)
 			{
@@ -196,6 +201,9 @@ public class SimpleData : MonoBehaviour
 						   originScene + "," + data_identifier + "," + modifier_a + "," + modifier_b +
 						   "," + modifier_c + "," + modifier_d + "," + value;
 
+		// Write string to file.
+		//! This should be where we write to file on server, but I currently cannot figure that part out...
+		// All it really has to do is print to a text file. Might need to include a \n for the server version.
 		sw.WriteLine(datapoint);
 		sw.Close();
 	}

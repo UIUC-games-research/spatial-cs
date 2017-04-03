@@ -1098,7 +1098,7 @@ public class FuseEvent : MonoBehaviour {
 			print ("MYSTERIOUS FUSE ERROR");
 		}
 
-		SimpleData.WriteDataPoint("Fuse_Attempt", data_failureType, "", "", "", data_fuseStatus);
+		SimpleData.WriteDataPoint("Fuse_Attempt", selectedObject.transform.parent.name, data_failureType, "", "", data_fuseStatus);
 	}
 
 	IEnumerator errorWrongFace() {
