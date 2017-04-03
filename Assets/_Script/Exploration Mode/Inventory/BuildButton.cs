@@ -26,7 +26,8 @@ public class BuildButton : MonoBehaviour
 			InventoryController.levelName = SceneManager.GetActiveScene().name;
 
 			// Record data.
-			SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + whatToBuild);
+			SimpleData.WriteDataPoint("Constructing_Item", "", "", "", "", whatToBuild);
+			//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + whatToBuild);
 
 			// Enter.
 

@@ -83,7 +83,8 @@ public class FuseEvent : MonoBehaviour {
 		Button backButton = GameObject.Find ("Back Button").GetComponent<Button>();
 		backButton.onClick.AddListener(() => 
 		{
-			SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
+			SimpleData.WriteDataPoint("Left_Scene", "Incomplete_Construction", "", "", "", "");
+			//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
 			stopLevelTimer();
 			printLevelDataFail();
 			LoadUtils.LoadScene(InventoryController.levelName);
@@ -95,7 +96,8 @@ public class FuseEvent : MonoBehaviour {
 			claimItem.onClick.AddListener(() => {
 				if (mode != "tutorial1" && mode != "tutorial2")
 				{
-					SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
+					SimpleData.WriteDataPoint("Left_Scene", "Complete_Construction", "", "", "", "");
+					//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
 				}
 				switch (mode)
 				{
@@ -189,8 +191,12 @@ public class FuseEvent : MonoBehaviour {
 		// Infinite energy if running construction mode separately.
 		if (InventoryController.levelName == "")
 		{
+			// Special stuff happens because we are just running construction mode without exploration mode.
 			runningJustConstructionMode = true;
 			SimpleData.CreateInitialFiles();
+
+			//! Is this a really bad idea?
+			SaveController.filename += "_CONSTRUCTION-ONLY";
 
 			// This works because levelName will be "" when we aren't coming from any specific level.
 
@@ -205,7 +211,8 @@ public class FuseEvent : MonoBehaviour {
 			{
 				stopLevelTimer();
 				printLevelDataFail();
-				SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO,SimpleMenu");
+				SimpleData.WriteDataPoint("Left_Scene", "Construction_Only", "", "", "", "");
+				//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO,SimpleMenu");
 				SceneManager.LoadScene("SimpleMenu");
 			});
 
@@ -217,7 +224,8 @@ public class FuseEvent : MonoBehaviour {
 				claimItem.onClick.RemoveAllListeners();
 				claimItem.onClick.AddListener(() =>
 				{
-					SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO,SimpleMenu");
+					SimpleData.WriteDataPoint("Left_Scene", "Construction_Only", "", "", "", "");
+					//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO,SimpleMenu");
 					//stopLevelTimer();
 					//printLevelDataFail();
 					SceneManager.LoadScene("SimpleMenu");
@@ -959,29 +967,29 @@ public class FuseEvent : MonoBehaviour {
 	}
 	
 	public void printLevelData() {
-		SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION,FINISHED," + mode + "," + levelTimer);
-		int xRotations = rotateGizmo.xRots;
-		int yRotations = rotateGizmo.yRots;
-		int zRotations = rotateGizmo.zRots;
-		int totalRotations = xRotations + yRotations + zRotations;
-		SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION,X_ROTATIONS," + xRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Y_ROTATIONS," + yRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Z_ROTATIONS," + zRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_ROTATIONS," + totalRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_FAILS," + numFuseFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
-		if (numFuseAttempts != 0)
-			SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
-		else
-			SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT,0");
-
+		//SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION,FINISHED," + mode + "," + levelTimer);
+		//int xRotations = rotateGizmo.xRots;
+		//int yRotations = rotateGizmo.yRots;
+		//int zRotations = rotateGizmo.zRots;
+		//int totalRotations = xRotations + yRotations + zRotations;
+		//SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION,X_ROTATIONS," + xRotations);
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Y_ROTATIONS," + yRotations);
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Z_ROTATIONS," + zRotations);
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_ROTATIONS," + totalRotations);	ABOVE LINES HANDLED BY RotationGizmo.cs NOW.
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_FAILS," + numFuseFails);
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
+		//if (numFuseAttempts != 0)
+		//	SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
+		//else
+		//	SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT,0");
+		
 		sr.Close();
 	}
 
 	public void printLevelDataFail() {
-		SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION,ABORTED," + mode + "," + levelTimer);
+		/*SimpleData.WriteStringToFile("ConstructionData.txt", Time.time + ",CONSTRUCTION,ABORTED," + mode + "," + levelTimer);
 		int xRotations = rotateGizmo.xRots;
 		int yRotations = rotateGizmo.yRots;
 		int zRotations = rotateGizmo.zRots;
@@ -989,15 +997,15 @@ public class FuseEvent : MonoBehaviour {
 		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,X_ROTATIONS," + xRotations);
 		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Y_ROTATIONS," + yRotations);
 		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,Z_ROTATIONS," + zRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_ROTATIONS," + totalRotations);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_FAILS," + numFuseFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
-		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
-		if (numFuseAttempts != 0)
-			SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
-		else
-			SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT,0");
+		SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_ROTATIONS," + totalRotations);*/ // ABOVE LINES HANDLED BY RotationGizmo.cs NOW.
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_ATTEMPTS," + numFuseAttempts);
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_FUSE_FAILS," + numFuseFails);
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_FACE_FAILS," + numWrongFacesFails);
+		//SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,TOTAL_WRONG_ROTATION_FAILS," + numWrongRotationFails);
+		//if (numFuseAttempts != 0)
+		//	SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT," + totalRotations / numFuseAttempts);
+		//else
+		//	SimpleData.WriteStringToFile ("ConstructionData.txt", Time.time + ",CONSTRUCTION,AVG_ROTATIONS_PER_FUSE_ATTEMPT,0");
 
 		sr.Close();
 	}
@@ -1014,6 +1022,8 @@ public class FuseEvent : MonoBehaviour {
 
 
 	public void initiateFuse() {
+		string data_fuseStatus = "Success";
+		string data_failureType = "";
 		numFuseAttempts++;
 		//print ("Fusing: " + GetComponent<SelectPart>().getSelectedObject() + " to " + GetComponent<SelectPart>().getSelectedFuseTo());
 		selectedObject = GetComponent<SelectPart>().getSelectedObject();
@@ -1035,6 +1045,8 @@ public class FuseEvent : MonoBehaviour {
 			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
 			//display error on screen for 1 sec
 			StartCoroutine(errorWrongFace());
+			data_fuseStatus = "Failure";
+			data_failureType = "Wrong_Face";
 
 		} else if(fuseMapping[selectedObject.name].Contains(selectedFuseTo.name) && positionMatches (selectedObject, selectedFuseTo)) {
 	
@@ -1072,17 +1084,21 @@ public class FuseEvent : MonoBehaviour {
 		} else if (!fuseMapping[selectedObject.name].Contains (selectedFuseTo.name)) {
 			print ("Invalid fuse: Cannot fuse " + selectedObject.name + " to " + selectedFuseTo.name);
 			StartCoroutine(errorWrongFace());
+			data_fuseStatus = "Failure";
+			data_failureType = "Wrong_Face";
 
 		} else if (fuseMapping[selectedObject.name].Contains (selectedFuseTo.name) && !positionMatches (selectedObject, selectedFuseTo)){
 			//rotation isn't right - tell player this or let them figure it out themselves?
 			StartCoroutine(errorWrongRotation());
+			data_fuseStatus = "Failure";
+			data_failureType = "Wrong_Rotation";
 			print ("Invalid fuse: Correct fuse selection, but the orientation isn't right!");
 		} else {
 			//this shouldn't happen
 			print ("MYSTERIOUS FUSE ERROR");
 		}
 
-
+		SimpleData.WriteDataPoint("Fuse_Attempt", selectedObject.transform.parent.name, data_failureType, "", "", data_fuseStatus);
 	}
 
 	IEnumerator errorWrongFace() {

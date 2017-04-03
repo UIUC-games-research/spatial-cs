@@ -30,12 +30,14 @@ public class SimpleData : MonoBehaviour
 
 	// Internal data collection.
 	// IE stuff that may as well just be done in this script.
+	UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController player;
 	float standstillTimer = 0f;
 	float jumpTimer = 0f;
 
 	void Awake ()
 	{
 		CreateInitialFiles();
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>();
 	}
 
 	public static void CreateInitialFiles()
@@ -52,7 +54,8 @@ public class SimpleData : MonoBehaviour
 	public static void CreateNewPositionFile(string sceneName)
 	{
 		// Calculate path length.
-		WriteStringToFile( "MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
+		WriteDataPoint("Total_Distance", "", "", "", "", CalculatePathLength().ToString());
+		//WriteStringToFile( "MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
 
 		// Close and make a new file.
 		sw_Position.Close();
@@ -77,16 +80,18 @@ public class SimpleData : MonoBehaviour
 		}
 
 		// Jump
-		jumpTimer += Time.deltaTime;
-		if (Input.GetKey(KeyCode.Space)){
-			if (jumpTimer > 1f){
-				if (transform.position.y > 33) {
-					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + "Highland" + "," + jumpTimer);
-				} else {
-					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + SceneManager.GetActiveScene ().name + "," + jumpTimer);
-				}
-				jumpTimer = 0f;
+		if (player.Jumping)
+		{
+			jumpTimer += Time.deltaTime;
+		}
+		else
+		{
+			if (jumpTimer > 1f)
+			{
+				WriteDataPoint("Jump", "", "", "", "", jumpTimer.ToString());
+				//WriteStringToFile ("MovementAnalysis.txt", Time.time + ",JUMP," + SceneManager.GetActiveScene ().name + "," + jumpTimer);
 			}
+			jumpTimer = 0f;
 		}
 		// Timer for standing still, based on keypresses.
 		standstillTimer += Time.deltaTime;
@@ -94,11 +99,8 @@ public class SimpleData : MonoBehaviour
 		{
 			if (standstillTimer > 5f)
 			{
-				if (transform.position.y > 33) {
-					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + "Highland" + "," + standstillTimer);
-				} else {
-					WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + SceneManager.GetActiveScene ().name + "," + standstillTimer);
-				}
+				WriteDataPoint("Stood_Still", "", "", "", "", standstillTimer.ToString());
+				//WriteStringToFile ("MovementAnalysis.txt", Time.time + ",MOVEMENT,STOODSTILL_FOR," + SceneManager.GetActiveScene ().name + "," + standstillTimer);
 			}
 			standstillTimer = 0f;
 		}
@@ -138,7 +140,8 @@ public class SimpleData : MonoBehaviour
 	void OnDestroy ()
 	{
 		// Calculate path length.
-		WriteStringToFile("MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
+		WriteDataPoint("Total_Distance", "", "", "", "", CalculatePathLength().ToString());
+		//WriteStringToFile("MovementAnalysis.txt", Time.time + ",TOTAL_DISTANCE," + CalculatePathLength());
 		// Close file.
 		sw_Position.Close();
 	}
@@ -156,13 +159,52 @@ public class SimpleData : MonoBehaviour
 	// Static functions for easy data storage.
 	// Here's a catch-all! Appends a line to a file by name.
 	// Also appends to the master file.
+	// DEPRECATED.
 	public static void WriteStringToFile(string filename, string toWrite)
 	{
+		/*
 		StreamWriter sw_temp = new StreamWriter(folder + "/" + filename, true);
 		StreamWriter sw_master = new StreamWriter(folder + "/ALLDATA.txt", true);
 		sw_temp.WriteLine(toWrite);
 		sw_master.WriteLine(toWrite);
 		sw_temp.Close();
 		sw_master.Close();
+		*/
+	}
+
+	// New data code February 2017
+	// Write format:
+	// // IsInBuiltExecutable, Timestamp, NameOfSaveGame, OriginScene, DataIdentifier, Modifier, Modifier, Modifier, Modifier, Value
+	public static void WriteDataPoint(string data_identifier, string modifier_a, string modifier_b, string modifier_c, string modifier_d, string value)
+	{
+		StreamWriter sw = new StreamWriter(Application.dataPath + "/log.csv", true);
+
+		// Setup first piece of information.
+		string isInBuiltExecutable = "True";
+		if (Application.isEditor)
+			isInBuiltExecutable = "False";
+
+		// Setup timestamp.
+		string timestamp = (Time.time - SimpleSceneChange.startTime).ToString();
+
+		// Setup name of save.
+		string nameOfSaveGame = SaveController.filename;
+
+		// Setup scene name.
+		string originScene = LoadUtils.currentSceneName;
+		// Special case.
+		if (originScene == "Canyon2" && SceneTimer.highland)
+			originScene = "Highland";
+
+		// Combine entire string
+		string datapoint = isInBuiltExecutable + "," + timestamp + "," + nameOfSaveGame + "," + 
+						   originScene + "," + data_identifier + "," + modifier_a + "," + modifier_b +
+						   "," + modifier_c + "," + modifier_d + "," + value;
+
+		// Write string to file.
+		//! This should be where we write to file on server, but I currently cannot figure that part out...
+		// All it really has to do is print to a text file. Might need to include a \n for the server version.
+		sw.WriteLine(datapoint);
+		sw.Close();
 	}
 }
