@@ -192,6 +192,9 @@ public class SimpleData : MonoBehaviour
 
 		// Setup scene name.
 		string originScene = LoadUtils.currentSceneName;
+		if (originScene == "")
+			originScene = SceneManager.GetActiveScene().name;
+
 		// Special case.
 		if (originScene == "Canyon2" && SceneTimer.highland)
 			originScene = "Highland";

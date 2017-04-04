@@ -1655,6 +1655,7 @@ GameObject:
   - 114: {fileID: 1321869686}
   - 114: {fileID: 1321869687}
   - 114: {fileID: 1321869688}
+  - 114: {fileID: 1321869689}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1781,6 +1782,7 @@ MonoBehaviour:
   finishedImage: {fileID: 1232480375}
   mainCam: {fileID: 0}
   tutorialOn: 0
+  order: {fileID: 1321869689}
 --- !u!114 &1321869686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1842,6 +1844,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74907d8a46e3034da35eb2318128d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1321869689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1321869678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1335757620c7554f8d23c5a5cd7cf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ordering:
+  - {fileID: 1759854786}
+  - {fileID: 1649524229}
+  - {fileID: 1354454469}
 --- !u!1001 &1344410734
 Prefab:
   m_ObjectHideFlags: 0
@@ -2130,7 +2147,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225, y: 0}
+  m_AnchoredPosition: {x: -225, y: -155}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1354454469
@@ -2845,7 +2862,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: 0}
+  m_AnchoredPosition: {x: -125, y: -155}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1649524227
@@ -3301,7 +3318,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -325, y: 0}
+  m_AnchoredPosition: {x: -325, y: -155}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759854784

@@ -64,11 +64,21 @@ public class FuseEvent : MonoBehaviour {
 	private int numWrongRotationFails;
 	private int numWrongFacesFails;
 
+	// For April 2017 Study. Set in Inspector.
+	public OrderedParts order;
+
 
 	void OnEnable()
 	{
 		// For data collection.
 		startLevelTimer();
+	}
+
+	void Start ()
+	{
+		// For April 2017 Study. Creates first part.
+		if (order != null)
+			order.NextPart();
 	}
 
 	void Awake ()
@@ -83,7 +93,7 @@ public class FuseEvent : MonoBehaviour {
 		Button backButton = GameObject.Find ("Back Button").GetComponent<Button>();
 		backButton.onClick.AddListener(() => 
 		{
-			SimpleData.WriteDataPoint("Left_Scene", "Incomplete_Construction", "", "", "", "");
+			SimpleData.WriteDataPoint("Left_Scene", "", "", "", "", "Incomplete_Construction");
 			//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
 			stopLevelTimer();
 			printLevelDataFail();
@@ -94,25 +104,25 @@ public class FuseEvent : MonoBehaviour {
 		if (claimItem != null)
 		{
 			claimItem.onClick.AddListener(() => {
-				if (mode != "tutorial1" && mode != "tutorial2")
-				{
-					SimpleData.WriteDataPoint("Left_Scene", "Complete_Construction", "", "", "", "");
-					//SimpleData.WriteStringToFile("ModeSwitches.txt", Time.time + ",MODESWITCH_TO," + InventoryController.levelName);
-				}
+				SimpleData.WriteDataPoint("Left_Scene", "", "", "", "", "Complete_Construction");
 				switch (mode)
 				{
+					// Changing This for April 2017 Study.
 					case "tutorial1":
 						ConversationTrigger.AddToken("done_with_tutorial_1");
-						LoadUtils.LoadScene("tutorial2");
-						LoadUtils.UnloadScene("tutorial1");
+						//LoadUtils.LoadScene("tutorial2");
+						//LoadUtils.UnloadScene("tutorial1");
+						SceneManager.LoadScene("tutorial2");
 						break;
 					case "tutorial2":
 						ConversationTrigger.AddToken("done_with_tutorial_2");
-						LoadUtils.LoadScene("rocketBoots");
-						LoadUtils.UnloadScene("tutorial2");
+						//LoadUtils.LoadScene("rocketBoots");
+						//LoadUtils.UnloadScene("tutorial2");
+						SceneManager.LoadScene("rocketBoots");
 						break;
 					case "boot":
 						// THIS LINE HAS BEEN ADDED FOR THE APRIL 2017 STUDY
+						SimpleData.WriteDataPoint("Finished_Study", "", "", "", "", "");
 						SceneManager.LoadScene("SimpleMenu");
 						// !!!
 
@@ -1085,6 +1095,12 @@ public class FuseEvent : MonoBehaviour {
 				mainCam.transform.rotation = Quaternion.Euler(new Vector3(15,0,0));
 				source.Play ();
 				StartCoroutine (FadeAudio (fadeTime, Fade.Out));
+			}
+			else
+			{ 
+				// For April 2017 Study. Creates next part.
+				if (order != null)
+					order.NextPart();
 			}
 
 
