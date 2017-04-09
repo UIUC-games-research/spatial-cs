@@ -34,10 +34,16 @@ public class SimpleData : MonoBehaviour
 	float standstillTimer = 0f;
 	float jumpTimer = 0f;
 
+	// Special gameobject for coroutines.
+	static GameObject go;
+	static SingletonAttachPoint sap;
+
 	void Awake ()
 	{
 		CreateInitialFiles();
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>();
+		go = Instantiate(Resources.Load("Prefabs/Empty") as GameObject);
+		sap = go.GetComponent<SingletonAttachPoint>();
 	}
 
 	public static void CreateInitialFiles()
@@ -205,9 +211,28 @@ public class SimpleData : MonoBehaviour
 						   "," + modifier_c + "," + modifier_d + "," + value;
 
 		// Write string to file.
-		//! This should be where we write to file on server, but I currently cannot figure that part out...
-		// All it really has to do is print to a text file. Might need to include a \n for the server version.
 		sw.WriteLine(datapoint);
 		sw.Close();
+
+		// Write string to server.
+		if (go == null || sap == null)
+		{
+			go = Instantiate(Resources.Load("Prefabs/Empty") as GameObject);
+			sap = go.GetComponent<SingletonAttachPoint>();
+		}
+		sap.StartCoroutine(SendToServer(datapoint));
+		
+	}
+
+	static IEnumerator SendToServer(string alldata)
+	{
+		Debug.Log("Sending data to server");
+		string sendurl = "http://puzzleweb.web.engr.illinois.edu/SaveData.php?savedata=\"";
+		sendurl += alldata + "\"";
+		WWW www = new WWW(sendurl);
+
+		// Wait for download to complete
+		yield return www;
+		Debug.Log(sendurl);
 	}
 }
