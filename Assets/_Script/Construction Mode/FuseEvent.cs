@@ -122,8 +122,8 @@ public class FuseEvent : MonoBehaviour {
 						break;
 					case "boot":
 						// THIS LINE HAS BEEN ADDED FOR THE APRIL 2017 STUDY
-						SimpleData.WriteDataPoint("Finished_Study", "", "", "", "", "");
-						SceneManager.LoadScene("SimpleMenu");
+						//SimpleData.WriteDataPoint("Finished_Study", "", "", "", "", "");
+						SceneManager.LoadScene("sledgehammer");
 						// !!!
 
 						RocketBoots.ActivateBoots();
@@ -140,6 +140,11 @@ public class FuseEvent : MonoBehaviour {
 						LoadUtils.UnloadScene("rocketBoots");
 						break;
 					case "axe":
+						// THIS LINE HAS BEEN ADDED FOR THE APRIL 2017 STUDY
+						SimpleData.WriteDataPoint("Finished_Study", "", "", "", "", "");
+						SceneManager.LoadScene("SimpleMenu");
+						// !!!
+
 						Sledgehammer.ActivateSledgehammer();
 						InventoryController.items.Remove("Sledgehammer Trapezoid");
 						InventoryController.items.Remove("Sledgehammer Top Point");
