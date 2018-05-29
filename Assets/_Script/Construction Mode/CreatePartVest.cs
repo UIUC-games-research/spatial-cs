@@ -38,10 +38,10 @@ public class CreatePartVest : MonoBehaviour {
 		startObject = GameObject.Find ("vest_base_complete");
 
 		//CHANGE these lines so they refer to each black part on your starting part
-		GameObject rightStrapBackStrapAttach = startObject.transform.FindChild("right_strap_back_strap_attach").gameObject;
-		GameObject vestBaseLeftStrapBottomAttach = startObject.transform.FindChild("vest_base_left_strap_bottom_attach").gameObject;
-		GameObject vestBaseLeftStrapTopAttach = startObject.transform.FindChild("vest_base_left_strap_top_attach").gameObject;
-		GameObject VestBaseVestDiamondAttach = startObject.transform.FindChild("vest_base_vest_diamond_attach").gameObject;
+		GameObject rightStrapBackStrapAttach = startObject.transform.Find("right_strap_back_strap_attach").gameObject;
+		GameObject vestBaseLeftStrapBottomAttach = startObject.transform.Find("vest_base_left_strap_bottom_attach").gameObject;
+		GameObject vestBaseLeftStrapTopAttach = startObject.transform.Find("vest_base_left_strap_top_attach").gameObject;
+		GameObject VestBaseVestDiamondAttach = startObject.transform.Find("vest_base_vest_diamond_attach").gameObject;
 
 		//to avoid errors when selectedObject starts as startObject
 		//CHANGE these lines to match above
@@ -254,9 +254,9 @@ public class CreatePartVest : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,90);
 			GameObject newLeftStrap = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
-			Transform backStraLongBackStrapShortAttach = newLeftStrap.transform.FindChild("back_strap_long_back_strap_short_attach");
-			Transform leftStrapVestBaseBottomAttach = newLeftStrap.transform.FindChild("left_strap_vest_base_bottom_attach");
-			Transform leftStrapVestBaseTopAttach = newLeftStrap.transform.FindChild("left_strap_vest_base_top_attach");
+			Transform backStraLongBackStrapShortAttach = newLeftStrap.transform.Find("back_strap_long_back_strap_short_attach");
+			Transform leftStrapVestBaseBottomAttach = newLeftStrap.transform.Find("left_strap_vest_base_bottom_attach");
+			Transform leftStrapVestBaseTopAttach = newLeftStrap.transform.Find("left_strap_vest_base_top_attach");
 
 
 
@@ -291,8 +291,8 @@ public class CreatePartVest : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,270,90);
 			GameObject newBack = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
-			Transform backStrapShortBackStrapLongAttach = newBack.transform.FindChild("back_strap_short_back_strap_long_attach");
-			Transform backStrapRightStrapAttach = newBack.transform.FindChild("back_strap_right_strap_attach");
+			Transform backStrapShortBackStrapLongAttach = newBack.transform.Find("back_strap_short_back_strap_long_attach");
+			Transform backStrapRightStrapAttach = newBack.transform.Find("back_strap_right_strap_attach");
 
 			FuseAttributes fuseAtts = backStrapFuses ();
 			
@@ -321,7 +321,7 @@ public class CreatePartVest : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,270,0);
 			GameObject newBackSlope = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
-			Transform leftVestOvalVestDiamondAttach = newBackSlope.transform.FindChild("left_vest_oval_vest_diamond_attach");
+			Transform leftVestOvalVestDiamondAttach = newBackSlope.transform.Find("left_vest_oval_vest_diamond_attach");
 
 			//fixes off center rotation problem
 			//strutTopBodyAttach.transform.localPosition = new Vector3(0, 0, 0);
@@ -352,10 +352,10 @@ public class CreatePartVest : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
 			GameObject newLeftCover = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
-			Transform vestDiamondLeftVestOvalAttach = newLeftCover.transform.FindChild("vest_diamond_left_vest_oval_attach");
-			Transform vestDiamondRightVestOvalAttach = newLeftCover.transform.FindChild("vest_diamond_right_vest_oval_attach");
-			Transform VestDiamondVestBaseAttach = newLeftCover.transform.FindChild("vest_diamond_vest_base_attach");
-			Transform VestDiamondVestOvalAttach = newLeftCover.transform.FindChild("vest_diamond_vest_oval_attach");
+			Transform vestDiamondLeftVestOvalAttach = newLeftCover.transform.Find("vest_diamond_left_vest_oval_attach");
+			Transform vestDiamondRightVestOvalAttach = newLeftCover.transform.Find("vest_diamond_right_vest_oval_attach");
+			Transform VestDiamondVestBaseAttach = newLeftCover.transform.Find("vest_diamond_vest_base_attach");
+			Transform VestDiamondVestOvalAttach = newLeftCover.transform.Find("vest_diamond_vest_oval_attach");
 
 
 
@@ -394,7 +394,7 @@ public class CreatePartVest : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (180,0,0);		
 			GameObject newRightCover = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
-			Transform vestOvalVestDiamondAttach = newRightCover.transform.FindChild("vest_oval_vest_diamond_attach");
+			Transform vestOvalVestDiamondAttach = newRightCover.transform.Find("vest_oval_vest_diamond_attach");
 
 			FuseAttributes fuseAtts = vestOvalFuses();
 			

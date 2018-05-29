@@ -38,9 +38,9 @@ public class CreatePartTutorial2 : MonoBehaviour {
 		startObject = GameObject.Find ("tutorial2_longbox");
 
 		//CHANGE these lines so they refer to each black part on your starting part
-		GameObject longboxBigBoxAttach = startObject.transform.FindChild("longbox_bigbox_attach").gameObject;
-		GameObject longboxTallboxAttach = startObject.transform.FindChild("longbox_tallbox_attach").gameObject;
-		GameObject longboxSmallboxYellowAttach = startObject.transform.FindChild("longbox_smallbox_yellow_attach").gameObject;
+		GameObject longboxBigBoxAttach = startObject.transform.Find("longbox_bigbox_attach").gameObject;
+		GameObject longboxTallboxAttach = startObject.transform.Find("longbox_tallbox_attach").gameObject;
+		GameObject longboxSmallboxYellowAttach = startObject.transform.Find("longbox_smallbox_yellow_attach").gameObject;
 		//to avoid errors when selectedObject starts as startObject
 		//CHANGE these lines to match above
 		//these lines may be unnecessary?
@@ -205,7 +205,7 @@ public class CreatePartTutorial2 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (180,90,180);
 			GameObject newSmallboxYellow = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 
-			Transform smallboxYellowLongboxAttach = newSmallboxYellow.transform.FindChild("smallbox_yellow_longbox_attach");
+			Transform smallboxYellowLongboxAttach = newSmallboxYellow.transform.Find("smallbox_yellow_longbox_attach");
 
 			FuseAttributes fuseAtts = smallboxYellowFuses ();
 
@@ -230,7 +230,7 @@ public class CreatePartTutorial2 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,90);
 			GameObject newTallbox = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 
-			Transform tallboxLongboxAttach = newTallbox.transform.FindChild("tallbox_longbox_attach");
+			Transform tallboxLongboxAttach = newTallbox.transform.Find("tallbox_longbox_attach");
 
 			FuseAttributes fuseAtts = tallboxFuses ();
 
@@ -255,7 +255,7 @@ public class CreatePartTutorial2 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);
 			GameObject newSmallboxBlue = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 
-			Transform smallboxBlueBigboxAttach = newSmallboxBlue.transform.FindChild("smallbox_blue_bigbox_attach");
+			Transform smallboxBlueBigboxAttach = newSmallboxBlue.transform.Find("smallbox_blue_bigbox_attach");
 
 			FuseAttributes fuseAtts = smallboxBlueFuses ();
 
@@ -280,8 +280,8 @@ public class CreatePartTutorial2 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,0);
 			GameObject newBigbox = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 
-			Transform bigboxLongboxAttach = newBigbox.transform.FindChild("bigbox_longbox_attach");
-			Transform bigboxSmallboxBlueAttach = newBigbox.transform.FindChild("bigbox_smallbox_blue_attach");
+			Transform bigboxLongboxAttach = newBigbox.transform.Find("bigbox_longbox_attach");
+			Transform bigboxSmallboxBlueAttach = newBigbox.transform.Find("bigbox_smallbox_blue_attach");
 
 			FuseAttributes fuseAtts = bigboxFuses ();
 

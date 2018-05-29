@@ -38,14 +38,14 @@ public class CreatePartCatapult : MonoBehaviour {
 		startObject = GameObject.Find ("platform_complete");
 		
 		//CHANGE these lines so they refer to each black part on your starting part
-		GameObject platform_back_axle_bottom_attach = startObject.transform.FindChild("platform_back_axle_bottom_attach").gameObject;
-		GameObject platform_back_axle_left_attach = startObject.transform.FindChild("platform_back_axle_left_attach").gameObject;
-		GameObject platform_back_axle_right_attach = startObject.transform.FindChild("platform_back_axle_right_attach").gameObject;
-		GameObject platform_front_axle_bottom_attach = startObject.transform.FindChild("platform_front_axle_bottom_attach").gameObject;
-		GameObject platform_front_axle_left_attach = startObject.transform.FindChild("platform_front_axle_left_attach").gameObject;
-		GameObject platform_front_axle_right_attach = startObject.transform.FindChild("platform_front_axle_right_attach").gameObject;
-		GameObject platform_left_support_attach = startObject.transform.FindChild("platform_left_support_attach").gameObject;
-		GameObject platform_right_support_attach = startObject.transform.FindChild("platform_right_support_attach").gameObject;
+		GameObject platform_back_axle_bottom_attach = startObject.transform.Find("platform_back_axle_bottom_attach").gameObject;
+		GameObject platform_back_axle_left_attach = startObject.transform.Find("platform_back_axle_left_attach").gameObject;
+		GameObject platform_back_axle_right_attach = startObject.transform.Find("platform_back_axle_right_attach").gameObject;
+		GameObject platform_front_axle_bottom_attach = startObject.transform.Find("platform_front_axle_bottom_attach").gameObject;
+		GameObject platform_front_axle_left_attach = startObject.transform.Find("platform_front_axle_left_attach").gameObject;
+		GameObject platform_front_axle_right_attach = startObject.transform.Find("platform_front_axle_right_attach").gameObject;
+		GameObject platform_left_support_attach = startObject.transform.Find("platform_left_support_attach").gameObject;
+		GameObject platform_right_support_attach = startObject.transform.Find("platform_right_support_attach").gameObject;
 	
 		
 		//to avoid errors when selectedObject starts as startObject
@@ -362,11 +362,11 @@ public class CreatePartCatapult : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90, 270, 0);
 			GameObject newAxle = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
-			Transform axleLeftSupportAttach = newAxle.transform.FindChild("axle_left_support_attach");
-			Transform axleRightSupportAttach = newAxle.transform.FindChild("axle_right_support_attach");
-			Transform axleThrowingArmLeftAttach = newAxle.transform.FindChild("axle_throwing_arm_left_attach");
-			Transform axleThrowingArmRightAttach = newAxle.transform.FindChild("axle_throwing_arm_right_attach");
-			Transform axleThrowingArmBottomAttach = newAxle.transform.FindChild("axle_throwing_arm_bottom_attach");
+			Transform axleLeftSupportAttach = newAxle.transform.Find("axle_left_support_attach");
+			Transform axleRightSupportAttach = newAxle.transform.Find("axle_right_support_attach");
+			Transform axleThrowingArmLeftAttach = newAxle.transform.Find("axle_throwing_arm_left_attach");
+			Transform axleThrowingArmRightAttach = newAxle.transform.Find("axle_throwing_arm_right_attach");
+			Transform axleThrowingArmBottomAttach = newAxle.transform.Find("axle_throwing_arm_bottom_attach");
 
 			FuseAttributes fuseAtts = axleFuses ();
 			
@@ -407,9 +407,9 @@ public class CreatePartCatapult : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,270,0);
 			GameObject newThrowingArm = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
-			Transform throwingArmAxleLeftAttach = newThrowingArm.transform.FindChild("throwing_arm_axle_left_attach");
-			Transform throwingArmAxleRightAttach = newThrowingArm.transform.FindChild("throwing_arm_axle_right_attach");
-			Transform throwingArmAxleBottomAttach = newThrowingArm.transform.FindChild("throwing_arm_axle_bottom_attach");
+			Transform throwingArmAxleLeftAttach = newThrowingArm.transform.Find("throwing_arm_axle_left_attach");
+			Transform throwingArmAxleRightAttach = newThrowingArm.transform.Find("throwing_arm_axle_right_attach");
+			Transform throwingArmAxleBottomAttach = newThrowingArm.transform.Find("throwing_arm_axle_bottom_attach");
 			
 			FuseAttributes fuseAtts = throwingArmFuses ();
 			
@@ -442,8 +442,8 @@ public class CreatePartCatapult : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,0);
 			GameObject newRightSupport = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
-			Transform rightSupportAxleAttach = newRightSupport.transform.FindChild("right_support_axle_attach");
-			Transform rightSupportPlatformAttach = newRightSupport.transform.FindChild("right_support_platform_attach");
+			Transform rightSupportAxleAttach = newRightSupport.transform.Find("right_support_axle_attach");
+			Transform rightSupportPlatformAttach = newRightSupport.transform.Find("right_support_platform_attach");
 
 			FuseAttributes fuseAtts = rightSupportFuses ();
 			
@@ -472,11 +472,11 @@ public class CreatePartCatapult : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (180,90,0);
 			GameObject newBackAxle = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
-			Transform backAxleFrontAxleAttach = newBackAxle.transform.FindChild("back_axle_front_axle_attach");
-			Transform backAxlePlatformLeftAttach = newBackAxle.transform.FindChild("back_axle_platform_left_attach");
-			Transform backAxlePlatformRightAttach = newBackAxle.transform.FindChild("back_axle_platform_right_attach");
-			Transform backAxlePlatformBottomAttach = newBackAxle.transform.FindChild("back_axle_platform_bottom_attach");
-			Transform backAxleBackRightWheelAttach = newBackAxle.transform.FindChild("back_axle_back_right_wheel_attach");
+			Transform backAxleFrontAxleAttach = newBackAxle.transform.Find("back_axle_front_axle_attach");
+			Transform backAxlePlatformLeftAttach = newBackAxle.transform.Find("back_axle_platform_left_attach");
+			Transform backAxlePlatformRightAttach = newBackAxle.transform.Find("back_axle_platform_right_attach");
+			Transform backAxlePlatformBottomAttach = newBackAxle.transform.Find("back_axle_platform_bottom_attach");
+			Transform backAxleBackRightWheelAttach = newBackAxle.transform.Find("back_axle_back_right_wheel_attach");
 
 			FuseAttributes fuseAtts = backAxleFuses();
 			
@@ -517,11 +517,11 @@ public class CreatePartCatapult : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,180, 90);		
 			GameObject newFrontAxle = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
-			Transform frontAxleBackAxleAttach = newFrontAxle.transform.FindChild("front_axle_back_axle_attach");
-			Transform frontAxleFrontLeftWheelAttach = newFrontAxle.transform.FindChild("front_axle_front_left_wheel_attach");
-			Transform frontAxlePlatformLeftAttach = newFrontAxle.transform.FindChild("front_axle_platform_left_attach");
-			Transform frontAxlePlatformRightAttach = newFrontAxle.transform.FindChild("front_axle_platform_right_attach");
-			Transform frontAxlePlatformBottomAttach = newFrontAxle.transform.FindChild("front_axle_platform_bottom_attach");
+			Transform frontAxleBackAxleAttach = newFrontAxle.transform.Find("front_axle_back_axle_attach");
+			Transform frontAxleFrontLeftWheelAttach = newFrontAxle.transform.Find("front_axle_front_left_wheel_attach");
+			Transform frontAxlePlatformLeftAttach = newFrontAxle.transform.Find("front_axle_platform_left_attach");
+			Transform frontAxlePlatformRightAttach = newFrontAxle.transform.Find("front_axle_platform_right_attach");
+			Transform frontAxlePlatformBottomAttach = newFrontAxle.transform.Find("front_axle_platform_bottom_attach");
 
 			FuseAttributes fuseAtts = frontAxleFuses();
 			
@@ -562,8 +562,8 @@ public class CreatePartCatapult : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,90);		
 			GameObject newLeftSupport = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[5], pos, fuseToRotation)));
 			
-			Transform leftSupportAxleAttach = newLeftSupport.transform.FindChild("left_support_axle_attach");
-			Transform leftSupportPlatformAttach = newLeftSupport.transform.FindChild("left_support_platform_attach");
+			Transform leftSupportAxleAttach = newLeftSupport.transform.Find("left_support_axle_attach");
+			Transform leftSupportPlatformAttach = newLeftSupport.transform.Find("left_support_platform_attach");
 			
 			FuseAttributes fuseAtts = leftSupportFuses();
 			
@@ -592,7 +592,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();		
 			GameObject newFrontLeftWheel = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[6], pos, fuseToRotation)));
 			
-			Transform frontLeftWheelFrontAxleAttach = newFrontLeftWheel.transform.FindChild("front_left_wheel_front_axle_attach");
+			Transform frontLeftWheelFrontAxleAttach = newFrontLeftWheel.transform.Find("front_left_wheel_front_axle_attach");
 
 			FuseAttributes fuseAtts = frontLeftWheelFuses();
 			
@@ -617,7 +617,7 @@ public class CreatePartCatapult : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();		
 			GameObject newBackRightWheel = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[7], pos, fuseToRotation)));
 			
-			Transform backRightWheelBackAxleAttach = newBackRightWheel.transform.FindChild("back_right_wheel_back_axle_attach");
+			Transform backRightWheelBackAxleAttach = newBackRightWheel.transform.Find("back_right_wheel_back_axle_attach");
 
 			FuseAttributes fuseAtts = backRightWheelFuses();
 			

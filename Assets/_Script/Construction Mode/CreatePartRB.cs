@@ -250,8 +250,8 @@ public class CreatePartRB : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);
 			GameObject newBallfoot = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 
-			Transform ballfootMidfootAttach = newBallfoot.transform.FindChild("ballfoot_midfoot_attach");
-			Transform ballfootToeAttach = newBallfoot.transform.FindChild("ballfoot_toe_attach");
+			Transform ballfootMidfootAttach = newBallfoot.transform.Find("ballfoot_midfoot_attach");
+			Transform ballfootToeAttach = newBallfoot.transform.Find("ballfoot_toe_attach");
 
 			FuseAttributes fuseAtts = ballfootFuses ();
 
@@ -280,8 +280,8 @@ public class CreatePartRB : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler(0,90,90);
 			GameObject newCalf = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 
-			Transform calfWideningAttach = newCalf.transform.FindChild("calf_widening_attach");
-			Transform calfTrimAttach = newCalf.transform.FindChild("calf_trim_attach");
+			Transform calfWideningAttach = newCalf.transform.Find("calf_widening_attach");
+			Transform calfTrimAttach = newCalf.transform.Find("calf_trim_attach");
 
 			FuseAttributes fuseAtts = calfFuses ();
 
@@ -310,8 +310,8 @@ public class CreatePartRB : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (270,0,90);
 			GameObject newMidfoot = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 
-			Transform midfootHeelAttach = newMidfoot.transform.FindChild("midfoot_heel_attach");
-			Transform midfootBallfootAttach = newMidfoot.transform.FindChild("midfoot_ballfoot_attach");
+			Transform midfootHeelAttach = newMidfoot.transform.Find("midfoot_heel_attach");
+			Transform midfootBallfootAttach = newMidfoot.transform.Find("midfoot_ballfoot_attach");
 
 			FuseAttributes fuseAtts = midfootFuses ();
 
@@ -340,7 +340,7 @@ public class CreatePartRB : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newToe = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 
-			Transform toeBallfootAttach = newToe.transform.FindChild("toe_ballfoot_attach");
+			Transform toeBallfootAttach = newToe.transform.Find("toe_ballfoot_attach");
 
 			FuseAttributes fuseAtts = toeFuses ();
 
@@ -365,7 +365,7 @@ public class CreatePartRB : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (270,270,0);		
 			GameObject newTrim = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 
-			Transform trimCalfAttach = newTrim.transform.FindChild("trim_calf_attach");
+			Transform trimCalfAttach = newTrim.transform.Find("trim_calf_attach");
 
 			FuseAttributes fuseAtts = trimFuses ();
 
@@ -390,8 +390,8 @@ public class CreatePartRB : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,270);		
 			GameObject newWidening = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[5], pos, fuseToRotation)));
 
-			Transform wideningHeelAttach = newWidening.transform.FindChild("widening_heel_attach");
-			Transform wideningCalfAttach = newWidening.transform.FindChild("widening_calf_attach");
+			Transform wideningHeelAttach = newWidening.transform.Find("widening_heel_attach");
+			Transform wideningCalfAttach = newWidening.transform.Find("widening_calf_attach");
 
 			FuseAttributes fuseAtts = wideningFuses ();
 

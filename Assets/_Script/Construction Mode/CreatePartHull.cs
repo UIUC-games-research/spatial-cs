@@ -38,9 +38,9 @@ public class CreatePartHull : MonoBehaviour {
 		startObject = GameObject.Find ("bridgeWhole");
 
 		//CHANGE these lines so they refer to each black part on your starting part
-		GameObject bridgeBackAttach = startObject.transform.FindChild("bridge_back_attach").gameObject;
-		GameObject bridgeBridgeCoverLeftAttach = startObject.transform.FindChild("bridge_bridge_cover_left_attach").gameObject;
-		GameObject bridgeBridgeCoverRightAttach = startObject.transform.FindChild("bridge_bridge_cover_right_attach").gameObject;
+		GameObject bridgeBackAttach = startObject.transform.Find("bridge_back_attach").gameObject;
+		GameObject bridgeBridgeCoverLeftAttach = startObject.transform.Find("bridge_bridge_cover_left_attach").gameObject;
+		GameObject bridgeBridgeCoverRightAttach = startObject.transform.Find("bridge_bridge_cover_right_attach").gameObject;
 
 
 		//to avoid errors when selectedObject starts as startObject
@@ -248,9 +248,9 @@ public class CreatePartHull : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newBridgeCover = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
-			Transform bridgeCoverBridgeLeftAttach = newBridgeCover.transform.FindChild("bridge_cover_bridge_left_attach");
-			Transform bridgeCoverBridgeRightAttach = newBridgeCover.transform.FindChild("bridge_cover_bridge_right_attach");
-			Transform bridgeCoverBackSlopeAttach = newBridgeCover.transform.FindChild("bridge_cover_back_slope_attach");
+			Transform bridgeCoverBridgeLeftAttach = newBridgeCover.transform.Find("bridge_cover_bridge_left_attach");
+			Transform bridgeCoverBridgeRightAttach = newBridgeCover.transform.Find("bridge_cover_bridge_right_attach");
+			Transform bridgeCoverBackSlopeAttach = newBridgeCover.transform.Find("bridge_cover_back_slope_attach");
 
 			FuseAttributes fuseAtts = bridgeCoverFuses ();
 			
@@ -283,9 +283,9 @@ public class CreatePartHull : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
 			GameObject newBack = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
-			Transform backLeftCoverAttach = newBack.transform.FindChild("back_left_cover_attach");
-			Transform backRightCoverAttach = newBack.transform.FindChild("back_right_cover_attach");
-			Transform backBridgeAttach = newBack.transform.FindChild("back_bridge_attach");
+			Transform backLeftCoverAttach = newBack.transform.Find("back_left_cover_attach");
+			Transform backRightCoverAttach = newBack.transform.Find("back_right_cover_attach");
+			Transform backBridgeAttach = newBack.transform.Find("back_bridge_attach");
 
 			FuseAttributes fuseAtts = backFuses ();
 			
@@ -318,9 +318,9 @@ public class CreatePartHull : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,180,0);
 			GameObject newBackSlope = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
-			Transform backSlopeBridgeCoverAttach = newBackSlope.transform.FindChild("back_slope_bridge_cover_attach");
-			Transform backSlopeLeftCoverAttach = newBackSlope.transform.FindChild("back_slope_left_cover_attach");
-			Transform backSlopeRightCoverAttach = newBackSlope.transform.FindChild("back_slope_right_cover_attach");
+			Transform backSlopeBridgeCoverAttach = newBackSlope.transform.Find("back_slope_bridge_cover_attach");
+			Transform backSlopeLeftCoverAttach = newBackSlope.transform.Find("back_slope_left_cover_attach");
+			Transform backSlopeRightCoverAttach = newBackSlope.transform.Find("back_slope_right_cover_attach");
 
 			//fixes off center rotation problem
 			//strutTopBodyAttach.transform.localPosition = new Vector3(0, 0, 0);
@@ -358,8 +358,8 @@ public class CreatePartHull : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newLeftCover = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
-			Transform leftCoverBackSlopeAttach = newLeftCover.transform.FindChild("left_cover_back_slope_attach");
-			Transform leftCoverBackAttach = newLeftCover.transform.FindChild("left_cover_back_attach");
+			Transform leftCoverBackSlopeAttach = newLeftCover.transform.Find("left_cover_back_slope_attach");
+			Transform leftCoverBackAttach = newLeftCover.transform.Find("left_cover_back_attach");
 			
 			FuseAttributes fuseAtts = leftCoverFuses();
 			
@@ -388,8 +388,8 @@ public class CreatePartHull : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,90);		
 			GameObject newRightCover = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
-			Transform rightCoverBackAttach = newRightCover.transform.FindChild("right_cover_back_attach");
-			Transform rightCoverBackSlopeAttach = newRightCover.transform.FindChild("right_cover_back_slope_attach");
+			Transform rightCoverBackAttach = newRightCover.transform.Find("right_cover_back_attach");
+			Transform rightCoverBackSlopeAttach = newRightCover.transform.Find("right_cover_back_slope_attach");
 
 			FuseAttributes fuseAtts = rightCoverFuses();
 			

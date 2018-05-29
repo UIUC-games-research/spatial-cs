@@ -34,8 +34,8 @@ public class CreatePartForceGloves : MonoBehaviour {
 		createLoc = new Vector3(-40, 25, 80);
 		selectionManager = eventSystem.GetComponent<SelectPart>();
 		startObject = GameObject.Find ("armWhole");
-		GameObject armArmDecAttach = startObject.transform.FindChild("arm_arm_dec_attach").gameObject;
-		GameObject armPalmAttach = startObject.transform.FindChild("arm_palm_attach").gameObject;
+		GameObject armArmDecAttach = startObject.transform.Find("arm_arm_dec_attach").gameObject;
+		GameObject armPalmAttach = startObject.transform.Find("arm_palm_attach").gameObject;
 		
 		//to avoid errors when selectedObject starts as startObject
 		armArmDecAttach.GetComponent<FuseBehavior>().isFused = true;
@@ -215,10 +215,10 @@ public class CreatePartForceGloves : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,90);
 			GameObject newPalm = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
-			Transform palmArmAttach = newPalm.transform.FindChild("palm_arm_attach");
-			Transform palmFingersAttach = newPalm.transform.FindChild("palm_fingers_attach");
-			Transform palmThumbAttach = newPalm.transform.FindChild("palm_thumb_attach");
-			Transform palmPalmDecAttach = newPalm.transform.FindChild("palm_palm_dec_attach");
+			Transform palmArmAttach = newPalm.transform.Find("palm_arm_attach");
+			Transform palmFingersAttach = newPalm.transform.Find("palm_fingers_attach");
+			Transform palmThumbAttach = newPalm.transform.Find("palm_thumb_attach");
+			Transform palmPalmDecAttach = newPalm.transform.Find("palm_palm_dec_attach");
 			
 			FuseAttributes fuseAtts = palmFuses ();
 			
@@ -255,7 +255,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (180,90,0);
 			GameObject newFingers = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
-			Transform fingersPalmAttach = newFingers.transform.FindChild("fingers_palm_attach");
+			Transform fingersPalmAttach = newFingers.transform.Find("fingers_palm_attach");
 
 			FuseAttributes fuseAtts = fingersFuses ();
 			
@@ -280,7 +280,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,270,0);
 			GameObject newThumb = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
-			Transform thumbPalmAttach = newThumb.transform.FindChild("thumb_palm_attach");
+			Transform thumbPalmAttach = newThumb.transform.Find("thumb_palm_attach");
 			
 			FuseAttributes fuseAtts = thumbFuses ();
 			
@@ -305,7 +305,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,0);
 			GameObject newArmDec = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
-			Transform armDecArmAttach = newArmDec.transform.FindChild("arm_dec_arm_attach");
+			Transform armDecArmAttach = newArmDec.transform.Find("arm_dec_arm_attach");
 			
 			FuseAttributes fuseAtts = armDecFuses();
 			
@@ -330,7 +330,7 @@ public class CreatePartForceGloves : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,90);		
 			GameObject newPalmDec = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
-			Transform palmDecPalmAttach = newPalmDec.transform.FindChild("palm_dec_palm_attach");
+			Transform palmDecPalmAttach = newPalmDec.transform.Find("palm_dec_palm_attach");
 
 			FuseAttributes fuseAtts = palmDecFuses();
 			
