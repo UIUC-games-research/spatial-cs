@@ -87,6 +87,7 @@ public class InventoryController : MonoBehaviour
 
 	// Need this somewhere for the restart stuff.
 	// DEMO MODE ONLY
+    // TODO: Disable for full game version
 	public static void RestartGame()
 	{
 		Debug.Log("Restarting!");

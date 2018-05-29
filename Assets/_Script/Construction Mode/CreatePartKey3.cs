@@ -40,8 +40,8 @@ public class CreatePartKey3 : MonoBehaviour {
 		//CHANGE these lines so they refer to each black part on your starting part
 		//GameObject blockJutsCornerAttach = startObject.transform.FindChild("block_juts_corner_attach").gameObject;
 		//GameObject blockJutsLongLBackAttach = startObject.transform.FindChild("block_juts_long_l_back_attach").gameObject;
-		GameObject blockJutsLongLSideAttach = startObject.transform.FindChild("block_juts_long_l_side_attach").gameObject;
-		GameObject blockJutsLongLTopAttach = startObject.transform.FindChild("block_juts_long_l_top_attach").gameObject;
+		GameObject blockJutsLongLSideAttach = startObject.transform.Find("block_juts_long_l_side_attach").gameObject;
+		GameObject blockJutsLongLTopAttach = startObject.transform.Find("block_juts_long_l_top_attach").gameObject;
 
 
 
@@ -278,11 +278,11 @@ public class CreatePartKey3 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newLongL = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
-			Transform longLBigCornerAttach = newLongL.transform.FindChild("long_l_big_corner_attach");
-			Transform longLCornerAttach = newLongL.transform.FindChild("long_l_corner_attach");
-			Transform longLBlockJutsSideAttach = newLongL.transform.FindChild("long_l_block_juts_side_attach");
-			Transform longLBlockJutsBackAttach = newLongL.transform.FindChild("long_l_block_juts_back_attach");
-			Transform longLBlockJutsTopAttach = newLongL.transform.FindChild("long_l_block_juts_top_attach");
+			Transform longLBigCornerAttach = newLongL.transform.Find("long_l_big_corner_attach");
+			Transform longLCornerAttach = newLongL.transform.Find("long_l_corner_attach");
+			Transform longLBlockJutsSideAttach = newLongL.transform.Find("long_l_block_juts_side_attach");
+			Transform longLBlockJutsBackAttach = newLongL.transform.Find("long_l_block_juts_back_attach");
+			Transform longLBlockJutsTopAttach = newLongL.transform.Find("long_l_block_juts_top_attach");
 
 
 
@@ -327,9 +327,9 @@ public class CreatePartKey3 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newConnector = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
-			Transform backLeftCoverAttach = newConnector.transform.FindChild("connector_corner_attach");
-			Transform backRightCoverAttach = newConnector.transform.FindChild("connector_diagonal_side_attach");
-			Transform backBridgeAttach = newConnector.transform.FindChild("connector_diagonal_top_attach");
+			Transform backLeftCoverAttach = newConnector.transform.Find("connector_corner_attach");
+			Transform backRightCoverAttach = newConnector.transform.Find("connector_diagonal_side_attach");
+			Transform backBridgeAttach = newConnector.transform.Find("connector_diagonal_top_attach");
 			
 			FuseAttributes fuseAtts = connectorFuses ();
 			
@@ -362,7 +362,7 @@ public class CreatePartKey3 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newBigCorner = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
-			Transform bigCornerLongLAttach = newBigCorner.transform.FindChild("big_corner_long_l_attach");
+			Transform bigCornerLongLAttach = newBigCorner.transform.Find("big_corner_long_l_attach");
 
 			//fixes off center rotation problem
 			//strutTopBodyAttach.transform.localPosition = new Vector3(0, 0, 0);
@@ -393,9 +393,9 @@ public class CreatePartKey3 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newCorner = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
-			Transform cornerLongLAttach = newCorner.transform.FindChild("corner_long_l_attach");
-			Transform cornerblockJutsAttach = newCorner.transform.FindChild("corner_block_juts_attach");
-			Transform cornerConnectorAttach = newCorner.transform.FindChild("corner_connector_attach");
+			Transform cornerLongLAttach = newCorner.transform.Find("corner_long_l_attach");
+			Transform cornerblockJutsAttach = newCorner.transform.Find("corner_block_juts_attach");
+			Transform cornerConnectorAttach = newCorner.transform.Find("corner_connector_attach");
 
 
 
@@ -431,8 +431,8 @@ public class CreatePartKey3 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();		
 			GameObject newDiagonal = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
-			Transform diagonalConnectorSideAttach = newDiagonal.transform.FindChild("diagonal_connector_side_attach");
-			Transform diagonalConnectorTopAttach = newDiagonal.transform.FindChild("diagonal_connector_top_attach");
+			Transform diagonalConnectorSideAttach = newDiagonal.transform.Find("diagonal_connector_side_attach");
+			Transform diagonalConnectorTopAttach = newDiagonal.transform.Find("diagonal_connector_top_attach");
 			
 			FuseAttributes fuseAtts = diagonalFuses();
 			

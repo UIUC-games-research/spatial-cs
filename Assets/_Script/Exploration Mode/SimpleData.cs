@@ -14,6 +14,9 @@ public class SimpleData : MonoBehaviour
 	// Also relies on the fact that the player is activated before any construction scenes are,
 	// This will likely never change, as the game will always begin in exploration mode.
 
+    // Application.dataPath = C:\Users\hwauck\AppData\LocalLow\DefaultCompany\Helen\Unity
+    // TODO: change this to something else for webgame
+
 	// Folder name for this session. Set in Awake using system time.
 	public static string folder;
 

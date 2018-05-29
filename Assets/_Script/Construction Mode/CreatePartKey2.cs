@@ -34,9 +34,9 @@ public class CreatePartKey2 : MonoBehaviour {
 		createLoc = new Vector3(-40, 25, 80);
 		selectionManager = eventSystem.GetComponent<SelectPart>();
 		startObject = GameObject.Find ("postWhole");
-		GameObject postHangingLAttach = startObject.transform.FindChild("post_hanging_l_attach").gameObject;
-		GameObject postMiddleTAttach = startObject.transform.FindChild("post_middle_t_attach").gameObject;
-		GameObject postZigzagAttach = startObject.transform.FindChild("post_zigzag_attach").gameObject;
+		GameObject postHangingLAttach = startObject.transform.Find("post_hanging_l_attach").gameObject;
+		GameObject postMiddleTAttach = startObject.transform.Find("post_middle_t_attach").gameObject;
+		GameObject postZigzagAttach = startObject.transform.Find("post_zigzag_attach").gameObject;
 
 		//to avoid errors when selectedObject starts as startObject
 		postHangingLAttach.GetComponent<FuseBehavior>().isFused = true;
@@ -223,10 +223,10 @@ public class CreatePartKey2 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);
 			GameObject newC = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
-			Transform cMiddleTBottomAttach = newC.transform.FindChild("c_middle_t_bottom_attach");
-			Transform cMiddleTFrontAttach = newC.transform.FindChild("c_middle_t_front_attach");
-			Transform cMiddleTTopAttach = newC.transform.FindChild("c_middle_t_top_attach");
-			Transform cUlCornerAttach = newC.transform.FindChild("c_ul_corner_attach");
+			Transform cMiddleTBottomAttach = newC.transform.Find("c_middle_t_bottom_attach");
+			Transform cMiddleTFrontAttach = newC.transform.Find("c_middle_t_front_attach");
+			Transform cMiddleTTopAttach = newC.transform.Find("c_middle_t_top_attach");
+			Transform cUlCornerAttach = newC.transform.Find("c_ul_corner_attach");
 			
 			FuseAttributes fuseAtts = cFuses ();
 			
@@ -263,7 +263,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,90,0);
 			GameObject newHangingL = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
-			Transform hangingLPostAttach = newHangingL.transform.FindChild("hanging_l_post_attach");
+			Transform hangingLPostAttach = newHangingL.transform.Find("hanging_l_post_attach");
 			
 			FuseAttributes fuseAtts = hangingLFuses ();
 			
@@ -288,10 +288,10 @@ public class CreatePartKey2 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);
 			GameObject newMiddleT = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
-			Transform middleTCBottomAttach = newMiddleT.transform.FindChild("middle_t_c_bottom_attach");
-			Transform middleTCFrontAttach = newMiddleT.transform.FindChild("middle_t_c_front_attach");
-			Transform middleTCTopAttach = newMiddleT.transform.FindChild("middle_t_c_top_attach");
-			Transform middleTPostAttach = newMiddleT.transform.FindChild("middle_t_post_attach");
+			Transform middleTCBottomAttach = newMiddleT.transform.Find("middle_t_c_bottom_attach");
+			Transform middleTCFrontAttach = newMiddleT.transform.Find("middle_t_c_front_attach");
+			Transform middleTCTopAttach = newMiddleT.transform.Find("middle_t_c_top_attach");
+			Transform middleTPostAttach = newMiddleT.transform.Find("middle_t_post_attach");
 
 			FuseAttributes fuseAtts = middleTFuses ();
 			
@@ -328,7 +328,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newUlCorner = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
-			Transform ulCornerCAttach = newUlCorner.transform.FindChild("ul_corner_c_attach");
+			Transform ulCornerCAttach = newUlCorner.transform.Find("ul_corner_c_attach");
 			
 			FuseAttributes fuseAtts = ulCornerFuses();
 			
@@ -353,7 +353,7 @@ public class CreatePartKey2 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,180);		
 			GameObject newZigzag = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
-			Transform zigzagPostAttach = newZigzag.transform.FindChild("zigzag_post_attach");
+			Transform zigzagPostAttach = newZigzag.transform.Find("zigzag_post_attach");
 			
 			FuseAttributes fuseAtts = zigzagFuses();
 			

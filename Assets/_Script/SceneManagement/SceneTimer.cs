@@ -19,6 +19,7 @@ public class SceneTimer : MonoBehaviour
 	{
 		timer += Time.deltaTime;
 		//enter highland
+        // TODO: change this so that separation is more definition
 		if (!highland) {
 			if (sceneName == "Canyon2" && playerPos.position.y >= 33) {
 				//Debug.Log("here");

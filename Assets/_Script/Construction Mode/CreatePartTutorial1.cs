@@ -34,9 +34,9 @@ public class CreatePartTutorial1 : MonoBehaviour {
 		createLoc = new Vector3(-40, 25, 100);
 		selectionManager = eventSystem.GetComponent<SelectPart>();
 		startObject = GameObject.Find ("tutorial1_box");
-		GameObject boxPyrAttach = startObject.transform.FindChild("box_pyr_attach").gameObject;
-		GameObject boxTriAttach = startObject.transform.FindChild("box_tri_attach").gameObject;
-		GameObject boxConeAttach = startObject.transform.FindChild("box_cone_attach").gameObject;
+		GameObject boxPyrAttach = startObject.transform.Find("box_pyr_attach").gameObject;
+		GameObject boxTriAttach = startObject.transform.Find("box_tri_attach").gameObject;
+		GameObject boxConeAttach = startObject.transform.Find("box_cone_attach").gameObject;
 		//to avoid errors when selectedObject starts as startObject
 		boxPyrAttach.GetComponent<FuseBehavior>().isFused = true;
 		boxTriAttach.GetComponent<FuseBehavior>().isFused = true;
@@ -160,7 +160,7 @@ public class CreatePartTutorial1 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (180,0,90);
 			GameObject newPyr = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 
-			Transform pyrBoxAttach = newPyr.transform.FindChild("pyr_box_attach");
+			Transform pyrBoxAttach = newPyr.transform.Find("pyr_box_attach");
 
 			FuseAttributes fuseAtts = pyrFuses ();
 
@@ -185,7 +185,7 @@ public class CreatePartTutorial1 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newTri = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 
-			Transform triBoxAttach = newTri.transform.FindChild("tri_box_attach");
+			Transform triBoxAttach = newTri.transform.Find("tri_box_attach");
 
 			FuseAttributes fuseAtts = triFuses ();
 
@@ -210,7 +210,7 @@ public class CreatePartTutorial1 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,90);
 			GameObject newCone = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 
-			Transform coneBoxAttach = newCone.transform.FindChild("cone_box_attach");
+			Transform coneBoxAttach = newCone.transform.Find("cone_box_attach");
 
 			FuseAttributes fuseAtts = coneFuses ();
 

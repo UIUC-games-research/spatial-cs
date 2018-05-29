@@ -37,9 +37,10 @@ public class RotationGizmo : MonoBehaviour
 	
 	void Update ()
 	{
-		// Restarting game while in construction mode.
-		// DEMO MODE ONLY.
-		if (Input.GetKey(KeyCode.T) && Input.GetKey(KeyCode.R))
+        // Restarting game while in construction mode.
+        // DEMO MODE ONLY.
+        // TODO: disable this for the full game version
+        if (Input.GetKey(KeyCode.T) && Input.GetKey(KeyCode.R))
 		{
 			InventoryController.RestartGame();
 		}
@@ -337,6 +338,8 @@ public class RotationGizmo : MonoBehaviour
 		batteryIndicator.transform.localScale = 0.5f * batteryIndicator.transform.localScale;
 		flashing = false;
 	}
+
+
 
 
 

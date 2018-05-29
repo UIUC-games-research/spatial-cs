@@ -38,11 +38,11 @@ public class CreatePartEngine : MonoBehaviour {
 		startObject = GameObject.Find ("engine_whole");
 
 		//CHANGE these lines so they refer to each black part on your starting part
-		GameObject baseEngineFrontAttach = startObject.transform.FindChild("engine_base_engine_front_attach").gameObject;
-		GameObject baseEngineLeftAttach = startObject.transform.FindChild("engine_base_engine_left_attach").gameObject;
-		GameObject baseEngineRightAttach = startObject.transform.FindChild("engine_base_engine_right_attach").gameObject;
-		GameObject baseEngineTopAttach = startObject.transform.FindChild("engine_base_engine_top_attach").gameObject;
-		GameObject baseEngineTopRightAttach = startObject.transform.FindChild("engine_base_engine_top_right_attach").gameObject;
+		GameObject baseEngineFrontAttach = startObject.transform.Find("engine_base_engine_front_attach").gameObject;
+		GameObject baseEngineLeftAttach = startObject.transform.Find("engine_base_engine_left_attach").gameObject;
+		GameObject baseEngineRightAttach = startObject.transform.Find("engine_base_engine_right_attach").gameObject;
+		GameObject baseEngineTopAttach = startObject.transform.Find("engine_base_engine_top_attach").gameObject;
+		GameObject baseEngineTopRightAttach = startObject.transform.Find("engine_base_engine_top_right_attach").gameObject;
 
 		//to avoid errors when selectedObject starts as startObject
 		//CHANGE these lines to match above
@@ -222,7 +222,7 @@ public class CreatePartEngine : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,90,0);
 			GameObject newEngineFront = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
-			Transform engineFrontEngineBaseAttach = newEngineFront.transform.FindChild("engine_front_engine_base_attach");
+			Transform engineFrontEngineBaseAttach = newEngineFront.transform.Find("engine_front_engine_base_attach");
 
 			FuseAttributes fuseAtts = engineFrontFuses ();
 			
@@ -247,7 +247,7 @@ public class CreatePartEngine : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newEngineTop = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
-			Transform engineTopEngineBaseAttach = newEngineTop.transform.FindChild("engine_top_engine_base_attach");
+			Transform engineTopEngineBaseAttach = newEngineTop.transform.Find("engine_top_engine_base_attach");
 		
 			FuseAttributes fuseAtts = engineTopFuses ();
 			
@@ -272,7 +272,7 @@ public class CreatePartEngine : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,0,90);
 			GameObject newEngineLeft = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
-			Transform engineLeftEngineBaseAttach = newEngineLeft.transform.FindChild("engine_left_engine_base_attach");
+			Transform engineLeftEngineBaseAttach = newEngineLeft.transform.Find("engine_left_engine_base_attach");
 	
 			FuseAttributes fuseAtts = engineLeftFuses ();
 			
@@ -297,7 +297,7 @@ public class CreatePartEngine : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newEngineTopRight = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
-			Transform engineTopRightEngineBaseAttach = newEngineTopRight.transform.FindChild("engine_top_right_engine_base_attach");
+			Transform engineTopRightEngineBaseAttach = newEngineTopRight.transform.Find("engine_top_right_engine_base_attach");
 
 			FuseAttributes fuseAtts = engineTopRightFuses();
 			
@@ -322,7 +322,7 @@ public class CreatePartEngine : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);		
 			GameObject newEngineRight = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
-			Transform engineRightEngineBaseAttach = newEngineRight.transform.FindChild("engine_right_engine_base_attach");
+			Transform engineRightEngineBaseAttach = newEngineRight.transform.Find("engine_right_engine_base_attach");
 
 			FuseAttributes fuseAtts = engineRightFuses();
 			

@@ -36,9 +36,9 @@ public class CreatePartKey1 : MonoBehaviour {
 		startObject = GameObject.Find ("dangly_T_complete");
 
 		//print (startObject.transform.FindChild ("dangly_T_upright_L_attach"));
-		GameObject uprightLAttach = startObject.transform.FindChild("dangly_T_upright_L_attach").gameObject;
-		GameObject uprightTAttach = startObject.transform.FindChild("dangly_T_upright_T_attach").gameObject;
-		GameObject walkingPantsAttach = startObject.transform.FindChild("dangly_T_walking_pants_attach").gameObject;
+		GameObject uprightLAttach = startObject.transform.Find("dangly_T_upright_L_attach").gameObject;
+		GameObject uprightTAttach = startObject.transform.Find("dangly_T_upright_T_attach").gameObject;
+		GameObject walkingPantsAttach = startObject.transform.Find("dangly_T_walking_pants_attach").gameObject;
 		//to avoid errors when selectedObject starts as startObject
 		uprightLAttach.GetComponent<FuseBehavior>().isFused = true;
 		uprightTAttach.GetComponent<FuseBehavior>().isFused = true;
@@ -214,8 +214,8 @@ public class CreatePartKey1 : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,90);
 			GameObject newUprightL = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
-			Transform uprightLDanglyTAttach = newUprightL.transform.FindChild("upright_L_dangly_T_attach");
-			Transform uprightLWaluigiAttach = newUprightL.transform.FindChild("upright_L_waluigi_attach");
+			Transform uprightLDanglyTAttach = newUprightL.transform.Find("upright_L_dangly_T_attach");
+			Transform uprightLWaluigiAttach = newUprightL.transform.Find("upright_L_waluigi_attach");
 
 			//fixes off center rotation problem
 			//bodyChild.transform.localPosition = new Vector3(0,0,0);
@@ -251,7 +251,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newUprightT = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
-			Transform uprightTdanglyTAttach = newUprightT.transform.FindChild("upright_T_dangly_T_attach");
+			Transform uprightTdanglyTAttach = newUprightT.transform.Find("upright_T_dangly_T_attach");
 
 			//fixes off center rotation problem
 			//uprightTdanglyTAttach.transform.localPosition = new Vector3(0, 0, 0);
@@ -281,7 +281,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newWaluigi = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
-			Transform waluigiUprightLAttach = newWaluigi.transform.FindChild("waluigi_upright_L_attach");
+			Transform waluigiUprightLAttach = newWaluigi.transform.Find("waluigi_upright_L_attach");
 
 			//fixes off center rotation problem
 			//strutTopBodyAttach.transform.localPosition = new Vector3(0, 0, 0);
@@ -312,8 +312,8 @@ public class CreatePartKey1 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newWalkingPants = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
-			Transform walkingPantsDanglyTAttach = newWalkingPants.transform.FindChild("walking_pants_dangly_T_attach");
-			Transform walkingPantsUprightRectAttach = newWalkingPants.transform.FindChild("walking_pants_upright_rect_attach");
+			Transform walkingPantsDanglyTAttach = newWalkingPants.transform.Find("walking_pants_dangly_T_attach");
+			Transform walkingPantsUprightRectAttach = newWalkingPants.transform.Find("walking_pants_upright_rect_attach");
 
 			//fixes off center problem
 			//generatorStrutLeftAttach.transform.localPosition = new Vector3(0, 0, 0);
@@ -349,7 +349,7 @@ public class CreatePartKey1 : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();		
 			GameObject newUprightRect = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
-			Transform uprightRectWalkingPantsAttach = newUprightRect.transform.FindChild("upright_rect_walking_pants_attach");
+			Transform uprightRectWalkingPantsAttach = newUprightRect.transform.Find("upright_rect_walking_pants_attach");
 
 			//fixes off center rotation problem
 			//bodyChild.transform.localPosition = new Vector3(0, 0, 0);

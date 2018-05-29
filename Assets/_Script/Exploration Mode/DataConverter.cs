@@ -88,8 +88,9 @@ public class DataConverter : MonoBehaviour {
 	}
 
 	// read data from ALLDATA.txt to an arraylist, each line corresponses to one element in arraylist
+    // TODO: don't read from ALLDATA - get data directly from game
 	void readAllData(){
-		sr = new StreamReader(SimpleData.folder+"/ALLDATA.txt");
+		sr = new StreamReader(Application.dataPath +"/log.csv");
 		timeData = new ArrayList ();
 		movementData = new ArrayList ();
 		pickups = new ArrayList ();
@@ -98,9 +99,9 @@ public class DataConverter : MonoBehaviour {
 
 		while (!sr.EndOfStream){
 			string temp = sr.ReadLine ();
-			if (temp.Contains("JUMP")){
+			if (temp.Contains("Jump")){
 				jumps.Add(temp);
-			} else if (temp.Contains ("PICKUP")) {
+			} else if (temp.Contains ("Pickup_Item")) {
 				pickups.Add (temp);
 			} else if (temp.Contains ("TIMESPENT_INLEVEL")) {
 				timeData.Add (temp);
@@ -132,21 +133,24 @@ public class DataConverter : MonoBehaviour {
 		}
 		// Canyon part. part1 = toesole, part2 = toe, part3 = body, part4 = calf, part5 = trim, part6 = sole.
 
-		// hardcode canyon2 time. If no record, time = last time in ALLDATA.txt, if more than 2 records, take the second one.
+		// hardcode canyon2 time. 
 		int timeDataCount = timeData.Count;
-		if (timeDataCount == 0) {
+
+        // If no record, time = last time in ALLDATA.txt
+        if (timeDataCount == 0) {
 			string a = "0";
 			string b = "0";
 			if (pickups.Count > 0) {
 				a = pickups [pickups.Count - 1].ToString ();
 				a = a.Substring (0, a.IndexOf (","));
 			} 
-			if (movementData.Count > 0) {
-				b = movementData [movementData.Count - 1].ToString ();
+			if (movementData.Count > 0) { 
+                b = movementData [movementData.Count - 1].ToString ();
 				b = b.Substring (0, b.IndexOf (","));
 			}
 			timespent = (float)Math.Max (Decimal.Parse (a), Decimal.Parse (b));
-		} else {
+         //if more than 2 records, take the second one.
+        } else {
 			for (int i = 0; i < timeDataCount; i++) {
 				string temp = timeData [i].ToString ();
 				if (temp.Contains ("Canyon2")) {

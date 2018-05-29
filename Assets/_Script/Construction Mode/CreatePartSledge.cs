@@ -484,7 +484,7 @@ public class CreatePartSledge : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (270,270,0);
 			GameObject newHaft = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 
-			Transform haftShaftAttach = newHaft.transform.FindChild("haft_shaft_attach");
+			Transform haftShaftAttach = newHaft.transform.Find("haft_shaft_attach");
 
 			FuseAttributes fuseAtts = haftFuses ();
 
@@ -509,12 +509,12 @@ public class CreatePartSledge : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler(90,180,0);
 			GameObject newHead = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 
-			Transform headTrapezoidAttach = newHead.transform.FindChild("head_trapezoid_attach");
-			Transform headTipAttach = newHead.transform.FindChild("head_tip_attach");
-			Transform headBottomPointLeftAttach = newHead.transform.FindChild("head_bottom_point_left_attach");
-			Transform headBottomPointRightAttach = newHead.transform.FindChild("head_bottom_point_right_attach");
-			Transform headTopPointLeftAttach = newHead.transform.FindChild("head_top_point_left_attach");
-			Transform headTopPointRightAttach = newHead.transform.FindChild("head_top_point_right_attach");
+			Transform headTrapezoidAttach = newHead.transform.Find("head_trapezoid_attach");
+			Transform headTipAttach = newHead.transform.Find("head_tip_attach");
+			Transform headBottomPointLeftAttach = newHead.transform.Find("head_bottom_point_left_attach");
+			Transform headBottomPointRightAttach = newHead.transform.Find("head_bottom_point_right_attach");
+			Transform headTopPointLeftAttach = newHead.transform.Find("head_top_point_left_attach");
+			Transform headTopPointRightAttach = newHead.transform.Find("head_top_point_right_attach");
 
 			FuseAttributes fuseAtts = headFuses ();
 
@@ -559,7 +559,7 @@ public class CreatePartSledge : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);		
 			GameObject newSmallTip = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 
-			Transform smallTipTrapezoidAttach = newSmallTip.transform.FindChild("small_tip_small_trapezoid_attach");
+			Transform smallTipTrapezoidAttach = newSmallTip.transform.Find("small_tip_small_trapezoid_attach");
 
 			FuseAttributes fuseAtts = smallTipFuses ();
 
@@ -584,8 +584,8 @@ public class CreatePartSledge : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (270,90,0);		
 			GameObject newSmallTrapezoid = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[5], pos, fuseToRotation)));
 
-			Transform smallTrapezoidSmallTipAttach = newSmallTrapezoid.transform.FindChild("small_trapezoid_small_tip_attach");
-			Transform smallTrapezoidShaftAttach = newSmallTrapezoid.transform.FindChild("small_trapezoid_shaft_attach");
+			Transform smallTrapezoidSmallTipAttach = newSmallTrapezoid.transform.Find("small_trapezoid_small_tip_attach");
+			Transform smallTrapezoidShaftAttach = newSmallTrapezoid.transform.Find("small_trapezoid_shaft_attach");
 
 			FuseAttributes fuseAtts = smallTrapezoidFuses ();
 
@@ -614,7 +614,7 @@ public class CreatePartSledge : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,270);		
 			GameObject newSpike = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[6], pos, fuseToRotation)));
 
-			Transform spikeShaftAttach = newSpike.transform.FindChild("spike_shaft_attach");
+			Transform spikeShaftAttach = newSpike.transform.Find("spike_shaft_attach");
 
 			FuseAttributes fuseAtts = spikeFuses ();
 
@@ -639,7 +639,7 @@ public class CreatePartSledge : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,180,0);		
 			GameObject newTip = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[7], pos, fuseToRotation)));
 
-			Transform tipHeadAttach = newTip.transform.FindChild("tip_head_attach");
+			Transform tipHeadAttach = newTip.transform.Find("tip_head_attach");
 
 			FuseAttributes fuseAtts = tipFuses ();
 
@@ -664,8 +664,8 @@ public class CreatePartSledge : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,180);		
 			GameObject newTopPointLeft = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[8], pos, fuseToRotation)));
 
-			Transform topPointLeftHeadAttach = newTopPointLeft.transform.FindChild("top_point_left_head_attach");
-			Transform topPointLeftRightAttach = newTopPointLeft.transform.FindChild("top_point_left_right_attach");
+			Transform topPointLeftHeadAttach = newTopPointLeft.transform.Find("top_point_left_head_attach");
+			Transform topPointLeftRightAttach = newTopPointLeft.transform.Find("top_point_left_right_attach");
 
 			FuseAttributes fuseAtts = topPointLeftFuses ();
 
@@ -694,8 +694,8 @@ public class CreatePartSledge : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (90,90,0);		
 			GameObject newTopPointRight = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[9], pos, fuseToRotation)));
 
-			Transform topPointRightHeadAttach = newTopPointRight.transform.FindChild("top_point_right_head_attach");
-			Transform topPointRightLeftAttach = newTopPointRight.transform.FindChild("top_point_right_left_attach");
+			Transform topPointRightHeadAttach = newTopPointRight.transform.Find("top_point_right_head_attach");
+			Transform topPointRightLeftAttach = newTopPointRight.transform.Find("top_point_right_left_attach");
 
 			FuseAttributes fuseAtts = topPointRightFuses ();
 
@@ -724,8 +724,8 @@ public class CreatePartSledge : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,270);		
 			GameObject newTrapezoid = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[10], pos, fuseToRotation)));
 
-			Transform trapezoidShaftAttach = newTrapezoid.transform.FindChild("trapezoid_shaft_attach");
-			Transform trapezoidHeadAttach = newTrapezoid.transform.FindChild("trapezoid_head_attach");
+			Transform trapezoidShaftAttach = newTrapezoid.transform.Find("trapezoid_shaft_attach");
+			Transform trapezoidHeadAttach = newTrapezoid.transform.Find("trapezoid_head_attach");
 
 			FuseAttributes fuseAtts = trapezoidFuses ();
 

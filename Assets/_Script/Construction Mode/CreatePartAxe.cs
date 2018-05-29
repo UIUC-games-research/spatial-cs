@@ -38,8 +38,8 @@ public class CreatePartAxe : MonoBehaviour {
 		startObject = GameObject.Find ("startObject");
 
 		//CHANGE these lines so they refer to each black part on your starting part
-		GameObject shaftHaftAttach = startObject.transform.FindChild("shaft_haft_attach").gameObject;
-		GameObject shaftTrapezoidAttach = startObject.transform.FindChild("shaft_trapezoid_attach").gameObject;
+		GameObject shaftHaftAttach = startObject.transform.Find("shaft_haft_attach").gameObject;
+		GameObject shaftTrapezoidAttach = startObject.transform.Find("shaft_trapezoid_attach").gameObject;
 		//to avoid errors when selectedObject starts as startObject
 		//CHANGE these lines to match above
 		shaftHaftAttach.GetComponent<FuseBehavior>().isFused = true;
@@ -226,7 +226,7 @@ public class CreatePartAxe : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);
 			GameObject newHaft = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 			
-			Transform haftShaftAttach = newHaft.transform.FindChild("haft_shaft_attach");
+			Transform haftShaftAttach = newHaft.transform.Find("haft_shaft_attach");
 			
 			FuseAttributes fuseAtts = haftFuses ();
 			
@@ -251,9 +251,9 @@ public class CreatePartAxe : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newHead = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 			
-			Transform headTrapezoidAttach = newHead.transform.FindChild("head_trapezoid_attach");
-			Transform headBottomPointAttach = newHead.transform.FindChild("head_bottom_point_attach");
-			Transform headTopPointAttach = newHead.transform.FindChild("head_top_point_attach");
+			Transform headTrapezoidAttach = newHead.transform.Find("head_trapezoid_attach");
+			Transform headBottomPointAttach = newHead.transform.Find("head_bottom_point_attach");
+			Transform headTopPointAttach = newHead.transform.Find("head_top_point_attach");
 			
 			FuseAttributes fuseAtts = headFuses ();
 			
@@ -287,8 +287,8 @@ public class CreatePartAxe : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (270,0,90);
 			GameObject newTrapezoid = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 			
-			Transform trapezoidHeadAttach = newTrapezoid.transform.FindChild("trapezoid_head_attach");
-			Transform trapezoidShaftAttach = newTrapezoid.transform.FindChild("trapezoid_shaft_attach");
+			Transform trapezoidHeadAttach = newTrapezoid.transform.Find("trapezoid_head_attach");
+			Transform trapezoidShaftAttach = newTrapezoid.transform.Find("trapezoid_shaft_attach");
 			
 			FuseAttributes fuseAtts = trapezoidFuses ();
 			
@@ -317,7 +317,7 @@ public class CreatePartAxe : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newBottomPoint = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 			
-			Transform bottomPointHeadAttach = newBottomPoint.transform.FindChild("bottom_point_head_attach");
+			Transform bottomPointHeadAttach = newBottomPoint.transform.Find("bottom_point_head_attach");
 
 			//fixes off center problem
 			//generatorStrutLeftAttach.transform.localPosition = new Vector3(0, 0, 0);
@@ -347,7 +347,7 @@ public class CreatePartAxe : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,270);		
 			GameObject newTopPoint = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[4], pos, fuseToRotation)));
 			
-			Transform topPointHeadAttach = newTopPoint.transform.FindChild("top_point_head_attach");
+			Transform topPointHeadAttach = newTopPoint.transform.Find("top_point_head_attach");
 			
 			FuseAttributes fuseAtts = topPointFuses ();
 			

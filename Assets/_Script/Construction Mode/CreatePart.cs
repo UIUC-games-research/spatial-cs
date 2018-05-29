@@ -247,9 +247,9 @@ public class CreatePart : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newBody = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[0], pos, fuseToRotation)));
 
-			Transform bodyTopAttach = newBody.transform.FindChild("Body_Top_Attach");
-			Transform bodySideAttach = newBody.transform.FindChild("Body_Side_Attach");
-			Transform bodyBottomAttach = newBody.transform.FindChild("Body_Bottom_Attach");
+			Transform bodyTopAttach = newBody.transform.Find("Body_Top_Attach");
+			Transform bodySideAttach = newBody.transform.Find("Body_Side_Attach");
+			Transform bodyBottomAttach = newBody.transform.Find("Body_Bottom_Attach");
 
 			FuseAttributes fuseAtts = bodyFuses ();
 
@@ -282,8 +282,8 @@ public class CreatePart : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,0,90);
 			GameObject newCalf = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[1], pos, fuseToRotation)));
 
-			Transform calfTopAttach = newCalf.transform.FindChild("Calf_Top_Attach");
-			Transform calfBottomAttach = newCalf.transform.FindChild("Calf_Bottom_Attach");
+			Transform calfTopAttach = newCalf.transform.Find("Calf_Top_Attach");
+			Transform calfBottomAttach = newCalf.transform.Find("Calf_Bottom_Attach");
 
 			FuseAttributes fuseAtts = calfFuses ();
 			calfTopAttach.gameObject.AddComponent<FuseBehavior>();
@@ -311,7 +311,7 @@ public class CreatePart : MonoBehaviour {
 			Quaternion fuseToRotation = Quaternion.Euler (0,90,0);
 			GameObject newTrim = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[2], pos, fuseToRotation)));	
 
-			Transform topTrimAttach = newTrim.transform.FindChild("Top_Trim_Attach");
+			Transform topTrimAttach = newTrim.transform.Find("Top_Trim_Attach");
 
 			FuseAttributes fuseAtts = trimFuses ();
 
@@ -336,8 +336,8 @@ public class CreatePart : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();
 			GameObject newToe = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[3], pos, fuseToRotation)));
 
-			Transform toeBottomAttach = newToe.transform.FindChild("Toe_Bottom_Attach");
-			Transform toeSideAttach = newToe.transform.FindChild("Toe_Side_Attach");
+			Transform toeBottomAttach = newToe.transform.Find("Toe_Bottom_Attach");
+			Transform toeSideAttach = newToe.transform.Find("Toe_Side_Attach");
 
 			FuseAttributes fuseAtts = toeFuses ();
 
@@ -366,8 +366,8 @@ public class CreatePart : MonoBehaviour {
 			Quaternion fuseToRotation = new Quaternion();		
 			GameObject newToeSole = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate (parts[6], pos, fuseToRotation)));
 
-			Transform toeSoleTopAttach = newToeSole.transform.FindChild("Sole_Toe_Top_Attach");
-			Transform toeSoleSideAttach = newToeSole.transform.FindChild("Sole_Toe_Side_Attach");
+			Transform toeSoleTopAttach = newToeSole.transform.Find("Sole_Toe_Top_Attach");
+			Transform toeSoleSideAttach = newToeSole.transform.Find("Sole_Toe_Side_Attach");
 
 			FuseAttributes fuseAtts = toeSoleFuses ();
 
