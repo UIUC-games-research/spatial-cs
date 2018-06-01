@@ -12,16 +12,15 @@ public class FuseBehavior : MonoBehaviour {
 	//private Dictionary<string, Quaternion> fuseRotations;
 	public bool isFused;
 	private GameObject assignedButton;
-	private bool tagged;
 
 	// Use this for initialization
 	void Awake () {
+        // TODO: see if I can just delete this
 		if(this.name.Equals("rocket_boots_start") || this.name.Equals ("base")) {
 			isFused = true;
 		} else {
 			isFused = false;
 		}
-		tagged = false;
 	}
 
 	// Update is called once per frame
@@ -32,10 +31,6 @@ public class FuseBehavior : MonoBehaviour {
 	public void setFuseTo(FuseAttributes fuseAtts) {
 		fuseInfo = fuseAtts;
 
-	}
-
-	public void setTagged(bool isTagged) {
-		tagged = isTagged;
 	}
 
 	public void setButtonTo(GameObject newButton) {
@@ -63,10 +58,9 @@ public class FuseBehavior : MonoBehaviour {
 		return isFused;
 	}
 
-	public void fuse(string fuseTo, string suffix) {
+	public void fuse(string fuseTo) {
 		GameObject parent = gameObject.transform.parent.gameObject;
-		string newFuseToName = fuseTo + suffix;
-		print ("fusing " + gameObject + " to " + newFuseToName + ":");
+		string newFuseToName = fuseTo;
 
 		parent.transform.position = fuseInfo.getFuseLocation(newFuseToName);
 		parent.transform.rotation = fuseInfo.getFuseRotation(newFuseToName);
@@ -88,14 +82,5 @@ public class FuseBehavior : MonoBehaviour {
 		}
 		assignedButton = null;
 
-		if(tagged) {
-			string[] locs = {"_left", "_right", "_top"};
-			foreach (string s in locs) {
-				if(fuseTo.Contains (s)) {
-					gameObject.transform.parent.gameObject.GetComponent<IsFused>().locationTag = s;
-				}
-			}
-
-		}
 	}
 }

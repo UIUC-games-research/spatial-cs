@@ -1053,7 +1053,7 @@ public class FuseEvent : MonoBehaviour {
 			print ("Successful fuse!");
 			fuseStatus="success";
 			source.PlayOneShot (success);
-			selectedObject.GetComponent<FuseBehavior>().fuse(selectedFuseTo.name, selectedFuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag);
+			selectedObject.GetComponent<FuseBehavior>().fuse(selectedFuseTo.name);
 
 	
 
@@ -1131,22 +1131,22 @@ public class FuseEvent : MonoBehaviour {
 			GameObject pyr = GameObject.Find ("tutorial1_pyrPrefab(Clone)");
 			GameObject tri = GameObject.Find ("tutorial1_triPrefab(Clone)");
 			GameObject cone = GameObject.Find ("tutorial1_conePrefab(Clone)");
-			box.transform.parent = group.transform;
-			pyr.transform.parent = group.transform;
-			tri.transform.parent = group.transform;
-			cone.transform.parent = group.transform;
+            box.transform.SetParent(group.transform, true);
+			pyr.transform.SetParent(group.transform, true);
+			tri.transform.SetParent(group.transform, true);
+            cone.transform.SetParent(group.transform, true);
 		} else if(mode.Equals ("tutorial2")) {
 			GameObject longbox = GameObject.Find ("tutorial2_longbox");
 			GameObject smallboxYellow = GameObject.Find ("tutorial2_smallbox_yellowPrefab(Clone)");
 			GameObject tallbox = GameObject.Find ("tutorial2_tallboxPrefab(Clone)");
 			GameObject bigbox = GameObject.Find ("tutorial2_bigboxPrefab(Clone)");
 			GameObject smallboxBlue = GameObject.Find ("tutorial2_smallbox_bluePrefab(Clone)");
-			longbox.transform.parent = group.transform;
-			smallboxYellow.transform.parent = group.transform;
-			tallbox.transform.parent = group.transform;
-			bigbox.transform.parent = group.transform;
-			smallboxBlue.transform.parent = group.transform;
-		} else if (mode.Equals ("boot")) {
+			longbox.transform.SetParent(group.transform, true);
+            smallboxYellow.transform.SetParent(group.transform, true);
+            tallbox.transform.SetParent(group.transform, true);
+            bigbox.transform.SetParent(group.transform, true);
+            smallboxBlue.transform.SetParent(group.transform, true);
+        } else if (mode.Equals ("boot")) {
 			GameObject heel = GameObject.Find ("startObject");
 			GameObject ballfoot = GameObject.Find ("ballfootPrefab(Clone)");
 			GameObject calf = GameObject.Find ("calf_harderPrefab(Clone)");
@@ -1154,22 +1154,15 @@ public class FuseEvent : MonoBehaviour {
 			GameObject trim = GameObject.Find ("trimHarderPrefab(Clone)");
 			GameObject toe = GameObject.Find ("toeHarderPrefab(Clone)");
 			GameObject widening = GameObject.Find ("wideningPrefab(Clone)");
-			print ("Heel: " + heel.name);
-			print ("ballfoot: " + ballfoot.name);
-			print ("calf: " + calf.name);
-			print ("midfoot: " + midfoot.name);
-			print ("trim: " + trim.name);
-			print ("toe: " + toe.name);
-			print ("widening: " + widening.name);
 
-			heel.transform.parent = group.transform;
-			ballfoot.transform.parent = group.transform;
-			calf.transform.parent = group.transform;
-			midfoot.transform.parent = group.transform;
-			trim.transform.parent = group.transform;
-			toe.transform.parent = group.transform;
-			widening.transform.parent = group.transform;
-		} else if (mode.Equals ("key1")) {
+			heel.transform.SetParent(group.transform, true);
+            ballfoot.transform.SetParent(group.transform, true);
+            calf.transform.SetParent(group.transform, true);
+            midfoot.transform.SetParent(group.transform, true);
+            trim.transform.SetParent(group.transform, true);
+            toe.transform.SetParent(group.transform, true);
+            widening.transform.SetParent(group.transform, true);
+        } else if (mode.Equals ("key1")) {
 			GameObject danglyT = GameObject.Find ("dangly_T_complete");
 			GameObject uprightL = GameObject.Find ("upright_LPrefab(Clone)");
 			GameObject uprightT = GameObject.Find ("upright_TPrefab(Clone)");
@@ -1177,13 +1170,13 @@ public class FuseEvent : MonoBehaviour {
 			GameObject walkingPants = GameObject.Find ("walking_pantsPrefab(Clone)");
 			GameObject uprightRect = GameObject.Find ("upright_rectPrefab(Clone)");
 
-			danglyT.transform.parent = group.transform;
-			uprightL.transform.parent = group.transform;
-			uprightT.transform.parent = group.transform;
-			waluigi.transform.parent = group.transform;
-			walkingPants.transform.parent = group.transform;
-			uprightRect.transform.parent = group.transform;
-		} else if (mode.Equals ("axe")) {
+			danglyT.transform.SetParent(group.transform, true);
+            uprightL.transform.SetParent(group.transform, true);
+            uprightT.transform.SetParent(group.transform, true);
+            waluigi.transform.SetParent(group.transform, true);
+            walkingPants.transform.SetParent(group.transform, true);
+            uprightRect.transform.SetParent(group.transform, true);
+        } else if (mode.Equals ("axe")) {
 			GameObject shaft = GameObject.Find ("startObject");
 			GameObject head = GameObject.Find ("head_harderPrefab(Clone)");
 			GameObject trapezoid = GameObject.Find ("trapezoid_harderPrefab(Clone)");
@@ -1197,20 +1190,20 @@ public class FuseEvent : MonoBehaviour {
 			GameObject spike = GameObject.Find ("spikePrefab(Clone)");
 			GameObject tip = GameObject.Find ("tipPrefab(Clone)");
 
-			shaft.transform.parent = group.transform;
-			head.transform.parent = group.transform;
-			trapezoid.transform.parent = group.transform;
-			topPointLeft.transform.parent = group.transform;
-			topPointRight.transform.parent = group.transform;
-			bottomPointLeft.transform.parent = group.transform;
-			bottomPointRight.transform.parent = group.transform;
-			haft.transform.parent = group.transform;
-			smallTip.transform.parent = group.transform;
-			smallTrapezoid.transform.parent = group.transform;
-			spike.transform.parent = group.transform;
-			tip.transform.parent = group.transform;
+			shaft.transform.SetParent(group.transform, true);
+            head.transform.SetParent(group.transform, true);
+            trapezoid.transform.SetParent(group.transform, true);
+            topPointLeft.transform.SetParent(group.transform, true);
+            topPointRight.transform.SetParent(group.transform, true);
+            bottomPointLeft.transform.SetParent(group.transform, true);
+            bottomPointRight.transform.SetParent(group.transform, true);
+            haft.transform.SetParent(group.transform, true);
+            smallTip.transform.SetParent(group.transform, true);
+            smallTrapezoid.transform.SetParent(group.transform, true);
+            spike.transform.SetParent(group.transform, true);
+            tip.transform.SetParent(group.transform, true);
 
-		} else if (mode.Equals ("hull")) {
+        } else if (mode.Equals ("hull")) {
 			GameObject bridgeWhole = GameObject.Find ("bridgeWhole");
 			GameObject bridgeCover = GameObject.Find ("bridge_coverPrefab(Clone)");
 			GameObject backSlope = GameObject.Find ("back_slopePrefab(Clone)");
@@ -1218,14 +1211,14 @@ public class FuseEvent : MonoBehaviour {
 			GameObject leftCover = GameObject.Find ("left_coverPrefab(Clone)");
 			GameObject rightCover = GameObject.Find ("right_coverPrefab(Clone)");
 
-			bridgeWhole.transform.parent = group.transform;
-			bridgeCover.transform.parent = group.transform;
-			backSlope.transform.parent = group.transform;
-			back.transform.parent = group.transform;
-			leftCover.transform.parent = group.transform;
-			rightCover.transform.parent = group.transform;
+			bridgeWhole.transform.SetParent(group.transform, true);
+            bridgeCover.transform.SetParent(group.transform, true);
+            backSlope.transform.SetParent(group.transform, true);
+            back.transform.SetParent(group.transform, true);
+            leftCover.transform.SetParent(group.transform, true);
+            rightCover.transform.SetParent(group.transform, true);
 
-		} else if(mode.Equals ("ffa")) {
+        } else if(mode.Equals ("ffa")) {
 			GameObject centerBox = GameObject.Find ("startObject");
 			GameObject ringLargePart = GameObject.Find ("ring_large_partPrefab(Clone)");
 			GameObject ringLongPart = GameObject.Find ("ring_long_partPrefab(Clone)");
@@ -1239,20 +1232,20 @@ public class FuseEvent : MonoBehaviour {
 			GameObject scalene = GameObject.Find ("scalenePrefab(Clone)");
 			GameObject blueTri = GameObject.Find ("blue_triPrefab(Clone)");
 
-			centerBox.transform.parent = group.transform;
-			ringLargePart.transform.parent = group.transform;
-			ringLongPart.transform.parent = group.transform;
-			ringSmallPart.transform.parent = group.transform;
-			centerTri.transform.parent = group.transform;
-			handleTop.transform.parent = group.transform;
-			handleBottom.transform.parent = group.transform;
-			leftTri.transform.parent = group.transform;
-			rightTri.transform.parent = group.transform;
-			rightTriChunk.transform.parent = group.transform;
-			scalene.transform.parent = group.transform;
-			blueTri.transform.parent = group.transform;
+			centerBox.transform.SetParent(group.transform, true);
+            ringLargePart.transform.SetParent(group.transform, true);
+            ringLongPart.transform.SetParent(group.transform, true);
+            ringSmallPart.transform.SetParent(group.transform, true);
+            centerTri.transform.SetParent(group.transform, true);
+            handleTop.transform.SetParent(group.transform, true);
+            handleBottom.transform.SetParent(group.transform, true);
+            leftTri.transform.SetParent(group.transform, true);
+            rightTri.transform.SetParent(group.transform, true);
+            rightTriChunk.transform.SetParent(group.transform, true);
+            scalene.transform.SetParent(group.transform, true);
+            blueTri.transform.SetParent(group.transform, true);
 
-		} else if(mode.Equals ("gloves")) {
+        } else if(mode.Equals ("gloves")) {
 			GameObject armWhole = GameObject.Find ("armWhole");
 			GameObject palm = GameObject.Find ("palmPrefab(Clone)");
 			GameObject fingers = GameObject.Find ("fingersPrefab(Clone)");
@@ -1260,13 +1253,13 @@ public class FuseEvent : MonoBehaviour {
 			GameObject armDec = GameObject.Find ("arm_decPrefab(Clone)");
 			GameObject palmDec = GameObject.Find ("palm_decPrefab(Clone)");
 			
-			armWhole.transform.parent = group.transform;
-			palm.transform.parent = group.transform;
-			fingers.transform.parent = group.transform;
-			thumb.transform.parent = group.transform;
-			armDec.transform.parent = group.transform;
-			palmDec.transform.parent = group.transform;
-		} else if(mode.Equals ("key2")) {
+			armWhole.transform.SetParent(group.transform, true);
+            palm.transform.SetParent(group.transform, true);
+            fingers.transform.SetParent(group.transform, true);
+            thumb.transform.SetParent(group.transform, true);
+            armDec.transform.SetParent(group.transform, true);
+            palmDec.transform.SetParent(group.transform, true);
+        } else if(mode.Equals ("key2")) {
 			GameObject postWhole = GameObject.Find ("postWhole");
 			GameObject c = GameObject.Find ("cPrefab(Clone)");
 			GameObject hangingL = GameObject.Find ("hanging_lPrefab(Clone)");
@@ -1274,13 +1267,13 @@ public class FuseEvent : MonoBehaviour {
 			GameObject ulCorner = GameObject.Find ("ul_cornerPrefab(Clone)");
 			GameObject zigzag = GameObject.Find ("zigzagPrefab(Clone)");
 			
-			postWhole.transform.parent = group.transform;
-			c.transform.parent = group.transform;
-			hangingL.transform.parent = group.transform;
-			middleT.transform.parent = group.transform;
-			ulCorner.transform.parent = group.transform;
-			zigzag.transform.parent = group.transform;
-		} else if(mode.Equals ("catapult")) {
+			postWhole.transform.SetParent(group.transform, true);
+            c.transform.SetParent(group.transform, true);
+            hangingL.transform.SetParent(group.transform, true);
+            middleT.transform.SetParent(group.transform, true);
+            ulCorner.transform.SetParent(group.transform, true);
+            zigzag.transform.SetParent(group.transform, true);
+        } else if(mode.Equals ("catapult")) {
 			GameObject platformComplete = GameObject.Find ("platform_complete");
 			GameObject axle = GameObject.Find ("axlePrefab(Clone)");
 			GameObject backAxleComplete = GameObject.Find ("back_axle_completePrefab(Clone)");
@@ -1291,16 +1284,16 @@ public class FuseEvent : MonoBehaviour {
 			GameObject rightSupport = GameObject.Find ("right_support_completePrefab(Clone)");
 			GameObject throwingArm = GameObject.Find ("throwing_arm_completePrefab(Clone)");
 
-			platformComplete.transform.parent = group.transform;
-			axle.transform.parent = group.transform;
-			backAxleComplete.transform.parent = group.transform;
-			backRightWheelComplete.transform.parent = group.transform;
-			frontAxle.transform.parent = group.transform;
-			frontLeftWheel.transform.parent = group.transform;
-			leftSupport.transform.parent = group.transform;
-			rightSupport.transform.parent = group.transform;
-			throwingArm.transform.parent = group.transform;
-		} else if(mode.Equals ("engine")) {
+			platformComplete.transform.SetParent(group.transform, true);
+            axle.transform.SetParent(group.transform, true);
+            backAxleComplete.transform.SetParent(group.transform, true);
+            backRightWheelComplete.transform.SetParent(group.transform, true);
+            frontAxle.transform.SetParent(group.transform, true);
+            frontLeftWheel.transform.SetParent(group.transform, true);
+            leftSupport.transform.SetParent(group.transform, true);
+            rightSupport.transform.SetParent(group.transform, true);
+            throwingArm.transform.SetParent(group.transform, true);
+        } else if(mode.Equals ("engine")) {
 			GameObject engineWhole = GameObject.Find ("engine_whole");
 			GameObject engineFront = GameObject.Find ("engine_frontPrefab(Clone)");
 			GameObject engineTop = GameObject.Find ("engine_topPrefab(Clone)");
@@ -1308,13 +1301,13 @@ public class FuseEvent : MonoBehaviour {
 			GameObject engineTopRight = GameObject.Find ("engine_top_rightPrefab(Clone)");
 			GameObject engineRight = GameObject.Find ("engine_rightPrefab(Clone)");
 			
-			engineWhole.transform.parent = group.transform;
-			engineFront.transform.parent = group.transform;
-			engineTop.transform.parent = group.transform;
-			engineLeft.transform.parent = group.transform;
-			engineTopRight.transform.parent = group.transform;
-			engineRight.transform.parent = group.transform;
-		} else if(mode.Equals ("vest")) {
+			engineWhole.transform.SetParent(group.transform, true);
+            engineFront.transform.SetParent(group.transform, true);
+            engineTop.transform.SetParent(group.transform, true);
+            engineLeft.transform.SetParent(group.transform, true);
+            engineTopRight.transform.SetParent(group.transform, true);
+            engineRight.transform.SetParent(group.transform, true);
+        } else if(mode.Equals ("vest")) {
 			GameObject vestBase = GameObject.Find ("vest_base_complete");
 			GameObject backStrap = GameObject.Find ("back_strapPrefab(Clone)");
 			GameObject leftStrap = GameObject.Find ("left_strapPrefab(Clone)");
@@ -1322,61 +1315,16 @@ public class FuseEvent : MonoBehaviour {
 			GameObject vestDiamond = GameObject.Find ("vest_diamondPrefab(Clone)");
 			GameObject vestOval = GameObject.Find ("vest_ovalPrefab(Clone)");
 			
-			vestBase.transform.parent = group.transform;
-			backStrap.transform.parent = group.transform;
-			leftStrap.transform.parent = group.transform;
-			leftVestOval.transform.parent = group.transform;
-			vestDiamond.transform.parent = group.transform;
-			vestOval.transform.parent = group.transform;
-		}
+			vestBase.transform.SetParent(group.transform, true);
+            backStrap.transform.SetParent(group.transform, true);
+            leftStrap.transform.SetParent(group.transform, true);
+            leftVestOval.transform.SetParent(group.transform, true);
+            vestDiamond.transform.SetParent(group.transform, true);
+            vestOval.transform.SetParent(group.transform, true);
+        }
 
 		group.transform.Rotate (0,50*Time.deltaTime,0);
 
-//		Old, difficult Rocket Boots level
-//		GameObject heel = GameObject.Find ("rocket_boots_start");
-//		GameObject body = GameObject.Find ("BodyPrefab(Clone)");
-//		GameObject toeSole = GameObject.Find ("ToeSolePrefab(Clone)");
-//		GameObject toe = GameObject.Find ("ToePrefab(Clone)");
-//		GameObject trim = GameObject.Find ("trimPrefab(Clone)");
-//		GameObject calf = GameObject.Find ("calfPrefab(Clone)");
-//
-//		heel.transform.parent = group.transform;
-//		body.transform.parent = group.transform;
-//		toeSole.transform.parent = group.transform;
-//		toe.transform.parent = group.transform;
-//		trim.transform.parent = group.transform;
-//		calf.transform.parent = group.transform;
-
-// 		Old, easy Axe level
-//		else if (mode.Equals ("axe")) {
-//			GameObject shaft = GameObject.Find ("startObject");
-//			GameObject head = GameObject.Find ("headPrefab(Clone)");
-//			GameObject trapezoid = GameObject.Find ("trapezoidPrefab(Clone)");
-//			GameObject topPoint = GameObject.Find ("top_pointPrefab(Clone)");
-//			GameObject bottomPoint = GameObject.Find ("bottom_pointPrefab(Clone)");
-//			GameObject haft = GameObject.Find ("haftPrefab(Clone)");
-//
-//			shaft.transform.parent = group.transform;
-//			head.transform.parent = group.transform;
-//			trapezoid.transform.parent = group.transform;
-//			topPoint.transform.parent = group.transform;
-//			bottomPoint.transform.parent = group.transform;
-//			haft.transform.parent = group.transform;
-
-// old, easier FFA level
-//		GameObject centerBoxWhole = GameObject.Find ("centerBoxWhole");
-//		GameObject ring = GameObject.Find ("ringPrefab(Clone)");
-//		GameObject centerTri = GameObject.Find ("center_triPrefab(Clone)");
-//		GameObject handle = GameObject.Find ("ffa_handlePrefab(Clone)");
-//		GameObject leftTri = GameObject.Find ("left_triPrefab(Clone)");
-//		GameObject rightTri = GameObject.Find ("right_triPrefab(Clone)");
-//
-//		centerBoxWhole.transform.parent = group.transform;
-//		ring.transform.parent = group.transform;
-//		centerTri.transform.parent = group.transform;
-//		handle.transform.parent = group.transform;
-//		leftTri.transform.parent = group.transform;
-//		rightTri.transform.parent = group.transform;
 	}
 		
 
@@ -1407,8 +1355,7 @@ public class FuseEvent : MonoBehaviour {
 		
 	public bool positionMatches(GameObject selectedObj, GameObject fuseTo) {
 
-		string newFuseToName = fuseTo.name + fuseTo.transform.parent.gameObject.GetComponent<IsFused>().locationTag;
-		//print ("Selected Obj: " + selectedObj + ": Get Acceptable Rotations(" + newFuseToName + "):  ");
+		string newFuseToName = fuseTo.name;
 
 		Quaternion[] acceptedRotations = new Quaternion[2];
 		acceptedRotations = selectedObj.GetComponent<FuseBehavior>().getAcceptableRotations(newFuseToName);
