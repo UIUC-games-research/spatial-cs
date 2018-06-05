@@ -11,15 +11,8 @@ public class SelectedEffect : MonoBehaviour
 	GameObject instance;
 	GameObject hitCaster;
 
-	Vector3 currentRot;
-	Vector3 previousRot;
-	Vector3 normal;
-
 	void Start()
 	{
-		currentRot = transform.parent.localEulerAngles;
-		previousRot = transform.parent.localEulerAngles;
-		normal = hitInfo.normal;
 
 		// Also add a hitcaster object to keep our normal updated.
 		hitCaster = new GameObject();

@@ -1,0 +1,6 @@
+Now, see those [color]880black areas[color] on each part?
+Those show you where you can fuse parts together.
+But you can't just fuse parts wherever you want!
+Use [color]880the picture of the completed object[color] to guide you.
+[CHOOSE]
+|nowhere|finishedConst_4

@@ -540,7 +540,7 @@ public class DataConverter : MonoBehaviour {
 		totalJumpTime = 0f;
 		for (int i = j; i < jumps.Count; i++){
 			string name = jumps [i].ToString();
-			float time = float.Parse(name.Substring(0, name.IndexOf(",")));
+			//float time = float.Parse(name.Substring(0, name.IndexOf(",")));
 			if (!name.Contains("RuinedCity")) {
 				j = i;
 				break;

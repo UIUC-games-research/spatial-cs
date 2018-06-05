@@ -229,27 +229,44 @@ public class SelectPart : MonoBehaviour {
 		selectedObject = null;
 	}
 
+    //selects on command - use when new object is created
+    public void selectObject(GameObject newSelection)
+    {
+        prevSelectedObject = newSelection;
+        selectedObject = newSelection;
 
+        if (selectedObject.GetComponent<SelectBehavior>() == null)
+        {
+            //BOO stupid priority problem - this is an ugly workaround
+            selectedObject.AddComponent<SelectBehavior>();
+            Texture unhighTexture = selectedObject.GetComponent<Renderer>().material.mainTexture;
+            selectedObject.GetComponent<SelectBehavior>().unhighTex = unhighTexture;
+            Texture highTexture = unhighTexture;
+            selectedObject.GetComponent<SelectBehavior>().highTex = highTexture;
 
-	//selects on command - use when new object is created
-	public void selectObject(GameObject newSelection) {
-		prevSelectedObject = newSelection;
-		selectedObject = newSelection;
+        }
 
-		if (selectedObject.GetComponent<SelectBehavior>() == null) {
-			//BOO stupid priority problem - this is an ugly workaround
-			selectedObject.AddComponent<SelectBehavior>();
-			Texture unhighTexture = selectedObject.GetComponent<Renderer>().material.mainTexture;
-			selectedObject.GetComponent<SelectBehavior>().unhighTex = unhighTexture;
-			Texture highTexture = (Texture)Resources.Load (unhighTexture.name + "_h");
-			selectedObject.GetComponent<SelectBehavior>().highTex = highTexture;
+        if (GetComponent<SelectedEffect>() == null)
+        {
+            SelectedEffect sel = selectedObject.AddComponent<SelectedEffect>();
 
-		} 
-		Texture highlightedTex = selectedObject.GetComponent<SelectBehavior>().highTex;
-		selectedObject.GetComponent<Renderer>().material.mainTexture = highlightedTex;
+            //RaycastHit hitInfo;
+            //Ray ray = Camera.main.ScreenPointToRay(newSelection.transform.position);
+            //if (Physics.Raycast(ray, out hitInfo))
+            //{
+             //   sel.hitInfo = hitInfo;
+            //}
 
+            sel.selected = selectedObject;
+        }
 
-	}
+        if(selectedFuseTo != null && selectedObject != null)
+        {
+            // this is hard-coded for the alignment of b1p1_bb1_a1 and bb1_b1p2_a1
+            StartCoroutine(SweepPosition(newSelection.transform.parent.gameObject, new Vector3(-82.25f, 30, 100), 20));
+        }
+
+    }
 
 	public void selectFuseTo(GameObject newSelection) {
 		prevSelectedFuseTo = newSelection;
@@ -260,14 +277,19 @@ public class SelectPart : MonoBehaviour {
 			selectedFuseTo.AddComponent<SelectBehavior>();
 			Texture unhighTexture = selectedFuseTo.GetComponent<Renderer>().material.mainTexture;
 			selectedFuseTo.GetComponent<SelectBehavior>().unhighTex = unhighTexture;
-			Texture highTexture = (Texture)Resources.Load (unhighTexture.name + "_h");
+            Texture highTexture = unhighTexture;
 			selectedFuseTo.GetComponent<SelectBehavior>().highTex = highTexture;
 
 		} 
-		Texture highlightedTex = selectedFuseTo.GetComponent<SelectBehavior>().highTex;
-		selectedFuseTo.GetComponent<Renderer>().material.mainTexture = highlightedTex;
 
-	}
+
+        if (GetComponent<SelectedEffect>() == null)
+        {
+            SelectedEffect sel = selectedFuseTo.AddComponent<SelectedEffect>();
+            //sel.hitInfo = hitInfo;
+            sel.selected = selectedFuseTo;
+        }
+    }
 
 	public void newPartCreated(string part) {
 		if(selectedObject != null) {

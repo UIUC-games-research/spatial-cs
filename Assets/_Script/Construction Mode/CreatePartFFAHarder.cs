@@ -117,7 +117,6 @@ public class CreatePartFFAHarder : MonoBehaviour {
 		GameObject centerBox = startObject;
 		GameObject ringLargePart = GameObject.Find("ring_large_partPrefab(Clone)");
 		GameObject ringSmallPart = GameObject.Find("ring_small_partPrefab(Clone)");
-		GameObject centerTri = GameObject.Find("center_tri_harderPrefab(Clone)");
 
 		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,0,0));
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
