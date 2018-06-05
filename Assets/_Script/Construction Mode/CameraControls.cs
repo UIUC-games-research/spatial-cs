@@ -66,27 +66,28 @@ public class CameraControls : MonoBehaviour
 	}
 
     //used so far only in tutorial - change camera angle automatically without mouse use
-    public void autoRotateCamera(float rot_x, float rot_y, float rot_z)
+    public void autoRotateCamera(float rot_x, float rot_y, float rot_z, float time)
     {
-        StartCoroutine(lerpRotateCamera(rot_x, rot_y, rot_z));
+        StartCoroutine(lerpRotateCamera(rot_x, rot_y, rot_z, 2f));
     }
 
-    private IEnumerator lerpRotateCamera(float rot_x, float rot_y, float rot_z)
+    private IEnumerator lerpRotateCamera(float rot_x, float rot_y, float rot_z, float time)
     {
+        Quaternion originalRotation = transform.localRotation;
+        Vector3 originalPosition = transform.position;
         Vector3 eulerRotation = transform.localRotation.eulerAngles;
-
+        float elapsedTime = 0;
         eulerRotation.x += rot_y;
         eulerRotation.y += rot_x;
-
         eulerRotation.z = 0f;
-        int iterations = 0;
-        while (Quaternion.Angle(transform.localRotation, Quaternion.Euler(eulerRotation)) > 1f && iterations < 200) {
 
-            Quaternion.Lerp(transform.localRotation, Quaternion.Euler(eulerRotation), Time.deltaTime * orbitSpeed);
-            Vector3.Lerp(transform.position, (transform.localRotation * (Vector3.forward * -distance)) + orbitPoint, Time.deltaTime * orbitSpeed);
-            iterations += 1;
+        while (elapsedTime < time) {
+
+            transform.SetPositionAndRotation(Vector3.Lerp(originalPosition, (transform.localRotation * (Vector3.forward * -distance)) + orbitPoint, (elapsedTime / time)),
+                Quaternion.Lerp(originalRotation, Quaternion.Euler(eulerRotation), (elapsedTime / time)));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
-        Debug.Log("Number of iterations: " + iterations);
         yield return null;
     }
 
