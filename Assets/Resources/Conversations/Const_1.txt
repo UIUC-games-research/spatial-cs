@@ -1,0 +1,4 @@
+Ok, let's build some batteries!
+I'll hold one part while you attach other parts to it using the Fuser.
+[CHOOSE]
+|nowhere|finishedConst_1

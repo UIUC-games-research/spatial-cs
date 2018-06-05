@@ -66,7 +66,6 @@ public class CreatePartSledge : MonoBehaviour {
 	//returns list of objects body can fuse to
 	public FuseAttributes bottomPointLeftFuses() {
 		GameObject head = GameObject.Find("head_harderPrefab(Clone)");
-		GameObject bottomPointRight = GameObject.Find ("bottom_point_rightPrefab(Clone)");
 
 		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,180,0));
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
@@ -98,7 +97,6 @@ public class CreatePartSledge : MonoBehaviour {
 
 	public FuseAttributes bottomPointRightFuses() {
 		GameObject head = GameObject.Find ("head_harderPrefab(Clone)");
-		GameObject bottomPointLeft = GameObject.Find ("bottom_point_leftPrefab(Clone)");
 
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
 		Dictionary<string, Quaternion> fuseRotations = new Dictionary<string, Quaternion>();
@@ -302,7 +300,6 @@ public class CreatePartSledge : MonoBehaviour {
 
 	public FuseAttributes topPointLeftFuses() {
 		GameObject head = GameObject.Find("head_harderPrefab(Clone)");
-		GameObject topPointRight = GameObject.Find ("top_point_rightPrefab(Clone)");
 
 		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,180,0));
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();
@@ -334,7 +331,6 @@ public class CreatePartSledge : MonoBehaviour {
 
 	public FuseAttributes topPointRightFuses() {
 		GameObject head = GameObject.Find("head_harderPrefab(Clone)");
-		GameObject topPointLeft = GameObject.Find ("top_point_rightPrefab(Clone)");
 
 		Quaternion fuseRotation = Quaternion.Euler (new Vector3(0,180,0));
 		Dictionary<string, Vector3> fuseLocations = new Dictionary<string, Vector3>();

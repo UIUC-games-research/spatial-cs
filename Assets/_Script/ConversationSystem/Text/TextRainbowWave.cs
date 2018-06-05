@@ -6,7 +6,7 @@ public class TextRainbowWave : MonoBehaviour
 {
     float timeOffset = 0f;
     float waveSpeed = 4f;
-    float offsetFixer = 8f;
+   // float offsetFixer = 8f;
     Image imageComp;
 
     // Use this for initialization

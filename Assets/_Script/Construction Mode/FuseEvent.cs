@@ -10,12 +10,10 @@ public class FuseEvent : MonoBehaviour {
 	private GameObject selectedObject;
 	private GameObject selectedFuseTo;
 	//dictionary containing valid fuse pairs of planes (Fusing, FuseTo)
-	private Dictionary<string, HashSet<string>> fuseMapping;
+	private Dictionary<string, string> fuseMapping;
 	private int middleTRotation;
 
 	//CoRoutine Variables
-	private int victoryCounter;
-	private bool victoryFinished;
 	private enum Fade {In, Out};
 	private float fadeTime = 5.0F;
 
@@ -60,7 +58,6 @@ public class FuseEvent : MonoBehaviour {
 	private string filename;
 	private StreamWriter sr;
 	private int numFuseAttempts;
-	private int numFuseFails;
 	private int numWrongRotationFails;
 	private int numWrongFacesFails;
 
@@ -242,7 +239,6 @@ public class FuseEvent : MonoBehaviour {
 		sr = File.AppendText(filename);
 		levelTimer = Time.time;
 		numFuseAttempts = 0;
-		numFuseFails = 0;
 		numWrongFacesFails = 0;
 		numWrongRotationFails = 0;
 		//need this for priority - stupid
@@ -251,8 +247,6 @@ public class FuseEvent : MonoBehaviour {
 		selectedObject = GetComponent<SelectPart>().getSelectedObject();
 		selectedFuseTo = GetComponent<SelectPart>().getSelectedFuseTo();
 		group = (GameObject)GameObject.Instantiate(victoryPrefab, new Vector3(-100, 30, 100), new Quaternion());
-		victoryCounter = 0;
-		victoryFinished = false;
 		NUM_FUSES = 0;
 		for(int i = 0; i < partButtons.Length; i++) {
 			NUM_FUSES += partButtons[i].GetComponent<Uses>().numUses;
@@ -273,9 +267,8 @@ public class FuseEvent : MonoBehaviour {
 	}
 
 	public void createFuseMapping() {
-		fuseMapping = new Dictionary<string, HashSet<string>>();
+		fuseMapping = new Dictionary<string, string>();
 		//(active part, fused part)
-		HashSet<string> fuseSet1 = new HashSet<string>();
 		//CHANGE this if statement by adding a new else if onto the end of it for your new level.
 		// The name of the mode is the name of your level. You need to add key-value pairs to 
 		// fuseMapping where the keys are names of active part ACs and the values are
@@ -285,31 +278,21 @@ public class FuseEvent : MonoBehaviour {
 
 		//fuseSets contain already fused attachments
 		//fuseMapping key = not yet fused (AC) attachments
-		if (mode.Equals ("tutorial1")) {
-			HashSet<string> fuseSet2 = new HashSet<string> ();
-			HashSet<string> fuseSet3 = new HashSet<string> ();
-			fuseSet1.Add ("box_pyr_attach");
-			fuseSet2.Add ("box_tri_attach");
-			fuseSet3.Add ("box_cone_attach");
-			fuseMapping.Add ("pyr_box_attach", fuseSet1);
-			fuseMapping.Add ("tri_box_attach", fuseSet2);
-			fuseMapping.Add ("cone_box_attach", fuseSet3);
+		if (mode.Equals ("b1")) {
+			fuseMapping.Add ("b1p1_bb1_a1", "bb1_b1p1_a1");
+			fuseMapping.Add ("b1p2_bb1_a1", "bb1_b1p2_a1");
+            fuseMapping.Add("b1p2_bb1_a2", "bb1_b1p2_a2");
+            fuseMapping.Add("b1p3_bb1_a1", "bb1_b1p3_a1");
 
-		} else if (mode.Equals ("tutorial2")) {
-			HashSet<string> fuseSet2 = new HashSet<string> ();
-			HashSet<string> fuseSet3 = new HashSet<string> ();
-			HashSet<string> fuseSet4 = new HashSet<string> ();
-			fuseSet1.Add ("longbox_smallbox_yellow_attach");
-			fuseSet2.Add ("longbox_tallbox_attach");
-			fuseSet3.Add ("longbox_bigbox_attach");
-			fuseSet4.Add ("bigbox_smallbox_blue_attach");
-			fuseMapping.Add ("smallbox_yellow_longbox_attach", fuseSet1);
-			fuseMapping.Add ("tallbox_longbox_attach", fuseSet2);
-			fuseMapping.Add ("bigbox_longbox_attach", fuseSet3);
-			fuseMapping.Add ("smallbox_blue_bigbox_attach", fuseSet4);
+        }
+        else if (mode.Equals ("b2")) {
+			fuseMapping.Add ("smallbox_yellow_longbox_attach", "longbox_smallbox_yellow_attach");
+			fuseMapping.Add ("tallbox_longbox_attach", "longbox_tallbox_attach");
+			fuseMapping.Add ("bigbox_longbox_attach", "longbox_bigbox_attach");
+			fuseMapping.Add ("smallbox_blue_bigbox_attach", "bigbox_smallbox_blue_attach");
 
 		} else if (mode.Equals ("boot")) {
-			fuseSet1.Add ("heel_widening_attach");
+	/*		fuseSet1.Add ("heel_widening_attach");
 			fuseMapping.Add ("widening_heel_attach", fuseSet1);
 			HashSet<string> fuseSet2 = new HashSet<string> ();
 			fuseSet2.Add ("heel_midfoot_attach");
@@ -326,9 +309,9 @@ public class FuseEvent : MonoBehaviour {
 			HashSet<string> fuseSet6 = new HashSet<string> ();
 			fuseSet6.Add ("ballfoot_toe_attach");
 			fuseMapping.Add ("toe_ballfoot_attach", fuseSet6);
-
+    */
 		} else if (mode.Equals ("key1")) {
-			HashSet<string> ULDTSet = new HashSet<string>();
+		/*	HashSet<string> ULDTSet = new HashSet<string>();
 			ULDTSet.Add ("dangly_T_upright_L_attach");
 			fuseMapping.Add ("upright_L_dangly_T_attach", ULDTSet);
 			HashSet<string> ULWSet = new HashSet<string>();
@@ -346,8 +329,9 @@ public class FuseEvent : MonoBehaviour {
 			HashSet<string> URWPSet = new HashSet<string>();
 			URWPSet.Add ("walking_pants_upright_rect_attach");
 			fuseMapping.Add ("upright_rect_walking_pants_attach", URWPSet);
+        */
 		} else if (mode.Equals ("axe")) {
-			HashSet<string> fuseToForHaft = new HashSet<string>();
+		/*	HashSet<string> fuseToForHaft = new HashSet<string>();
 			fuseToForHaft.Add ("shaft_haft_attach");
 			fuseMapping.Add ("haft_shaft_attach", fuseToForHaft);
 
@@ -403,9 +387,9 @@ public class FuseEvent : MonoBehaviour {
 			HashSet<string> fuseToForTip = new HashSet<string>();
 			fuseToForTip.Add ("head_tip_attach");
 			fuseMapping.Add ("tip_head_attach", fuseToForTip);
-
+            */
 		} else if(mode.Equals ("hull")) {
-			HashSet<string> fuseToForBridgeCoverLeft = new HashSet<string>();
+		/*	HashSet<string> fuseToForBridgeCoverLeft = new HashSet<string>();
 			HashSet<string> fuseToForBridgeCoverRight = new HashSet<string>();
 			fuseToForBridgeCoverLeft.Add ("bridge_bridge_cover_left_attach");
 			fuseToForBridgeCoverRight.Add ("bridge_bridge_cover_right_attach");
@@ -445,10 +429,11 @@ public class FuseEvent : MonoBehaviour {
 			fuseToForRightCoverSlope.Add ("back_slope_right_cover_attach");
 			fuseMapping.Add ("right_cover_back_attach", fuseToForRightCoverBack);
 			fuseMapping.Add ("right_cover_back_slope_attach", fuseToForRightCoverSlope);
+        */
 		} else if (mode.Equals ("ffa")) {
 
 			//ring large part
-			HashSet<string> fuseToForRingLargePartSide = new HashSet<string>();
+		/*	HashSet<string> fuseToForRingLargePartSide = new HashSet<string>();
 			HashSet<string> fuseToForRingLargePartBack = new HashSet<string>();
 			HashSet<string> fuseToForRingLargePartLong = new HashSet<string>();
 			HashSet<string> fuseToForRingLargePartSmall = new HashSet<string>();
@@ -568,10 +553,10 @@ public class FuseEvent : MonoBehaviour {
 			fuseToForScalene2.Add ("left_tri_scalene_side_attach");
 			fuseMapping.Add ("scalene_left_tri_back_attach", fuseToForScalene1);
 			fuseMapping.Add ("scalene_left_tri_side_attach", fuseToForScalene2);
-
+            */
 		} else if (mode.Equals ("gloves")) {
 			//palm, fingers, thumb, armDec, palmDec
-			
+		/*	
 			//palm
 			HashSet<string> fuseToForPalm = new HashSet<string>();
 			fuseToForPalm.Add ("arm_palm_attach");
@@ -596,9 +581,10 @@ public class FuseEvent : MonoBehaviour {
 			HashSet<string> fuseToForPalmDec = new HashSet<string>();
 			fuseToForPalmDec.Add ("palm_palm_dec_attach");
 			fuseMapping.Add ("palm_dec_palm_attach", fuseToForPalmDec);
+        */
 		} else if (mode.Equals ("key2")) {
 			//c, hanging l, middle t, ul corner, zigzag
-			
+		/*	
 			//c
 			HashSet<string> fuseToForCBottom = new HashSet<string>();
 			HashSet<string> fuseToForCFront = new HashSet<string>();
@@ -641,9 +627,10 @@ public class FuseEvent : MonoBehaviour {
 			HashSet<string> fuseToForZigzag = new HashSet<string>();
 			fuseToForZigzag.Add ("post_zigzag_attach");
 			fuseMapping.Add ("zigzag_post_attach", fuseToForZigzag);
+        */
 		} else if (mode.Equals ("catapult")) {
 			//fuse to Platform
-			HashSet<string> fuseToForBackAxleBottom = new HashSet<string>();
+		/*	HashSet<string> fuseToForBackAxleBottom = new HashSet<string>();
 			HashSet<string> fuseToForBackAxleLeft = new HashSet<string>();
 			HashSet<string> fuseToForBackAxleRight = new HashSet<string>();
 			HashSet<string> fuseToForFrontAxleRight = new HashSet<string>();
@@ -722,8 +709,9 @@ public class FuseEvent : MonoBehaviour {
 			fuseMapping.Add ("throwing_arm_axle_right_attach", fuseToForThrowingArmRight);
 			fuseMapping.Add ("right_support_axle_attach", fuseToForRightSupportSide);
 			fuseMapping.Add ("left_support_axle_attach", fuseToForLeftSupportSide);
+        */
 		} else if (mode.Equals ("key3")) {
-
+/*
 			HashSet<string> fuseToForLongLBack = new HashSet<string>();
 			HashSet<string> fuseToForLongLSide = new HashSet<string>();
 			HashSet<string> fuseToForLongLTop = new HashSet<string>();
@@ -770,9 +758,9 @@ public class FuseEvent : MonoBehaviour {
 			fuseToForDiagonalConnectorTop.Add("connector_diagonal_top_attach");
 			fuseMapping.Add("diagonal_connector_side_attach",fuseToForDiagonalConnectorSide);
 			fuseMapping.Add("diagonal_connector_top_attach",fuseToForDiagonalConnectorTop);
-			
+			*/
 		}else if (mode.Equals ("vest")) {
-			
+		/*	
 			HashSet<string> fuseToForBackStrapRight = new HashSet<string>();
 			HashSet<string> fuseToForBackStrapSide = new HashSet<string>();
 			HashSet<string> fuseToForLeftStrapBottom = new HashSet<string>();
@@ -841,9 +829,9 @@ public class FuseEvent : MonoBehaviour {
 			fuseToForVestDiamond3.Add("vest_oval_vest_diamond_attach");
 			
 			fuseMapping.Add("vest_diamond_vest_oval_attach",fuseToForVestDiamond3);
-
+*/
 		} else if (mode.Equals ("engine")) {
-			HashSet<string> fuseToForEngineFront = new HashSet<string>();
+		/*	HashSet<string> fuseToForEngineFront = new HashSet<string>();
 			fuseToForEngineFront.Add ("engine_base_engine_front_attach");
 
 			HashSet<string> fuseToForEngineTop = new HashSet<string>();
@@ -863,7 +851,7 @@ public class FuseEvent : MonoBehaviour {
 			fuseMapping.Add("engine_left_engine_base_attach",fuseToForEngineLeft);
 			fuseMapping.Add("engine_top_right_engine_base_attach",fuseToForEngineTopRight);
 			fuseMapping.Add("engine_right_engine_base_attach",fuseToForEngineRight);
-
+*/
 		}
 		
 	// 		Old, difficult Rocket Boots level
@@ -1126,16 +1114,16 @@ public class FuseEvent : MonoBehaviour {
 	private void playVictory() {
 		//CHANGE this if statement by adding an else if onto the end of it for your new level.
 		// The name of the mode is the name of your new level.
-		if(mode.Equals ("tutorial1")) {
-			GameObject box = GameObject.Find ("tutorial1_box");
-			GameObject pyr = GameObject.Find ("tutorial1_pyrPrefab(Clone)");
-			GameObject tri = GameObject.Find ("tutorial1_triPrefab(Clone)");
-			GameObject cone = GameObject.Find ("tutorial1_conePrefab(Clone)");
-            box.transform.SetParent(group.transform, true);
-			pyr.transform.SetParent(group.transform, true);
-			tri.transform.SetParent(group.transform, true);
-            cone.transform.SetParent(group.transform, true);
-		} else if(mode.Equals ("tutorial2")) {
+		if(mode.Equals ("b1")) {
+			GameObject bb1 = GameObject.Find ("bb1Start");
+			GameObject b1p1 = GameObject.Find ("b1p1Prefab(Clone)");
+			GameObject b1p2 = GameObject.Find ("b1p2Prefab(Clone)");
+			GameObject b1p3 = GameObject.Find ("b1p3Prefab(Clone)");
+            bb1.transform.SetParent(group.transform, true);
+			b1p1.transform.SetParent(group.transform, true);
+			b1p2.transform.SetParent(group.transform, true);
+            b1p3.transform.SetParent(group.transform, true);
+		} else if(mode.Equals ("b2")) {
 			GameObject longbox = GameObject.Find ("tutorial2_longbox");
 			GameObject smallboxYellow = GameObject.Find ("tutorial2_smallbox_yellowPrefab(Clone)");
 			GameObject tallbox = GameObject.Find ("tutorial2_tallboxPrefab(Clone)");
