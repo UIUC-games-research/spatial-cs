@@ -117,7 +117,7 @@ public class Tutorial1 : MonoBehaviour {
         {
             selectedFuseTo = true;
             // moves camera from starting position to a good view of bb1_b1p2_a1
-            cameraControls.autoRotateCamera(-0.3f, -46f, 0f);
+            cameraControls.autoRotateCamera(-0.3f, -46f, 0f, 2f);
 
             bb1_b1p2_a1 = GameObject.Find("bb1_b1p2_a1");
             selectPart.selectFuseTo(bb1_b1p2_a1);
@@ -131,7 +131,7 @@ public class Tutorial1 : MonoBehaviour {
             b1p1 = GameObject.Find("b1p1Prefab(Clone)");
             b1p1_bb1_a1 = b1p1.transform.GetChild(1).gameObject;
             //moves camera from cam angle1 to a good view of b1p1_bb1_a1
-            cameraControls.autoRotateCamera(-63f, -8.4f, 0f);
+            cameraControls.autoRotateCamera(-63f, -8.4f, 0f, 2f);
 
             selectPart.selectObject(b1p1_bb1_a1);
             StartCoroutine(waitThenAddToken("finishedSelectingb1p1_a1", 2f));
@@ -166,18 +166,18 @@ public class Tutorial1 : MonoBehaviour {
         b1p1 = GameObject.Find("b1p1Prefab(Clone)");
         Highlighter.Highlight(rotationScript.yGizmo); 
         yield return new WaitForSeconds(2f);
-        Highlighter.Unhighlight(rotationScript.xGizmo);
+        Highlighter.Unhighlight(rotationScript.yGizmo);
         rotationScript.runManualRotation(b1p1, 0,90,0);
         yield return new WaitForSeconds(2f);
         Highlighter.Highlight(rotationScript.zGizmo);
-        yield return new WaitForSeconds(2f);
+
         ConversationTrigger.AddToken("finishedRotatingOnceWrongFace");
 
     }
 
     IEnumerator rotateTwiceWrongFaceScript()
     {
-        Highlighter.Unhighlight(rotationScript.yGizmo);
+        Highlighter.Unhighlight(rotationScript.zGizmo);
         rotationScript.runManualRotation(b1p1, 0, 0, -90);
         yield return new WaitForSeconds(2f);
         ConversationTrigger.AddToken("finishedRotatingTwiceWrongFace");
