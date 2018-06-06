@@ -21,6 +21,7 @@ public class SelectedEffect : MonoBehaviour
 		hitCaster.transform.rotation = transform.rotation;
 		hitCaster.transform.parent = transform.parent;
 		hitCaster.transform.position += (20f * hitInfo.normal);
+        Debug.Log("hitInfo's normal: " + hitInfo.normal);
 	}
 
 	void FixedUpdate()

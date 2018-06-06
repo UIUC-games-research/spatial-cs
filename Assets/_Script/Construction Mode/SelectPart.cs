@@ -229,7 +229,7 @@ public class SelectPart : MonoBehaviour {
 		selectedObject = null;
 	}
 
-    //selects on command - use when new object is created
+    //selects on command - tutorial only
     public void selectObject(GameObject newSelection)
     {
         prevSelectedObject = newSelection;
@@ -250,24 +250,27 @@ public class SelectPart : MonoBehaviour {
         {
             SelectedEffect sel = selectedObject.AddComponent<SelectedEffect>();
 
-            //RaycastHit hitInfo;
-            //Ray ray = Camera.main.ScreenPointToRay(newSelection.transform.position);
-            //if (Physics.Raycast(ray, out hitInfo))
-            //{
-             //   sel.hitInfo = hitInfo;
-            //}
+            // this code obtains the correct normal for the ghost effects from the mesh rather than from a raycast from a mouse click,
+            // as is done in the Update() method when the player themselves is doing the selecting
+            RaycastHit hitInfo = new RaycastHit();
+            Mesh mesh = selectedObject.GetComponent<MeshFilter>().mesh;
+            Vector3[] normals = mesh.normals;
+            hitInfo.normal = normals[0];
 
+            sel.hitInfo = hitInfo;
             sel.selected = selectedObject;
         }
 
         if(selectedFuseTo != null && selectedObject != null)
         {
+            connectButton.interactable = true;
             // this is hard-coded for the alignment of b1p1_bb1_a1 and bb1_b1p2_a1
             StartCoroutine(SweepPosition(newSelection.transform.parent.gameObject, new Vector3(-82.25f, 30, 100), 20));
         }
 
     }
 
+    // selects on command - tutorial only
 	public void selectFuseTo(GameObject newSelection) {
 		prevSelectedFuseTo = newSelection;
 		selectedFuseTo = newSelection;
@@ -286,12 +289,27 @@ public class SelectPart : MonoBehaviour {
         if (GetComponent<SelectedEffect>() == null)
         {
             SelectedEffect sel = selectedFuseTo.AddComponent<SelectedEffect>();
-            //sel.hitInfo = hitInfo;
+
+            // this code obtains the correct normal for the ghost effects from the mesh rather than from a raycast from a mouse click,
+            // as is done in the Update() method when the player themselves is doing the selecting
+            RaycastHit hitInfo = new RaycastHit();
+            Mesh mesh = selectedFuseTo.GetComponent<MeshFilter>().mesh;
+            Vector3[] normals = mesh.normals;
+            hitInfo.normal = normals[0];
+
+            sel.hitInfo = hitInfo;
             sel.selected = selectedFuseTo;
         }
     }
 
-	public void newPartCreated(string part) {
+    // use in tutorial, when you switch selection from one AC to another
+    public void deselectObject(GameObject toDeselect)
+    {
+        Destroy(toDeselect.GetComponent<SelectedEffect>());
+
+    }
+
+    public void newPartCreated(string part) {
 		if(selectedObject != null) {
 			GameObject parent = selectedObject.transform.parent.gameObject;
 			

@@ -1012,6 +1012,7 @@ public class FuseEvent : MonoBehaviour {
 	public void initiateFuse() {
 		string data_fuseStatus = "Success";
 		string data_failureType = "";
+        //TODO: if tutorial is on, don't increment fuse attempts
 		numFuseAttempts++;
 		//print ("Fusing: " + GetComponent<SelectPart>().getSelectedObject() + " to " + GetComponent<SelectPart>().getSelectedFuseTo());
 		selectedObject = GetComponent<SelectPart>().getSelectedObject();
