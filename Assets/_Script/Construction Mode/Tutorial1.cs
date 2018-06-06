@@ -4,33 +4,44 @@ using UnityEngine.UI;
 
 public class Tutorial1 : MonoBehaviour {
 
-	public GameObject eventSystem;
-	private SelectPart selectPart;
-	private FuseEvent fuseEvent;
+    public bool tutorialOn;
+
+    public GameObject eventSystem;
     public Camera mainCam;
-	public Button[] partButtons;
-	public Button connectButton;
-	public GameObject finishedImage;
+
+    public Button fuseButton;
 	public Button b1p1Button;
-	public GameObject rotationGizmo;
+    public Button b1p2Button;
+    public Button b1p3Button;
+    public Button goToNextTutorial;
+
+    public GameObject rotationGizmo;
 	private RotationGizmo rotationScript;
-    private CameraControls cameraControls;
 	public Highlighter highlighter;
-    private GameObject bb1_b1p2_a1; // incorrect first attempt
-    private GameObject bb1_b1p1_a1; // correct last attempt
-    private GameObject b1p1_bb1_a1; // selected fuse area on part
-	public Text shapesWrong;
+
+    public GameObject bb1;
+    private GameObject bb1_b1p2_a1; // selected fuseTo on starting part
+    private GameObject b1p1_bb1_a1; // incorrect first attempt: wrong part
+    private GameObject b1p2_bb1_a2; // incorrect second attempt: wrong black area
+    private GameObject b1p2_bb1_a1; // incorrect third attempt: black area is correct but rotation is wrong
+
+    public Text shapesWrong;
 	public Text rotationWrong;
 	public Text congrats;
-	public Button goToNextTutorial;
-    public bool tutorialOn;
-    private Vector3 baseStartPosition;
-    public GameObject bb1;
-    private GameObject b1p1;
 
     public Image arrowPartButtons;
     public Image arrowFinishedImageLeft;
     public Image arrowFinishedImageUp;
+    public Image arrowFuseButton;
+    public GameObject finishedImage;
+
+    private SelectPart selectPart;
+    private FuseEvent fuseEvent;
+    private CameraControls cameraControls;
+    private GameObject b1p1;
+    private GameObject b1p2;
+    private Vector3 baseStartPosition;
+    private Button[] partButtons;
 
     private const float MOVEMENT_SPEED = 100f;
     private const float SHOW_IMAGE_DURATION = 2f;
@@ -41,12 +52,17 @@ public class Tutorial1 : MonoBehaviour {
     private bool flashedFinishedImage;
     private bool selectedAC;
     private bool selectedFuseTo;
+    private bool rotatedOnceWrongPart;
+    private bool rotatedTwiceWrongPart;
     private bool rotatedOnceWrongFace;
-    private bool rotatedTwiceWrongFace;
-    private bool rotatedOnceWrongRotation;
+    private bool flashedFuseButton;
+    private bool attemptedWrongPartFuse;
+    private bool clickedB1P2Button;
+    private bool selectedSecondAC;
+    private bool attemptedWrongFaceFuse;
+    private bool selectedThirdAC;
 
-
-	private GameObject selectedObj;
+    private GameObject selectedObj;
 
 	void Awake() {
 	}
@@ -59,13 +75,26 @@ public class Tutorial1 : MonoBehaviour {
 		selectPart = eventSystem.GetComponent<SelectPart>();
         cameraControls = mainCam.GetComponent<CameraControls>();
         baseStartPosition = new Vector3(-100, 30, 100);
+
+        partButtons = new Button[3];
+        partButtons[0] = b1p1Button;
+        partButtons[1] = b1p2Button;
+        partButtons[2] = b1p3Button;
+
         flashedPartButtons = false;
         clickedB1P1Button = false;
         flashedFinishedImage = false;
         selectedAC = false;
         selectedFuseTo = false;
+        rotatedOnceWrongPart = false;
+        rotatedTwiceWrongPart = false;
+        flashedFuseButton = false;
+        attemptedWrongPartFuse = false;
+        clickedB1P2Button = false;
+        selectedSecondAC = false;
         rotatedOnceWrongFace = false;
-        rotatedTwiceWrongFace = false;
+        attemptedWrongFaceFuse = false;
+        selectedThirdAC = false;
     }
 
     // Update is called once per frame
@@ -99,6 +128,7 @@ public class Tutorial1 : MonoBehaviour {
             b1p1Button.onClick.Invoke();
             b1p1Button.interactable = false;
             StartCoroutine(waitThenAddToken("finishedSelectingPart", 2f));
+            StartCoroutine(waitThenMoveCamera(-32f, -13f, 0f, -70f, -25.5f, 13.76f, 1f, 1f));
 
         }
 
@@ -116,12 +146,10 @@ public class Tutorial1 : MonoBehaviour {
         else if (!selectedFuseTo && ConversationTrigger.GetToken("finishedConst_5"))
         {
             selectedFuseTo = true;
-            // moves camera from starting position to a good view of bb1_b1p2_a1
-            cameraControls.autoRotateCamera(-0.3f, -46f, 0f, 2f);
 
             bb1_b1p2_a1 = GameObject.Find("bb1_b1p2_a1");
-            selectPart.selectFuseTo(bb1_b1p2_a1);
-            StartCoroutine(waitThenAddToken("finishedSelectingbb1_a1", 2f));
+            StartCoroutine(waitThenSelectFuseTo(bb1_b1p2_a1, 1f));
+            StartCoroutine(waitThenAddToken("finishedSelectingbb1_a1", 4f));
         }
 
         // Dresha selects the black area on b1p1
@@ -130,38 +158,108 @@ public class Tutorial1 : MonoBehaviour {
             selectedAC = true;
             b1p1 = GameObject.Find("b1p1Prefab(Clone)");
             b1p1_bb1_a1 = b1p1.transform.GetChild(1).gameObject;
-            //moves camera from cam angle1 to a good view of b1p1_bb1_a1
-            cameraControls.autoRotateCamera(-63f, -8.4f, 0f, 2f);
 
-            selectPart.selectObject(b1p1_bb1_a1);
-            StartCoroutine(waitThenAddToken("finishedSelectingb1p1_a1", 2f));
+            StartCoroutine(waitThenSelectObject(b1p1_bb1_a1, 2f));
+            StartCoroutine(waitThenAddToken("finishedSelectingb1p1_a1", 4f));
         }
 
         // Dresha rotates once along y axis - should go so the black part is facing up
-        else if (!rotatedOnceWrongFace && ConversationTrigger.GetToken("finishedConst_7"))
+        else if (!rotatedOnceWrongPart && ConversationTrigger.GetToken("finishedConst_7"))
         {
-            rotatedOnceWrongFace = true;
- 
-            StartCoroutine(rotateWrongFaceScript());
-            //GameObject YRightSlider = rotationScript.yGizmo.transform.GetChild(0).gameObject); // should be YRight
-            //StartCoroutine(waitThenRotateAndHighlight(b1p1, YRightSlider, 0f, -90f,0f, 2f));
-            //StartCoroutine(waitThenAddToken("finishedRotatingWrongFace", 0f));
+            rotatedOnceWrongPart = true;
+            StartCoroutine(rotateWrongPartScript());
         }
 
         //Then Dresha rotates once along z axis - should go so the black part is facing bb1
-        else if (!rotatedTwiceWrongFace && ConversationTrigger.GetToken("finishedConst_8"))
+        else if (!rotatedTwiceWrongPart && ConversationTrigger.GetToken("finishedConst_8"))
         {
-            rotatedTwiceWrongFace = true;
-
-            StartCoroutine(rotateTwiceWrongFaceScript());
-            //GameObject YRightSlider = rotationScript.yGizmo.transform.GetChild(0).gameObject); // should be YRight
-            //StartCoroutine(waitThenRotateAndHighlight(b1p1, YRightSlider, 0f, -90f,0f, 2f));
-            //StartCoroutine(waitThenAddToken("finishedRotatingWrongFace", 0f));
+            rotatedTwiceWrongPart = true;
+            StartCoroutine(rotateTwiceWrongPartScript());
         }
+
+        //Then Fuse button is shown/pointed to
+        else if (!flashedFuseButton && ConversationTrigger.GetToken("finishedConst_9"))
+        {
+            flashedFuseButton = true;
+            StartCoroutine(showImageAndAddToken(arrowFuseButton.GetComponent<Image>(), SHOW_IMAGE_DURATION, "finishedFlashingFuseButton"));
+            highlighter.HighlightTimed(fuseButton.gameObject, 2);
+        }
+
+        //Then Dresha tries to attach the wrong two parts
+        else if (!attemptedWrongPartFuse && ConversationTrigger.GetToken("finishedConst_10"))
+        {
+            attemptedWrongPartFuse = true;
+            fuseEvent.initiateFuse();
+            StartCoroutine(waitThenAddToken("finishedWrongPartFuseAttempt", 3f));
+        }
+
+        //Then Dresha selects a different part - the correct one (b1p2)
+        else if (!clickedB1P2Button && ConversationTrigger.GetToken("finishedConst_11"))
+        {
+            clickedB1P2Button = true;
+            b1p2Button.onClick.Invoke();
+            b1p2Button.interactable = false;
+            b1p1Button.interactable = true;
+            StartCoroutine(waitThenAddToken("finishedSelectingSecondPart", 2f));
+        }
+
+        //Then Dresha selects the wrong black area on b1p2
+        else if (!selectedSecondAC && ConversationTrigger.GetToken("finishedConst_12"))
+        {
+            selectedSecondAC = true;
+            // move camera so the black area to be selected is visible
+            StartCoroutine(waitThenMoveCamera(-6.8f, -61.9f, 0f, 1.48f, 17.63f, 51.15f, 1f, 1f));
+
+            b1p2 = GameObject.Find("b1p2Prefab(Clone)");
+            b1p2_bb1_a2 = b1p2.transform.GetChild(2).gameObject;
+
+            StartCoroutine(waitThenSelectObject(b1p2_bb1_a2, 2f));
+            StartCoroutine(waitThenAddToken("finishedSelectingb1p2_a2", 4f));
+        }
+
+        //Then Dresha rotates again
+        else if (!rotatedOnceWrongFace && ConversationTrigger.GetToken("finishedConst_13"))
+        {
+            rotatedOnceWrongFace = true;
+            // move camera so player can see how the part is aligned as it's rotated
+            StartCoroutine(waitThenMoveCamera(40.6f, 12.5f, 0f, -107.16f, 97.97f, 22.58f, 1f, 1f));
+
+            StartCoroutine(rotateWrongFaceScript());
+        }
+
+        //Then Dresha tries to attach to wrong black area
+        else if (!attemptedWrongFaceFuse && ConversationTrigger.GetToken("finishedConst_14"))
+        {
+            attemptedWrongFaceFuse = true;
+            fuseEvent.initiateFuse();
+            StartCoroutine(waitThenAddToken("finishedWrongFaceFuseAttempt", 3f));
+        }
+
+        //Then Dresha selects the correct black area on b1p2
+        else if (!selectedThirdAC && ConversationTrigger.GetToken("finishedConst_15"))
+        {
+            selectedThirdAC = true;
+            // move camera so the black area to be selected is visible
+            //StartCoroutine(waitThenMoveCamera(-6.8f, -61.9f, 0f, 1.48f, 17.63f, 51.15f, 1f, 1f));
+
+            b1p2_bb1_a1 = b1p2.transform.GetChild(1).gameObject;
+
+            StartCoroutine(waitThenSelectObject(b1p2_bb1_a1, 2f));
+            selectPart.deselectObject(b1p2_bb1_a2);
+            StartCoroutine(waitThenAddToken("finishedSelectingb1p2_a1", 4f));
+        }
+
+        //Then Dresha tries to fuse with incorrect rotation
+
+        //Then Dresha enables your controls
+
+        // Once player attaches their first part, Dresha congratulates them
+
+        // Once player finishes building, Dresha says we've got more batteries to build
 
     }
 
-    IEnumerator rotateWrongFaceScript()
+    IEnumerator rotateWrongPartScript()
     {
         b1p1 = GameObject.Find("b1p1Prefab(Clone)");
         Highlighter.Highlight(rotationScript.yGizmo); 
@@ -171,16 +269,68 @@ public class Tutorial1 : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         Highlighter.Highlight(rotationScript.zGizmo);
 
-        ConversationTrigger.AddToken("finishedRotatingOnceWrongFace");
+        ConversationTrigger.AddToken("finishedRotatingOnceWrongPart");
 
     }
 
-    IEnumerator rotateTwiceWrongFaceScript()
+    IEnumerator rotateTwiceWrongPartScript()
     {
         Highlighter.Unhighlight(rotationScript.zGizmo);
         rotationScript.runManualRotation(b1p1, 0, 0, -90);
         yield return new WaitForSeconds(2f);
-        ConversationTrigger.AddToken("finishedRotatingTwiceWrongFace");
+        ConversationTrigger.AddToken("finishedRotatingTwiceWrongPart");
+    }
+
+    IEnumerator rotateWrongFaceScript()
+    {
+        b1p2 = GameObject.Find("b1p2Prefab(Clone)");
+        Highlighter.Highlight(rotationScript.yGizmo);
+        yield return new WaitForSeconds(2f);
+        rotationScript.runManualRotation(b1p2, 0, 90, 0);
+        yield return new WaitForSeconds(2f);
+        Highlighter.Unhighlight(rotationScript.yGizmo);
+        rotationScript.runManualRotation(b1p2, 0, 90, 0);
+        yield return new WaitForSeconds(2f);
+
+        ConversationTrigger.AddToken("finishedRotatingWrongFace");
+
+    }
+
+    IEnumerator rotateWrongRotationScript()
+    {
+        Highlighter.Highlight(rotationScript.yGizmo);
+        yield return new WaitForSeconds(2f);
+        rotationScript.runManualRotation(b1p2, 0, -90, 0);
+        yield return new WaitForSeconds(2f);
+        Highlighter.Unhighlight(rotationScript.yGizmo);
+        rotationScript.runManualRotation(b1p2, 0, -90, 0);
+        yield return new WaitForSeconds(2f);
+
+        ConversationTrigger.AddToken("finishedRotatingWrongRotation");
+
+    }
+
+    IEnumerator waitThenMoveCamera(float rot_x, float rot_y, float rot_z, float pos_x, float pos_y, float pos_z, float secondsForRotating, float secondsForWaiting)
+    {
+        yield return new WaitForSeconds(secondsForWaiting);
+        cameraControls.autoRotateCamera(rot_x, rot_y, rot_z, pos_x, pos_y, pos_z, secondsForRotating);
+
+    }
+
+
+
+    IEnumerator waitThenSelectObject(GameObject toSelect, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        selectPart.selectObject(toSelect);
+
+    }
+
+    IEnumerator waitThenSelectFuseTo(GameObject toSelect, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        selectPart.selectFuseTo(toSelect);
+
     }
 
     IEnumerator waitThenHighlight(GameObject toHighlight, float seconds)

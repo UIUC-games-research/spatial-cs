@@ -1,4 +1,4 @@
-Now, I'm gonna use the Fuser to [color]880rotate[color] the part I'm trying to attach so that those [color]880two glowing areas[color] are lined up and facing each other.
+Now, I'm gonna use the Fuser to [color]880rotate[color] the part I'm trying to fuse so that those [color]880two glowing areas[color] are lined up and facing each other.
 I'll just use these snazzy [color]880rotation arrows[color] to rotate the part.
 Like so!
 [CHOOSE]

@@ -1,0 +1,4 @@
+Now, for the final step - fusing!
+When you think you've aligned the parts correctly, click the [color]880Fuse[color] button to try and fuse them together!
+[CHOOSE]
+|nowhere|finishedConst_9
