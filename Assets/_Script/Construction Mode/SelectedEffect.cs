@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class SelectedEffect : MonoBehaviour
 {
 
 	float delay = 0.15f;
 	float timer = 0f;
-	public RaycastHit hitInfo;      // Set by SelectPart when this script is applied.
-	public GameObject selected;
+	public RaycastResult hitInfo;      // Set by SelectPart when this script is applied.
+    public RaycastHit hitUpdate;
 	GameObject instance;
 	GameObject hitCaster;
 
@@ -20,8 +21,7 @@ public class SelectedEffect : MonoBehaviour
 		hitCaster.transform.localScale = transform.parent.localScale; //3f * transform.localScale;
 		hitCaster.transform.rotation = transform.rotation;
 		hitCaster.transform.parent = transform.parent;
-		hitCaster.transform.position += (20f * hitInfo.normal);
-        Debug.Log("hitInfo's normal: " + hitInfo.normal);
+		hitCaster.transform.position += (20f * hitInfo.worldNormal);
 	}
 
 	void FixedUpdate()
@@ -35,7 +35,7 @@ public class SelectedEffect : MonoBehaviour
 		}
 
 		// Update the normal with the hitCaster.
-		Physics.Raycast(hitCaster.transform.position, transform.position - hitCaster.transform.position, out hitInfo);
+		Physics.Raycast(hitCaster.transform.position, transform.position - hitCaster.transform.position, out hitUpdate);
 		//Debug.DrawRay(hitCaster.transform.position, 10 * (transform.position - hitCaster.transform.position), Color.cyan, 3f);
 
 	}
@@ -43,7 +43,8 @@ public class SelectedEffect : MonoBehaviour
 	public void SpawnGhost()
 	{
 		// Transforms.
-		instance = new GameObject();
+        // will adding the name parameter help unity distinguish fuseTo ghosts from AC ghosts? We'll see!
+		instance = new GameObject(this.name + "_ghost");
 
 		instance.transform.position = transform.position;
 		instance.transform.localScale = /*10 */ transform.parent.localScale.x * transform.localScale;
@@ -61,7 +62,7 @@ public class SelectedEffect : MonoBehaviour
 
 		// Add ghost script.
 		SelectedGhost ghost = instance.AddComponent<SelectedGhost>();
-		ghost.hitInfo = hitInfo;
+		ghost.setNormal(hitUpdate.normal);
 	}
 
 	void OnDestroy()

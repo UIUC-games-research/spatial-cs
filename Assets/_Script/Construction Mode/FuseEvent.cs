@@ -1008,7 +1008,6 @@ public class FuseEvent : MonoBehaviour {
 		rotateZButton.GetComponent<Button>().interactable = false;
 	}
 
-
 	public void initiateFuse() {
 		string data_fuseStatus = "Success";
 		string data_failureType = "";
@@ -1060,7 +1059,7 @@ public class FuseEvent : MonoBehaviour {
 
 				claimItem.gameObject.SetActive(true);
 				congrats.enabled = true;
-
+                
 				musicSource.Stop();
 				mainCam.transform.position = new Vector3(-90,80,-3.36f);
 				mainCam.transform.rotation = Quaternion.Euler(new Vector3(15,0,0));
