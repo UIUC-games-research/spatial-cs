@@ -4,10 +4,10 @@ using System.Collections;
 
 public class RotationGizmo : MonoBehaviour
 {
-	public GameObject mainCamera;
+    public bool tutorialMode;
+    public GameObject mainCamera;
 	public GameObject toRotate;
-	public bool tutorialOn;
-	public SelectPart adjuster;
+	public SelectPart selectPart;
 	public GameObject batteryIndicator;
 
 	public GameObject xGizmo;
@@ -37,6 +37,8 @@ public class RotationGizmo : MonoBehaviour
 	
 	void Update ()
 	{
+        // TODO: Get rid of RotateBehavior script and all its instances on part prefabs
+
         // Restarting game while in construction mode.
         // DEMO MODE ONLY.
         // TODO: disable this for the full game version
@@ -70,9 +72,11 @@ public class RotationGizmo : MonoBehaviour
 
 
 		// Highlight raycasts.
+        // TODO: make into IPointerEvent mouseover callback instead
 		RaycastHit mouseOver = new RaycastHit();
-		if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out mouseOver))
+		if (!tutorialMode && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out mouseOver))
 		{
+            //Debug.Log("Raycast Hit! Mouseover " + mouseOver.transform.name);
 			switch (mouseOver.transform.name)
 			{
 				case "XUp":
@@ -120,12 +124,13 @@ public class RotationGizmo : MonoBehaviour
 		}
 
 		// Raycasts.
-		if (Input.GetMouseButtonDown(0))
+        // TODO: turn this into a callback IPointerEvent click rather than in Update() loop
+		if (!tutorialMode && Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hitInfo = new RaycastHit();
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo))
 			{
-				//Debug.Log(hitInfo.transform.name);
+				//Debug.Log("Raycast hit on " + hitInfo.transform.name);
 				switch(hitInfo.transform.name)
 				{
 					case "XUp":
@@ -172,9 +177,9 @@ public class RotationGizmo : MonoBehaviour
 						zRots++;
 						SimpleData.WriteDataPoint("Rotate_Object", toRotate.name, "", "", "", "Z");
 						if (Mathf.Approximately(zGizmo.transform.localEulerAngles.y, 270f))
-							StartCoroutine(Rotate(0f, 0f, -90f));
-						else
 							StartCoroutine(Rotate(0f, 0f, 90f));
+						else
+							StartCoroutine(Rotate(0f, 0f, -90f));
 						break;
 
 					case "ZDown":
@@ -183,9 +188,9 @@ public class RotationGizmo : MonoBehaviour
 						zRots++;
 						SimpleData.WriteDataPoint("Rotate_Object", toRotate.name, "", "", "", "Z");
 						if (Mathf.Approximately(zGizmo.transform.localEulerAngles.y, 270f))
-							StartCoroutine(Rotate(0f, 0f, 90f));
-						else
 							StartCoroutine(Rotate(0f, 0f, -90f));
+						else
+							StartCoroutine(Rotate(0f, 0f, 90f));
 						break;
 
 					default:
@@ -196,13 +201,12 @@ public class RotationGizmo : MonoBehaviour
 
 	}
 
-	IEnumerator Rotate(float x, float y, float z)
+    IEnumerator Rotate(float x, float y, float z)
 	{
-		// Adjustment of alignment.
-		adjuster.AdjustPartAlignment(x, y, z);
 
-		// Integration for battery power.
-		if(!tutorialOn && !rotating) {
+
+        // Integration for battery power.
+        if (!tutorialMode && !rotating) {
 			BatterySystem.SubPower(1);
 		}
 
@@ -276,7 +280,15 @@ public class RotationGizmo : MonoBehaviour
 
 		toRotate.transform.eulerAngles = rot;
 		rotating = false;
-	}
+
+        // Adjustment of alignment. Do only if there is a selectedFuseTo and selectedObject
+        if(selectPart.getSelectedObject() != null && selectPart.getSelectedFuseTo() != null)
+        {
+            //Debug.Log("toRotate object: " + toRotate);
+            selectPart.getSelectedObject().GetComponent<FaceSelector>().adjustPartAlignment();
+        }
+
+    }
 
 	//Warning - will probably break on X and Z rotations if used outside of tutorial
 	public void runManualRotation(GameObject objectToRotate, float x, float y, float z) {
@@ -302,7 +314,7 @@ public class RotationGizmo : MonoBehaviour
 	bool CheckBattery()
 	{
 		// Check if we're in the standard game mode and have no power.
-		if (BatterySystem.GetPower() == 0 && !tutorialOn && !FuseEvent.runningJustConstructionMode)
+		if (BatterySystem.GetPower() == 0 && !tutorialMode && !FuseEvent.runningJustConstructionMode)
 		{
 			StartCoroutine(FlashBattery());
 			return false;

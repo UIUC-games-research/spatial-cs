@@ -10,6 +10,7 @@ public class CreatePartB1 : MonoBehaviour
     private GameObject[] instantiated;
     public GameObject[] parts;
     private bool[] partCreated;
+    public Button[] partButtons;
     private Vector3 createLoc;
     private Vector3 offscreenCreateLoc;
     public GameObject eventSystem;
@@ -155,6 +156,7 @@ public class CreatePartB1 : MonoBehaviour
             if (instantiated[i] != null && !instantiated[i].GetComponent<IsFused>().isFused)
             {
                 Destroy(instantiated[i]);
+                partButtons[i].interactable = true;
             }
         }
     }
@@ -173,7 +175,8 @@ public class CreatePartB1 : MonoBehaviour
     // Makes the newly created part zip up from a lower point as it's created, making it seem like it was pulled up from the ground
     IEnumerator moveToStartingPosition(GameObject part)
     {
-        while (!part.transform.position.Equals(createLoc))
+        // while the part hasn't reached its destination and while it hasn't been destroyed by choosing another part
+        while (part != null && !part.transform.position.Equals(createLoc))
         {
             step = MOVEMENT_SPEED * Time.deltaTime;
             part.transform.position = Vector3.MoveTowards(part.transform.position, createLoc, step);
@@ -192,7 +195,7 @@ public class CreatePartB1 : MonoBehaviour
             Vector3 pos = offscreenCreateLoc; // this is where the object will appear when it's instantiated		
             Quaternion fuseToRotation = Quaternion.Euler(90, 90, 0);
             GameObject newB1p1 = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate(parts[0], pos, fuseToRotation)));
-            StartCoroutine(moveToStartingPosition(newB1p1));
+            StartCoroutine(moveToStartingPosition(newB1p1)); // this creates the zooming up from the ground effect
 
             Transform b1p1_bb1_a1 = newB1p1.transform.Find("b1p1_bb1_a1");
 
@@ -202,8 +205,15 @@ public class CreatePartB1 : MonoBehaviour
             b1p1_bb1_a1.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
             b1p1_bb1_a1.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find("B1p1"));
 
+            b1p1_bb1_a1.gameObject.AddComponent<FaceSelector>();
+            b1p1_bb1_a1.gameObject.GetComponent<FaceSelector>().setSelectPartScript(GameObject.Find("EventSystem").GetComponent<SelectPart>());
+            b1p1_bb1_a1.gameObject.GetComponent<FaceSelector>().setFuseButton(GameObject.Find("FuseButton").GetComponent<Button>());
+
+
             instantiated[0] = newB1p1;
             partCreated[0] = true;
+            partButtons[0].interactable = false;
+
             selectionManager.newPartCreated("b1p1Prefab(Clone)");
 
             enableManipulationButtons(newB1p1);
@@ -217,9 +227,10 @@ public class CreatePartB1 : MonoBehaviour
         if (!partCreated[1])
         {
             clearPartsCreated();
-            Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
+            Vector3 pos = offscreenCreateLoc; // this is where the object will appear when it's instantiated
             Quaternion fuseToRotation = Quaternion.Euler(0, 180, 0);
             GameObject newB1p2 = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate(parts[1], pos, fuseToRotation)));
+            StartCoroutine(moveToStartingPosition(newB1p2)); // this creates the zooming up from the ground effect
 
             Transform b1p2_bb1_a1 = newB1p2.transform.Find("b1p2_bb1_a1");
             Transform b1p2_bb1_a2 = newB1p2.transform.Find("b1p2_bb1_a2");
@@ -230,12 +241,23 @@ public class CreatePartB1 : MonoBehaviour
             b1p2_bb1_a1.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
             b1p2_bb1_a1.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find("B1p2"));
 
+            b1p2_bb1_a1.gameObject.AddComponent<FaceSelector>();
+            b1p2_bb1_a1.gameObject.GetComponent<FaceSelector>().setSelectPartScript(GameObject.Find("EventSystem").GetComponent<SelectPart>());
+            b1p2_bb1_a1.gameObject.GetComponent<FaceSelector>().setFuseButton(GameObject.Find("FuseButton").GetComponent<Button>());
+
             b1p2_bb1_a2.gameObject.AddComponent<FuseBehavior>();
             b1p2_bb1_a2.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
             b1p2_bb1_a2.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find("B1p2"));
 
+            b1p2_bb1_a2.gameObject.AddComponent<FaceSelector>();
+            b1p2_bb1_a2.gameObject.GetComponent<FaceSelector>().setSelectPartScript(GameObject.Find("EventSystem").GetComponent<SelectPart>());
+            b1p2_bb1_a2.gameObject.GetComponent<FaceSelector>().setFuseButton(GameObject.Find("FuseButton").GetComponent<Button>());
+
+
             instantiated[1] = newB1p2;
             partCreated[1] = true;
+            partButtons[1].interactable = false;
+
             selectionManager.newPartCreated("b1p2Prefab(Clone)");
 
             enableManipulationButtons(newB1p2);
@@ -249,9 +271,10 @@ public class CreatePartB1 : MonoBehaviour
         if (!partCreated[2])
         {
             clearPartsCreated();
-            Vector3 pos = createLoc; // this is where the object will appear when it's instantiated
+            Vector3 pos = offscreenCreateLoc; // this is where the object will appear when it's instantiated
             Quaternion fuseToRotation = Quaternion.Euler(0,90,270);
             GameObject newB1p3 = rotateGizmo.Enable(LoadUtils.InstantiateParenter((GameObject)Instantiate(parts[2], pos, fuseToRotation)));
+            StartCoroutine(moveToStartingPosition(newB1p3)); // this creates the zooming up from the ground effect
 
             Transform b1p3_bb1_a1 = newB1p3.transform.Find("b1p3_bb1_a1");
 
@@ -261,9 +284,14 @@ public class CreatePartB1 : MonoBehaviour
             b1p3_bb1_a1.gameObject.GetComponent<FuseBehavior>().setFuseTo(fuseAtts);
             b1p3_bb1_a1.gameObject.GetComponent<FuseBehavior>().setButtonTo(GameObject.Find("B1p3"));
 
+            b1p3_bb1_a1.gameObject.AddComponent<FaceSelector>();
+            b1p3_bb1_a1.gameObject.GetComponent<FaceSelector>().setSelectPartScript(GameObject.Find("EventSystem").GetComponent<SelectPart>());
+            b1p3_bb1_a1.gameObject.GetComponent<FaceSelector>().setFuseButton(GameObject.Find("FuseButton").GetComponent<Button>());
 
             instantiated[2] = newB1p3;
             partCreated[2] = true;
+            partButtons[2].interactable = false;
+
             selectionManager.newPartCreated("b1p3Prefab(Clone)");
 
             enableManipulationButtons(newB1p3);

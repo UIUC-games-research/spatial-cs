@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class SelectedGhost : MonoBehaviour {
 
 	float timer = 0f;
 	float destroyAt = 1f;
-	public RaycastHit hitInfo;      // Set on creation by SelectedEffect.
-	Vector3 normal;
+	private Vector3 normal;
 
 	void Start ()
 	{
-		normal = hitInfo.normal;
 	}
+
+    public void setNormal(Vector3 normal)
+    {
+        this.normal = normal;
+    }
 	
 	void FixedUpdate ()
 	{
